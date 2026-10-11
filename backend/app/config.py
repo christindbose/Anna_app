@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     llm_api_key: str = "none"
     llm_model: str = "google/medgemma-1.5-4b-it"
     llm_max_tokens: int = 400
+    attending_max_tokens: int = 260  # hard cap per attending turn (~190 words); tail trimmed to a sentence
     llm_temperature: float = 0.6
 
     # TTS (Kokoro server; empty disables server-side voices and the UI falls back to browser speech)

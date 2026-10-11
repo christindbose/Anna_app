@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+import re
 from collections.abc import AsyncIterator
 from datetime import datetime, timezone
 
@@ -56,6 +57,32 @@ def _history_messages(case: Case, sess: CaseSession, all_turns: list[Turn]) -> l
     return msgs
 
 
+_SENTENCE_END = re.compile(r'[.!?]["\u201d\u2019)]?(?=\s|$)')
+_FREE_WORDS = 120  # stream token-by-token up to here; after that only release whole sentences
+
+
+async def _sentence_safe(stream: AsyncIterator[str]) -> AsyncIterator[str]:
+    """Pass the reply through, but if the model runs into its token cap, drop the cut-off
+    trailing fragment so the learner never sees a reply that ends mid-sentence."""
+    emitted_words = 0
+    pending = ""
+    async for chunk in stream:
+        if emitted_words < _FREE_WORDS:
+            emitted_words += len(chunk.split())
+            yield chunk
+            continue
+        pending += chunk
+        last = None
+        for m in _SENTENCE_END.finditer(pending):
+            last = m.end()
+        if last:
+            yield pending[:last]
+            pending = pending[last:]
+    tail = pending.strip()
+    if tail:
+        log.info("dropped truncated reply tail: %r", tail[:80])
+
+
 async def respond(db: Session, llm: LLM, sess: CaseSession, learner_text: str) -> AsyncIterator[str]:
     """Store the learner turn, stream the attending's reply, store it when done."""
     if sess.status != "active":
@@ -66,9 +93,11 @@ async def respond(db: Session, llm: LLM, sess: CaseSession, learner_text: str) -
 
     system = prompts.attending_system(case, sess.stage_index, settings.learner_name, get_attending(sess.attending_id))
     messages = [{"role": "system", "content": system}] + _history_messages(case, sess, turns(db, sess.id))
+    # Gemma-family models weight the last instruction most; restate the length rule there.
+    messages[-1] = {**messages[-1], "content": messages[-1]["content"] + prompts.LENGTH_NUDGE}
 
     buf: list[str] = []
-    async for chunk in llm.stream(messages):
+    async for chunk in _sentence_safe(llm.stream(messages, max_tokens=settings.attending_max_tokens)):
         buf.append(chunk)
         yield chunk
     reply = "".join(buf).strip()

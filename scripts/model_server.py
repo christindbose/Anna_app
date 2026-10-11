@@ -53,7 +53,11 @@ else:
     model = AutoModelForCausalLM.from_pretrained(args.model, torch_dtype=DTYPE, device_map=DEVICE)
 model.eval()
 GEN_LOCK = threading.Lock()
-print("model ready", flush=True)
+# Gemma 3 / MedGemma 1.5 can open a hidden reasoning block with "<unused94>thought". That
+# marker is not a special token, so it would be streamed to the user; forbid it at generation.
+_THOUGHT_ID = tokenizer.convert_tokens_to_ids("<unused94>")
+BAD_WORDS = [[_THOUGHT_ID]] if isinstance(_THOUGHT_ID, int) and _THOUGHT_ID != tokenizer.unk_token_id else None
+print("model ready" + (" (thought token blocked)" if BAD_WORDS else ""), flush=True)
 
 app = FastAPI()
 
@@ -101,6 +105,8 @@ def _build_inputs(messages: list[dict]):
 def _generate(messages, max_tokens, temperature, streamer=None):
     inputs = _build_inputs(messages)
     kwargs = dict(max_new_tokens=min(max_tokens, args.max_new_tokens), do_sample=temperature > 0, pad_token_id=tokenizer.eos_token_id)
+    if BAD_WORDS:
+        kwargs["bad_words_ids"] = BAD_WORDS
     if temperature > 0:
         kwargs["temperature"] = temperature
         kwargs["top_p"] = 0.95

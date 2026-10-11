@@ -3,5 +3,7 @@
 set -euo pipefail
 source /home/tgrogers-raid/a/chris241/accelsim_work/myminiconda/etc/profile.d/conda.sh
 conda activate anna-model
+ENV_FILE="$(dirname "$0")/../.env"
+[ -f "$ENV_FILE" ] && set -a && source "$ENV_FILE" && set +a
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 exec python "$(dirname "$0")/tts_server.py" --port 8002 --host 127.0.0.1 "$@"

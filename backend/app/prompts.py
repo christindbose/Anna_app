@@ -71,11 +71,12 @@ HOW TO WRITE IT:
 - Paragraph 2: which clues mattered most and whether they used them.
 - Paragraph 3: where the reasoning drifted (anchoring, premature closure, missed category, wrong test order), based ONLY on the MISS items above. If nothing was missed, say what they did well instead.
 - Paragraph 4: two or three concrete teaching points, then one sentence naming one thing to read.
+- The RUBRIC RESULTS are the only authority on what was done or missed. Every HIT item was done; never say the learner skipped, forgot or did not mention a HIT item. Only MISS items may be called gaps.
 - Do not invent anything the learner said. Do not pad with praise."""
 
 
 def debrief_user() -> str:
-    return "Write the debrief now, as plain prose."
+    return "Write the debrief now: four paragraphs of plain prose, 180 to 280 words, no headers, no bullet points, no numbered lists. Only the MISS items are gaps; every HIT item was done."
 
 
 def review_question_system() -> str:
@@ -93,3 +94,6 @@ Source case (avoid reusing it): {case.title} - {case.diagnosis}
 def case_draft_system() -> str:
     return """You are an internal medicine educator writing a progressive-disclosure teaching case.
 Return strict JSON that validates against the provided schema. The patient is fictional. Facts must be internally consistent and medically accurate. Include realistic distractors. Rubric regexes must be lenient and lowercase. Three to five stages. Mark "reviewed": false."""
+
+
+LENGTH_NUDGE = "\n\n(Reply as the attending in 2 to 5 sentences of plain prose, then stop. End with exactly one question.)"

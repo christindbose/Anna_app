@@ -62,7 +62,10 @@ angle.
   - Why not vLLM: tried it. Current vLLM / PyTorch CUDA 13 wheels dropped Volta (sm_70)
     kernels, so it fails on this box with "no kernel image is available". Revisit if the
     app moves to Ampere or newer GPUs; the backend only needs an OpenAI-style endpoint.
-  - V100 caveat: no native bf16, so load in fp16.
+  - V100 caveat: no native bf16, and Gemma 3 activations overflow fp16 (NaN logits, CUDA assert
+    in sampling), so Gemma-family models are loaded in fp32 (~17 GB; `serve_model.sh` picks this).
+  - MedGemma 1.5 may open a hidden reasoning block with `<unused94>thought`; the server forbids
+    that token at generation time.
   - Gated weights: accept the Health AI Developer Foundations terms on Hugging Face.
 - **Backend:** Python 3.11 (conda env), FastAPI, SQLite via SQLModel. Owns case state,
   reveal order, rubric scoring, spaced-repetition schedule, and prompt assembly.
@@ -107,8 +110,8 @@ Anna as the silent reviewer for a few, or a resident friend). Target 30 cases at
 
 ### Week 0 (first evening): environment
 - [x] Conda envs: `anna` (backend) and `anna-model` (PyTorch 2.7 cu126 + transformers); Node 20 via nvm.
-- [~] Accept MedGemma terms on Hugging Face, download `medgemma-1.5-4b-it`. HF token is in `.env` (2026-10-11) but the account has not yet been granted access to the gated repo; run `scripts/check_medgemma.sh` after accepting the terms. Stack validated with Qwen2.5-3B-Instruct as a stand-in.
-- [ ] Serve it with `scripts/serve_model.sh`, confirm a text and an image prompt work on a V100.
+- [x] Accept MedGemma terms on Hugging Face, download `medgemma-1.5-4b-it` (2026-10-11; weights cached under /scratch via HF_HOME in `.env`).
+- [x] Serve it with `scripts/serve_model.sh` (fp32 on a V100; fp16 overflows to NaN logits). Text prompts verified end to end; image prompt not yet tried.
 - [x] Repo scaffold: `backend/`, `frontend/`, `cases/`, `scripts/`.
 
 ### Week 1: one case, end to end
@@ -163,3 +166,9 @@ Anna as the silent reviewer for a few, or a resident friend). Target 30 cases at
   model (Qwen2.5-3B-Instruct) because MedGemma weights are gated and no HF token was
   available. vLLM abandoned for V100 reasons (see Architecture). 13 draft cases, all
   need a medical review pass. Nothing committed to git yet.
+- 2026-10-11: MedGemma 1.5 4B live. Token stored in `.env`, weights on /scratch (HF_HOME). Loaded in
+  fp32 after fp16 produced NaN logits. First runs showed a leaked `<unused94>thought` block and
+  replies running into the token cap, fixed by forbidding the token, capping attending turns at
+  260 tokens with sentence-boundary trimming, and restating length rules in the last user message.
+  Debrief prompt now treats rubric HITs as authoritative after a debrief claimed a missed test the
+  learner had ordered. Pericarditis 19/20, TTP 22/22 on the real model.

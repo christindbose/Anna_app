@@ -27,8 +27,12 @@ deploy/    systemd units
 
 ```bash
 # 0. one-time
-cp .env.example .env            # set ANNA_APP_PASSWORD and HF_TOKEN
+cp .env.example .env            # set ANNA_APP_PASSWORD, HF_TOKEN and (optionally) HF_HOME for the weights cache
 scripts/check_medgemma.sh       # verifies the token can download MedGemma (accept terms on HF first)
+
+MedGemma is loaded in fp32 on the V100 (Gemma 3 overflows fp16 to NaN logits); override with
+`ANNA_LLM_DTYPE`. Other models default to fp16. `ANNA_LLM_MODEL` swaps the model, e.g. the
+Qwen2.5-3B stand-in used during development.
 conda activate anna             # python 3.11 env with fastapi (backend); anna-model env serves the model
 
 # 1. model server (GPU 0, port 8001). Needs MedGemma terms accepted on Hugging Face.
