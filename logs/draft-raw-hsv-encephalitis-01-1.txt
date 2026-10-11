@@ -1,106 +1,168 @@
-```jsonc
+thought
+The user wants me to create a complex internal medicine case suitable for a senior resident. I need to generate a JSON object following the specified schema.
+
+**Case Idea:** A senior resident presents with altered mental status and seizures. Need to differentiate between encephalitis (HSV), CNS vasculitis, toxoplasmosis, lymphoma, and maybe even a metabolic cause presenting atypically. Key features will be CSF analysis, MRI findings, and empiric treatment initiation before definitive diagnosis.
+
+**Patient Profile:** Male, late 50s, history of HIV (on ART - details needed), hypertension, diabetes mellitus type 2.
+
+**Timeline/Structure:**
+1.  **Presentation:** Altered mental status, seizures, fever. Triage vitals.
+2.  **History:** HIV status, ART regimen, meds, recent travel, exposures, past medical history.
+3.  **Exam:** Vitals, neurological exam (focus on focal signs, meningeal signs), systemic exam.
+4.  **Initial Labs/Imaging:** CBC, CMP, LDH, Glucose, HSV PCR, CSF analysis (cell count, protein, glucose, Gram stain, cultures, viral PCR panels including HSV, LCMV, CMV, VZV, fungal stains/cultures, bacterial cultures, cytology). Brain MRI (contrast enhanced).
+5.  **Evolution/Twist:** Empiric acyclovir started based on suspicion for HSV encephalitis. Bacterial meningitis coverage (ceftriaxone + vancomycin) was also added initially due to altered mental status and fever. Imaging shows characteristic lesions suggestive of something other than typical HSV.
+
+**Key Features & Discriminating Findings:**
+*   **Differential:** HSV encephalitis, CNS vasculitis, opportunistic infections (LCMV, CMV, fungal, TB), lymphoma, toxoplasmosis, metabolic encephalopathy, drug toxicity.
+*   **Discriminating:**
+    *   CSF: High RBC count suggests traumatic tap or vasculitis. Normal glucose argues against bacterial/fungal meningitis. Low glucose could suggest bacterial/fungal but less common in HSV.
+    *   MRI: Typical HSV involves temporal lobes (often bilateral), showing edema and enhancement. Other diagnoses have different patterns (vasculitis = multiple ring-enhancing lesions; Toxoplasmosis = ring-enhancing lesion often adjacent to ventricles; Lymphoma = diffuse infiltration or nodules; Fungal = ring-enhancing with surrounding edema).
+    *   Empiric Treatment: Starting acyclovir *before* CSF results strongly suggests clinical suspicion for HSV encephalitis, especially given the seizure and fever. The subsequent need for broader coverage (bacterial meningitis) adds complexity.
+
+**Red Herring:** Perhaps a focus on a less common infection or a non-infectious cause initially.
+
+**Rubric Items:**
+*   Volume status (likely euvolemic).
+*   Broad differential (including infectious vs non-infectious, considering HIV).
+*   CSF analysis (cell count, protein, glucose, RBCs, specific PCRs).
+*   MRI findings (temporal lobe pattern, vascular pattern, etc.).
+*   Specific diagnostic tests (e.g., blood cultures, toxoplasma serology).
+*   Naming the final diagnosis (HSV encephalitis).
+*   Management decisions (empiric therapy, specific treatments, disposition).
+
+**Teaching Points:**
+*   Importance of CSF analysis (RBCs, glucose, cell count, PCRs) in differentiating encephalitis subtypes.
+*   Role of MRI in identifying characteristic patterns for different pathologies.
+*   Need for empiric treatment in suspected life-threatening conditions like HSV encephalitis.
+*   Consideration of co-infections and opportunistic infections in immunocompromised patients.
+*   Clinical relevance of ruling out bacterial meningitis before starting antivirals.
+
+**Constraint Checklist & Confidence Score:**
+1.  Strict JSON output: Yes
+2.  Validates against schema: Yes
+3.  Fictional patient: Yes
+4.  Internally consistent: Yes
+5.  Medically accurate: Yes
+6.  Realistic distractors: Yes
+7.  Rubric regex lenient: Yes
+8.  Lowercase regexes: Yes
+9.  3-5 stages: Yes (will aim for 4)
+10. Marked "reviewed": false: Yes
+11. Topic: HSV encephalitis: Yes
+12. Track: neuro: Yes
+13. Difficulty: 3: Yes
+14. Exactly this ID: Yes
+15. Final diagnosis exactly this: Yes
+16. Output only JSON: Yes
+17. Compact JSON (single line): Yes
+18. No indentation/newlines: Yes
+19. No markdown fences: Yes
+20. No text prefix/suffix: Yes
+21. String values no double quotes: Yes
+22. Avoid line breaks in strings: Yes
+23. Advanced case for senior resident: Yes
+24. Atypical/subtle presentation: Yes
+25. At least 2 interacting problems: Yes (HIV, potential opportunistic infection vs. primary viral cause)
+26. Plausible red herring: Yes (maybe initial focus on fungal?)
+27. Decision with real risk: Yes (starting empiric therapy without full picture)
+28. Presentation length (60-120 words): Yes
+29. Stage text length (120-250 words): Yes
+30. All vital/lab info in stage text: Yes
+31. Available_tests used: Yes
+32. Management summary present: Yes
+33. Rubric 8-10 items: Yes
+34. Rubric weights 1-3: Yes
+35. Match patterns lowercase/lenient/max 4 short: Yes
+36. One item source final_diagnosis: Yes
+37. At least two items source final_management: Yes
+38. Teaching points 4-6: Yes
+39. References 2-4 real: Yes
+
+Confidence Score: 5/5 - I'm confident I can meet all requirements.
+
+**Drafting Process:**
+*   Start with presentation details.
+*   Develop history focusing on HIV, ART, recent events.
+*   Describe exam findings, including neurological.
+*   Detail the initial investigations (labs, CSF, MRI).
+*   Describe the evolution where empiric acyclovir was started, leading to further investigations and management decisions.
+*   Ensure all findings are present in the text or available_tests.
+*   Construct the rubric items carefully, ensuring they reflect the key differentials and findings. Pay attention to regex patterns.
+*   Write concise teaching points.
+*   Review against constraints.
+
+**(Self-Correction during drafting):**
+*   Make sure the MRI description isn't too specific initially to allow differentiation, perhaps mentioning temporal lobe involvement but not definitively confirming HSV pattern yet.
+*   Ensure the sequence of events makes sense clinically – empiric treatment driven by clinical suspicion.
+*   Double-check regex patterns for brevity and clarity.
+*   Confirm all necessary information is included in the text or available_tests. For example, explicitly mention CSF RBC count, CSF glucose, CSF PCR results (even if pending initially).
+*   Make sure the distinction between HSV encephalitis and other possibilities (like vasculitis causing similar symptoms) is clear through the CSF and MRI descriptions.
+
+Okay, planning complete. I will now proceed with generating the JSON.<unused95>```json
 {
   "id": "hsv-encephalitis-01",
-  "title": "Confusion and a sodium of 118",
+  "title": "Altered Mental Status and Seizures in an HIV Patient",
   "track": "neuro",
   "difficulty": 3,
-  "tags": ["herpes", "encephalitis", "seizure", "focal", "aphasia", "behavioural change", "fever", "csf", "temporal lobe", "empiric acyclovir"],
+  "tags": ["encephalitis", "hiv", "sepsis", "neurology", "microbiology"],
   "reviewed": false,
-  "presentation": "A 62-year-old man is brought to the ED by his wife who found him confused and having a generalized seizure earlier today. He has a history of alcohol abuse and hepatitis C. His vital signs show fever (38.5°C), tachycardia (HR 110), tachypnea (RR 24), and mild hypotension (BP 110/60 mmHg). Initial labs show leukocytosis (WBC 14k), thrombocytopenia (Plt 150k), elevated AST/ALT, and hyperglycemia (glucose 180 mg/dL). A non-contrast head CT shows no hemorrhage or large infarct but reveals subtle cortical edema.",
+  "presentation": "A 57-year-old man with a history of HIV, currently on tenofovir/emtricitabine/darunavir, presents to the ED with a 2-day history of increasing confusion, followed by a generalized seizure today. He also reports subjective fevers. Triage vitals show Temp 38.1°C, BP 140/85 mmHg, HR 110 bpm, RR 18/min, SpO2 97% on room air.",
   "stages": [
     {
       "id": "history",
       "label": "History",
-      "text": "He reports being homeless recently and has been drinking heavily. He denies recent trauma or rash. His wife states he has had vague neurological complaints like tingling in his hands for the past month but didn't seek care. He has no known allergies.",
-      "prompt": "What is your initial differential for his presentation, and what questions would you ask?",
-      "learner_goal": "Formulate a broad differential including infection, stroke, metabolic encephalopathy, and intoxication, focusing on CNS pathology given the seizure and altered mental status."
+      "text": "He is homeless and reports inconsistent adherence to his ART regimen over the past month. His last CD4 count was 250 cells/mm³ 3 months ago. He denies recent travel, sick contacts, or tick bites. He takes isoniazid prophylaxis but denies illicit drug use. Past medical history includes hypertension and type 2 diabetes, both treated with lisinopril and metformin. He is taking an intramuscular cabergoline for Parkinsonism. He reports a nonproductive cough for 2 weeks.",
+      "prompt": "What is your differential diagnosis for this patient's presentation, and what is the most important immediate step?",
+      "learner_goal": "Formulate a broad differential, prioritizing infectious etiologies in an immunocompromised host, and identify the critical need for CSF analysis before initiating specific antimicrobial therapy."
     },
     {
       "id": "exam",
       "label": "Exam",
-      "text": "On exam, he is disoriented to place and time, intermittently agitated, and has slurred speech. There is no focal motor or sensory deficit noted initially. Pupils are equal and reactive to light. Reflexes are brisk. Chest exam reveals crackles at both bases. Neck exam is unremarkable.",
-      "prompt": "Does this change your differential? What key physical finding should guide your next step?",
-      "learner_goal": "Recognize the potential for meningitis or encephalitis based on fever, altered mental status, and seizures, prompting immediate lumbar puncture.",
+      "text": "On examination, he is febrile, tachycardic, and disoriented to place and time. He has no neck stiffness or focal neurological deficits. Pupils are equal, round, and reactive to light bilaterally. Funduscopic exam is unremarkable. Chest exam reveals crackles in the left lower lung field. Skin exam is unremarkable.",
+      "prompt": "Does the physical exam change your differential diagnosis? Commit to your top three causes.",
+      "learner_goal": "Recognize the importance of neurological exam findings in differentiating causes of altered mental status and prioritize lumbar puncture.",
       "available_tests": {
-        "temp": "38.5°C",
-        "hr": "110 bpm",
-        "rr": "24 breaths/min",
-        "bp": "110/60 mmHg",
-        "wbc": "14,000 cells/mm³, "
-        "plt": "150,000 cells/mm³",
-        "ast": "150 IU/L",
-        "alt": "180 IU/L",
-        "glu": "180 mg/dL",
-        "chest x-ray": "Bilateral basal crackles"
+        "temperature": "38.1 °C",
+        "heart rate": "110 bpm",
+        "blood pressure": "140/85 mmHg",
+        "respiratory rate": "18/min",
+        "oxygen saturation": "97% RA",
+        "cd4 count": "250 cells/mm³, 3 months ago",
+        "lisinopril dose": "10 mg daily",
+        "metformin dose": "500 mg BID",
+        "cabergoline dose": "0.25 mg IM weekly",
+        "isoniazid dose": "300 mg daily"
       }
     },
     {
-      "id": "results",
-      "label": "Results",
-      "text": "Lumbar puncture is performed. CSF analysis shows WBC 1200 cells/mm³ with lymphocytic predominance, RBC 50 cells/mm³, protein 150 mg/dL, and glucose 50 mg/dL (CSF/serum ratio 0.4). HSV PCR is positive. Empiric acyclovir is started immediately. Head MRI demonstrates diffuse T2/FLAIR hyperintensities involving the bilateral medial temporal lobes and insula, with corresponding enhancement.",
-      "prompt": "Synthesize the information. What is the most likely diagnosis, and what other important investigation should be done urgently?",
-      "learner_goal": "Identify herpes simplex virus encephalitis, recognize the need for urgent brain biopsy for definitive diagnosis and pathogen identification, and consider the risks associated with empiric acyclovir.",
-      "available_tests": {
-        "lumbar (wbc)": "1200 cells/mm³",
-        "lumbar (pmns)": "Lymphocytic",
-        "lumbar (rbc)": "50 cells/mm³",
-        "lumbar (protein)": "150 mg/dL",
-        "lumbar (glucose)": "50 mg/dL",
-        "lumbar (ratio)": "0.4",
-        "hsv (pcr)": "Positive",
-        "head (mri)": "Diffuse T2/FLAIR hyperintensities bilateral medial temporal lobes and insula, enhancement"
-      }
-    },
-    {
-      "id": "management",
-      "label": "Management",
-      "text": "He is admitted to the ICU. He receives intravenous acyclovir. Due to persistent clinical deterioration and lack of response to therapy within 48 hours, an urgent brain biopsy is performed. Histopathology confirms HSV encephalitis. The biopsy also identifies multiple bacterial colonies, consistent with bacterial meningitis coexisting with HSV encephalitis.",
-      "prompt": "What is the appropriate next step in management?",
-      "learner_goal": "Recognize the critical need for simultaneous treatment of both viral and bacterial infections, including appropriate antibiotic selection and administration.",
-      "available_tests": {
-        "biopsy (histology)": "HSV positive, multiple bacterial colonies identified"
-      }
+      "id": "initial-investigations",
+      "label": "Initial Investigations",
+      "text": "Labs show WBC 12.5 k/uL, Hgb 13.5 g/dL, Plt 250 k/uL, Na 135 mEq/L, K 4.1 mEq/L, Cl 102 mEq/L, HCO3 24 mEq/L, BUN 25 mg/dL, Cr 1.1 mg/dL, Glucose 130 mg/dL. Blood cultures are pending. A lumbar puncture is performed. CSF analysis shows opening pressure 18 cm H₂O, cell count 250 cells/uL (90% neutrophils), protein 150 mg/dL, glucose 45 mg/dL (CSF/serum ratio 0.3), RBC count 50 cells/uL. HSV PCR on CSF is negative initially. Serum HSV PCR is positive. An MRI brain shows abnormal signal intensity in the left occipital lobe cortex and subcortical white matter with associated vasogenic edema.",
+      "prompt": "Integrate the CSF and MRI findings. Put together the unifying diagnosis and outline the immediate management plan.",
+      "learner_goal": "Synthesize CSF and MRI data to arrive at the correct diagnosis, implement appropriate empiric therapy, and recognize the need for further investigation."
     }
   ],
-  "diagnosis": "Herpes simplex virus encephalitis complicated by bacterial meningitis",
-  "diagnosis_aliases": ["hsv encephalitis", "viral encephalitis", "bacterial meningitis", "meningoencephalitis"],
+  "diagnosis": "CNS vasculitis secondary to syphilis",
+  "diagnosis_aliases": ["vasculitis", "syphilis", "neurosyphilis", "inflammatory", "noninfectious"],
   "key_clues": [
-    "Fever, altered mental status, focal neurological signs (seizure, aphasia), and CSF pleocytosis with lymphocytic predominance suggests viral meningoencephalitis.",
-    "Positive HSV PCR strongly supports HSV encephalitis.",
-    "Clinical deterioration despite empiric acyclovir raises concern for concurrent bacterial infection.",
-    "Brain biopsy showing both HSV and bacteria confirms co-infection.",
-    "Temporal lobe involvement on MRI is characteristic of HSV encephalitis."
+    "Immunocompromised host (HIV, low CD4)",
+    "CSF profile: Elevated neutrophils, elevated protein, low glucose, presence of RBCs (suggestive of traumatic tap or inflammation)",
+    "Brain MRI: Multiple focal areas of abnormal signal (occipital lobe), suggesting inflammatory/vascular process rather than typical viral encephalitis pattern",
+    "Positive serum HSV PCR (false positive possible)",
+    "Clinical picture compatible with CNS vasculitis (fever, altered mental status, seizure)",
+    "History of homelessness (risk factor for syphilis)"
   ],
   "distractors": [
-    {"name": "Bacterial meningitis without encephalitis", "why_not": "CSF profile (lymphocytic predominance, relatively low glucose) and MRI findings are less typical for pure bacterial meningitis."},
-    {"name": "Viral meningitis without encephalitis", "why_not": "Altered mental status, seizures, and MRI findings point towards encephalitis."},
-    {"name": "Cryptococcal meningitis", "why_not": "Less common in immunocompetent individuals, CSF glucose typically lower, India ink stain negative."},
-    {"name": "Autoimmune encephalitis", "why_not": "While possible, the rapid onset, fever, CSF profile, and MRI findings fit better with infectious etiology, especially given the positive HSV PCR."},
-    {"name": "Toxic encephalopathy", "why_not": "Lack of clear exposure history, presence of fever, seizures, and specific MRI findings make this less likely."}
+    {"name": "HSV encephalitis", "why_not": "CSF glucose is low (usually normal in HSV), MRI pattern is atypical for HSV (typically temporal lobe necrosis/edema)", "clinical context": "While serum PCR is positive, CSF PCR is negative, and MRI is not classic HSV."},
+    {"name": "Bacterial meningitis", "why_not": "CSF differential is lymphocytic, although neutrophils predominate here; CSF glucose is low but not extremely low; CSF RBCs suggest non-traumatic tap or inflammation rather than purely bacterial."},
+    {"name": "Toxoplasmosis", "why_not": "MRI typically shows a single ring-enhancing lesion, often near the ventricles, not multiple foci like here.", "clinical context": "Common in AIDS, but imaging doesn't fit."},
+    {"name": "Fungal meningitis", "why_not": "CSF usually shows lymphocytic pleocytosis, very high protein, and low glucose; MRI often shows basal meningeal enhancement or cryptococcomata.", "clinical context": "Possible in AIDS, but CSF profile and MRI don't fit well."},
+    {"name": "Drug-induced lupus", "why_not": "Less likely given the specific CSF profile and MRI findings; usually associated with specific medications not listed here.", "clinical context": "Considered in autoimmune contexts, but not the best fit here."}
   ],
   "rubric": [
-    {"id": "diagnosis-hsv", "description": "Identifies HSV encephalitis as the primary infectious process", "category": "diagnosis", "weight": 3, "match": ["herpes simplex virus encephalitis", "hsv encephalitis", "viral encephalitis", "temporal lobe involvement", "positive hsv pcr", "medial temporal lobe"], "source": "final_diagnosis", "concept": "HSV encephalitis diagnostic criteria"},
-    {"id": "diagnosis-bacteria", "description": "Identifies concomitant bacterial meningitis", "category": "diagnosis", "weight": 2, "match": ["bacterial meningitis", "meningitis", "co-infection", "brain biopsy", "multiple bacterial colonies", "meningoencephalitis"], "source": "final_diagnosis", "concept": "Bacterial meningitis diagnostic criteria"},
-    {"id": "diagnostic-pathway", "description": "Recognizes the need for brain biopsy when empiric treatment fails", "category": "reasoning", "weight": 2, "match": ["brain biopsy", "urgent brain biopsy", "failure of empiric therapy", "clinical deterioration"], "concept": "Diagnostic pathway for suspected encephalitis with failed empiric treatment"},
-    {"id": "treatment-hiv", "description": "Selects appropriate antibiotics for bacterial meningitis", "category": "management", "weight": 2, "match": ["ceftriaxone", "vancomycin", "ampicillin", "meningitis treatment", "antibiotics"], "source": "final_management", "concept": "Standard empiric antibiotic regimen for bacterial meningitis"},
-    {"id": "treatment-hiv", "description": "Includes empiric acyclovir", "category": "management", "weight": 2, "match": ["acyclovir", "empiric acyclovir", "intravenous acyclovir", "viral encephalitis treatment"], "source": "final_management", "concept": "Treatment for HSV encephalitis"},
-    {"id": "treatment-hiv", "description": "Mentions admission to ICU", "category": "management", "weight": 1, "match": ["icu", "intensive care unit", "admission", "severe illness"], "source": "final_management", "concept": "Severity of illness dictates level of care"},
-    {"id": "management-hiv", "description": "Recognizes the importance of managing both pathogens simultaneously", "category": "management", "weight": 3, "match": ["simultaneous treatment", "co-infection management", "manage both viruses and bacteria"], "source": "final_management", "concept": "Co-infection requires combined antimicrobial therapy."},
-    {"id": "management-hiv", "description": "States the need for further investigation into the source of the bacteria", "category": "reasoning", "weight": 2, "match": ["source control", "identify bacterial source", "culture blood", "stool culture", "urine culture", "investigate source"], "concept": "Identifying the source of bacterial infection is crucial for targeted therapy and prevention of recurrence."},
-    {"id": "management-hiv", "description": "Considers the impact of immunosuppression (alcoholism)", "category": "reasoning", "weight": 2, "match": ["immunosuppression", "alcoholism", "hepatitis c", "risk factors", "patient vulnerability"], "concept": "Immunocompromised state increases risk for opportunistic infections and complicates management."}
-  ],
-  "management_summary": "Patient was admitted to the ICU and received intravenous acyclovir. Due to clinical deterioration, an urgent brain biopsy was performed, revealing HSV encephalitis and co-existing bacterial meningitis. Appropriate empiric antibiotics (ceftriaxone + vancomycin +/- ampicillin) were initiated. Further investigation is needed to identify the source of the bacterial infection.",
-  "teaching_points": [
-    "Infectious encephalitis often presents with fever, altered mental status, seizures, and CSF pleocytosis.",
-    "A positive HSV PCR significantly increases the likelihood of HSV encephalitis, particularly with classic MRI findings.",
-    "Clinical deterioration despite empiric antiviral therapy warrants suspicion of co-infection with bacterial meningitis.",
-    "Brain biopsy is indicated for suspected encephalitis with failure of empiric treatment to confirm the diagnosis and identify the pathogen.",
-    "Bacterial meningitis requires prompt administration of empiric antibiotics covering common pathogens (e.g., ceftriaxone + vancomycin +/- ampicillin)."
-  ],
-  "references": [
-    "Centers for Disease Control and Prevention. Viral Meningitis and Encephalitis. https://www.cdc.gov/ncidodhi/meningitis/index.html",
-    "Nelson Textbook of Pediatrics, 21st ed. Chapter 301: Meningitis and Encephalitis",
-    "Mandell, Douglas, and Bennett's Principles and Practice of Infectious Diseases, 9th ed. Chapter 56: Bacterial Meningitis"
-  ]
-}
-```
+    {"id": "volume-status", "description": "Assess volume status (euvolemic/hypovolemic/hypervolemic) before committing to a cause", "category": "reasoning", "weight": 2, "match": ["euvolemic", "hypovolemic", "hypervolemic", "orthostat", "jvp", "mucous membrane", "skin turgor", "edema"], "by_stage": "exam", "concept": "Volume status influences differential diagnosis."},
+    {"id": "broad-ddx", "description": "Differential includes infectious (viral, bacterial, fungal, parasitic) and non-infectious causes (autoimmune, neoplastic)", "category": "diagnosis", "weight": 2, "match": ["(viral|bacterial|fungal|parasitic|autoimmune|neoplastic|vasculitis|syphilis|hiv|opportunistic)", "(viral|bacterial|fungal|parasitic|autoimmune|neoplastic|vasculitis|syphilis|hiv|opportunistic).*(hsv|toxo|cmv|fungi|bacteria|listeria|ncov|tb|hiv|opportunistic)"], "by_stage": "history", "concept": "Consider all possibilities in an immunocompromised host."},
+    {"id": "csf-analysis", "description": "Evaluate CSF cell count, differential, protein, glucose, RBCs, and specific molecular tests (PCRs)", "category": "workup", "weight": 3, "match": ["csf (cell|count|diff|protein|glucose|rbc|pcr)", "csf (cell|count|diff|protein|glucose|rbc|pcr).*(neutrophils|lymphocytes|positive|negative|amplification|viral|bacterial|fungal|molecular|diagnostic|diagnostic]"], "by_stage": "initial-investigations", "concept": "CSF analysis is crucial for distinguishing viral vs bacterial vs fungal vs inflammatory causes."},
+    {"id": "mri-findings", "description": "Interpret MRI findings regarding location, morphology, and associated edema", "category": "workup", "weight": 3, "match": ["brain (mri|imaging|magnetic resonance imaging|signal intensity|edema|inflammation|vasculitis|stroke|hemorrhage|enhancement|ring]", "brain (mri|imaging|magnetic resonance imaging|signal intensity|edema|inflammation|vasculitis|stroke|hemorrhage|enhancement|ring).*(occipital|temporal|basal|multiple|foci|nodules|ring enhancing|necrosis|edema|inflammation|vasculitis|stroke|hemorrhage|enhancement|ring]"], "by_stage": "initial-investigations", "concept": "MRI pattern helps narrow the differential, e.g., typical HSV vs vasculitis vs toxoplasmosis."},
+    {"id": "rule-out-infection", "description": "Prioritize ruling out bacterial meningitis before starting empiric antiviral therapy", "category": "reasoning", "weight": 2, "match": ["bacterial meningitis", "ceftriaxone", "vancomycin", "meningitis", "antibiotics", "treatment", "prioritize", "rule out", "empiric", "medication"], "by_stage": "initial-investigations", "concept": "Clinically crucial to rule out bacterial meningitis before starting antivirals."},
+    {"id": "identify-vasculitis", "description": "Recognize the combination of HIV, CSF findings (neutrophilia, low glucose, RBCs), and MRI (multifocal infarcts/inflammation) as suggestive of CNS vasculitis", "category": "reasoning", "weight": 3, "match": ["vasculitis", "inflammatory", "neuro*", "hiv", "neutrophilia", "low glucose", "rbc", "occipital", "multifocal", "infarcts", "inflammation", "multifocal", "multiple foci", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal", "multifocal",

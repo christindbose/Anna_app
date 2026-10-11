@@ -80,6 +80,10 @@ def normalise(data: dict) -> dict:
     data["distractors"] = [d for d in data.get("distractors", []) if isinstance(d, dict) and "name" in d and "why_not" in d]
 
     rubric = data.get("rubric", [])
+    stage_ids = {str(st.get("id")) for st in data.get("stages", [])}
+    for r in rubric:
+        if r.get("by_stage") and r["by_stage"] not in stage_ids:
+            r.pop("by_stage", None)
     # Guarantee a final_diagnosis item: build it from the diagnosis string and its aliases.
     if not any(r.get("source") == "final_diagnosis" for r in rubric):
         dx = str(data.get("diagnosis", "")).lower()

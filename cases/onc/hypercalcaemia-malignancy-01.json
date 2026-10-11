@@ -1,0 +1,251 @@
+{
+  "id": "hypercalcaemia-malignancy-01",
+  "title": "Hypercalcemia and Confusion",
+  "track": "onc",
+  "difficulty": 3,
+  "tags": [
+    "hypercalcemia",
+    "endocrine",
+    "malignancy"
+  ],
+  "reviewed": false,
+  "presentation": "A 74-year-old man presents to the clinic complaining of increasing confusion over the past week, along with fatigue and constipation. He also reports feeling warm and having increased thirst. His vital signs show BP 130/78, HR 92, RR 16, Temp 37.1C. Initial labs show Calcium 13.8 mg/dL, Sodium 140, Potassium 4.1, Chloride 98, CO2 24, Glucose 100, Creatinine 1.1.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He denies nausea, vomiting, diarrhea, or significant urinary symptoms. Past medical history is notable for metastatic prostate adenocarcinoma diagnosed 3 years ago, treated with hormone therapy and radiation, but now experiencing progressive decline in renal function. He takes warfarin (INR 2.1) and levothyroxine (TSH 1.8). Denies any recent calcium supplements or bisphosphonate medications. His wife notes he has been 'more forgetful' lately. Family history is negative for primary hyperparathyroidism or multiple myeloma. He has a history of heavy smoking (quit 10 years ago). Physical exam reveals mild edema in his lower extremities and a palpable left supraclavicular lymph node.",
+      "prompt": "What is your differential diagnosis based on the history and physical exam, and what test should you order next to help differentiate between the most likely causes?",
+      "learner_goal": null,
+      "available_tests": {}
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "Vital Signs: BP 130/78 mmHg, HR 92 bpm, RR 16 breaths/min, Temp 37.1°C. General: Alert but confused, appears cachectic. Skin: Warm, dry. Extremities: Mild bilateral lower extremity edema. Lymph Nodes: Palpable left supraclavicular lymph node measuring approximately 2 cm. Other: No jaundice, hepatosplenomegaly, or abdominal distension noted.",
+      "prompt": "Does the examination find any clues that help narrow down the differential? Which test will help confirm the suspected diagnosis?",
+      "learner_goal": null,
+      "available_tests": {}
+    },
+    {
+      "id": "labs",
+      "label": "Labs",
+      "text": "Calcium 13.8 mg/dL, Albumin 4.2 g/dL, Corrected Calcium 13.8 mg/dL. Phosphate 2.8 mg/dL. PTH 58 pg/mL. Creatinine 1.1 mg/dL. Vitamin D level pending.",
+      "prompt": "Based on the serum calcium, albumin, corrected calcium, phosphate, and PTH levels, what is the likely underlying mechanism for his hypercalcemia, and what additional laboratory test should be ordered to further evaluate?",
+      "learner_goal": null,
+      "available_tests": {}
+    },
+    {
+      "id": "imaging",
+      "label": "Imaging",
+      "text": "Chest X-ray shows a large mass in the right upper lobe, suspicious for metastatic disease. CT scan of the abdomen confirms extensive osseous metastases throughout the skeleton.",
+      "prompt": "Given the clinical picture and initial investigations, what is the most probable cause of this patient's hypercalcemia, and what is the immediate next step in management?",
+      "learner_goal": null,
+      "available_tests": {}
+    }
+  ],
+  "diagnosis": "Humoral Hypercalcemia of Malignancy mediated by PTHrP",
+  "diagnosis_aliases": [
+    "hhcm",
+    "humoral hypercalcemia",
+    "pthrp mediated hypercalcemia"
+  ],
+  "key_clues": [
+    "Corrected calcium > 11.5 mg/dL",
+    "PTH level suppressed (<20 pg/mL)",
+    "Phosphate level < 4.5 mg/dL",
+    "Evidence of malignancy (metastatic prostate cancer, RUL mass, bone mets)",
+    "Clinical picture of hypercalcemia (confusion, constipation, fatigue, warmth, thirst)"
+  ],
+  "distractors": [
+    {
+      "name": "Primary hyperparathyroidism",
+      "why_not": "PTH is suppressed, not elevated."
+    },
+    {
+      "name": "Vitamin D toxicity",
+      "why_not": "Vitamin D level is pending, but PTH is suppressed."
+    },
+    {
+      "name": "Granulomatous diseases (sarcoidosis)",
+      "why_not": "PTH is suppressed, and there's no mention of granulomas."
+    },
+    {
+      "name": "Medication side effects (thiazides)",
+      "why_not": "Patient is not taking thiazides."
+    },
+    {
+      "name": "Familial Hypocalciuric Hypercalcemia (FHH)",
+      "why_not": "PTH is suppressed, not elevated, and FHH typically has milder hypercalcemia with normal or mildly elevated PTH."
+    }
+  ],
+  "rubric": [
+    {
+      "id": "mechanism-classification",
+      "description": "Identifies humoral hypercalcemia of malignancy (HHM) via PTHrP suppression",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "humoral hypercalcemia",
+        "hhcm",
+        "pthrp",
+        "suppressed (pth)",
+        "elevated (calcium)",
+        "low (phosphate)",
+        "high (calcium)",
+        "low (pth)"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Classification of hypercalcemia based on PTH"
+    },
+    {
+      "id": "differential-causes",
+      "description": "Considers primary hyperparathyroidism and other causes like vitamin D toxicity or granulomatous disease",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "primary hyperparathyroidism",
+        "vitamin d",
+        "granuloma",
+        "sarcoidosis"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "The main differentials for hypercalcemia are HHM, PHPT, vitamin D toxicity, granulomatous disease, and others."
+    },
+    {
+      "id": "investigation-order",
+      "description": "Orders PTH and phosphate levels first when hypercalcemia is confirmed",
+      "category": "workup",
+      "weight": 3,
+      "match": [
+        "pth",
+        "phosphate",
+        "serum (calcium)",
+        "serum (phos)",
+        "serum (pth)",
+        "lab orders"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "The first step in evaluating hypercalcemia is measuring serum calcium, albumin, phosphate, and PTH."
+    },
+    {
+      "id": "confirm-hhcm",
+      "description": "Orders Vitamin D level to rule out vitamin D toxicity",
+      "category": "workup",
+      "weight": 2,
+      "match": [
+        "vitamin d",
+        "level",
+        "measure",
+        "rule out",
+        "humoral\\ hypercalcemia",
+        "humoral"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "While PTHrP is highly likely, vitamin D toxicity remains a possibility."
+    },
+    {
+      "id": "rule-out-phpt",
+      "description": "Considers primary hyperparathyroidism as the main alternative",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "primary hyperparathyroidism",
+        "phpt",
+        "elevated (pth)",
+        "elevated (calcium)"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "PHPT is the most common cause of hypercalcemia in asymptomatic patients, but PTH should be suppressed here."
+    },
+    {
+      "id": "consider-other-causes",
+      "description": "Considers granulomatous disease as another important differential",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "granuloma",
+        "sarcoidosis",
+        "vitamin d",
+        "granulomatous disease"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Granulomatous diseases produce calcitriol, leading to increased calcium absorption."
+    },
+    {
+      "id": "link-to-malignancy",
+      "description": "Relates the patient's known metastatic prostate cancer to the hypercalcemia",
+      "category": "reasoning",
+      "weight": 3,
+      "match": [
+        "prostate cancer",
+        "metastasis",
+        "bone mets",
+        "lung mass",
+        "malignancy",
+        "cancer",
+        "sclc"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "The presence of metastatic cancer strongly suggests HHM."
+    },
+    {
+      "id": "management-initiate",
+      "description": "Initiates appropriate management including hydration and zoledronic acid",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "hydration",
+        "fluids",
+        "zoledronate",
+        "discontinue",
+        "bisphosphonates",
+        "calcitonin",
+        "aggressive",
+        "volume expansion",
+        "electrolyte replacement"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "First-line treatment for HHM involves aggressive hydration and bisphosphonates like zoledronic acid."
+    },
+    {
+      "id": "treatment-ceiling",
+      "description": "Mentions the need to limit zoledronic acid dose based on renal function",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "zoledronate",
+        "dose",
+        "renal function",
+        "creatinine",
+        "limit",
+        "monitor"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Zoledronic acid dosing needs adjustment based on kidney function."
+    }
+  ],
+  "management_summary": "Aggressive intravenous hydration with isotonic saline (e.g., 200 mL/hr initially) is crucial. Initiate zoledronic acid 4 mg intravenously daily for 3-5 days. Monitor renal function closely. Consider adding calcitonin for rapid, albeit transient, control of calcium levels if symptoms are severe or if zoledronic acid administration is delayed. Discontinue warfarin temporarily due to potential bleeding risk associated with anticoagulation and hypercalcemia. Continue monitoring calcium levels frequently.",
+  "teaching_points": [
+    "The classic biochemical profile of HHM is high calcium, low phosphate, and suppressed PTH. This patient fits this pattern.",
+    "In patients with known malignancy, HHM is the most likely cause of hypercalcemia unless PTH is inappropriately normal or elevated.",
+    "Bisphosphonates like zoledronic acid are the mainstay of treatment for HHM, requiring adequate hydration and careful monitoring of renal function.",
+    "Calcitonin can provide rapid but temporary reduction in calcium levels and may be useful in acutely symptomatic patients or while awaiting bisphosphonate effect.",
+    "Patients with HHM often require hospitalization for aggressive hydration and treatment initiation."
+  ],
+  "references": [
+    "UpToDate: Management of hypercalcemia of malignancy",
+    "Bevilacqua JW et al. Hum Mol Pathol. 2014;27(7):1308-1316",
+    "National Comprehensive Cancer Network (NCCN) Guidelines for Prostate Cancer"
+  ],
+  "source": "google/medgemma-1.5-4b-it"
+}

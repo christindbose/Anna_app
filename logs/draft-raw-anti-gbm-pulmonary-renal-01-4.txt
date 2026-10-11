@@ -1,0 +1,76 @@
+```jsonc
+{
+  "id": "anti-gbm-pulmonary-renal-01",
+  "title": "Hemoptysis and rapidly progressive glomerulonephritis",
+  "track": "nephro",
+  "difficulty": 4,
+  "tags": ["pulmonary-renal", "glomerulonephritis", "hemoptysis", "vasculitis"],
+  "reviewed": false,
+  "presentation": "A 52-year-old man with a history of smoking presents with hemoptysis for 3 days and decreased exercise tolerance. He has no fever, chills, or chest pain. Vital signs: BP 140/85 mmHg, HR 95 bpm, RR 20 breaths/min, Temp 37.2°C. Labs show elevated creatinine 1.8 mg/dL, BUN 30 mg/dL, Hb 10.5 g/dL, Hct 32%. Chest X-ray shows bilateral patchy alveolar infiltrates. Urinalysis reveals hematuria and proteinuria.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He is a 65-year-old male who works as a construction worker. He reports a 30 pack-year smoking history. His main complaint is sudden onset hemoptysis for the past 3 days, described as blood-streaked sputum. He also notes increasing fatigue and shortness of breath over the past week. He denies fever, chills, night sweats, or significant weight loss. His medical history is notable for hypertension treated with lisinopril and occasional NSAIDs for joint pain. He has no known autoimmune diseases. He takes no regular medications besides lisinopril.",
+      "prompt": "What is your differential diagnosis for this patient's presentation, and what key information do you need to obtain?",
+      "learner_goal": "Generate a broad differential including pulmonary hemorrhage syndromes, infections, malignancy, and systemic inflammatory conditions affecting both lungs and kidneys."
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "On examination, he is alert and oriented but appears fatigued. His blood pressure is 140/85 mmHg, heart rate 95 bpm, respiratory rate 20 breaths/min, and temperature 37.2°C. Lung auscultation reveals crackles bilaterally throughout the fields. There is no pleural effusion noted. Laboratory findings include hemoglobin 10.5 g/dL, hematocrit 32%, elevated creatinine 1.8 mg/dL, BUN 30 mg/dL, WBC count 12,000 cells/μL, platelet count 250,000 cells/μL, ESR 60 mm/hr, CRP 15 mg/L. Urinalysis shows microscopic hematuria (3+ RBCs/HPF), proteinuria (2+), and trace leukocytes. A chest X-ray demonstrates bilateral patchy alveolar infiltrates.",
+      "prompt": "Does the physical exam and laboratory data change your differential? Focus on differentiating between infection, inflammation, and malignancy, and commit to your top two diagnoses.",
+      "learner_goal": "Assess the patient's volume status and respiratory distress, and recognize the significance of anemia, elevated inflammatory markers, and renal involvement in narrowing the differential."
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "Further investigations include a positive D-dimer (1.5 ng/mL), a negative troponin, a negative procalcitonin, and a CT angiogram showing multiple bilateral pulmonary emboli without evidence of a large central clot. Renal biopsy reveals diffuse proliferative glomerulonephritis with crescents and granular IgG4 deposition along the glomerular capillary walls, consistent with IgA vasculitis. Bronchoscopy with bronchoalveolar lavage (BAL) shows hemosiderin-laden macrophages and abundant eosinophils.",
+      "prompt": "Synthesize the findings. What is the most likely diagnosis explaining both the pulmonary and renal manifestations, and what is the immediate management step?",
+      "learner_goal": "Identify IgA vasculitis (Henoch-Schönlein purpura nephritis) as the unifying diagnosis, differentiate it from ANCA-associated vasculitis and Goodpasture syndrome, and determine the appropriate initial therapy."
+    }
+  ],
+  "diagnosis": "IgA vasculitis (Henoch-Schönlein purpura nephritis)",
+  "diagnosis_aliases": ["henoch-schönlein purpura nephritis", "hsp nephritis", "iga vasculitis", " iga nephropathy"],
+  "key_clues": [
+    "Pulmonary-renal syndrome (hemoptysis, alveolar infiltrates, renal failure)",
+    "Young to middle-aged adult",
+    "Positive D-dimer and CT angiogram for pulmonary emboli (can occur in IgA vasculitis)",
+    "Renal biopsy findings: diffuse proliferative GN with crescents and *granular IgG4 deposition*",
+    "Bronchoscopy BAL: hemosiderin-laden macrophages and eosinophils",
+    "Elevated ESR and CRP suggest inflammation"
+  ],
+  "distractors": [
+    {"name": "ANCA-associated vasculitis (GPA or MPA)", "why_not": "Renal biopsy shows IgG4 deposition, not pauci-immune deposits; BAL findings less typical."},
+    {"name": "Goodpasture syndrome (Anti-GBM disease)", "why_not": "Renal biopsy shows IgG4 deposition, not linear GBM staining; BAL findings less typical."},
+    {"name.": "Acute bacterial pneumonia", "why_not": "Negative procalcitonin, lack of fever, renal biopsy findings inconsistent with infection."},
+    {"name": "Pulmonary embolism alone", "why_not": "Doesn't explain the renal failure, anemia, elevated inflammatory markers, or renal biopsy findings."},
+    {"name": "Disseminated gonococcal infection", "why_not": "Less common in males, doesn't fit renal biopsy findings or BAL."},
+    {"name": "Diffuse alveolar hemorrhage (DAH) from other causes (e.g., vasculitis)", "why_not": "IgA vasculitis is the most common cause of DAH in adults."}
+  ],
+  "rubric": [
+    {"id": "diagnosis-iga", "description": "Identifies IgA vasculitis (HSP nephritis) as the unifying diagnosis based on renal biopsy findings", "category": "diagnosis", "weight": 3, "match": ["iga vasculitis", "henoch-schönlein purpura", "hsp nephritis", "granular igg4", "capillary walls", "glomerular"], "source": "final_diagnosis", "concept": "Key diagnostic feature is granular IgG4 deposition"},
+    {"id": "diagnosis-anca", "description": "Distinguishes IgA vasculitis from ANCA-associated vasculitis by noting the absence of ANCA positivity and the presence of IgG4 deposition", "category": "diagnosis", "weight": 2, "match": ["anca", "granulomatosis", "wc", "mpw", "pauci-immune", "deposits"], "source": "final_diagnosis", "concept": "ANCA-AV lacks IgG4 deposition"},
+    {"id": "diagnosis-gbm", "description": "Distinguishes IgA vasculitis from Goodpasture syndrome by noting the absence of linear GBM staining and the presence of IgG4 deposition", "category": "diagnosis", "weight": 2, "match": ["goodpasture", "anti-gbm", "linear", "gbm", "staining"], "source": "final_diagnosis", "concept": "Goodpasture has linear GBM staining"},
+    {"id": "diagnosis-infection", "description": "Rule out infectious etiology like bacterial pneumonia given clinical picture and biomarker results", "category": "reasoning", "weight": 2, "match": ["bacterial", "pneumonia", "procalcitonin", "fever", "elevated wbc"], "concept": "Infection less likely due to negative biomarkers and lack of fever"},
+    {"id": "diagnosis-pe", "description": "Acknowledges the presence of pulmonary emboli but recognizes it does not fully explain the renal findings", "category": "reasoning", "weight": 2, "match": ["pulmonary", "emboli", "d-dimer", "ct angiogram", "renal", "failure"], "concept": "PE is present but doesn't explain renal pathology"},
+    {"id": "diagnosis-daah", "description": "Identifies diffuse alveolar hemorrhage (DAH) as the pulmonary manifestation", "category": "reasoning", "weight": 2, "match": ["diffuse", "alveolar", "hemorrhage", "dah", "bronchoscopy", "bal", "hemosiderin"], "concept": "BAL confirms DAH"},
+    {"id": "treatment-initial", "description": "Initial management involves supportive care, corticosteroids, and potentially plasma exchange", "category": "management", "weight": 3, "match": ["corticosteroids", "steroids", "plasma exchange", "plasmapheresis", "supportive", "care", "fluids", "oxygen", "blood"], "source": "final_management", "concept": "Standard initial treatment for IgA vasculitis nephritis with pulmonary hemorrhage"},
+    {"id": "treatment-duration", "description": "Treatment typically continues for several months, monitoring response", "category": "management", "weight": 2, "match": ["months", "monitoring", "response", "follow-up", "renal biopsy"], "source": "final_management", "concept": "Long-term immunosuppression needed for vasculitis"},
+    {"id": "management-risk", "description": "Plasma exchange carries risks and is reserved for severe cases or those unresponsive to steroids", "category": "management", "weight": 2, "match": ["risks", "severe", "unresponsive", "steroids", "plasmapheresis"], "source": "final_management", "concept": "Plasmapheresis requires careful consideration of risks vs benefits"}
+  ],
+  "management_summary": "The patient has IgA vasculitis (HSP nephritis) complicated by diffuse alveolar hemorrhage. Initial management consists of supportive care (oxygen, fluids), intravenous corticosteroids, and consideration of plasma exchange given the severity indicated by pulmonary hemorrhage and acute kidney injury. Close monitoring of renal function, bleeding, and response to therapy is crucial. Follow-up renal biopsy will guide long-term immunosuppressive therapy.",
+  "teaching_points": [
+    "Pulmonary-renal syndromes require careful differentiation of IgA vasculitis, ANCA-associated vasculitis, and anti-GBM disease based on biopsy findings.",
+    "Granular IgG4 deposition is characteristic of IgA vasculitis and helps distinguish it from ANCA-associated vasculitis (pauci-immune) and Goodpasture syndrome (linear GBM)."
+    "Diffuse alveolar hemorrhage is a serious complication of IgA vasculitis requiring prompt treatment with corticosteroids and often plasma exchange.",
+    "The presence of pulmonary emboli in IgA vasculitis is recognized but does not negate the diagnosis, especially when renal biopsy is characteristic.",
+    "Treatment for IgA vasculitis nephritis with pulmonary hemorrhage typically involves corticosteroids +/- plasma exchange, guided by clinical severity and response."
+  ],
+  "references": [
+    "UpToDate article on IgA vasculitis / Henoch-Schönlein purpura nephritis",
+    "Pala A et al. Bull Hosp Pediatr Serv. 2017; 60(2): 134-140",
+    "European League Against Rheumatism (EULAR) Recommendations for the Management of Childhood IgA Vasculitis (Henoch-Schönlein Purpura)."
+  ]
+}
+```

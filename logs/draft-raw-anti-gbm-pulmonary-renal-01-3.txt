@@ -1,0 +1,94 @@
+```jsonc
+{
+  "id": "anti-gbm-pulmonary-renal-01",
+  "title": "Haemoptysis and Rapidly Progressive Glomerulonephritis",
+  "track": "nephro",
+  "difficulty": 4,
+  "tags": ["nephrology", "pulmonary", "vasculitis", "glomerulonephritis", "haemoptysis"],
+  "reviewed": false,
+  "presentation": "A 58-year-old male presents to the ED with a 3-day history of non-productive cough, pleuritic chest pain, and haemoptysis. He also reports fatigue and anorexia for the past week. His vital signs show temperature 37.4C, BP 150/90 mmHg, HR 95 bpm, RR 22 breaths/min, and SpO2 90% on room air. Triage labs reveal acute kidney injury (creatinine 2.5 mg/dL, BUN 40 mg/dL) and anaemia (Hb 7.5 g/dL). A chest X-ray shows bilateral patchy alveolar infiltrates, predominantly in the lower lobes, and right pleural effusion.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "Past medical history is significant for chronic obstructive pulmonary disease (COPD) requiring frequent SABA use, smoking 1 ppd for 30 years, and recent onset Raynaud's phenomenon noted by his wife. He denies fever, dysuria, or recent travel. Medications include salmeterol/fluticasone, rosuvastatin, and occasional NSAIDs for knee pain. He reports drinking alcohol socially but denies illicit drug use. Denies recent infections or hospitalizations.\nSocial history reveals he lives alone and works as a construction worker. His wife notes he has been unusually tired lately and has noticed some dark urine in the toilet bowl over the past few days.",
+      "prompt": "What is your initial differential for this patient's presentation, and what key information do you need?",
+      "learner_goal": "Consider common causes of pulmonary infiltrates, haemoptysis, AKI, and constitutional symptoms, including infection, malignancy, and connective tissue disease."
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "On examination, the patient is tachycardic and tachypnoeic. He appears slightly ill. Blood pressure is elevated. Lung auscultation reveals crackles in the right lower lobe. There is dullness to percussion over the right base. Cardiac exam is unremarkable except for tachycardia. Abdominal exam is benign. Neurological exam is intact. Skin exam shows mild cyanosis and sclerodactyly.",
+      "prompt": "Does the physical exam change your differential? Commit to your most likely diagnosis and identify the key discriminating features.",
+      "learner_goal": "Recognize the combination of pulmonary-renal syndrome and consider ANCA vasculitis, particularly given the smoking history and sclerodactyly.",
+      "available_tests": {
+        "chest x ray": "Bilateral patchy alveolar infiltrates, predominantly in the lower lobes, and right pleural effusion.",
+        "blood gas": "pH 7.28, pCO2 30 mmHg, pO2 55 mmHg, HCO3 20 mEq/L",
+        "complete blood count": "WBC 12k/uL (neutrophils 75%), Hgb 7.5 g/dL, Plt 250k/uL",
+        "basic metabolic panel": "Na 135 mEq/L, K 3.8 mEq/L, Cl 100 mEq/L, BUN 40 mg/dL, Cr 2.5 mg/dL, Glucose 100 mg/dL",
+        "serum complement": "C3 100 mg/dL, C4 15 mg/dL",
+        "anti-glomerular basement membrane antibodies": "Negative",
+        "ANCA testing": "ANA negative, ANCA positive (p-ANCA pattern)"
+      }
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "Arterial blood gas confirms respiratory acidosis with hypoxia. CBC shows normocytic anaemia. BMP confirms AKI with elevated BUN and creatinine. Serum complement levels are low (C3 100 mg/dL). ANA is negative. Anti-GBM antibodies are negative. ANCA is positive with a perinuclear ANCA (p-ANCA) pattern. Renal biopsy shows crescentic glomerulonephritis with linear IgG deposition along the glomerular capillary walls.",
+      "prompt": "Synthesize the findings. What is the definitive diagnosis, and what is the immediate management step?",
+      "learner_goal": "Confirm ANCA-associated vasculitis (specifically pauci-immune crescentic GN) as the underlying cause of the pulmonary-renal syndrome and recognize the need for urgent immunosuppression.",
+      "available_tests": {
+        "renal biopsy": "Crescentic glomerulonephritis with linear IgG deposition along the glomerular capillary walls."
+      }
+    }
+  ],
+  "diagnosis": "ANCA-associated vasculitis causing pauci-immune crescentic glomerulonephritis and pulmonary-renal syndrome",
+  "diagnosis_aliases": ["anca vasculitis", "gp nephritis", "pulmonary renal syndrome", "pauci immune crescentic gn"],
+  "key_clues": [
+    "Pulmonary-renal syndrome (hemoptysis, infiltrates, hypoxia)",
+    "Acute Kidney Injury",
+    "Normocytic Anemia",
+    "Low Complement C3",
+    "Positive ANCA (p-ANCA pattern)",
+    "Negative Anti-GBM Antibodies",
+    "Renal Biopsy showing Crescentic GN with Linear IgG",
+    "Smoking History",
+    "Sclerodactyly"
+  ],
+  "distractors": [
+    {"name": "Goodpasture Syndrome (Anti-GBM Disease)", "why_not": "Anti-GBM antibodies are negative, and biopsy shows crescentic GN without linear IgG."},
+    {"name": "Diffuse Alveolar Hemorrhage (DAH)", "why_not": "While possible, the concurrent AKI, low C3, and positive ANCA point strongly towards vasculitis."},
+    {"name": "Infectious Pneumonia", "why_not": "Lack of fever, presence of haemoptysis, AKI, low C3, positive ANCA, and specific biopsy findings make infection less likely."},
+    {"name": "Systemic Lupus Erythematosus (SLE)", "why_not": "ANA is negative, and ANCA is positive. SLE typically involves different biopsy findings and often positive ANA."},
+    {"name": "Cryoglobulinemic Vasculitis", "why_not": "Often associated with Hepatitis C, typically presents with palpable purpura, arthralgias, and MALT lymphoma risk; biopsy differs."}
+  ],
+  "rubric": [
+    {"id": "diagnosis-anca", "description": "Identifies ANCA-associated vasculitis as the correct diagnosis", "category": "diagnosis", "weight": 3, "match": ["anca", "vasculitis", "anc-associated", "pauci immune"], "source": "final_diagnosis", "concept": "Key diagnostic elements"},
+    {"id": "diagnosis-renal-biopsy", "description": "Recognizes crescentic glomerulonephritis on biopsy", "category": "diagnosis", "weight": 3, "match": ["crescentic", "gn", "glomerulonephritis", "linear igg", "capillary walls"], "source": "final_diagnosis", "concept": "Pathological confirmation"},
+    {"id": "diagnosis-pulmonary", "description": "Recognizes pulmonary involvement (hemoptysis, infiltrates)", "category": "diagnosis", "weight": 2, "match": ["pulmonary", "renal", "syndrome", "hemoptysis", "infiltrates", "alveolar"], "source": "final_diagnosis", "concept": "Defining the pulmonary-renal syndrome"},
+    {"id": "diagnosis-ancva", "description": "Correctly links ANCA positivity to the vasculitis", "category": "diagnosis", "weight": 2, "match": ["anc", "positive", "p-anca", "pattern", "vasculitis"], "source": "final_diagnosis", "concept": "Linking serology to diagnosis"},
+    {"id": "diagnosis-neg-gbm", "description": "Recognizes negative anti-GBM antibody test", "category": "diagnosis", "weight": 2, "match": ["negative", "anti-gbm", "antibodies", "gbma"], "source": "final_diagnosis", "concept": "Distinguishing from Goodpasture's"},
+    {"id": "diagnosis-low-complement", "description": "Recognizes low complement C3 level", "category": "diagnosis", "weight": 2, "match": ["low", "complement", "c3", "c3", "level"], "source": "final_diagnosis", "concept": "Supporting feature of ANCA vasculitis"},
+    {"id": "diagnosis-smoking", "description": "Recognizes smoking history as a risk factor", "category": "reasoning", "weight": 1, "match": ["smoking", "smoker", "risk factor", "copd"], "concept": "Association with ANCA vasculitis"},
+    {"id": "diagnosis-sclerodactyly", "description": "Recognizes sclerodactyly as a potential clue", "category": "reasoning", "weight": 1, "match": ["sclerodactyly", "skin", "finger"], "concept": "Suggestive of connective tissue disease overlap"},
+    {"id": "diagnosis-treatment-type", "description": "Selects appropriate aggressive immunosuppression", "category": "management", "weight": 3, "match": ["immunosuppression", "steroids", "cyclophosphamide", "rituximab", "vasculitis", "severe"], "source": "final_management", "concept": "Treatment goal"},
+    {"id": "diagnosis-treatment-duration", "description": "Mentions appropriate treatment duration", "category": "management", "weight": 2, "match": ["cyclophosphamide", "pulse", "dose", "month", "weeks", "months"], "source": "final_management", "concept": "Treatment course"},
+    {"id": "diagnosis-treatment-support", "description": "Includes supportive care like oxygen", "category": "management", "weight": 2, "match": ["oxygen", "supplemental", "airway", "respiratory"], "source": "final_management", "concept": "Patient stabilization"},
+    {"id": "diagnosis-disposition", "description": "Disposes patient for further workup", "category": "management", "weight": 2, "match": ["further", "investigation", "imaging", "follow-up", "clinic"], "source": "final_management", "concept": "Long term management plan"}
+  ],
+  "management_summary": "Immediate management includes supplemental oxygen, intravenous methylprednisolone pulse therapy (500 mg daily for 3 days), followed by oral prednisone taper. Cyclophosphamide is added for induction therapy. Rituximab is considered as an alternative or adjunct therapy. Close monitoring of renal function, blood pressure, and blood counts is crucial. Further investigation will include high-resolution CT chest, cardiac evaluation, and autoimmune screening.",
+  "teaching_points": [
+    "Pulmonary-renal syndromes require careful differentiation between ANCA vasculitis, anti-GBM disease, and other causes. Key distinguishing features are ANCA status and renal biopsy findings.",
+    "ANCA vasculitis is characterized by active urinary sediment (red cell casts), low C3, positive ANCA, and crescentic GN on biopsy, often associated with smoking.",
+    "Anti-GBM disease is characterized by positive anti-GBM antibodies and linear IgG deposits on biopsy, typically without systemic vasculitis.",
+    "Treatment for ANCA vasculitis involves aggressive immunosuppression with corticosteroids and cyclophosphamide or rituximab.",
+    "Patients require close monitoring for complications such as rapid decline in renal function, hypertension, and opportunistic infections."
+  ],
+  "references": [
+    "UpToDate: ANCA-associated vasculitis",
+    "Gomperts R, et al. N Engl J Med 2014;371(13):1200-1210",
+    "European Respiratory Society Guidelines on the Management of Idiopathic Pulmonary Fibrosis",
+    "American Thoracic Society/Society for Interstitial Lung Disease/Incidence Working Group/कर्मियों R, et al. American Journal of Respiratory and Critical Care Medicine 2013;187(1):1-46"
+  ]
+}
+```

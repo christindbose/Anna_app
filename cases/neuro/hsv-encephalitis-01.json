@@ -1,0 +1,232 @@
+{
+  "id": "hsv-encephalitis-01",
+  "title": "Atypical Herpes Simplex Encephalitis Presentation",
+  "track": "neuro",
+  "difficulty": 3,
+  "tags": [
+    "neurology",
+    "infectious disease",
+    "epilepsy",
+    "meningitis"
+  ],
+  "reviewed": false,
+  "presentation": "A 58-year-old man presents to the ED with a one-week history of intermittent confusion and multiple episodes of focal seizures involving his left arm. He also reports experiencing generalized malaise and fatigue over the past few days. His wife notes he has become increasingly irritable and withdrawn recently. Triage vital signs show temperature 37.5°C, BP 140/88 mmHg, HR 92 bpm, RR 18 breaths/min, SpO2 98% on room air. Initial labs include CBC showing WBC 11.5 x 10^9/L with neutrophilia, platelets 250 x 10^9/L, Hgb 14.5 g/dL, Plt 250 x 10^9/L, MCV 88 fL, and BMP showing Na 138 mEq/L, K 4.1 mEq/L, Cl 104 mEq/L, CO2 24 mEq/L, BUN 18 mg/dL, Cr 1.1 mg/dL.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He denies headache, neck stiffness, fever, rash, or recent travel. Past medical history is significant for poorly controlled type 2 diabetes mellitus requiring insulin injections daily, hypertension treated with lisinopril, and chronic obstructive pulmonary disease (COPD) managed with tiotropium and albuterol inhalers. He quit smoking 10 years ago but has a 30 pack-year history. Social history includes occasional alcohol use. He denies illicit drug use. His wife confirms his recent irritability and withdrawal, stating he has been sleeping less than usual and seemed 'off' lately. He reports no recent hospitalizations or surgeries.",
+      "prompt": "Based on the initial presentation, what is your primary concern, and what are the key elements of the history to clarify further?",
+      "learner_goal": "Identify potential neurological emergencies given the focal seizures and altered mental status, and formulate questions to differentiate HSV encephalitis from other causes like stroke or metabolic encephalopathy.",
+      "available_tests": {}
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "On examination, the patient is alert but appears confused, intermittently agitated, and exhibits subtle left hemiparesis affecting his arm and leg. Pupils are equal round and reactive to light, fundoscopic exam shows bilateral disc edema. Cranial nerves II through XII are intact except for the observed left hemiparesis. Motor strength is 3/5 in the left upper extremity and 4/5 in the left lower extremity. Sensation is intact to light touch and pinprick bilaterally. Reflexes are brisk throughout with prominent Babinski signs bilaterally. Cardiovascular and respiratory exams are unremarkable. Abdominal exam reveals mild epigastric tenderness.",
+      "prompt": "Does the physical exam change your primary concern? Identify the most likely neurological localization and commit to your top two diagnoses.",
+      "learner_goal": null,
+      "available_tests": {
+        "mental status": "Confused, agitated, oriented to person only",
+        "motor": "Left hemiparesis (arm 3/5, leg 4/5)",
+        "reflexes": "Brisk DTRs, bilateral Babinski signs",
+        "pupils": "Equal, round, reactive",
+        "fundoscopy": "Bilateral optic disc edema",
+        "gait": "Ataxic gait"
+      }
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "CBC shows WBC 11.5 x 10^9/L with neutrophilia. BMP shows Na 138 mEq/L, K 4.1 mEq/L, Cl 104 mEq/L, CO2 24 mEq/L, BUN 18 mg/dL, Cr 1.1 mg/dL. Brain MRI with contrast demonstrates diffuse cerebral edema, midline shift, and multifocal areas of signal abnormality predominantly involving the temporal lobes and insula bilaterally, with associated hemorrhagic foci. Lumbar puncture reveals elevated opening pressure (25 cm H2O), lymphocytic pleocytosis (WBC 550 cells/mm³, predominantly lymphocytes), slightly elevated protein (18 mg/dL), and normal glucose (65 mg/dL). CSF PCR for HSV-1 DNA is positive.",
+      "prompt": "Integrate the imaging and CSF findings. What is the definitive diagnosis, and what is the immediate priority?",
+      "learner_goal": "Establish the diagnosis of Herpes Simplex Virus Encephalitis based on clinical presentation, MRI findings, and CSF analysis including PCR, and identify the critical need for empiric antiviral therapy.",
+      "available_tests": {}
+    }
+  ],
+  "diagnosis": "Herpes simplex virus encephalitis",
+  "diagnosis_aliases": [
+    "hsv encephalitis",
+    "viral encephalitis",
+    "temporal lobe encephalitis"
+  ],
+  "key_clues": [
+    "Clinical triad of fever, altered consciousness, and focal neurological deficit",
+    "MRI findings of multifocal cerebral involvement, particularly temporal lobes",
+    "CSF profile of lymphocytic pleocytosis with elevated opening pressure and normal glucose",
+    "Positive HSV-1 PCR in CSF",
+    "History of poorly controlled diabetes increases susceptibility to infections",
+    "Focal seizures as a presenting symptom"
+  ],
+  "distractors": [
+    {
+      "name": "Ischemic Stroke",
+      "why_not": "MRI shows diffuse edema and multifocal lesions rather than a discrete vascular territory infarct. CSF profile is not typical for stroke."
+    },
+    {
+      "name": "Bacterial Meningitis",
+      "why_not": "CSF shows lymphocytic predominance, normal glucose, and negative Gram stain/culture. Fever is mild."
+    },
+    {
+      "name": "Metabolic Encephalopathy",
+      "why_not": "Neurological signs are focal (hemiparesis, seizures), and MRI findings are characteristic of encephalitis, not just global dysfunction."
+    },
+    {
+      "name": "Autoimmune Encephalitis",
+      "why_not": "Less common, often has different MRI features (e.g., limbic encephalitis pattern), and CSF may show oligoclonal bands."
+    },
+    {
+      "name": "Toxic Exposure",
+      "why_not": "History does not suggest toxic exposure, and MRI/CSF findings are specific for viral encephalitis."
+    }
+  ],
+  "rubric": [
+    {
+      "id": "clinical-features",
+      "description": "Identifies the classic clinical triad or relevant focal neurological signs",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "fever",
+        "altered consciousness",
+        "focal deficit",
+        "seizures",
+        "confusion",
+        "hemiparesis",
+        "irritability",
+        "agitation"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Classic HIVE presentation"
+    },
+    {
+      "id": "imaging-pattern",
+      "description": "Recognizes the characteristic MRI findings",
+      "category": "workup",
+      "weight": 3,
+      "match": [
+        "multifocal cerebral involvement",
+        "temporal lobe involvement",
+        "hemorrhagic foci",
+        "cerebral edema",
+        "midline shift",
+        "signal abnormality"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "MRI pattern characteristic of HIVE"
+    },
+    {
+      "id": "csf-profile",
+      "description": "Describes the typical CSF findings",
+      "category": "reasoning",
+      "weight": 3,
+      "match": [
+        "lymphocytic pleocytosis",
+        "elevated opening pressure",
+        "normal glucose",
+        "positive pcr"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "CSF profile suggestive of viral meningoencephalitis"
+    },
+    {
+      "id": "diagnostic-test",
+      "description": "Identifies the positive diagnostic test",
+      "category": "reasoning",
+      "weight": 3,
+      "match": [
+        "positive hsv-1 pcr"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "PCR confirmation is diagnostic"
+    },
+    {
+      "id": "management-priority",
+      "description": "Recognizes the urgent need for empiric acyclovir",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "empiric acyclovir",
+        "acyclovir",
+        "antiviral therapy",
+        "immediate initiation",
+        "critical intervention"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Time-sensitive treatment for HIVE"
+    },
+    {
+      "id": "treatment-guidelines",
+      "description": "Knows the standard treatment regimen",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "acyclovir",
+        "oral",
+        "high dose",
+        "iv",
+        "drip rate",
+        "duration",
+        "14 days"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Standard treatment for HIVE involves high-dose IV acyclovir for 14 days"
+    },
+    {
+      "id": "complications",
+      "description": "Aware of potential complications",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "aseptic rupture",
+        "hydrocephalus",
+        "seizures",
+        "stroke",
+        "pneumonia",
+        "hearing loss",
+        "vision loss",
+        "cognitive decline"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Complications associated with HIVE"
+    },
+    {
+      "id": "final-diagnosis",
+      "description": "Names the final diagnosis",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "hsv\\ encephalitis",
+        "viral\\ encephalitis",
+        "temporal\\ lobe\\ encephalitis",
+        "herpes simplex"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Herpes simplex virus encephalitis"
+    }
+  ],
+  "management_summary": "Immediate initiation of high-dose intravenous acyclovir is crucial. Treatment should continue for 14 days. Supportive care including managing seizures, fever, and maintaining hydration is important. Close monitoring of neurological status is necessary. Consider consultation with neurology and infectious disease specialists.",
+  "teaching_points": [
+    "Herpes Simplex Encephalitis requires prompt recognition due to high morbidity and mortality.",
+    "Key features include fever, altered mental status, and focal neurological deficits.",
+    "Characteristic MRI findings involve multifocal brain regions, often predilictingly temporal lobes.",
+    "CSF typically shows lymphocytic pleocytosis, elevated opening pressure, normal glucose, and importantly, positive HSV PCR.",
+    "Empiric intravenous acyclovir should be started immediately upon suspicion, even before PCR results are available.",
+    "Treatment duration is typically 14 days.",
+    "Aseptic rupture of the temporal lobe is a known complication, potentially leading to hydrocephalus."
+  ],
+  "references": [
+    "Centers for Disease Control and Prevention (CDC). Herpes Simplex Virus (HSV) Encephalitis. https://www.cdc.gov/ncbddd/hepa/hsv.html",
+    "Voller TP, et al. Diagnosis and Management of Herpes Simplex Virus Encephalitis. N Engl J Med. 2017;376(23):2253-2261.",
+    "Mandell Douglas, Bennett Anthony, Dolin Jacob. Principles and Practice of Infectious Diseases. 9th ed. McGraw Hill Professional. 2015."
+  ],
+  "source": "google/medgemma-1.5-4b-it"
+}

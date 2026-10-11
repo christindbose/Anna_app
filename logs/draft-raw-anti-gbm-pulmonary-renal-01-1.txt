@@ -1,0 +1,75 @@
+```jsonc
+{
+  "id": "anti-gbm-pulmonary-renal-01",
+  "title": "Hemoptysis and rapidly progressive glomerulonephritis in a smoker",
+  "track": "nephro",
+  "difficulty": 4,
+  "tags": ["renal", "pulmonary", "vasculitis", "smoker", "hemoptysis", "rbc cast"],
+  "reviewed": false,
+  "presentation": "A 62-year-old man with a 40 pack-year smoking history presents with a 2-week history of hemoptysis and shortness of breath. He also reports malaise and anorexia. His vital signs show BP 130/80, HR 110, RR 24, Temp 37.5°C, SpO2 89% on room air. Triage labs: CBC shows Hgb 10 g/dL, WBC 14.5 k/uL, Plt 250k/uL. BMP reveals BUN 35 mg/dL, Cr 2.5 mg/dL, Na 138 mEq/L, K 4.2 mEq/L, CO2 24 mEq/L. Urinalysis shows hematuria, proteinuria, RBC casts, and microscopic hematuria. A chest X-ray reveals bilateral diffuse alveolar opacities.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He denies fever, chills, productive cough, or chest pain. His smoking history is significant. He has no known history of kidney stones, autoimmune diseases, or recent travel. He takes only occasional NSAIDs for mild osteoarthritis. His wife notes he has been feeling generally unwell for several weeks.",
+      "prompt": "What is your differential diagnosis, and what key question do you need answered first?"
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "Physical examination confirms tachycardia and tachypnea. Lung auscultation reveals bilateral crackles, predominantly at the bases. There is no pleural effusion noted. The abdomen is non-tender and non-distended. Peripheral edema is absent. Neurological exam is unremarkable.",
+      "prompt": "How does this physical exam information influence your differential? What is the most important immediate diagnostic step?"
+    },
+    {
+      "id": "labs",
+      "text": "Urinalysis: Hematuria +++, Proteinuria ++, RBC casts present, Microscopic hematuria 3+. Serum chemistry: BUN 35 mg/dL, Creatinine 2.5 mg/dL, Sodium 138 mEq/L, Potassium 4.2 mEq/L, Chloride 105 mEq/L, Bicarbonate 24 mEq/L, Anion Gap 18 mEq/L, Glucose 95 mg/dL, Calcium 9.5 mg/dL, Phosphate 3.8 mg/dL, Albumin 3.8 g/dL, Total Protein 7.5 g/dL, Globulin 3.7 g/dL, A/G Ratio 1.0, LDH 280 U/L, AST 35 U/L, ALT 40 U/L, CK 120 U/L, ANA 1:80, ANCA C-ANCA negative, p-ANCA positive, Hepatitis B surface antigen negative, Hepatitis C antibody negative, HIV antibody negative, Rheumatoid factor negative, Complement C3 100 mg/dL, Complement C4 25 mg/dL, Cryoglobulins negative.",
+      "prompt": "Synthesize the clinical picture and laboratory findings. What is the most likely diagnosis, and what is the critical next step?"
+    }
+  ],
+  "diagnosis": "ANCA-associated vasculitis involving the lungs and kidneys",
+  "diagnosis_aliases": ["anca vasculitis", "gp nephritis", "pulmonary renal syndrome"],
+  "key_clues": [
+    "Significant smoking history",
+    "Hemoptysis",
+    "Rapidly progressive glomerulonephritis (RPGN) evidenced by AKI, hematuria, RBC casts, proteinuria",
+    "Positive p-ANCA (and negative c-ANCA)",
+    "Diffuse alveolar opacities on CXR",
+    "Elevated LDH and normal complement levels"
+  ],
+  "distractors": [
+    {"name": "Smoking-related interstitial lung disease (ILD)", "why_not": "While possible, doesn't explain RPGN, RBC casts, or positive ANCA."},
+    {"name": "Pulmonary embolism (PE)", "why_not": "Hemoptysis can occur, but usually acute onset, less likely to cause RPGN, RBC casts, or diffuse alveolar opacities like this."},
+    {"name": "Drug-induced pulmonary hemorrhage", "why_not": "No clear offending drug, rash is absent, and doesn't typically cause RPGN or positive ANCA."},
+    {"name": "Goodpasture syndrome (Anti-GBM disease)", "why_not": "Usually associated with c-ANCA, typically lacks RBC casts, and often has linear IgG deposition on immunofluorescence."},
+    {"name": "Infection (e.g., PCP)", "why_not": "Presents with diffuse infiltrates, but usually accompanied by fever, hypoxia, and often positive viral PCR or staining; doesn't fit the RPGN picture or ANCA."},
+    {"name": "Renal papillary necrosis", "why_not": "Often associated with analgesic abuse, typically causes sterile pyuria and hematuria, but not diffuse alveolar opacities or systemic vasculitis features."}
+  ],
+  "rubric": [
+    {"id": "anca-positive", "description": "Identify the positive p-ANCA", "category": "diagnosis", "weight": 3, "match": ["p-anca", "pm-anca", "perinuclear", "ancl", "ancla", "ancl", "ancla"], "source": "final_diagnosis", "concept": "Positive p-ANCA strongly suggests ANCA-associated vasculitis"},
+    {"id": "rbc-casts", "description": "Recognize RBC casts as evidence of glomerular bleeding", "category": "reasoning", "weight": 3, "match": ["rbc casts", "glomerular bleeding", "nephritic sediment"], "source": "final_diagnosis", "concept": "RBC casts point towards glomerulonephritis"},
+    {"id": "lung-renal", "description": "Link the pulmonary symptoms (hemoptysis, SOB, CXR findings) and renal failure", "category": "reasoning", "weight": 3, "match": ["pulmonary renal syndrome", "pulmonary involvement", "renal failure", "lung-kidney"], "source": "final_diagnosis", "concept": "The combination of lung and kidney disease is characteristic of ANCA vasculitis"},
+    {"id": "smoking-risk", "description": "Consider smoking as a risk factor for ANCA vasculitis", "category": "reasoning", "weight": 2, "match": ["smoking", "smoker", "risk factor", "association"], "source": "final_diagnosis", "concept": "Smoking increases the risk for developing ANCA vasculitis"},
+    {"id": "complement-normal", "description": "Note the normal complement levels", "category": "reasoning", "weight": 2, "match": ["complement", "c3", "c4", "normal"], "source": "final_diagnosis", "concept": "Normal complement levels help differentiate ANCA vasculitis from immune complex mediated glomerulonephritis"},
+    {"id": "cdiff-negative", "description": "Rule out Cytomegalovirus infection", "category": "workup", "weight": 2, "match": ["cmv", "cytomegalovirus", "viral", "negative"], "source": "final_management", "concept": "CMV can mimic ANCA vasculitis but is excluded by negative serologies"},
+    {"id": "imaging-next", "description": "Order a high-resolution CT scan of the chest", "category": "management", "weight": 2, "match": ["chest ct", "ct chest", "hrct", "imaging"], "source": "final_management", "concept": "HRCT helps characterize the lung abnormalities and assess extent."},
+    {"id": "treatment-start", "description": "Initiate empiric immunosuppression (e.g., cyclophosphamide +/- corticosteroids)", "category": "management", "weight": 3, "match": ["cyclophosphamide", "cytoxan", "steroids", "immunosuppression", "empiric"], "source": "final_management", "concept": "Treatment should be started promptly once ANCA vasculitis is suspected, pending biopsy confirmation."},
+    {"id": "biopsy-guide", "description": "Biopsy of skin or kidney is needed to confirm diagnosis", "category": "reasoning", "weight": 2, "match": ["biopsy", "skin biopsy", "kidney biopsy", "histopathology", "confirm"], "source": "final_diagnosis", "concept": "Histological confirmation via biopsy is required for definitive diagnosis and treatment planning."},
+    {"id": "renal-replacement", "description": "Consider renal replacement therapy if kidney function deteriorates", "category": "management", "weight": 2, "match": ["dialysis", "crrt", "renal replacement", "renal failure"], "source": "final_management", "concept": "Supportive care including dialysis may be necessary depending on the rate of decline in renal function."}
+  ],
+  "management_summary": "Empirically start cyclophosphamide and prednisone. Obtain urgent kidney biopsy for histological confirmation. Order a high-resolution CT chest to better define the pulmonary process. Consider renal replacement therapy based on the rate of progression of renal failure. Avoid NSAIDs.",
+  "teaching_points": [
+    "Hemoptysis, dyspnea, and pulmonary infiltrates raise suspicion for pulmonary-renal syndromes. Always consider ANCA vasculitis in a smoker with these findings.",
+    "RBC casts indicate active glomerular inflammation (nephritic syndrome).",
+    "Positive p-ANCA (often with negative c-ANCA) is highly suggestive of ANCA-associated vasculitis.",
+    "Normal complement levels distinguish ANCA vasculitis from many other forms of glomerulonephritis.",
+    "The combination of lung and kidney disease is classic for ANCA vasculitis.",
+    "Early initiation of immunosuppression (cyclophosphamide + steroids) is crucial in ANCA vasculitis to prevent irreversible organ damage. Treatment should not wait for biopsy confirmation.",
+    "NSAIDs should be avoided due to potential worsening of renal function and increased risk of gastrointestinal bleeding."
+  ],
+  "references": [
+    "UpToDate: Pulmonary-renal syndromes",
+    "Gomperts ME, et al. Ann Intern Med. 2001;134(11):887–901.",
+    "Vasculitis Global Interest Group. Vasculitis Management Guidelines 2014 update. JACI 2014"
+  ]
+}
+```
