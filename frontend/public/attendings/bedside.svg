@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="58" fill="#efe6d3"/>
+  <!-- tweed jacket -->
+  <path d="M16 120 C16 92 40 84 60 84 C80 84 104 92 104 120 Z" fill="#7a5c3e"/>
+  <path d="M46 86 L60 104 L74 86 L68 84 L60 92 L52 84 Z" fill="#f4ede4"/>
+  <!-- bow tie -->
+  <path d="M60 92 L50 86 L50 98 Z M60 92 L70 86 L70 98 Z" fill="#8b1e2d"/>
+  <circle cx="60" cy="92" r="2.5" fill="#5e1420"/>
+  <!-- stethoscope -->
+  <path d="M44 88 C40 100 44 110 52 114 M76 88 C80 100 76 110 68 114" stroke="#2d3748" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <circle cx="60" cy="114" r="5" fill="#2d3748"/><circle cx="60" cy="114" r="2.5" fill="#a0aec0"/>
+  <!-- neck -->
+  <rect x="51" y="72" width="18" height="16" rx="6" fill="#e0b08c"/>
+  <!-- face -->
+  <ellipse cx="60" cy="52" rx="25" ry="28" fill="#f0c6a0"/>
+  <!-- grey side hair, bald top -->
+  <path d="M35 46 C33 56 34 66 38 70 L38 48 Z" fill="#b8b8b8"/>
+  <path d="M85 46 C87 56 86 66 82 70 L82 48 Z" fill="#b8b8b8"/>
+  <path d="M38 40 C44 30 52 26 60 26 C68 26 76 30 82 40 C76 36 68 34 60 34 C52 34 44 36 38 40 Z" fill="#f0c6a0"/>
+  <!-- bushy brows -->
+  <path d="M43 44 Q50 38 57 43" stroke="#9a9a9a" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M63 43 Q70 38 77 44" stroke="#9a9a9a" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- eyes -->
+  <circle cx="50" cy="52" r="2.2" fill="#2d3748"/><circle cx="70" cy="52" r="2.2" fill="#2d3748"/>
+  <!-- wrinkles -->
+  <path d="M40 54 L44 56 M80 54 L76 56" stroke="#c9956a" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- moustache -->
+  <path d="M48 65 Q54 60 60 64 Q66 60 72 65 Q66 69 60 66 Q54 69 48 65 Z" fill="#9a9a9a"/>
+  <!-- stern mouth -->
+  <path d="M53 71 L67 71" stroke="#8b5a3c" stroke-width="2" stroke-linecap="round"/>
+</svg>

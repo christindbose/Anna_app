@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="58" fill="#3b1f2b"/>
+  <!-- high-collar coat -->
+  <path d="M16 120 C16 92 40 84 60 84 C80 84 104 92 104 120 Z" fill="#8b1e2d"/>
+  <path d="M44 84 L48 76 L60 92 L72 76 L76 84 L60 100 Z" fill="#5e1420"/>
+  <!-- neck -->
+  <rect x="51" y="72" width="18" height="16" rx="6" fill="#e6c2a6"/>
+  <!-- sleek bob hair back -->
+  <path d="M32 44 C32 22 46 16 60 16 C74 16 88 22 88 44 L88 74 L80 76 L80 48 L40 48 L40 76 L32 74 Z" fill="#1a1a1a"/>
+  <!-- face -->
+  <path d="M38 50 C38 32 47 26 60 26 C73 26 82 32 82 50 C82 66 72 78 60 78 C48 78 38 66 38 50 Z" fill="#f3d3b8"/>
+  <!-- hair front, side-swept fringe -->
+  <path d="M38 48 C38 30 48 22 60 22 C72 22 82 30 82 48 C78 40 70 36 56 36 C50 36 44 40 38 48 Z" fill="#1a1a1a"/>
+  <path d="M38 48 C42 38 54 34 66 34 L82 40 C76 32 68 28 58 30 C50 32 42 38 38 48 Z" fill="#1a1a1a"/>
+  <!-- one raised brow (left) and a flat one (right) -->
+  <path d="M44 42 Q50 36 57 40" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M64 44 L77 44" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- eyes, slightly narrowed -->
+  <ellipse cx="50" cy="51" rx="4" ry="2.6" fill="#fff"/><ellipse cx="70" cy="52" rx="4" ry="2.2" fill="#fff"/>
+  <circle cx="50" cy="51" r="1.8" fill="#1a1a1a"/><circle cx="70" cy="52" r="1.8" fill="#1a1a1a"/>
+  <!-- smirk, red lips -->
+  <path d="M51 67 Q60 69 69 63" stroke="#b3122e" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

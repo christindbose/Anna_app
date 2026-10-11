@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { api, messageOf, toast, type Track } from "@/lib/api";
+import { api, attendingAvatar, messageOf, toast, type Track } from "@/lib/api";
 import { useApi } from "@/lib/useApi";
 import { Button, Card, DifficultyDots, ErrorNote, Segmented, Skeleton, Tag } from "@/components/ui";
 
@@ -126,21 +126,23 @@ export default function HomePage() {
                       role="radio"
                       aria-checked={active}
                       onClick={() => setAttendingId(a.id)}
-                      className={`flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition-colors ${
+                      className={`flex w-full flex-col gap-2 rounded-2xl border px-3 py-3 text-left transition-colors ${
                         active ? "border-accent bg-accent/5" : "border-line bg-surface-2/60"
                       }`}
                     >
-                      <span className="text-2xl leading-none" aria-hidden>
-                        {a.emoji}
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className="flex items-center justify-between gap-2">
-                          <span className="truncate text-[15px] font-medium">{a.name}</span>
-                          <DifficultyDots level={a.difficulty} />
+                      <span className="flex items-center gap-3">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={attendingAvatar(a.id)} alt="" width={64} height={64} className="size-16 shrink-0 rounded-full" />
+                        <span className="min-w-0 flex-1">
+                          <span className="flex items-center justify-between gap-2">
+                            <span className="truncate text-[15px] font-semibold">{a.name}</span>
+                            <DifficultyDots level={a.difficulty} />
+                          </span>
+                          <span className="block text-xs font-medium text-accent">{a.title}</span>
+                          <span className="block text-xs text-muted">{a.tagline}</span>
                         </span>
-                        <span className="block text-xs font-medium text-accent">{a.title}</span>
-                        <span className="block text-xs text-muted">{a.tagline}</span>
                       </span>
+                      {active && <span className="block text-[13px] leading-relaxed text-ink/80">{a.description}</span>}
                     </button>
                   );
                 })}

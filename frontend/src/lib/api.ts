@@ -113,9 +113,12 @@ export interface Attending {
   title: string;
   difficulty: number;
   tagline: string;
+  description: string;
   emoji: string;
   signature: string;
 }
+
+export const attendingAvatar = (id: string) => `/attendings/${encodeURIComponent(id)}.svg`;
 export type Category = "diagnosis" | "workup" | "reasoning" | "management";
 
 export interface Health {

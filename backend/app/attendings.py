@@ -11,6 +11,7 @@ class Attending(BaseModel):
     title: str
     difficulty: int  # 1 (gentle) .. 4 (brutal)
     tagline: str  # one line for the picker
+    description: str  # two or three sentences of personality, shown under the caricature
     emoji: str
     style: str  # tone and behaviour instructions for the case
     help_policy: str  # what they do when the learner is stuck or misses something
@@ -21,6 +22,7 @@ class Attending(BaseModel):
 ATTENDINGS: list[Attending] = [
     Attending(
         id="mentor",
+        description="Priya trained at a county hospital and never forgot what it felt like to be lost on day one. She teaches by asking the next question, celebrates good reasoning out loud, and will quietly steer you back when you drift. If you get stuck, she gives you a real hint. Nobody leaves her rounds feeling small.",
         name="Dr. Priya Raman",
         title="The Mentor",
         difficulty=1,
@@ -41,6 +43,7 @@ ATTENDINGS: list[Attending] = [
     ),
     Attending(
         id="scientist",
+        description="Tomas thinks in likelihood ratios and keeps a well-thumbed copy of the JAMA Rational Clinical Examination series on his desk. He is unfailingly polite and slightly dry, and he will not give you a result until you have told him what you expect it to show and why. Ordering a test that cannot change management is, to him, a minor moral failing.",
         name="Dr. Tomas Lindqvist",
         title="The Scientist",
         difficulty=2,
@@ -61,6 +64,7 @@ ATTENDINGS: list[Attending] = [
     ),
     Attending(
         id="nightfloat",
+        description="Maya is the PGY-3 covering forty patients on a Tuesday night with a coffee that went cold an hour ago. She is kind, fast, and allergic to long differentials that do not end in a plan. Her only real question is what could kill this patient before morning and what you are doing about it in the next ten minutes.",
         name="Dr. Maya Oyelaran",
         title="The Night Senior",
         difficulty=2,
@@ -81,6 +85,7 @@ ATTENDINGS: list[Attending] = [
     ),
     Attending(
         id="bedside",
+        description="Harold has been an attending since before the CT scanner arrived, and he still believes the history and the examination are the two best tests in the hospital. He is courteous, a little formal, and visibly pained when a learner reaches for labs before they have thought. Earn your tests by telling him what you would find at the bedside first.",
         name="Dr. Harold Finch",
         title="The Old-School Clinician",
         difficulty=3,
@@ -101,6 +106,7 @@ ATTENDINGS: list[Attending] = [
     ),
     Attending(
         id="pimper",
+        description="Ken runs rounds like the oral boards. Questions come one at a time, fast, and he wants criteria, numbers, and mechanisms, not impressions. A good answer gets a nod and the next question; a vague one gets 'be specific'. He is not unkind, but he gives nothing away, and he remembers what you did not know.",
         name="Dr. Ken Nakamura",
         title="The Pimper",
         difficulty=3,
@@ -121,6 +127,7 @@ ATTENDINGS: list[Attending] = [
     ),
     Attending(
         id="skeptic",
+        description="Irene is brilliant, precise, and constitutionally unable to let a claim pass unexamined. Whatever you propose, she will build the strongest possible case for the alternative from the same findings and make you defend your position with evidence. Being right is not enough; she wants to know whether you can hold your ground.",
         name="Dr. Irene Volkova",
         title="The Skeptic",
         difficulty=4,
