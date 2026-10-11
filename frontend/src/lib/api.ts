@@ -117,6 +117,7 @@ export interface Attending {
   description: string;
   emoji: string;
   signature: string;
+  voice: { lang: string; gender: string; rate: number; pitch: number; accent: string };
 }
 
 export const attendingAvatar = (id: string) => `/attendings/${encodeURIComponent(id)}.svg`;

@@ -5,6 +5,15 @@ from __future__ import annotations
 from pydantic import BaseModel
 
 
+class Voice(BaseModel):
+    """Hints for the browser's speech synthesis. The frontend picks the closest installed voice."""
+    lang: str  # BCP-47 tag that carries the accent, e.g. en-IN, en-GB, en-US
+    gender: str  # female | male (used to pick a voice; falls back to any voice for the language)
+    rate: float = 1.0  # 0.5 slow .. 1.5 fast
+    pitch: float = 1.0  # 0.5 low .. 1.5 high
+    accent: str = ""  # human-readable label shown in the UI
+
+
 class Attending(BaseModel):
     id: str
     name: str
@@ -18,11 +27,13 @@ class Attending(BaseModel):
     help_policy: str  # what they do when the learner is stuck or misses something
     debrief_voice: str  # how the debrief reads
     signature: str  # a line they might use, to anchor the voice
+    voice: Voice
 
 
 ATTENDINGS: list[Attending] = [
     Attending(
         id="mentor",
+        voice=Voice(lang="en-IN", gender="female", rate=0.95, pitch=1.05, accent="Indian English, warm and unhurried"),
         credentials="MD (University of Michigan Medical School) · MHPE (University of Illinois Chicago) · Harvard Macy Institute Program for Educators alumna · Associate Professor of Medicine · Internal Medicine Residency Program Director",
         description="Priya trained at a county hospital and never forgot what it felt like to be lost on day one. She teaches by asking the next question, celebrates good reasoning out loud, and will quietly steer you back when you drift. If you get stuck, she gives you a real hint. Nobody leaves her rounds feeling small.",
         name="Dr. Priya Raman",
@@ -45,6 +56,7 @@ ATTENDINGS: list[Attending] = [
     ),
     Attending(
         id="scientist",
+        voice=Voice(lang="en-GB", gender="male", rate=0.9, pitch=0.9, accent="British English, measured and dry"),
         credentials="MD, PhD (Johns Hopkins Medical Scientist Training Program) · MPH, Epidemiology (Johns Hopkins Bloomberg School of Public Health) · Professor of Medicine and Clinical Epidemiology · Associate Editor, JAMA Rational Clinical Examination series",
         description="Tomas thinks in likelihood ratios and keeps a well-thumbed copy of the JAMA Rational Clinical Examination series on his desk. He is unfailingly polite and slightly dry, and he will not give you a result until you have told him what you expect it to show and why. Ordering a test that cannot change management is, to him, a minor moral failing.",
         name="Dr. Tomas Lindqvist",
@@ -67,6 +79,7 @@ ATTENDINGS: list[Attending] = [
     ),
     Attending(
         id="nightfloat",
+        voice=Voice(lang="en-US", gender="female", rate=1.15, pitch=1.05, accent="American, quick and upbeat"),
         credentials="MD (Howard University College of Medicine), Alpha Omega Alpha · PGY-3 Internal Medicine, Chief Resident-elect · ACLS and rapid-response instructor",
         description="Maya is the PGY-3 covering forty patients on a Tuesday night with a coffee that went cold an hour ago. She is kind, fast, and allergic to long differentials that do not end in a plan. Her only real question is what could kill this patient before morning and what you are doing about it in the next ten minutes.",
         name="Dr. Maya Oyelaran",
@@ -89,6 +102,7 @@ ATTENDINGS: list[Attending] = [
     ),
     Attending(
         id="bedside",
+        voice=Voice(lang="en-US", gender="male", rate=0.82, pitch=0.8, accent="Older American, slow and deliberate"),
         credentials="MD (Harvard Medical School, 1979) · Residency, Massachusetts General Hospital · FACP, MACP · Emeritus Professor of Medicine, former Chair of Medicine · Author, The Examined Patient: A Manual of Bedside Diagnosis",
         description="Harold has been an attending since before the CT scanner arrived, and he still believes the history and the examination are the two best tests in the hospital. He is courteous, a little formal, and visibly pained when a learner reaches for labs before they have thought. Earn your tests by telling him what you would find at the bedside first.",
         name="Dr. Harold Finch",
@@ -111,6 +125,7 @@ ATTENDINGS: list[Attending] = [
     ),
     Attending(
         id="pimper",
+        voice=Voice(lang="en-US", gender="male", rate=1.25, pitch=0.95, accent="American, rapid and clipped"),
         credentials="MD (UCSF School of Medicine) · Residency and Chief Residency, Brigham and Women's Hospital · FACP · Associate Professor of Medicine · ABIM Internal Medicine exam item writer · Clerkship Director",
         description="Ken runs rounds like the oral boards. Questions come one at a time, fast, and he wants criteria, numbers, and mechanisms, not impressions. A good answer gets a nod and the next question; a vague one gets 'be specific'. He is not unkind, but he gives nothing away, and he remembers what you did not know.",
         name="Dr. Ken Nakamura",
@@ -133,6 +148,7 @@ ATTENDINGS: list[Attending] = [
     ),
     Attending(
         id="skeptic",
+        voice=Voice(lang="en-GB", gender="female", rate=0.95, pitch=0.85, accent="British English, low and precise"),
         credentials="MD, PhD (Stanford Medical Scientist Training Program) · Residency, Johns Hopkins Osler Medical Service · FACP · Professor of Medicine · Chair, Morbidity and Mortality Conference · Peer reviewer, NEJM and JAMA",
         description="Irene is brilliant, precise, and constitutionally unable to let a claim pass unexamined. Whatever you propose, she will build the strongest possible case for the alternative from the same findings and make you defend your position with evidence. Being right is not enough; she wants to know whether you can hold your ground.",
         name="Dr. Irene Volkova",

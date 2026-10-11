@@ -17,6 +17,7 @@ import {
   attendingAvatar,
 } from "@/lib/api";
 import { useApi } from "@/lib/useApi";
+import { readAloudEnabled, setReadAloudEnabled, speak, stopSpeaking, ttsSupported } from "@/lib/speech";
 import { BackLink, Button, Card, Collapsible, ErrorNote, Skeleton, Spinner } from "@/components/ui";
 
 export default function CasePage() {
@@ -82,6 +83,24 @@ function Player({ session, setSession }: { session: SessionView; setSession: (s:
   const [streaming, setStreaming] = useState<string | null>(null);
   const [advancing, setAdvancing] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
+  const [readAloud, setReadAloud] = useState(false);
+  const [ttsOk, setTtsOk] = useState(false);
+  useEffect(() => {
+    setTtsOk(ttsSupported());
+    setReadAloud(readAloudEnabled());
+    return () => stopSpeaking();
+  }, []);
+  function toggleReadAloud() {
+    const next = !readAloud;
+    setReadAloud(next);
+    setReadAloudEnabled(next);
+    if (next) {
+      // Speaking from a tap also unlocks audio on iOS for later, non-gesture replies.
+      speak(`${session.attending.name} here. ${session.attending.signature}`, session.attending.voice);
+    } else {
+      stopSpeaking();
+    }
+  }
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const debriefRef = useRef<HTMLElement>(null);
@@ -130,6 +149,7 @@ function Player({ session, setSession }: { session: SessionView; setSession: (s:
     const text = draft.trim();
     if (!text || streaming !== null || finished) return;
     setDraft("");
+    stopSpeaking();
     const learnerTurn: Turn = { role: "learner", stage_index: current, content: text };
     const withLearner: SessionView = { ...session, turns: [...session.turns, learnerTurn] };
     setSession(withLearner);
@@ -144,6 +164,7 @@ function Player({ session, setSession }: { session: SessionView; setSession: (s:
       }
       const attending: Turn = { role: "attending", stage_index: current, content: reply.trim() };
       setSession({ ...withLearner, turns: [...withLearner.turns, attending] });
+      if (readAloud) speak(attending.content, session.attending.voice);
     } catch (err) {
       if (!(err instanceof DOMException && err.name === "AbortError")) {
         toast(messageOf(err));
@@ -187,10 +208,36 @@ function Player({ session, setSession }: { session: SessionView; setSession: (s:
       <header className="sticky z-20 border-b border-line bg-bg/95 px-4 pb-2 backdrop-blur" style={{ top: 0, paddingTop: "var(--sa-top)" }}>
         <div className="flex items-center justify-between">
           <BackLink href="/" />
-          <span className="flex items-center gap-1.5 text-xs text-muted">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={attendingAvatar(session.attending.id)} alt="" width={22} height={22} className="size-[22px] rounded-full" />
-            {session.attending.name}
+          <span className="flex items-center gap-2 text-xs text-muted">
+            <span className="flex items-center gap-1.5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={attendingAvatar(session.attending.id)} alt="" width={22} height={22} className="size-[22px] rounded-full" />
+              {session.attending.name}
+            </span>
+            {ttsOk && (
+              <button
+                type="button"
+                onClick={toggleReadAloud}
+                aria-pressed={readAloud}
+                aria-label={readAloud ? "Turn off read-aloud" : "Turn on read-aloud"}
+                title={readAloud ? `Voice on · ${session.attending.voice.accent}` : "Hear the attending"}
+                className={`flex size-9 items-center justify-center rounded-full border transition-colors ${
+                  readAloud ? "border-accent bg-accent text-white" : "border-line bg-surface text-muted"
+                }`}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M11 5 6 9H2v6h4l5 4z" />
+                  {readAloud ? (
+                    <>
+                      <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+                      <path d="M19 5a9 9 0 0 1 0 14" />
+                    </>
+                  ) : (
+                    <path d="M16 9l5 6M21 9l-5 6" />
+                  )}
+                </svg>
+              </button>
+            )}
           </span>
         </div>
         <h1 className="text-[17px] font-semibold leading-snug">{session.case.title}</h1>
@@ -319,6 +366,7 @@ function Player({ session, setSession }: { session: SessionView; setSession: (s:
           onFinished={(s) => {
             setSheetOpen(false);
             setSession(s);
+            if (readAloud && s.result?.debrief) speak(s.result.debrief, s.attending.voice);
           }}
           sessionId={session.id}
         />
