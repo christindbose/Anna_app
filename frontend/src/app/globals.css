@@ -55,12 +55,27 @@
 html {
   background: var(--bg);
   -webkit-text-size-adjust: 100%;
+  /* iOS Safari: stable viewport height and no double-tap zoom delay. */
+  height: 100%;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Inputs below 16px make iOS zoom the page on focus; keep them at 16px everywhere. */
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* Streaming text should not make iOS jump the scroll position around. */
+.chat-log {
+  overflow-anchor: none;
 }
 
 body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
+  min-height: 100vh;
   min-height: 100dvh;
   padding-left: var(--sa-left);
   padding-right: var(--sa-right);

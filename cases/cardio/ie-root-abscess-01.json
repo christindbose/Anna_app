@@ -1,0 +1,312 @@
+{
+  "id": "ie-root-abscess-01",
+  "title": "Aortic Valve Infective Endocarditis Complicated by Aortic Root Abscess, Embolic Stroke, and Heart Block",
+  "track": "cardio",
+  "difficulty": 4,
+  "tags": [
+    "infective endocarditis",
+    "aortic root abscess",
+    "heart block",
+    "stroke",
+    "staphylococcus aureus"
+  ],
+  "reviewed": false,
+  "presentation": "A 62-year-old man with a history of IV drug use presents with acute onset left leg pain and swelling followed by subacute onset dyspnea and palpitations. He denies fever or chills. His vital signs show BP 100/60, HR 110 bpm, RR 20, SpO2 92% on room air. Labs show WBC 18k, Hgb 9.5, Plt 250k. Troponin I is elevated at 1.5 ng/mL. ECG shows sinus tachycardia and first-degree AV block. EKG-guided transesophageal echocardiogram reveals vegetations on the aortic valve and thickening of the aortic root wall.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He reports intravenous drug use starting 10 years ago, primarily involving cocaine and opioids, though he stopped 3 years ago. He works as a mechanic and reports occasional alcohol use. He denies known HIV infection but admits to inconsistent condom use during his active IVDU period. He presents with acute left calf pain and swelling for 2 days, followed by worsening shortness of breath and palpitations over the past week. Denies chest pain, cough, or recent travel. He describes feeling generally unwell lately.",
+      "prompt": "What is your differential diagnosis for this patient, considering his history and presentation, and what key questions need answering?",
+      "learner_goal": "Generate a differential including sepsis, pulmonary embolism, cardiac tamponade, and infective endocarditis (IE), and identify risk factors for IE.",
+      "available_tests": {}
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "On examination, he is tachycardic and tachypneic. He appears ill. There is significant edema in the left lower extremity extending to the knee. No femoral pulses are palpable. Lungs are clear bilaterally without crackles. Cardiac exam reveals a loud S1 and a holosystolic murmur loudest along the left sternal border, radiating to the axilla. Peripheral pulses are weak and delayed throughout. Abdomen is soft and non-tender. Neurological exam is unremarkable except for the patient's reported palpitations.",
+      "prompt": "Does the physical exam significantly alter your differential? What are the most important things to check now?",
+      "learner_goal": "Recognize potential septic emboli, evaluate for cardiac tamponade, and assess peripheral perfusion.",
+      "available_tests": {}
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "Further investigations include CBC showing WBC 18 k/uL, Hgb 9.5 g/dL, Plt 250 k/uL. BMP shows Na 135, K 4.1, Cl 100, HCO3 26, BUN 25 mg/dL, Cr 1.2 mg/dL. Troponin I is 1.5 ng/mL. D-dimer is elevated at 1200 ng/mL. EKG shows sinus tachycardia and first-degree AV block. Transesophageal Echocardiogram (TEE) reveals multiple ring-enhancing vegetations on the aortic valve leaflets, aortic root wall thickening, and a large outpouching along the posterior aspect of the aortic root measuring 2.5 x 2.0 cm.",
+      "prompt": "Integrate all findings. What is the most likely diagnosis, and what are the immediate concerns?",
+      "learner_goal": "Synthesize the clinical picture into infective endocarditis complicated by aortic root abscess, recognize the cardiac tamponade risk, and understand the implications of the embolic stroke.",
+      "available_tests": {}
+    },
+    {
+      "id": "management",
+      "label": "Management",
+      "text": "Given the diagnosis of IE with aortic root abscess and potential tamponade, the patient requires urgent surgical consultation for aortic root replacement and drainage of the abscess. Empiric antibiotics targeting Staphylococcus aureus are initiated intravenously (Vancomycin + Ceftriaxone). Supportive care includes hemodynamic monitoring, blood transfusion for anemia, and potentially pericardiocentesis if tamponade develops. Given the embolic stroke, anticoagulation will be considered once the patient is stabilized, weighing the risks of bleeding versus thrombosis.",
+      "prompt": "Outline the immediate management plan, including diagnostic and therapeutic steps.",
+      "learner_goal": "Formulate a comprehensive management strategy addressing the infection, structural complications, and systemic effects.",
+      "available_tests": {}
+    }
+  ],
+  "diagnosis": "Staphylococcus aureus infective endocarditis complicated by aortic root abscess, embolic stroke, and heart block",
+  "diagnosis_aliases": [
+    "staph aureus ie",
+    "aortic root abscess",
+    "embolic stroke",
+    "av block"
+  ],
+  "key_clues": [
+    "History of IVDU is a major risk factor for S. aureus IE",
+    "Physical exam findings suggest septic emboli (left leg edema, weak pulses)",
+    "Cardiac exam reveals a regurgitant murmur consistent with valvular dysfunction",
+    "TEE confirms vegetations on the aortic valve and aortic root abscess",
+    "ECG shows first-degree AV block",
+    "Elevated troponin suggests myocardial strain/injury possibly from embolism or inflammation",
+    "Elevated D-dimer suggests possible PE or infarction",
+    "The combination of aortic root abscess and embolic stroke is highly suggestive of aortic root pathology"
+  ],
+  "distractors": [
+    {
+      "name": "Pulmonary Embolism",
+      "why_not": "While D-dimer is elevated, the primary pathology identified is aortic root abscess with associated IE, explaining the leg edema, murmur, and AV block."
+    },
+    {
+      "name": "Myocardial Infarction",
+      "why_not": "Troponin is elevated, but this could be due to valve dysfunction, inflammation, or embolism rather than coronary artery disease, especially given the IE."
+    },
+    {
+      "name": "Septic Shock from other source",
+      "why_not": "While sepsis is present, the focus of the infection is clearly the aortic valve/root based on TEE findings and the specific presentation."
+    },
+    {
+      "name": "Aortic Dissection",
+      "why_not": "The TEE findings are classic for IE with abscess formation, not dissection."
+    },
+    {
+      "name": "Viral Myocarditis",
+      "why_not": "Lack of preceding viral illness symptoms, presence of clear bacterial source (IVDU), and specific TEE findings point towards IE."
+    }
+  ],
+  "rubric": [
+    {
+      "id": "risk-factors",
+      "description": "Identifies IVDU as a key risk factor for Staph aureus IE",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "ivdu",
+        "intravenous drug use",
+        "cocaine",
+        "opioids",
+        "staph aureus",
+        "aortic\\ root\\ abscess",
+        "embolic\\ stroke",
+        "staphylococcus"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "S. aureus IE is strongly associated with IVDU"
+    },
+    {
+      "id": "septic-emboli",
+      "description": "Recognizes left leg edema and weak pulses as signs of septic emboli",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "left leg",
+        "calf",
+        "swelling",
+        "edema",
+        "weak pulse",
+        "perfusion",
+        "septic emboli",
+        "aortic\\ root\\ abscess",
+        "embolic\\ stroke",
+        "staphylococcus"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Physical exam findings point directly to septic embolization"
+    },
+    {
+      "id": "valve-murmur",
+      "description": "Notes the characteristic murmur of aortic regurgitation",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "loud s1",
+        "holosystolic",
+        "left sternal border",
+        "radiation",
+        "aortic regurgitation",
+        "valvular dysfunction",
+        "aortic\\ root\\ abscess",
+        "embolic\\ stroke",
+        "staphylococcus"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Murmur is consistent with aortic valve involvement"
+    },
+    {
+      "id": "tee-findings",
+      "description": "Recognizes aortic root abscess and vegetations on aortic valve",
+      "category": "reasoning",
+      "weight": 3,
+      "match": [
+        "vegetations",
+        "aortic valve",
+        "aortic root",
+        "thickening",
+        "abscess",
+        "tee",
+        "echocardiogram"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "TEE provides definitive evidence of the complex IE pathology"
+    },
+    {
+      "id": "av-block",
+      "description": "Identifies first-degree AV block",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "first degree",
+        "av block",
+        "sinus tachycardia",
+        "ekg",
+        "conduction",
+        "aortic\\ root\\ abscess",
+        "embolic\\ stroke",
+        "staphylococcus"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "AV block can occur with IE due to conduction system involvement or ischemia"
+    },
+    {
+      "id": "tamponade-risk",
+      "description": "Recognizes the risk of cardiac tamponade from the aortic root abscess",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "cardiac tamponade",
+        "aortic root",
+        "abscess",
+        "pressure",
+        "pericardial effusion",
+        "tamponade physiology"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Aortic root abscess poses a direct threat of tamponade"
+    },
+    {
+      "id": "stroke-etiology",
+      "description": "Links the embolic stroke to the aortic root abscess",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "embolic stroke",
+        "stroke",
+        "aortic root abscess",
+        "embolism",
+        "brain",
+        "cerebral infarct"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Abscess rupture or vegetations are common sources of emboli"
+    },
+    {
+      "id": "management-antibiotics",
+      "description": "Initiates empiric antibiotics for S. aureus IE",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "vancomycin",
+        "ceftriaxone",
+        "antibiotics",
+        "staph aureus",
+        "empiric"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Empiric coverage is crucial pending cultures"
+    },
+    {
+      "id": "management-surgery",
+      "description": "Recommends urgent surgical consult for aortic root replacement",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "surgical consult",
+        "aortic root replacement",
+        "abscess drainage",
+        "urgent"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Structural repair is required for the abscess"
+    },
+    {
+      "id": "management-supportive",
+      "description": "Includes supportive care measures like hemodynamic monitoring and transfusion",
+      "category": "workup",
+      "weight": 2,
+      "match": [
+        "hemodynamic monitoring",
+        "blood transfusion",
+        "anemia",
+        "supportive care"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Supportive care is essential while awaiting definitive treatment"
+    },
+    {
+      "id": "management-anticoagulation",
+      "description": "Considers anticoagulation post-stabilization",
+      "category": "diagnosis",
+      "weight": 2,
+      "match": [
+        "anticoagulation",
+        "thromboembolism",
+        "stroke",
+        "post-stabilization"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Anticoagulation is needed for stroke prevention but timing depends on stability"
+    },
+    {
+      "id": "management-guidelines",
+      "description": "Follows guideline-based antibiotic selection and management principles",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "guideline",
+        "treatment",
+        "management"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Antibiotic choice and approach align with established IE protocols"
+    }
+  ],
+  "management_summary": "Urgent surgical consultation is mandatory for aortic root replacement and abscess drainage. Initiate empiric Vancomycin and Ceftriaxone. Provide supportive care including hemodynamic monitoring, blood transfusion for anemia, and consider pericardiocentesis if tamponade occurs. Once hemodynamically stable, anticoagulation should be considered for stroke prevention.",
+  "teaching_points": [
+    "Infective endocarditis in IVDU patients is often caused by Staphylococcus aureus and frequently involves the aortic valve.",
+    "Physical exam findings of septic emboli (e.g., leg edema, pulselessness) strongly suggest IE with embolic phenomena.",
+    "Transesophageal echocardiography is critical for diagnosing vegetations and identifying complications like aortic root abscess or pericardial effusion.",
+    "Aortic root abscess carries a high risk of cardiac tamponade, necessitating prompt surgical intervention.",
+    "Embolic strokes are a common complication of aortic root abscess and require careful management including consideration of anticoagulation.",
+    "Treatment involves aggressive antibiotics, urgent surgery for structural repair, and supportive care tailored to the patient's hemodynamic status."
+  ],
+  "references": [
+    "Clinical Practice Guidelines for the Management of Prosthetic Heart Valves 2016",
+    "American Heart Association Guideline for the Prevention, Detection, Evaluation, and Treatment of High-Risk Cardiomyopathies 2017",
+    "UpToDate: Management of infective endocarditis",
+    "UpToDate: Aortic root abscess"
+  ],
+  "source": "google/medgemma-1.5-4b-it"
+}

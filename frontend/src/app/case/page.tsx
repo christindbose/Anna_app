@@ -132,10 +132,28 @@ function Player({ session, setSession }: { session: SessionView; setSession: (s:
   useEffect(() => {
     if (finished) {
       debriefRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
-    } else {
-      bottomRef.current?.scrollIntoView({ block: "end", behavior: streamLen ? "auto" : "smooth" });
+      return;
     }
+    // While a reply streams, only follow it if the reader is already near the bottom; otherwise
+    // every chunk would yank the page (very visible on iOS).
+    const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 160;
+    if (streamLen && !nearBottom) return;
+    bottomRef.current?.scrollIntoView({ block: "end", behavior: streamLen ? "auto" : "smooth" });
   }, [threadLen, streamLen, finished]);
+
+  // iOS: when the keyboard opens the visual viewport shrinks; keep the composer and the latest
+  // message in view instead of leaving them hidden behind the keyboard.
+  useEffect(() => {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const onResize = () => {
+      if (document.activeElement === textareaRef.current) {
+        window.setTimeout(() => bottomRef.current?.scrollIntoView({ block: "end" }), 50);
+      }
+    };
+    vv.addEventListener("resize", onResize);
+    return () => vv.removeEventListener("resize", onResize);
+  }, []);
 
   useEffect(() => () => abortRef.current?.abort(), []);
 
@@ -212,9 +230,9 @@ function Player({ session, setSession }: { session: SessionView; setSession: (s:
   const canAct = hasLearnerTurnNow && streaming === null && !finished;
 
   return (
-    <div className="mx-auto flex min-h-dvh max-w-lg flex-col">
+    <div className="chat-log mx-auto flex min-h-dvh max-w-lg flex-col">
       {/* Header */}
-      <header className="sticky z-20 border-b border-line bg-bg/95 px-4 pb-2 backdrop-blur" style={{ top: 0, paddingTop: "var(--sa-top)" }}>
+      <header className="sticky z-20 border-b border-line bg-bg px-4 pb-2" style={{ top: 0, paddingTop: "var(--sa-top)", transform: "translateZ(0)" }}>
         <div className="flex items-center justify-between">
           <BackLink href="/" />
           <span className="flex items-center gap-2 text-xs text-muted">

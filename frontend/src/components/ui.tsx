@@ -76,6 +76,41 @@ export function Tag({ children }: { children: ReactNode }) {
   return <span className="rounded-full bg-surface-2 px-2 py-0.5 text-[11px] font-medium text-muted">{children}</span>;
 }
 
+/** Scrollable row of pill choices; use when there are more options than a Segmented control fits. */
+export function Chips<T extends string>({
+  value,
+  onChange,
+  options,
+  label,
+}: {
+  value: T;
+  onChange: (v: T) => void;
+  options: { value: T; label: string }[];
+  label: string;
+}) {
+  return (
+    <div role="radiogroup" aria-label={label} className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {options.map((o) => {
+        const active = o.value === value;
+        return (
+          <button
+            key={o.value}
+            type="button"
+            role="radio"
+            aria-checked={active}
+            onClick={() => onChange(o.value)}
+            className={`min-h-10 shrink-0 whitespace-nowrap rounded-full border px-3.5 text-[13px] font-medium transition-colors ${
+              active ? "border-accent bg-accent text-white dark:text-[#06201d]" : "border-line bg-surface text-ink"
+            }`}
+          >
+            {o.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export function Segmented<T extends string>({
   value,
   onChange,

@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { api, attendingAvatar, messageOf, openServerSettings, toast, type Track } from "@/lib/api";
+import { api, attendingAvatar, messageOf, openServerSettings, toast, trackLabel, type Track } from "@/lib/api";
 import { useApi } from "@/lib/useApi";
-import { Button, Card, DifficultyDots, ErrorNote, Segmented, Skeleton, Tag } from "@/components/ui";
+import { Button, Card, Chips, DifficultyDots, ErrorNote, Skeleton, Tag } from "@/components/ui";
 
 type TrackChoice = "all" | Track;
 
@@ -27,7 +27,7 @@ export default function HomePage() {
     try {
       const t = window.localStorage.getItem("anna_track") as TrackChoice | null;
       const m = window.localStorage.getItem("anna_attending");
-      if (t === "all" || t === "general-im" || t === "rheum") setTrack(t);
+      if (t) setTrack(t);
       if (m) setAttendingId(m);
     } catch {
       /* ignore */
@@ -59,6 +59,15 @@ export default function HomePage() {
     [cases.data, track],
   );
   const due = progress.data?.reviews_due ?? 0;
+  // Subspecialties present in the library, in a fixed clinical order.
+  const specialties = useMemo(() => {
+    const order = ["cardio", "nephro", "pulm", "gi", "heme", "onc", "id", "endo", "rheum", "neuro", "general-im"];
+    const present = new Set((cases.data ?? []).map((c) => c.track));
+    return [...order.filter((t) => present.has(t)), ...[...present].filter((t) => !order.includes(t)).sort()];
+  }, [cases.data]);
+  useEffect(() => {
+    if (track !== "all" && cases.data && !specialties.includes(track)) setTrack("all");
+  }, [track, cases.data, specialties]);
 
   return (
     <main className="mx-auto max-w-lg px-4" style={{ paddingTop: "calc(1.25rem + var(--sa-top))" }}>
@@ -101,16 +110,12 @@ export default function HomePage() {
         <h2 className="text-lg font-semibold">Start a case</h2>
         <div className="mt-3 space-y-3">
           <div>
-            <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-muted">Track</p>
-            <Segmented
-              label="Track"
+            <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-muted">Subspecialty</p>
+            <Chips
+              label="Subspecialty"
               value={track}
               onChange={setTrack}
-              options={[
-                { value: "all", label: "All" },
-                { value: "general-im", label: "General IM" },
-                { value: "rheum", label: "Rheum" },
-              ]}
+              options={[{ value: "all", label: "All" }, ...specialties.map((t) => ({ value: t, label: trackLabel(t) }))]}
             />
           </div>
           <div>
@@ -199,7 +204,7 @@ export default function HomePage() {
                       <p className="text-[15px] font-medium leading-snug">{c.title}</p>
                       <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
                         <DifficultyDots level={c.difficulty} />
-                        <span className="text-[11px] text-muted">{c.track === "rheum" ? "Rheum" : "General IM"}</span>
+                        <span className="text-[11px] text-muted">{trackLabel(c.track)}</span>
                         {!c.reviewed && <Tag>draft</Tag>}
                         {c.tags.map((t) => (
                           <Tag key={t}>{t}</Tag>

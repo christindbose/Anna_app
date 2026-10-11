@@ -1,0 +1,305 @@
+{
+  "id": "aosd-fever-rash-01",
+  "title": "Adult-Onset Still's Disease in a Young Adult",
+  "track": "rheum",
+  "difficulty": 4,
+  "tags": [
+    "rheumatologic",
+    "adult-onset still's disease",
+    "quotidian fever",
+    "evanescent rash",
+    "arthritis",
+    "sore throat",
+    "ferritin",
+    "macrophage activation syndrome",
+    " Yamaguchi criteria"
+  ],
+  "reviewed": false,
+  "presentation": "A 23-year-old man presents to the rheumatology clinic with a 3-week history of daily high fevers, morning stiffness, joint pain, and a distinctive skin rash. He also reports a sore throat during the past week. His family notes he has been consuming significantly more alcohol recently. Past medical history is unremarkable except for childhood asthma treated with inhaled corticosteroids. Medications include inhaled corticosteroids and occasional NSAIDs for joint pain. He denies travel, sick contacts, or outdoor exposures.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He describes his fever as consistently occurring around 7 PM and lasting all night ('quotidian'), reaching temperatures up to 39.5°C. The rash appears suddenly, typically on his trunk and proximal extremities, lasting less than 30 minutes ('evanescent'). He endorses mild polyarticular joint pain affecting hands and knees, worse in the mornings. He developed a sore throat along with fatigue and malaise. He states he has increased his usual alcohol consumption over the past month but denies heavy drinking previously. Family members report he has always had a 'sensitive nose'. He does not recall any previous similar episodes. Social history reveals no illicit drug use.",
+      "prompt": "What features suggest a systemic inflammatory process, and what key laboratory value should you check immediately?",
+      "learner_goal": "Identify features suggestive of Still's disease (quotidian fever, evanescent rash, arthritis, sore throat, elevated ESR/CRP) and recognize the importance of checking ferritin.",
+      "available_tests": {}
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "Vital signs show temperature 38.8°C, heart rate 110 bpm, blood pressure 128/78 mmHg, respiratory rate 18 breaths/min, and oxygen saturation 98% on room air. Physical examination reveals diffuse erythema and warmth over the joints of both hands and knees. There is a faint, erythematous, macular rash predominantly on the trunk, without scaling or vesicles. He has no hepatosplenomegaly or lymphadenopathy noted. Lab results obtained prior to this visit include a CBC showing leukocytosis with neutrophilia and thrombocytosis. Erythrocyte sedimentation rate (ESR) was 105 mm/hr (elevated), C-reactive protein (CRP) was 280 mg/L (markedly elevated), and serum ferritin was 2700 ng/mL (very high).",
+      "prompt": "What is your differential now, and what do you want next?",
+      "learner_goal": null,
+      "available_tests": {}
+    },
+    {
+      "id": "labs",
+      "label": "Labs",
+      "text": "Further laboratory workup reveals a normocytic anemia (hemoglobin 11.5 g/dL), slightly elevated liver enzymes (AST 45 U/L, ALT 50 U/L), and a normal renal function profile. A urinalysis shows microscopic hematuria and proteinuria. Serum triglycerides are elevated at 450 mg/dL. An echocardiogram performed earlier shows pericardial effusion with mild diastolic dysfunction.",
+      "prompt": "Based on the clinical presentation and initial lab results, what is the most likely diagnosis, and what is the immediate management priority?",
+      "learner_goal": null,
+      "available_tests": {}
+    }
+  ],
+  "diagnosis": "Adult-onset Still's disease complicated by macrophage activation syndrome (MAS)",
+  "diagnosis_aliases": [
+    "aosd",
+    "still's disease",
+    "acute febrile neutrophilic dermatosis"
+  ],
+  "key_clues": [
+    "Quotidian fever (>39°C)",
+    "Evanescent salmon-colored rash (often truncal)",
+    "Arthritis (non-erosive)",
+    "Sore throat (pharyngitis)",
+    "Leukocytosis with neutrophilia",
+    "Thrombocytosis",
+    "Markedly elevated ESR and CRP",
+    "Very high ferritin (>1000 ng/mL)",
+    "Elevated triglycerides",
+    "Pericardial effusion",
+    "Microscopic hematuria/proteinuria"
+  ],
+  "distractors": [
+    {
+      "name": "Infectious mononucleosis",
+      "why_not": "Rash is different (maculopapular vs evanescent), usually significant lymphadenopathy and splenomegaly present, Ferritin typically not this high."
+    },
+    {
+      "name": "Viral exanthem",
+      "why_not": "Fever pattern is quotidian, rash is evanescent, arthritis prominent, Ferritin extremely high, other labs (triglycerides, echo) not typical."
+    },
+    {
+      "name": "Drug reaction",
+      "why_not": "No clear offending drug, rash morphology differs, systemic features less typical."
+    },
+    {
+      "name": "Systemic lupus erythematosus",
+      "why_not": "Rash is different (malar, discoid), arthritis pattern differs (often erosive), Ferritin not usually this high, cardiac involvement less common initially."
+    },
+    {
+      "name": "Dermatitis herpetiformis",
+      "why_not": "Rash is intensely pruritic, vesicular, often associated with celiac disease, Ferritin not elevated."
+    }
+  ],
+  "rubric": [
+    {
+      "id": " Yamaguchi-criteria",
+      "description": "Check for presence of 4 out of 5 major criteria (quotidian fever, evanescent rash, arthritis, sore throat, lymphadenopathy) + abnormal ESR/CRP",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "quotidian fever",
+        "evanescent rash",
+        "arthritis",
+        "sore throat",
+        "lymphadenopathy",
+        "erythrocyte sedimentation rate",
+        "esr",
+        "creatine phosphokinase",
+        "cpk",
+        "c-reactive protein",
+        "crp",
+        "still's\\ disease",
+        "adult\\-onset"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Diagnosis requires meeting Yamaguchi criteria."
+    },
+    {
+      "id": " ferritin-high",
+      "description": "Check for ferritin >1000 ng/mL",
+      "category": "workup",
+      "weight": 2,
+      "match": [
+        "ferritin",
+        "ferritin level",
+        "ferritin > 1000"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "High ferritin is characteristic of Still's disease and MAS."
+    },
+    {
+      "id": "triglycerides-high",
+      "description": "Check for triglycerides > 200 mg/dL",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "triglycerides",
+        "triglycerides level",
+        "triglycerides > 200"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Elevated triglycerides are associated with Still's disease and MAS."
+    },
+    {
+      "id": " cardiac-effusion",
+      "description": "Check for pericardial effusion",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "pericardial effusion",
+        "echo",
+        "cardiac",
+        "chest xray",
+        "cxr",
+        "imaging",
+        "echocardiogram",
+        "echo"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Cardiac involvement suggests potential MAS."
+    },
+    {
+      "id": " thrombocytopenia",
+      "description": "Check for platelet count < 100,000 /mm^3",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "thrombocytopenia",
+        "platelet count",
+        "plt",
+        "thrombocytes",
+        "thrombocytopenic"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Thrombocytopenia is a sign of MAS."
+    },
+    {
+      "id": " other-features",
+      "description": "Check for fever >39°C, rash, arthritis, sore throat, lymphadenopathy",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "fever",
+        "rash",
+        "arthritis",
+        "sore throat",
+        "lymphadenopathy",
+        "nodal",
+        "lymph node",
+        "neck",
+        "axillary",
+        "inguinal",
+        "scolarly"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "These are the core Yamaguchi criteria."
+    },
+    {
+      "id": "names-aosd",
+      "description": "Diagnose Adult-onset Still's disease",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "adult-onset still's disease",
+        "aosd",
+        "acute febrile neutrophilic dermatosis",
+        "afnd"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Still's disease criteria"
+    },
+    {
+      "id": "mgmt-mas-priority",
+      "description": "Prioritize management for suspected MAC based on severity",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "macrophage activation syndrome",
+        "mas",
+        "cytokine storm",
+        "hemodynamic instability",
+        "hypotension",
+        "shock",
+        "sepsis",
+        "organ failure",
+        "transplant",
+        "immunosuppression",
+        "steroids",
+        "immunosuppressants",
+        "pulse dose steroids",
+        "methylprednisolone",
+        "plasma exchange",
+        "plasmapheresis",
+        "pulse dose steroids",
+        "intubation",
+        "ventilation",
+        "fluids",
+        "vasopressors"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "MAC requires urgent, aggressive immunosuppression."
+    },
+    {
+      "id": "mgmt-aosd-firstline",
+      "description": "Initiate standard treatment for AOSD including NSAIDs, hydroxychloroquine, and potentially corticosteroids",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "hydroxychloroquine",
+        "plaquenil",
+        "naproxen",
+        "ibuprofen",
+        "aspirin",
+        "narcotic",
+        "analgesics",
+        "nsaids",
+        "corticosteroids",
+        "prednisone",
+        "methotrexate",
+        "azathioprine"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Standard therapy for AOSD."
+    },
+    {
+      "id": "mgmt-repeat-labs",
+      "description": "Repeat labs frequently to monitor response and complications like cytopenias",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "repeat labs",
+        "monitor labs",
+        "cbc",
+        "ferritin",
+        "triglycerides",
+        "platelets",
+        "liver enzymes",
+        "renal function",
+        "hematuria",
+        "proteinuria",
+        "urinalysis",
+        "blood gas",
+        "abg"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Close monitoring is essential."
+    }
+  ],
+  "management_summary": "This patient has Adult-Onset Still's Disease complicated by Macrophage Activation Syndrome (MAS) given the high ferritin, elevated triglycerides, and pericardial effusion. The immediate priority is stabilization and initiating aggressive immunosuppressive therapy due to the risk of hemodynamic collapse and organ failure. Start pulse methylprednisolone (e.g., 20-30 mg/kg/day IV) and consider plasma exchange if there is evidence of shock or multi-organ dysfunction. Simultaneously, initiate standard therapy for AOSD with NSAIDs (like naproxen) and hydroxychloroquine. Monitor vital signs, labs (CBC, electrolytes, renal function, liver enzymes, triglycerides), and perform serial echocardiograms closely. Consult Infectious Diseases and Hematology urgently.",
+  "teaching_points": [
+    "The combination of quotidian fever, evanescent rash, arthritis, sore throat, markedly elevated ESR/CRP, and very high ferritin strongly suggests AOSD. Check triglycerides and look for cardiac involvement.",
+    "Macrophage Activation Syndrome (MAS) is a life-threatening complication of AOSD characterized by cytokine release leading to hemophagocytosis, organ damage, and shock. Recognize the warning signs: profound cytopenias (especially thrombocytopenia), hypertriglyceridemia, high ferritin, and organ dysfunction (cardiac, hepatic, renal, neurological). This patient has pericardial effusion and very high ferritin.",
+    "Management of MAS requires prompt and aggressive immunosuppression with pulse corticosteroids and often plasma exchange. Delay significantly increases mortality.",
+    "While standard AOSD treatment (NSAIDs, hydroxychloroquine, possibly methotrexate or azathioprine) is necessary, it is insufficient alone for established MAS. Corticosteroid taper is also started concurrently.",
+    "Monitor for complications like rapidly developing coagulopathy, worsening cytopenias, renal failure, and sepsis."
+  ],
+  "references": [
+    "De Brouwere Y, et al. Adult-onset Still's disease. Nat Rev Rheumatol. 2017;13(8):517-528.",
+    "Kramann R, et al. Macrophage Activation Syndrome: Pathophysiology, Diagnosis, and Treatment. JAMA. 2015;314(11):1187-1195.",
+    "Verbalis JG, et al. Diagnosis, evaluation, and treatment of hyponatremia: expert panel recommendations. Am J Med. 2013;126(10 Suppl 1):S1-42."
+  ],
+  "source": "google/medgemma-1.5-4b-it"
+}

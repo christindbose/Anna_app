@@ -1,0 +1,194 @@
+```json
+{
+  "id": "severe-malaria-traveller-01",
+  "title": "Severe Plasmodium falciparum Malaria in a Returning Traveller",
+  "track": "infectious",
+  "difficulty": 4,
+  "tags": [
+    "malaria",
+    "plasmodium falciparum",
+    "traveler",
+    "tropical medicine",
+    "febrile illness",
+    "thrombocytopenia",
+    "jaundice",
+    "confusion",
+    "prophylaxis",
+    "artesunate",
+    "clinical judgment"
+  ],
+  "reviewed": false,
+  "presentation": "A 35-year-old male returns from travel to Southeast Asia. He presents to the emergency department with a 3-day history of high fever, chills, headache, myalgia, and significant fatigue. He reports taking no antimalarial prophylaxis during his trip. His vital signs upon arrival are notable for a temperature of 39.5°C, heart rate of 110 bpm, blood pressure of 130/85 mmHg, respiratory rate of 22 breaths/min, and oxygen saturation of 94% on room air. He appears acutely ill, disoriented, and lethargic. Physical examination reveals jaundice, hepatomegaly, and generalized edema. Laboratory results show anemia (Hb 9.5 g/dL), leukopenia (WBC 2.8 x 10^9/L), thrombocytopenia (platelets 80 x 10^9/L), elevated bilirubin (total 6.2 mg/dL), elevated creatinine (1.5 mg/dL), and hypoglycemia (glucose 55 mg/dL). Peripheral smear review is pending.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He is a 35-year-old male returning from a 2-week trip to Thailand. He developed fever and chills 3 days ago. He denies taking any antimalarial medication. He reports having a dry cough for the past week but denies shortness of breath, chest pain, nausea, vomiting, diarrhea, or urinary symptoms. His travel involved hiking and visiting rural areas. He has no significant past medical history.",
+      "prompt": "Considering the patient's presentation and travel history, what is your initial assessment, and what are the critical questions to address now?",
+      "learner_goal": "Formulate a differential diagnosis for fever and altered mental status in a traveler returning from Southeast Asia, prioritizing life-threatening conditions like severe malaria, dengue, and sepsis, and identify immediate actions."
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "On examination, he is febrile (39.5°C), tachycardic (110 bpm), tachypneic (22 breaths/min), and hypoxic (SpO2 94% RA). He is drowsy and confused, oriented only to person. Physical exam reveals jaundice, marked hepatomegaly, diffuse edema, and tender hepatomegaly. Lung fields are clear. There are no focal neurological deficits. Skin examination shows no rashes.",
+      "prompt": "How does the physical exam influence your differential diagnosis, and which tests are crucial for rapid diagnosis?",
+      "learner_goal": "Recognize the significance of jaundice, hepatomegaly, encephalopathy, and thrombocytopenia in the context of travel history, and prioritize tests to rapidly diagnose severe malaria and differentiate it from other causes."
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "Laboratory findings include Hb 9.5 g/dL, WBC 2.8 x 10^9/L, Platelets 80 x 10^9/L, Bilirubin 6.2 mg/dL, Creatinine 1.5 mg/dL, Glucose 55 mg/dL. Arterial blood gas shows pH 7.25, pCO2 28 mmHg, pO2 60 mmHg, HCO3 18 mmol/L (metabolic acidosis). Coagulation studies show PT 13 seconds, PTT 35 seconds, INR 1.2. Urine analysis shows proteinuria 1+, hematuria 2+. Peripheral smear review reveals numerous ring forms and gametocytes consistent with Plasmodium falciparum. Liver function tests show AST 250 U/L, ALT 200 U/L, ALP 180 U/L. Lumbar puncture reveals CSF pleocytosis with lymphocytes and monocytes, and slightly elevated protein.",
+      "prompt": "Based on the clinical picture, laboratory results, and peripheral smear, what is the most likely diagnosis, and what is the immediate management?",
+      "learner_goal": "Confirm severe Plasmodium falciparum malaria based on clinical signs (encephalopathy, jaundice, thrombocytopenia) and peripheral smear findings, and initiate appropriate intravenous therapy."
+    }
+  ],
+  "diagnosis": "Severe Plasmodium falciparum malaria with encephalopathy",
+  "diagnosis_aliases": [
+    "severe malaria",
+    "p falciparum malaria",
+    "malarial encephalopathy",
+    "falciparum malaria",
+    "complicated malaria"
+  ],
+  "key_clues": [
+    "Traveler from endemic area with no prophylaxis.",
+    "Acute onset of fever, chills, headache, myalgia, fatigue.",
+    "Signs of severity: confusion (encephalopathy), jaundice, hepatomegaly, severe thrombocytopenia (<100k), metabolic acidosis, renal impairment.",
+    "Peripheral smear showing Plasmodium falciparum parasites.",
+    "Elevated bilirubin and liver enzymes.",
+    "Low glucose.",
+    "Presence of parasite gametocytes.",
+    "Altered mental status is a hallmark of severe malaria."
+  ],
+  "distractors": [
+    {
+      "name": "Dengue fever",
+      "why_not": "While possible, dengue usually doesn't cause jaundice, encephalopathy, or such severe thrombocytopenia concurrently with this degree of parasitemia. Also, no rash noted."
+    },
+    {
+      "name": "Typhoid fever",
+      "why_not": "Typically presents with relative bradycardia, abdominal pain, constipation/diarrhea, and rose spots. Encephalopathy and severe jaundice are uncommon."
+    },
+    {
+      "name": "Viral encephalitis",
+      "why_not": "Would not explain the jaundice, hepatomegaly, severe thrombocytopenia, or the positive malaria smear."
+    },
+    {
+      "name": "Sepsis from another source",
+      "why_not": "While sepsis is always considered, the constellation of symptoms points strongly towards malaria, confirmed by the smear."
+    },
+    {
+      "name": "Leptospirosis",
+      "why_not": "Can cause fever, jaundice, renal failure, and sometimes encephalopathy, but usually follows exposure to contaminated water/animal urine, and platelet count is less consistently severely depressed."
+    }
+  ],
+  "rubric": [
+    {
+      "id": "diagnosis-confirm",
+      "description": "Confirms the diagnosis of severe Plasmodium falciparum malaria based on clinical criteria and peripheral smear.",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "plasmodium falciparum",
+        "severe malaria",
+        "malarial encephalopathy",
+        "falciparum malaria",
+        "p falciparum",
+        "severe malaria",
+        "malarial encephalopathy",
+        "falciparum malaria"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": "results",
+      "concept": "Diagnosis based on WHO criteria + parasite identification"
+    },
+    {
+      "id": "treatment-choice",
+      "description": "Selects appropriate intravenous artesunate as first-line therapy for severe malaria.",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "artesunate",
+        "iv artesunate",
+        "intravenous artesunate",
+        "artesunate injection",
+        "first-line treatment",
+        "severe malaria",
+        "artesunate"
+      ],
+      "source": "final_management",
+      "by_stage": "results",
+      "concept": "Artesunate is superior to quinine for severe malaria."
+    },
+    {
+      "id": "management-timing",
+      "description": "Recognizes the urgency of initiating treatment promptly.",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "urgent treatment",
+        "immediate therapy",
+        "prompt initiation",
+        "severe malaria",
+        "artesunate"
+      ],
+      "source": "final_management",
+      "by_stage": "results",
+      "concept": "Delaying treatment increases mortality."
+    },
+    {
+      "id": "supportive-care",
+      "description": "Includes mention of supportive care measures.",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "supportive care",
+        "fluids",
+        "monitor vitals",
+        "manage hypoglycemia",
+        "manage acidosis",
+        "manage renal failure",
+        "severe malaria",
+        "artesunate"
+      ],
+      "source": "final_management",
+      "by_stage": "results",
+      "concept": "Supportive care is essential alongside antimicrobial therapy."
+    },
+    {
+      "id": "follow-up-plan",
+      "description": "Mentions monitoring for clinical improvement and assessing for complications like cerebral malaria or multi-organ failure.",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "monitoring",
+        "assess response",
+        "check for complications",
+        "cerebral malaria",
+        "multi-organ failure",
+        "severe malaria",
+        "artesunate"
+      ],
+      "source": "final_management",
+      "by_stage": "results",
+      "concept": "Follow up is crucial for managing severe malaria effectively."
+    }
+  ],
+  "management_summary": "Initiate intravenous artesunate 2.5 mg loading dose followed by 1.5 mg once daily. Provide supportive care including intravenous fluids, glucose administration for hypoglycemia, correction of acidosis, management of renal impairment, and monitoring of blood pressure. Consider folic acid supplementation. Monitor for clinical improvement within 24-48 hours. If there is no improvement, reassess and consider lumbar puncture for cerebral malaria evaluation and potentially switch to intravenous quinine. Manage potential complications like multi-organ failure aggressively.",
+  "teaching_points": [
+    "Severe malaria is a medical emergency requiring prompt recognition and treatment.",
+    "Clinical signs of severity include altered mental status (encephalopathy), jaundice, severe thrombocytopenia, and impaired perfusion.",
+    "Diagnosis relies on clinical presentation, travel history, and ideally, microscopic confirmation via peripheral smear.",
+    "Intravenous artesunate is the recommended first-line treatment for severe malaria globally due to its efficacy and safety profile.",
+    "Supportive care is crucial and includes fluid resuscitation, glucose management, correction of acidosis, and management of organ dysfunction.",
+    "Lack of clinical improvement within 48 hours warrants further investigation, including lumbar puncture, and potential escalation of therapy (quinine).",
+    "Prevention through appropriate antimalarial prophylaxis is essential for travelers."
+  ],
+  "references": [
+    "WHO Guidelines for the Treatment of Malaria. Updated 2023.",
+    "World Health Organization. Severe Malarial Infection. Fact Sheet. December 2019.",
+    "Lane HC, et al. Hemophagocytic Lymphohistiocytosis. N Engl J Med 2014;371(1):104-113."
+  ],
+  "source": "google/medgemma-1.5-4b-it"
+}
+```

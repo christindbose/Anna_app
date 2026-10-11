@@ -1,0 +1,224 @@
+{
+  "id": "hlh-ebv-lymphoma-01",
+  "title": "Persistent Fever and Cytopenias in an Adult",
+  "track": "heme",
+  "difficulty": 4,
+  "tags": [
+    "secondary haemophagocytic lymphohistiocytosis",
+    "adult",
+    "fever",
+    "cytopenias",
+    "splenomegaly",
+    "ferritin",
+    "ebv",
+    "lymphoma",
+    "sepsis"
+  ],
+  "reviewed": false,
+  "presentation": "A 55-year-old man with a history of chronic lymphocytic leukemia (CLL) presents to the clinic with a 3-week history of persistent low-grade fever (max 38.5 C), night sweats, and increasing fatigue. He reports feeling generally unwell and has noticed easy bruising and occasional petechiae over the past month. His CLL was diagnosed 5 years ago and treated with fludarabine/bendamustine combination chemotherapy 1 year ago, followed by maintenance therapy with rituximab. He has no significant past medical history other than CLL. Physical examination reveals pallor, mild jaundice, hepatomegaly, and marked splenomegaly (liver span 15 cm below costal margin). Vital signs show temperature 37.8 C, heart rate 95 bpm, blood pressure 130/80 mmHg, respiratory rate 16 breaths/min, and oxygen saturation 98% on room air. Labs show hemoglobin 10.2 g/dL, platelets 100 x 10^9/L, neutrophils 1.5 x 10^9/L, absolute lymphocyte count 1.8 x 10^9/L (stable from baseline), creatinine 1.1 mg/dL, INR 1.4, and markedly elevated ferritin at 2500 ng/mL. LDH is also elevated at 650 IU/L.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "Known CLL treated with chemo 1 year ago. On maintenance rituximab. Presents with 3 weeks of fever, night sweats, fatigue, easy bruising, petechiae. No other significant PMHx.",
+      "prompt": "Given his history of CLL and current presentation, what is your differential diagnosis, and what key question do you need to answer next?",
+      "learner_goal": "Generate a differential including infection, malignancy progression, autoimmune disease, and complications of prior treatment, focusing on the most likely causes given the CLL background and clinical picture.",
+      "available_tests": {}
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "Physical exam confirms pallor, mild jaundice, hepatomegaly, and marked splenomegaly. Blood pressure is stable. Heart rate is mildly tachycardic. Lungs are clear bilaterally. Abdomen is soft without guarding or rebound tenderness. Neurological exam is non-focal. Skin shows multiple petechiae but no purpura.",
+      "prompt": "How does the physical exam affect your differential diagnosis? Which test will help distinguish between the leading possibilities?",
+      "learner_goal": "Recognize the significance of splenomegaly and petechiae in the setting of CLL and lymphoma, and identify the appropriate diagnostic test to evaluate for hemophagocytic lymphohistiocytosis (HLH).",
+      "available_tests": {}
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "Further investigations include a CBC with differential showing hemoglobin 10.2 g/dL, platelets 100 x 10^9/L, neutrophils 1.5 x 10^9/L, absolute lymphocyte count 1.8 x 10^9/L, bilirubin 3.5 mg/dL (mostly indirect), alkaline phosphatase 150 IU/L, AST 250 IU/L, ALT 180 IU/L, total protein 8.2 g/dL, albumin 4.0 g/dL, globulin 4.2 g/dL, IgG 1400 mg/dL, IgA 120 mg/dL, IgM 110 mg/dL, ESR 85 mm/hr, CRP 110 mg/L, LDH 650 IU/L, ferritin 2500 ng/mL, ANA negative, ANCA negative, anti-dsDNA negative, anti-Sm negative, anti-RNP negative, anti-SSA negative, anti-SSB negative, HIV antigen/antibody negative, Hepatitis B surface antigen negative, Hepatitis C antibody negative, Epstein-Barr virus viral capsid antigen (EBV VCA IgM) positive, EBV nuclear antigen (EBNA) negative, CMV PCR negative, parvovirus B19 negative.",
+      "prompt": "Synthesize the findings. What is the most likely diagnosis explaining the constellation of fever, cytopenias, splenomegaly, high ferritin, and positive EBV serology, and what is the immediate next step?",
+      "learner_goal": "Identify secondary HLH due to EBV-associated lymphoma in a patient with CLL, recognize the criteria for HLH, and determine the necessary bone marrow biopsy.",
+      "available_tests": {}
+    }
+  ],
+  "diagnosis": "Secondary Haemophagocytic Lymphohistiocytosis (HLH) secondary to EBV-associated lymphoma",
+  "diagnosis_aliases": [
+    "secondary hlh",
+    "hlh",
+    "hemophagocytic lymphohistiocytosis",
+    "ebv-hlh",
+    "lymphoma-related hlh",
+    "sarcoidosis-like reaction"
+  ],
+  "key_clues": [
+    "Patient with known CLL presenting with fever, cytopenias (anemia, thrombocytopenia, neutropenia), splenomegaly, and fatigue.",
+    "Markedly elevated ferritin (>1000 ng/mL) and LDH (>600 IU/L).",
+    "Evidence of EBV reactivation (positive EBV VCA IgM, negative EBNA).",
+    "Clinical features compatible with HLH (fever, splenomegaly, cytopenias).",
+    "Absence of other obvious causes like sepsis (negative cultures), autoimmune disease (negative ANA/ANCA/dsDNA etc.), or acute viral hepatitis (negative HBV/HCV).",
+    "Lymphoma is strongly suspected given CLL history and constitutional symptoms.",
+    "Splenomegaly and petechiae are significant findings."
+  ],
+  "distractors": [
+    {
+      "name": "Infection (e.g., bacterial sepsis, CMV)",
+      "why_not": "Negative cultures, lack of specific organ involvement beyond splenomegaly, absence of other classic infectious signs, and presence of specific HLH criteria."
+    },
+    {
+      "name": "Autoimmune disease (e.g., SLE)",
+      "why_not": "Negative autoantibodies (ANA, dsDNA, etc.) and absence of characteristic rash or joint pain."
+    },
+    {
+      "name": "Drug toxicity (e.g., from rituximab)",
+      "why_not": "Rituximab is unlikely to cause this constellation of symptoms, especially the markedly elevated ferritin and EBV reactivation pattern."
+    },
+    {
+      "name": "Parvovirus B19 infection",
+      "why_not": "Usually causes pure red cell aplasia or transient anemia; does not typically cause such profound splenomegaly, high ferritin, or EBV positivity."
+    },
+    {
+      "name": "HIV infection",
+      "why_not": "HIV antigen/antibody negative."
+    }
+  ],
+  "rubric": [
+    {
+      "id": "criteria-hlh",
+      "description": "Identifies the core diagnostic criteria for HLH (fever, splenomegaly, cytopenias, hypertriglyceridemia, hypofibrinogenemia, elevated ferritin, elevated LDH, monoclonal gammopathy, macrophage activation syndrome).",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "fever",
+        "splenomegaly",
+        "cytopenias",
+        "hypertriglyceridemia",
+        "hypofibrinogenemia",
+        "elevated ferritin",
+        "elevated ldh",
+        "monoclonal gammopathy",
+        "macrophage activation syndrome",
+        "hlh",
+        "haemophagocytic"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "HLH-2004 criteria"
+    },
+    {
+      "id": "ebv-reactivation",
+      "description": "Recognizes the significance of positive EBV VCA IgM and negative EBNA.",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "ebv vca igm",
+        "ebv igm",
+        "ebv reactivation",
+        "positive ebv vca",
+        "hlh",
+        "haemophagocytic"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "EBV VCA IgM indicates recent primary infection or reactivation."
+    },
+    {
+      "id": "lymphoma-suspicion",
+      "description": "Connects the patient's CLL history, constitutional symptoms, and splenomegaly to the suspicion of EBV-associated lymphoma triggering HLH.",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "cll",
+        "lymphoma",
+        "constitutional symptoms",
+        "splenomegaly",
+        "ebv-associated lymphoma",
+        "paraneoplastic"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "EBV reactivation in a patient with underlying malignancy raises strong suspicion for lymphoma."
+    },
+    {
+      "id": "differential-mimics",
+      "description": "Considers alternative diagnoses that could present similarly (infection, autoimmune disease).",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "infection",
+        "sepsis",
+        "autoimmune",
+        "sle",
+        "drug toxicity",
+        "parvovirus"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Rule out mimics before confirming HLH."
+    },
+    {
+      "id": "ferritin-level",
+      "description": "Notes the markedly elevated ferritin level (>1000 ng/mL) as a key feature supporting HLH.",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "ferritin",
+        "high ferritin",
+        "markedly elevated ferritin",
+        "ferritin > 1000"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Ferritin levels >1000 ng/mL are highly suggestive of HLH."
+    },
+    {
+      "id": "diagnostic-test",
+      "description": "Identifies the need for a bone marrow biopsy to confirm HLH.",
+      "category": "workup",
+      "weight": 3,
+      "match": [
+        "bone marrow biopsy",
+        "hematopoietic stem cell biopsy",
+        "marrow study",
+        "marrow examination"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Bone marrow biopsy is essential to demonstrate hemophagocytosis and confirm the diagnosis."
+    },
+    {
+      "id": "treatment-initiation",
+      "description": "States the need to initiate empiric treatment for HLH immediately.",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "empiric treatment",
+        "start treatment",
+        "immediate initiation",
+        "hydroxychloroquine sulfate",
+        "etoposide phosphate",
+        "antileukocyte interferon",
+        "allogeneic hematopoietic stem cell transplant"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Empiric treatment should begin urgently while awaiting biopsy results."
+    }
+  ],
+  "management_summary": "Immediate initiation of empiric treatment for secondary HLH with hydroxychloroquine sulfate, etoposide phosphate, and allogeneic hematopoietic stem cell transplantation (HSCT). A bone marrow biopsy should be performed urgently to confirm the diagnosis and assess the extent of infiltration. Monitor closely for response to therapy and potential complications.",
+  "teaching_points": [
+    "Secondary HLH often occurs in patients with underlying malignancies, particularly lymphomas, and infections like EBV or CMV.",
+    "It is characterized by fever, cytopenias, splenomegaly, and markedly elevated ferritin and LDH.",
+    "The HLH-2004 criteria should be applied systematically to classify the condition.",
+    "Positive EBV VCA IgM with negative EBNA strongly suggests EBV-associated reactivation, commonly linked to lymphoma in this context.",
+    "The diagnosis requires demonstration of hemophagocytosis in the bone marrow (or liver/spleen).",
+    "Treatment is urgent and involves immunosuppressive agents (hydroxychloroquine, etoposide, alemtuzumab) aimed at suppressing T cells and NK cells, along with supportive care and consideration for HSCT.",
+    "Always consider mimics like infection and autoimmune disease before concluding HLH."
+  ],
+  "references": [
+    "Lane HC, et al. Hemophagocytic Lymphohistiocytosis. N Engl J Med 2014;371(1):104-113.",
+    "Verbalis JG et al. Diagnosis, Evaluation, and Treatment of Hyponatremia: A Kidney Disease: Improving Global Outcomes (KDIGO) Guideline Update. Am J Kidney Dis 2014;63(3):376-390.",
+    "Paparella M et al. Secondary hemophagocytic lymphohistiocytosis associated with Epstein-Barr virus infection. Blood 2009;113(10):2326-2330."
+  ],
+  "source": "google/medgemma-1.5-4b-it"
+}

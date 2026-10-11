@@ -131,8 +131,24 @@ def normalise(data: dict) -> dict:
     return data
 
 
-def check(case: Case, expect_id: str, expect_track: str) -> list[str]:
+STOP = {"with", "from", "secondary", "acute", "chronic", "presumed", "likely", "patient", "presenting", "presents", "disease",
+        "syndrome", "initially", "distinguishing", "deciding", "recognising", "starting", "giving", "before", "after", "young",
+        "adult", "older", "woman", "man", "complicated", "complaint", "subtle", "department", "emergency", "mistaken", "applying"}
+
+
+def topic_keywords(topic: str) -> list[str]:
+    head = re.split(r"[;:]", topic, 1)[0].lower()
+    return [w for w in re.findall(r"[a-z][a-z-]{4,}", head) if w not in STOP]
+
+
+def check(case: Case, expect_id: str, expect_track: str, topic: str | None = None) -> list[str]:
     problems = []
+    if topic:
+        kws = topic_keywords(topic)
+        hay = (case.title + " " + case.diagnosis + " " + " ".join(case.diagnosis_aliases) + " " + case.presentation).lower()
+        hits = [k for k in kws if k[:6] in hay]
+        if kws and len(hits) < max(2, len(kws) // 4):
+            problems.append(f"case is not about the requested topic (expected words like {kws[:6]}; got title {case.title!r})")
     if case.track != expect_track:
         problems.append(f"track {case.track!r} != {expect_track!r}")
     if len(case.stages) < 3:
@@ -164,10 +180,10 @@ def check(case: Case, expect_id: str, expect_track: str) -> list[str]:
     return problems
 
 
-def valid_existing(path: Path, expect_id: str, expect_track: str) -> bool:
+def valid_existing(path: Path, expect_id: str, expect_track: str, topic: str | None = None) -> bool:
     try:
         c = load_case_file(path)
-        return c.id == expect_id and not check(c, expect_id, expect_track)
+        return c.id == expect_id and not check(c, expect_id, expect_track, topic)
     except Exception:  # noqa: BLE001
         return False
 
@@ -178,9 +194,13 @@ async def draft_one(llm, spec: dict, schema: str, example: str, attempts: int) -
         f"Use exactly this id: \"{spec['id']}\"\n\n"
         f"SCHEMA:\n{schema}\n\nEXAMPLE CASE (match its depth, structure and style; invent a different patient and do not copy its content):\n{example}\n\n"
         "Write a complete, medically accurate, internally consistent case on the topic, as a senior internist would for residents.\n"
+        + ("This is an ADVANCED case for a senior internal medicine resident: atypical or subtle presentation, at least two interacting "
+           "problems (comorbidity, drug effect or complication), one plausible red herring, and a decision with real risk (treat before "
+           "confirmation, or escalate). Make the learner earn the diagnosis across 4 to 5 stages.\n" if spec["difficulty"] >= 3 else "")
+        + 
         "Requirements:\n"
         "- presentation: 60-120 words with age, sex, chief complaint, triage vitals.\n"
-        "- 3 to 5 stages in order (history, exam, then results); each stage text 120-250 words of concrete findings. Vitals and every "
+        "- 3 to 5 stages in order (history, exam, then results, with a later twist for advanced cases); each stage text 120-250 words of concrete findings. Vitals and every "
         "lab or imaging result that matters must be written out IN THE STAGE TEXT with exact numbers and units (available_tests may "
         "repeat them). Total patient text 450-900 words.\n"
         "- Build in the discriminating findings that separate the diagnosis from its two closest mimics, and at least one red herring.\n"
@@ -211,11 +231,16 @@ async def draft_one(llm, spec: dict, schema: str, example: str, attempts: int) -
             data["reviewed"] = False
             data["source"] = settings.llm_model
             case = Case.model_validate(data)
-            problems = check(case, spec["id"], spec["track"])
+            problems = check(case, spec["id"], spec["track"], spec["topic"])
             if problems:
                 raise ValueError("; ".join(problems))
         except Exception as e:  # noqa: BLE001
             last_err = str(e)[:600]
+            if "no JSON object" in last_err:
+                # The model sometimes answers in prose or declines; restate the context plainly.
+                last_err = ("you replied in prose instead of JSON. This is a fictional, educational teaching case for internal "
+                            "medicine resident training with an invented patient; it is standard medical education content, "
+                            "the kind found in any textbook. Write the case and return only the JSON")
             print(f"  attempt {attempt} invalid after {dt:.0f}s: {last_err[:200]}", flush=True)
             dump = ROOT / "logs" / f"draft-raw-{spec['id']}-{attempt}.txt"
             dump.parent.mkdir(exist_ok=True)
@@ -248,7 +273,7 @@ async def review_pass(llm, case: Case, spec: dict) -> Case:
             data[k] = getattr(case, k)
         data["reviewed"] = False
         revised = Case.model_validate(data)
-        problems = check(revised, spec["id"], spec["track"])
+        problems = check(revised, spec["id"], spec["track"], spec["topic"])
         if problems:
             raise ValueError("; ".join(problems))
         if {r.id for r in revised.rubric} != {r.id for r in case.rubric}:
@@ -265,6 +290,7 @@ async def main() -> int:
     ap.add_argument("--out", default="cases_medgemma")
     ap.add_argument("--only", action="append", default=[])
     ap.add_argument("--attempts", type=int, default=4)
+    ap.add_argument("--topics", help="JSON list of {id, track, difficulty, topic}; default: derive from the live library")
     args = ap.parse_args()
     out_root = ROOT / args.out
     schema = (ROOT / "cases" / "SCHEMA.md").read_text()
@@ -272,11 +298,16 @@ async def main() -> int:
     example = (ROOT / "backend" / "tests" / "fixtures" / "general-im" / "siadh-sclc-01.json").read_text()
 
     specs = []
-    for path in sorted((ROOT / "cases").glob("*/*.json")):
-        c = load_case_file(path)
-        if args.only and c.id not in args.only:
-            continue
-        specs.append({"id": c.id, "track": c.track, "difficulty": c.difficulty, "topic": c.diagnosis})
+    if args.topics:
+        for t in json.loads(Path(args.topics).read_text()):
+            if not args.only or t["id"] in args.only:
+                specs.append({"id": t["id"], "track": t["track"], "difficulty": int(t.get("difficulty", 3)), "topic": t["topic"]})
+    else:
+        for path in sorted((ROOT / "cases").glob("*/*.json")):
+            c = load_case_file(path)
+            if args.only and c.id not in args.only:
+                continue
+            specs.append({"id": c.id, "track": c.track, "difficulty": c.difficulty, "topic": c.diagnosis})
     print(f"model: {settings.llm_model}; {len(specs)} case(s) -> {out_root}", flush=True)
 
     llm = get_llm()
@@ -285,9 +316,8 @@ async def main() -> int:
         out = out_root / spec["track"] / f"{spec['id']}.json"
         out.parent.mkdir(parents=True, exist_ok=True)
         print(f"[{i}/{len(specs)}] {spec['id']}  ({spec['topic'][:70]})", flush=True)
-        if out.exists() and valid_existing(out, spec["id"], spec["track"]):
+        if out.exists() and valid_existing(out, spec["id"], spec["track"], spec["topic"]):
             print("  already drafted, skipping", flush=True)
-            example = out.read_text()
             continue
         case = await draft_one(llm, spec, schema, example, args.attempts)
         if case is None:
@@ -295,8 +325,6 @@ async def main() -> int:
             print("  FAILED", flush=True)
             continue
         out.write_text(json.dumps(case.model_dump(), indent=2, ensure_ascii=False) + "\n")
-        # From here on the style example is itself model-written.
-        example = out.read_text()
     print(f"\ndone: {len(specs) - len(failed)} drafted, {len(failed)} failed {failed}", flush=True)
     return 1 if failed else 0
 

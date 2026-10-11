@@ -147,7 +147,7 @@ function post<T>(path: string, body?: unknown, extra?: { silent401?: boolean }):
 
 /* ---------- types (mirror backend/app/main.py) ---------- */
 
-export type Track = "general-im" | "rheum";
+export type Track = string; // a subspecialty folder name under cases/, e.g. "cardio"
 export interface Attending {
   id: string;
   name: string;
@@ -358,5 +358,18 @@ export function formatDate(s: string | null | undefined): string {
   return d.toLocaleDateString(undefined, { month: "short", day: "numeric", ...(sameYear ? {} : { year: "numeric" }) });
 }
 
-export const TRACK_LABEL: Record<string, string> = { "general-im": "General IM", rheum: "Rheum" };
+export const TRACK_LABEL: Record<string, string> = {
+  cardio: "Cardiology",
+  nephro: "Nephrology",
+  pulm: "Pulmonology",
+  gi: "GI & Hepatology",
+  heme: "Hematology",
+  onc: "Oncology",
+  id: "Infectious Disease",
+  endo: "Endocrinology",
+  rheum: "Rheumatology",
+  neuro: "Neurology",
+  "general-im": "General IM",
+};
+export const trackLabel = (t: string) => TRACK_LABEL[t] ?? t;
 export const CATEGORIES: Category[] = ["diagnosis", "workup", "reasoning", "management"];

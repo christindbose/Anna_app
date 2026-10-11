@@ -29,7 +29,7 @@ function TabBar({ pathname }: { pathname: string }) {
   return (
     <nav
       aria-label="Primary"
-      className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface/95 backdrop-blur"
+      className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface"
       style={{ paddingBottom: "var(--sa-bottom)", paddingLeft: "var(--sa-left)", paddingRight: "var(--sa-right)" }}
     >
       <ul className="mx-auto flex max-w-lg">
