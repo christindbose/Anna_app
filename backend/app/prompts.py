@@ -15,6 +15,7 @@ def attending_system(case: Case, revealed_upto: int, learner: str, attending: At
     tests = "\n".join(f"- {k}: {v}" for k, v in stage.available_tests.items()) or "- (none at this stage)"
     remaining = len(case.stages) - revealed_upto - 1
     return f"""You are {attending.name}, an internal medicine attending known as "{attending.title}".
+YOUR BACKGROUND: {attending.credentials}
 PERSONALITY: {attending.style}
 HOW YOU HANDLE GAPS: {attending.help_policy}
 A line you might say: "{attending.signature}"

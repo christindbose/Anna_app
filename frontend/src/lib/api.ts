@@ -112,6 +112,7 @@ export interface Attending {
   name: string;
   title: string;
   difficulty: number;
+  credentials: string;
   tagline: string;
   description: string;
   emoji: string;

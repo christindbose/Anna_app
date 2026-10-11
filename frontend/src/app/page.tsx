@@ -142,7 +142,12 @@ export default function HomePage() {
                           <span className="block text-xs text-muted">{a.tagline}</span>
                         </span>
                       </span>
-                      {active && <span className="block text-[13px] leading-relaxed text-ink/80">{a.description}</span>}
+                      {active && (
+                        <span className="block space-y-1.5">
+                          <span className="block text-[11px] leading-snug text-muted">{a.credentials}</span>
+                          <span className="block text-[13px] leading-relaxed text-ink/80">{a.description}</span>
+                        </span>
+                      )}
                     </button>
                   );
                 })}
