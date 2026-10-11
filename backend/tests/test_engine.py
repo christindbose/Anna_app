@@ -18,8 +18,8 @@ def db():
 
 def test_full_session_flow(db):
     llm = Mock()
-    sess = eng.start_session(db, "siadh-sclc-01")
-    assert sess.stage_index == 0
+    sess = eng.start_session(db, "siadh-sclc-01", attending_id="skeptic")
+    assert sess.stage_index == 0 and sess.attending_id == "skeptic"
 
     async def run():
         chunks = [c async for c in eng.respond(db, llm, sess, "SIADH vs hypovolemia. What is her volume status?")]
@@ -51,3 +51,8 @@ def test_finish_twice_rejected(db):
     asyncio.run(eng.finish(db, Mock(), sess, "x", "y"))
     with pytest.raises(ValueError):
         asyncio.run(eng.finish(db, Mock(), sess, "x", "y"))
+
+
+def test_unknown_attending_falls_back(db):
+    sess = eng.start_session(db, "siadh-sclc-01", attending_id="nobody")
+    assert sess.attending_id == "mentor"

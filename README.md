@@ -4,6 +4,9 @@ A phone-first clinical-reasoning coach for an internal medicine resident. A case
 one clue at a time; the learner commits to a differential, gets challenged by an AI attending,
 and ends with a rubric-scored debrief. Missed concepts come back as spaced-repetition questions.
 
+Six attending personas (`backend/app/attendings.py`), from a gentle mentor to an adversarial
+skeptic, each with a difficulty level that sets how much they help and how hard they push.
+
 Case facts live in reviewed JSON files (`cases/`). The model coaches from them and never invents
 the patient. Scoring is deterministic (`backend/app/scoring.py`); the model only writes feedback.
 

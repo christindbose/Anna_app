@@ -2,13 +2,19 @@
 
 import Link from "next/link";
 import { useMemo } from "react";
-import { CATEGORIES, MODE_LABEL, api, formatDate } from "@/lib/api";
+import { CATEGORIES, api, formatDate } from "@/lib/api";
 import { useApi } from "@/lib/useApi";
 import { Card, ErrorNote, PageTitle, Skeleton } from "@/components/ui";
 
 export default function ProgressPage() {
   const progress = useApi(() => api.progress(), "progress");
   const cases = useApi(() => api.cases(), "cases");
+  const attendings = useApi(() => api.attendings(), "attendings");
+  const attendingName = useMemo(() => {
+    const m = new Map<string, string>();
+    for (const a of attendings.data ?? []) m.set(a.id, `${a.emoji} ${a.name}`);
+    return m;
+  }, [attendings.data]);
 
   const titles = useMemo(() => {
     const m = new Map<string, string>();
@@ -117,7 +123,7 @@ export default function ProgressPage() {
                           <p className="line-clamp-2 text-[15px] font-medium leading-snug">{titles.get(r.case_id) ?? r.case_id}</p>
                           <p className="text-xs text-muted">
                             {formatDate(r.finished_at)}
-                            {r.mode === "challenge" ? ` · ${MODE_LABEL.challenge}` : ""}
+                            {attendingName.get(r.attending_id) ? ` · ${attendingName.get(r.attending_id)}` : ""}
                           </p>
                         </div>
                         <div className="flex shrink-0 items-center gap-2">

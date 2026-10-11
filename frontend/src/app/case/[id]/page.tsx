@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import {
   CATEGORIES,
-  MODE_LABEL,
   api,
   messageOf,
   streamRespond,
@@ -187,7 +186,7 @@ function Player({ session, setSession }: { session: SessionView; setSession: (s:
       <header className="sticky z-20 border-b border-line bg-bg/95 px-4 pb-2 backdrop-blur" style={{ top: 0, paddingTop: "var(--sa-top)" }}>
         <div className="flex items-center justify-between">
           <BackLink href="/" />
-          <span className="text-xs text-muted">{MODE_LABEL[session.mode] ?? session.mode}</span>
+          <span className="text-xs text-muted">{session.attending.emoji} {session.attending.name}</span>
         </div>
         <h1 className="text-[17px] font-semibold leading-snug">{session.case.title}</h1>
         <div className="mt-1.5 flex items-center gap-2">

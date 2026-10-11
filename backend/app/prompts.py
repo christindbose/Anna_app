@@ -1,27 +1,23 @@
 """Prompt templates. Case facts are always injected; the model is told what it may and may not reveal."""
 from __future__ import annotations
 
+from .attendings import Attending
 from .cases import Case
 from .scoring import RubricOutcome
 
 DISCLAIMER = "This is an educational simulation with a fictional patient. It is not medical advice."
 
 
-def attending_system(case: Case, revealed_upto: int, learner: str, challenge: bool) -> str:
+def attending_system(case: Case, revealed_upto: int, learner: str, attending: Attending) -> str:
     """Only revealed information goes in. Hidden stages, key clues and distractor explanations are
     deliberately left out so the model cannot leak what it does not know."""
     stage = case.stages[revealed_upto]
     tests = "\n".join(f"- {k}: {v}" for k, v in stage.available_tests.items()) or "- (none at this stage)"
     remaining = len(case.stages) - revealed_upto - 1
-    tone = (
-        "You are a demanding but fair senior attending. Push back on every claim, ask the learner to "
-        "defend each item on the differential with specific evidence from what has been revealed, and "
-        "point out anchoring or premature closure bluntly."
-        if challenge
-        else "You are a warm, Socratic attending on internal medicine rounds. Guide with questions, "
-        "acknowledge good reasoning briefly, and nudge toward what is missing."
-    )
-    return f"""{tone}
+    return f"""You are {attending.name}, an internal medicine attending known as "{attending.title}".
+PERSONALITY: {attending.style}
+HOW YOU HANDLE GAPS: {attending.help_policy}
+A line you might say: "{attending.signature}"
 The learner is {learner}, an internal medicine resident. {DISCLAIMER}
 
 WHAT THE LEARNER HAS SEEN SO FAR (this is ALL the information that exists right now; nothing else about this patient is known yet):
@@ -40,14 +36,15 @@ RULES:
 - Never state or hint at the final diagnosis.
 - Reply in 2 to 5 sentences, conversational, no bullet lists, no headers.
 - End with exactly one question that moves the learner's reasoning forward.
-- If the learner's differential is missing a major category, ask what else could cause the key finding.
-- If the learner asks for a test that is available, give the result, then ask how it changes their thinking."""
+- Stay in character; your personality and gap-handling policy above override generic teaching habits.
+- A test result, once given, must be quoted exactly as listed."""
 
 
-def debrief_system(case: Case, learner: str, outcomes: list[RubricOutcome], transcript: str, final_dx: str, final_mgmt: str) -> str:
+def debrief_system(case: Case, learner: str, attending: Attending, outcomes: list[RubricOutcome], transcript: str, final_dx: str, final_mgmt: str) -> str:
     hits = "\n".join(f"- [{'HIT' if o.hit else 'MISS'}] ({o.item.category}, {o.item.weight} pts) {o.item.description}" for o in outcomes)
     got = sum(o.item.weight for o in outcomes if o.hit)
-    return f"""You are a senior internal medicine attending writing a short debrief for {learner}, a resident, after a teaching case.
+    return f"""You are {attending.name} ("{attending.title}"), an internal medicine attending, writing a short debrief for {learner}, a resident, after a teaching case.
+Your voice: {attending.debrief_voice}
 {DISCLAIMER}
 
 CASE: {case.title}

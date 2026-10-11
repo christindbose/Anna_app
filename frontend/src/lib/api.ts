@@ -107,7 +107,15 @@ function post<T>(path: string, body?: unknown, extra?: { silent401?: boolean }):
 /* ---------- types (mirror backend/app/main.py) ---------- */
 
 export type Track = "general-im" | "rheum";
-export type Mode = "standard" | "challenge";
+export interface Attending {
+  id: string;
+  name: string;
+  title: string;
+  difficulty: number;
+  tagline: string;
+  emoji: string;
+  signature: string;
+}
 export type Category = "diagnosis" | "workup" | "reasoning" | "management";
 
 export interface Health {
@@ -180,7 +188,7 @@ export interface SessionView {
     presentation: string;
     n_stages: number;
   };
-  mode: Mode | string;
+  attending: Attending;
   status: "active" | "finished" | string;
   stage_index: number;
   stages: Stage[];
@@ -195,7 +203,7 @@ export interface SessionListItem {
   case_id: string;
   title: string;
   status: string;
-  mode: string;
+  attending_id: string;
   score: number | null;
   max_score: number | null;
   started_at: string;
@@ -231,7 +239,7 @@ export interface Progress {
     score: number | null;
     max_score: number | null;
     finished_at: string | null;
-    mode: string;
+    attending_id: string;
   }[];
 }
 
@@ -241,7 +249,8 @@ export const api = {
   health: () => request<Health>("/health"),
   authCheck: (silent401 = true) => post<{ ok: boolean }>("/auth/check", undefined, { silent401 }),
   cases: () => request<CaseSummary[]>("/cases"),
-  startSession: (body: { case_id?: string | null; mode: Mode; track?: Track | null }) =>
+  attendings: () => request<Attending[]>("/attendings"),
+  startSession: (body: { case_id?: string | null; attending_id: string; track?: Track | null }) =>
     post<SessionView>("/sessions", body),
   session: (id: string) => request<SessionView>(`/sessions/${encodeURIComponent(id)}`),
   sessions: () => request<SessionListItem[]>("/sessions"),
@@ -303,5 +312,4 @@ export function formatDate(s: string | null | undefined): string {
 }
 
 export const TRACK_LABEL: Record<string, string> = { "general-im": "General IM", rheum: "Rheum" };
-export const MODE_LABEL: Record<string, string> = { standard: "Standard attending", challenge: "Senior attending challenge" };
 export const CATEGORIES: Category[] = ["diagnosis", "workup", "reasoning", "management"];

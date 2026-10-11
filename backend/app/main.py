@@ -11,6 +11,7 @@ from pydantic import BaseModel
 from sqlmodel import Session, select
 
 from . import engine as eng
+from .attendings import ATTENDINGS, get_attending
 from .cases import all_cases, get_case, reload_cases
 from .config import settings
 from .db import get_session, init_db
@@ -41,7 +42,7 @@ Auth = Annotated[None, Depends(require_auth)]
 # ---------- schemas ----------
 class StartRequest(BaseModel):
     case_id: str | None = None  # None = pick one not yet completed
-    mode: str = "standard"
+    attending_id: str = "mentor"
     track: str | None = None
 
 
@@ -69,6 +70,11 @@ def auth_check(_: Auth):
     return {"ok": True}
 
 
+@app.get("/api/attendings")
+def list_attendings(_: Auth):
+    return [a.model_dump(exclude={"style", "help_policy", "debrief_voice"}) for a in ATTENDINGS]
+
+
 @app.get("/api/cases")
 def list_cases(_: Auth, db: DB):
     done = {s.case_id for s in db.exec(select(CaseSession).where(CaseSession.status == "finished"))}
@@ -93,7 +99,7 @@ def start(_: Auth, db: DB, body: StartRequest):
             raise HTTPException(404, "no cases available")
         case_id = random.choice(pool).id
     try:
-        sess = eng.start_session(db, case_id, mode=body.mode)
+        sess = eng.start_session(db, case_id, attending_id=body.attending_id)
     except KeyError:
         raise HTTPException(404, "unknown case")
     return session_view(_, db, sess.id)
@@ -110,7 +116,7 @@ def session_view(_: Auth, db: DB, session_id: str):
     out = {
         "id": sess.id,
         "case": {"id": case.id, "title": case.title, "track": case.track, "difficulty": case.difficulty, "presentation": case.presentation, "n_stages": len(case.stages)},
-        "mode": sess.mode,
+        "attending": get_attending(sess.attending_id).model_dump(exclude={"style", "help_policy", "debrief_voice"}),
         "status": sess.status,
         "stage_index": sess.stage_index,
         "stages": stages,
@@ -179,7 +185,7 @@ async def finish(_: Auth, db: DB, session_id: str, body: FinishRequest):
 @app.get("/api/sessions")
 def list_sessions(_: Auth, db: DB):
     rows = db.exec(select(CaseSession).order_by(CaseSession.started_at.desc()).limit(50))
-    return [{"id": s.id, "case_id": s.case_id, "title": get_case(s.case_id).title, "status": s.status, "mode": s.mode, "score": s.score, "max_score": s.max_score, "started_at": s.started_at, "finished_at": s.finished_at} for s in rows]
+    return [{"id": s.id, "case_id": s.case_id, "title": get_case(s.case_id).title, "status": s.status, "attending_id": s.attending_id, "score": s.score, "max_score": s.max_score, "started_at": s.started_at, "finished_at": s.finished_at} for s in rows]
 
 
 @app.get("/api/reviews/due")

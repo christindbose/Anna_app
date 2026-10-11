@@ -17,7 +17,7 @@ def _uuid() -> str:
 class CaseSession(SQLModel, table=True):
     id: str = Field(default_factory=_uuid, primary_key=True)
     case_id: str = Field(index=True)
-    mode: str = "standard"  # standard | challenge
+    attending_id: str = "mentor"
     status: str = "active"  # active | finished
     stage_index: int = 0
     started_at: datetime = Field(default_factory=_now)

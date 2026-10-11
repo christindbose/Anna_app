@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from sqlmodel import Session, select
 
 from . import prompts
+from .attendings import get_attending
 from .cases import Case, get_case
 from .config import settings
 from .llm import LLM, extract_json
@@ -18,9 +19,9 @@ from .srs import sm2
 log = logging.getLogger("anna.engine")
 
 
-def start_session(db: Session, case_id: str, mode: str = "standard") -> CaseSession:
+def start_session(db: Session, case_id: str, attending_id: str = "mentor") -> CaseSession:
     case = get_case(case_id)
-    sess = CaseSession(case_id=case.id, mode=mode, stage_index=0, max_score=case.max_score)
+    sess = CaseSession(case_id=case.id, attending_id=get_attending(attending_id).id, stage_index=0, max_score=case.max_score)
     db.add(sess)
     db.add(Turn(session_id=sess.id, stage_index=0, role="reveal", content=case.stages[0].text))
     db.commit()
@@ -63,7 +64,7 @@ async def respond(db: Session, llm: LLM, sess: CaseSession, learner_text: str) -
     db.add(Turn(session_id=sess.id, stage_index=sess.stage_index, role="learner", content=learner_text))
     db.commit()
 
-    system = prompts.attending_system(case, sess.stage_index, settings.learner_name, sess.mode == "challenge")
+    system = prompts.attending_system(case, sess.stage_index, settings.learner_name, get_attending(sess.attending_id))
     messages = [{"role": "system", "content": system}] + _history_messages(case, sess, turns(db, sess.id))
 
     buf: list[str] = []
@@ -125,7 +126,7 @@ async def finish(db: Session, llm: LLM, sess: CaseSession, final_dx: str, final_
     )
     debrief = await llm.chat(
         [
-            {"role": "system", "content": prompts.debrief_system(case, settings.learner_name, outcomes, transcript, final_dx, final_mgmt)},
+            {"role": "system", "content": prompts.debrief_system(case, settings.learner_name, get_attending(sess.attending_id), outcomes, transcript, final_dx, final_mgmt)},
             {"role": "user", "content": prompts.debrief_user()},
         ],
         max_tokens=600,
@@ -235,7 +236,7 @@ def progress(db: Session) -> dict:
         "weak_concepts": weak,
         "reviews_due": n_due,
         "recent": [
-            {"session_id": s.id, "case_id": s.case_id, "score": s.score, "max_score": s.max_score, "finished_at": s.finished_at, "mode": s.mode}
+            {"session_id": s.id, "case_id": s.case_id, "score": s.score, "max_score": s.max_score, "finished_at": s.finished_at, "attending_id": s.attending_id}
             for s in sessions[:10]
         ],
     }

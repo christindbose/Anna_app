@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { api, messageOf, toast, type Mode, type Track } from "@/lib/api";
+import { api, messageOf, toast, type Track } from "@/lib/api";
 import { useApi } from "@/lib/useApi";
 import { Button, Card, DifficultyDots, ErrorNote, Segmented, Skeleton, Tag } from "@/components/ui";
 
@@ -14,9 +14,10 @@ export default function HomePage() {
   const health = useApi(() => api.health(), "health");
   const progress = useApi(() => api.progress(), "progress");
   const cases = useApi(() => api.cases(), "cases");
+  const attendings = useApi(() => api.attendings(), "attendings");
 
   const [track, setTrack] = useState<TrackChoice>("all");
-  const [mode, setMode] = useState<Mode>("standard");
+  const [attendingId, setAttendingId] = useState<string>("mentor");
   const [starting, setStarting] = useState<string | null>(null);
   const [greeting, setGreeting] = useState("");
   useEffect(() => setGreeting(greetingLine()), []);
@@ -25,9 +26,9 @@ export default function HomePage() {
   useEffect(() => {
     try {
       const t = window.localStorage.getItem("anna_track") as TrackChoice | null;
-      const m = window.localStorage.getItem("anna_mode") as Mode | null;
+      const m = window.localStorage.getItem("anna_attending");
       if (t === "all" || t === "general-im" || t === "rheum") setTrack(t);
-      if (m === "standard" || m === "challenge") setMode(m);
+      if (m) setAttendingId(m);
     } catch {
       /* ignore */
     }
@@ -35,16 +36,16 @@ export default function HomePage() {
   useEffect(() => {
     try {
       window.localStorage.setItem("anna_track", track);
-      window.localStorage.setItem("anna_mode", mode);
+      window.localStorage.setItem("anna_attending", attendingId);
     } catch {
       /* ignore */
     }
-  }, [track, mode]);
+  }, [track, attendingId]);
 
   async function start(caseId?: string) {
     setStarting(caseId ?? "random");
     try {
-      const s = await api.startSession({ case_id: caseId ?? null, mode, track: track === "all" ? null : track });
+      const s = await api.startSession({ case_id: caseId ?? null, attending_id: attendingId, track: track === "all" ? null : track });
       router.push(`/case/${s.id}`);
     } catch (e) {
       toast(messageOf(e));
@@ -114,20 +115,39 @@ export default function HomePage() {
           </div>
           <div>
             <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-muted">Attending</p>
-            <Segmented
-              label="Mode"
-              value={mode}
-              onChange={setMode}
-              options={[
-                { value: "standard", label: "Standard" },
-                { value: "challenge", label: "Senior challenge" },
-              ]}
-            />
-            <p className="mt-1.5 text-xs text-muted">
-              {mode === "challenge"
-                ? "Pushes back on your differential and asks you to defend it."
-                : "Coaches you through the case, one reveal at a time."}
-            </p>
+            {attendings.data ? (
+              <div role="radiogroup" aria-label="Attending" className="space-y-1.5">
+                {attendings.data.map((a) => {
+                  const active = a.id === attendingId;
+                  return (
+                    <button
+                      key={a.id}
+                      type="button"
+                      role="radio"
+                      aria-checked={active}
+                      onClick={() => setAttendingId(a.id)}
+                      className={`flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition-colors ${
+                        active ? "border-accent bg-accent/5" : "border-line bg-surface-2/60"
+                      }`}
+                    >
+                      <span className="text-2xl leading-none" aria-hidden>
+                        {a.emoji}
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="flex items-center justify-between gap-2">
+                          <span className="truncate text-[15px] font-medium">{a.name}</span>
+                          <DifficultyDots level={a.difficulty} />
+                        </span>
+                        <span className="block text-xs font-medium text-accent">{a.title}</span>
+                        <span className="block text-xs text-muted">{a.tagline}</span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            ) : (
+              <Skeleton className="h-40" />
+            )}
           </div>
           <Button className="w-full" busy={starting === "random"} disabled={starting !== null} onClick={() => start()}>
             Start a random case
