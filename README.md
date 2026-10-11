@@ -28,6 +28,7 @@ deploy/    systemd units
 ```bash
 # 0. one-time
 cp .env.example .env            # set ANNA_APP_PASSWORD and HF_TOKEN
+scripts/check_medgemma.sh       # verifies the token can download MedGemma (accept terms on HF first)
 conda activate anna             # python 3.11 env with fastapi (backend); anna-model env serves the model
 
 # 1. model server (GPU 0, port 8001). Needs MedGemma terms accepted on Hugging Face.

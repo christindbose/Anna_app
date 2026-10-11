@@ -107,7 +107,7 @@ Anna as the silent reviewer for a few, or a resident friend). Target 30 cases at
 
 ### Week 0 (first evening): environment
 - [x] Conda envs: `anna` (backend) and `anna-model` (PyTorch 2.7 cu126 + transformers); Node 20 via nvm.
-- [ ] Accept MedGemma terms on Hugging Face, download `medgemma-1.5-4b-it`. **Blocked on HF token.** Stack validated with Qwen2.5-3B-Instruct as a stand-in.
+- [~] Accept MedGemma terms on Hugging Face, download `medgemma-1.5-4b-it`. HF token is in `.env` (2026-10-11) but the account has not yet been granted access to the gated repo; run `scripts/check_medgemma.sh` after accepting the terms. Stack validated with Qwen2.5-3B-Instruct as a stand-in.
 - [ ] Serve it with `scripts/serve_model.sh`, confirm a text and an image prompt work on a V100.
 - [x] Repo scaffold: `backend/`, `frontend/`, `cases/`, `scripts/`.
 
