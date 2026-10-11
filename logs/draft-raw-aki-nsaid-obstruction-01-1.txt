@@ -1,0 +1,303 @@
+thought
+The user wants a progressive disclosure teaching case for internal medicine residents, focusing on acute kidney injury (AKI) from obstructive uropathy due to BPH, exacerbated by medications.
+
+**Patient:** Fictional, senior internist perspective.
+**Topic:** AKI from bilateral obstruction (BPH) + Prerenal factors (NSAIDs, ACEi, Thiazide).
+**Track:** `general-im`
+**Difficulty:** 2 (Intern level)
+**ID:** `aki-bph-med-01` (Invented based on description)
+
+**JSON Structure:**
+- `id`: `aki-bph-med-01`
+- `title`: Something descriptive like "AKI from Obstructive Uropathy and Medication Overload"
+- `track`: `general-im`
+- `difficulty`: 2
+- `tags`: `akiquick`, `obstructive uropathy`, `bph`, `medication adverse effects`, `nephrology`
+- `reviewed`: `false`
+- `presentation`: Patient details, chief complaint, initial vitals.
+- `stages`: History -> Exam -> Labs/Imaging -> Management Plan (potentially 4 stages). Each stage should contain findings, prompts for learners, and available tests.
+- `diagnosis`: Primary diagnosis.
+- `diagnosis_aliases`: Synonyms.
+- `key_clues`: Distinguishing features.
+- `distractors`: Common mimics.
+- `rubric`: Detailed list of grading criteria across categories (Diagnosis, Workup, Reasoning, Management). Must include >= 8 items, <= 10 items, weights 1-3, lenient regexes (|), >= 1 item source="final_diagnosis", >= 2 items source="final_management".
+- `management_summary`: Current standard of care.
+- `teaching_points`: Key takeaways.
+- `references`: Guidelines/papers.
+
+**Case Details Planning:**
+*   **Patient:** 68M, known BPH, presenting with acute lower extremity edema, shortness of breath, flank pain, and oliguria.
+*   **History:** Known BPH, taking tamsulosin PRN, atorvastatin, aspirin, furosemide 40mg daily, lisinopril 20mg daily, NSAIDs (ibuprofen 400mg TID prn). Recent travel, dietary indiscretion (high salt).
+*   **Exam:** Edematous legs, JVD elevated, BP 140/85, HR 100, SpO2 94%. Lungs clear except bibasilar crackles. Abdomen soft, non-tender, palpable bladder.
+*   **Initial Labs/Imaging:** Elevated BUN/Cr, high urine Na, low urine Osm, maybe some electrolyte abnormalities. Renal ultrasound showing dilated bilateral ureters/pelvis, no stones.
+*   **Differential:** Bilateral obstructive uropathy (BPH), Prerenal azotemia (medications), intrinsic renal disease, postrenal acute kidney injury (AKI).
+*   **Discriminating Findings:** High urine Na (>30) suggests extrarenal sodium wasting (like SIADH or diuretic effect), *not* prerenal where urine Na <20. Low urine Osm (<300) confirms inability to concentrate urine, pointing towards DI or SIADH, not prerenal where urine Osm >500.
+*   **Key Clues:** Male, BPH, diuretic use, NSAID use, ACEi use, Thiazide use, oliguria, edema, high urine Na, low urine Osm, elevated BUN/Cr, elevated JVP, possibly elevated BUN/Cr disproportionate to baseline.
+*   **Distractors:** Prerenal azotemia (low urine Na, high urine Osm), intrinsic AKI (often proteinuria, hematuria, less likely rapid onset without underlying cause), postrenal AKI (can mimic prerenal initially, but urine studies differentiate).
+*   **Rubric Items:** Focus on volume status assessment (initial question), differentiating prerenal vs. postrenal (urine studies), identifying contributing meds (NSAIDs, ACEi, Thiazide), recognizing signs of volume overload (JVD, edema), ruling out other causes (e.g., thyroid - TSH).
+*   **Management Summary:** IV fluids cautiously, address the obstruction (catheterization), stop offending meds (NSAIDs, ACEi, Thiazide), potentially loop diuretic (furosemide) carefully, monitor renal function, consider dialysis if refractory.
+*   **Teaching Points:** Emphasize urine studies to differentiate prerenal from postrenal, recognize medication contributions, manage volume status carefully in patients with AKI.
+
+**Constraint Checklist & Confidence Score:**
+1. Valid JSON? Yes.
+2. Strict JSON? Yes.
+3. Schema Matches? Yes.
+4. Fictional Patient? Yes.
+5. Consistent Facts? Yes.
+6. Accurate Medically? Yes.
+7. Realistic Distractors? Yes.
+8. Rubric Regex Lenient? Yes.
+9. Case Under 900 Words? Yes.
+10. Reviewed = False? Yes.
+11. Presentation Word Count (60-120)? Yes.
+12. Stages (3-5)? Yes (4 planned).
+13. Stage Text Length (120-250)? Yes.
+14. Vitals/Labs in Stage Text? Yes.
+15. Available Tests Repeat? Yes.
+16. All Findings in Presentation/Stages/Tests? Yes.
+17. Rubric Item Count (8-10)? Yes (will aim for 9).
+18. Rubric Weights (1-3)? Yes.
+19. Rubric Match Patterns (lowercase, lenient)? Yes.
+20. At Most 4 Match Patterns/Item? Yes.
+21. Final Diagnosis Source ("final_diagnosis")? Yes (1 item).
+22. At Least 2 Management Sources ("final_management")? Yes (2 items).
+23. Management Summary Content? Yes.
+24. Teaching Points Count (4-6)? Yes.
+25. References Count (2-4)? Yes.
+26. Output Only JSON? Yes.
+27. No Markdown Fences? Yes.
+28. No Pre/Post Text? Yes.
+29. String Values Use 'gone'? Yes.
+30. Avoid Line Breaks in Strings? Yes.
+
+Confidence Score: 5/5
+
+Strategizing complete. I will now proceed with generating the JSON output following these steps.<unused95>```json
+{
+  "id": "aki-bph-med-01",
+  "title": "Acute Kidney Injury from Obstructive Uropathy and Medication Overload",
+  "track": "general-im",
+  "difficulty": 2,
+  "tags": [
+    "akiquick",
+    "obstructive uropathy",
+    "bph",
+    "medication adverse effects",
+    "nephrology"
+  ],
+  "reviewed": false,
+  "presentation": "A 68-year-old male presents to the ED complaining of acute onset bilateral leg swelling, shortness of breath, and mild flank pain over the past 12 hours. He also reports difficulty urinating for several weeks. His wife notes he recently traveled internationally and ate a large meal rich in salty foods. His medical history is significant for benign prostatic hyperplasia (BPH) treated with intermittent tamsulosin, hyperlipidemia (atorvastatin), hypertension (lisinopril 20mg daily), and osteoarthritis (ibuprofen 400mg TID prn). Vital signs show BP 140/85 mmHg, HR 100 bpm, RR 20 breaths/min, SpO2 94% on room air, and temperature 37.1°C. Physical examination reveals bilateral lower extremity pitting edema, jugular venous distension (JVD) with a prominent carotid pulse, bibasilar lung crackles, and a palpable bladder. There is no abdominal tenderness.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He denies nausea, vomiting, diarrhea, fever, or chest pain. Past medical history includes BPH, hyperlipidemia, hypertension, and osteoarthritis. Medications include ibuprofen 400mg TID prn, atorvastatin 40mg daily, lisinopril 20mg daily, and tamsulosin PRN. He takes furosemide 40mg daily for hypertension and edema. Reports recent travel and high salt intake. Denies recent medication changes. He states he hasn't been able to fully empty his bladder for several weeks, although he hasn't sought formal help.",
+      "prompt": "What is your initial assessment of his volume status, and what key questions do you need to answer next?",
+      "learner_goal": "Assess volume status and identify potential causes of AKI."
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "Vital signs confirm tachycardia and tachypnea. Examination shows significant bilateral pitting edema extending to the knees, elevated JVP with a prominent carotid pulse, and bibasilar crackles. Blood pressure is 140/85 mmHg. Heart sounds are regular. Abdominal exam reveals a full, non-tender bladder. Skin appears warm and moist.",
+      "prompt": "Based on the exam, does this patient have evidence of volume overload? Which two tests will help differentiate between prerenal and postrenal causes of his AKI?",
+      "learner_goal": "Recognize volume overload and plan appropriate diagnostic tests."
+    },
+    {
+      "id": "labs",
+      "label": "Labs",
+      "text": "Laboratory results show BUN 55 mg/dL, Creatinine 2.1 mg/dL, Na 138 mEq/L, K 4.1 mEq/L, Cl 102 mEq/L, HCO3 26 mEq/L, Glucose 110 mg/dL, Hct 38%, WBC 8.5k/uL. Serum osmolality 275 mOsm/kg. Urine osmolality 150 mOsm/kg. Urine sodium 120 mEq/L. Urinalysis shows few cells and no protein. Chest X-ray shows cardiomegaly. Renal ultrasound demonstrates dilation of both ureters and renal pelves, without hydronephrosis or obstructing stone.",
+      "prompt": "Synthesize the clinical picture and lab data. What is the most likely diagnosis, and what is the immediate next step?",
+      "learner_goal": "Formulate the likely diagnosis and outline the immediate management strategy."
+    }
+  ],
+  "diagnosis": "Acute kidney injury secondary to bilateral obstructive uropathy due to BPH, exacerbated by NSAIDs, ACE inhibitors, and thiazide diuretics.",
+  "diagnosis_aliases": [
+    "postrenal acute kidney injury",
+    "obstructive nephropathy",
+    "acute kidney injury",
+    "akiquick",
+    "bph complication"
+  ],
+  "key_clues": [
+    "Male patient with known BPH",
+    "Presentation with classic signs of volume overload (edema, JVD, crackles)",
+    "Elevated BUN/Creatinine ratio (55/2.1=26)",
+    "High urine sodium (>30 mEq/L) despite diuretic use",
+    "Low urine osmolality (<300 mOsm/kg)",
+    "Renal ultrasound showing bilateral ureteral dilation",
+    "Presence of multiple nephrotoxic medications (NSAIDs, ACEi, Thiazide)"
+  ],
+  "distractors": [
+    {
+      "name": "Prerenal azotemia from furosemide",
+      "why_not": "Urine sodium is high (>30), whereas prerenal typically shows low urine sodium (<20). Urine osmolality is low, not high (>500)."
+    },
+    {
+      "name": "Intrinsic acute kidney injury (e.g., ATN)",
+      "why_not": "Rapid onset related to obstruction, lack of significant proteinuria or hematuria reported."
+    },
+    {
+      "name": "Hypovolemic pre-renal azotemia",
+      "why_not": "Clinical exam shows volume overload (edema, JVD), not hypovolemia. Urine sodium is high, not low."
+    },
+    {
+      "name": "Thiazide-induced hyponatremia",
+      "why_not": "Sodium is normal (138 mEq/L). While thiazides can worsen volume overload, the primary issue here is obstruction causing AKI."
+    }
+  ],
+  "rubric": [
+    {
+      "id": "volume-assessment",
+      "description": "Assesses volume status early and asks about it again later",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "volume status",
+        "euvol",
+        "hypovol",
+        "hypervol",
+        "orthostat",
+        "jvp",
+        "mucous membrane",
+        "skin turgor",
+        "oedema",
+        "edema",
+        "full bladder"
+      ],
+      "by_stage": "history",
+      "concept": "Volume status guides the differential diagnosis and management priorities."
+    },
+    {
+      "id": "urine-studies",
+      "description": "Orders urine osmolality and urine sodium as the key discriminatory tests",
+      "category": "workup",
+      "weight": 3,
+      "match": [
+        "urine (osm|osmolality)",
+        "urine (na|sodium)",
+        "urine studies",
+        "urine lytes",
+        "urine electrolytes",
+        "urine concentration"
+      ],
+      "by_stage": "exam",
+      "concept": "Urine osmolality and urine sodium are crucial for distinguishing prerenal from postrenal AKI."
+    },
+    {
+      "id": "med-review",
+      "description": "Reviews the patient's medications for potential contribution to AKI",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "NSAIDs",
+        "ACE inhibitors",
+        "thiazide diuretics",
+        "furosemide",
+        "medication adverse effects",
+        "nephrotoxicity"
+      ],
+      "by_stage": "history",
+      "concept": "Identify causative or exacerbating medications."
+    },
+    {
+      "id": "obstruction-confirm",
+      "description": "Confirms the presence of obstruction via imaging",
+      "category": "workup",
+      "weight": 3,
+      "match": [
+        "renal ultrasound",
+        "kidney imaging",
+        "ureter dilation",
+        "bladder filling",
+        "obstruction"
+      ],
+      "by_stage": "labs",
+      "concept": "Definitive confirmation of obstructive uropathy."
+    },
+    {
+      "id": "differential-ruling",
+      "description": "Considers and rules out alternative diagnoses (e.g., thyroid, adrenal)",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "thyroid dysfunction",
+        "adrenal insufficiency",
+        "hypothyroidism",
+        "hyperkalemia",
+        "hypotension",
+        "cortisol",
+        "tsh"
+      ],
+      "by_stage": "labs",
+      "concept": "SIADH is a diagnosis of exclusion."
+    },
+    {
+      "id": "management-fluids",
+      "description": "Cautiously manages intravenous fluids",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "IV fluids",
+        "fluid challenge",
+        "fluid restriction",
+        "fluid administration",
+        "volume expansion"
+      ],
+      "source": "final_management",
+      "concept": "Fluid management is critical in obstructive uropathy to avoid worsening the condition."
+    },
+    {
+      "id": "management-intervention",
+      "description": "Intervenes to relieve the obstruction",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "urinary catheterization",
+        "bladder drainage",
+        "intermittent catheterization",
+        "suprapubic catheter",
+        "obstruction relief"
+      ],
+      "source": "final_management",
+      "concept": "Relieving the obstruction is paramount."
+    },
+    {
+      "id": "management-meds",
+      "description": "Withdraws nephrotoxic medications",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "NSAIDs",
+        "ACE inhibitors",
+        "thiazide diuretics",
+        "medication withdrawal",
+        "drug cessation"
+      ],
+      "source": "final_management",
+      "concept": "Medications contribute to the AKI pathophysiology."
+    },
+    {
+      "id": "management-monitoring",
+      "description": "Monitors renal function and volume status closely",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "renal function monitoring",
+        "creatinine",
+        "BUN",
+        "volume assessment",
+        "monitor",
+        "follow-up"
+      ],
+      "source": "final_management",
+      "concept": "Close observation is necessary during treatment."
+    },
+    {
+      "id": "management-dialysis",
+      "description": "Consideration for renal replacement therapy if needed",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "dialysis",
+        "renal replacement therapy",
+        "crrt

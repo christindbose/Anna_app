@@ -1,88 +1,287 @@
 {
   "id": "gca-jaw-claudication-01",
-  "title": "New headache, sore jaw, and ten minutes of darkness",
+  "title": "Jaw claudication and pain",
   "track": "rheum",
   "difficulty": 2,
-  "tags": ["vasculitis", "giant cell arteritis", "headache", "ophthalmic emergency"],
+  "tags": [
+    "vascular",
+    "pain",
+    "claudication",
+    "temporal artery"
+  ],
   "reviewed": false,
-  "presentation": "A 72-year-old woman presents to the emergency department with three weeks of a new, constant bitemporal headache and pain in her jaw that comes on after a minute of chewing and settles when she stops. This morning the vision in her right eye went dark 'like a curtain coming down' for about ten minutes and then fully recovered. Triage: T 37.6 C, BP 152/84, HR 78, SpO2 97% on air.",
+  "presentation": "An 82-year-old man presents to the clinic complaining of jaw claudication and facial pain. He also reports scalp tenderness and has experienced several episodes of transient monocular vision loss in his left eye over the past month. His vital signs are stable, BP 145/88, HR 78, RR 18, SpO2 97%. Physical exam reveals temporal artery tenderness.",
   "stages": [
     {
       "id": "history",
       "label": "History",
-      "text": "She has never had migraines or significant headaches before. Her scalp has been tender when she brushes her hair for two weeks. For about two months she has had stiffness and aching across both shoulders and hips, worst in the morning and lasting more than an hour, and she has needed help getting out of bed. She feels tired, has had low-grade fevers in the evenings, and has lost about 3 kg. Past history: hypertension, osteoarthritis of the knees. Medications: amlodipine, paracetamol. No anticoagulants. Never smoked. No history of atrial fibrillation, stroke, or TIA.",
-      "prompt": "What is your differential for this headache, and which symptom changes the urgency? What do you want to know next?",
-      "learner_goal": "Name giant cell arteritis early, recognise the transient monocular visual loss as a sight-threatening emergency, and link the girdle stiffness to polymyalgia rheumatica."
+      "text": "He is a retired construction worker with a 20 pack-year smoking history. Denies fever, chills, or shortness of breath. Reports feeling generally well otherwise but notes the jaw pain worsens with chewing and resolves quickly. He describes the facial pain as aching and located behind the ears. States he hasn't noticed any other neurological symptoms like dizziness or diplopia beyond the transient vision loss episodes. No history of gout, vasculitis, or autoimmune disease. No known allergies.",
+      "prompt": "What is your differential diagnosis for this patient's symptoms, and what key information do you need to confirm the most likely diagnosis?",
+      "learner_goal": "Formulate a differential including Giant Cell Arteritis (GCA), trigeminal neuralgia, temporomandibular joint disorder, atypical angina, and other vascular pathologies. Identify the need for inflammatory markers and temporal artery biopsy.",
+      "available_tests": {}
     },
     {
       "id": "exam",
       "label": "Exam",
-      "text": "She is alert and in no distress. The right superficial temporal artery is thickened, nodular, and tender, with a reduced pulse; the left is tender but pulsatile. Visual acuity 6/6 in both eyes today. Pupils equal and reactive with no relative afferent pupillary defect; fundoscopy shows normal discs with no pallor, swelling, or haemorrhage. Visual fields full to confrontation. No carotid bruits. Neurological examination is otherwise normal. Shoulder abduction is limited by stiffness but there is no synovitis and power is normal. No rash, no lymphadenopathy. Temporomandibular joints are non-tender with normal opening.",
-      "prompt": "What do you do right now, before a single result is back? Then tell me what you are sending and what you expect it to show.",
-      "learner_goal": "Start high-dose glucocorticoids immediately on clinical suspicion, before biopsy or imaging, and order inflammatory markers and a confirmatory test.",
+      "text": "Vital signs are stable. Physical examination shows marked tenderness along the course of the superficial temporal artery bilaterally. There is no palpable purpura, lymphadenopathy, or significant edema. Neurological examination is unremarkable except for the reported transient monocular vision loss. Funduscopic examination is normal.",
+      "prompt": "Does the physical exam findings change your differential diagnosis? What are the next steps in evaluating this patient?",
+      "learner_goal": "Recognize the significance of temporal artery tenderness in the setting of jaw claudication and transient vision loss, leading towards GCA. Plan for ESR and CRP testing.",
       "available_tests": {
-        "esr": "ESR 88 mm/h",
-        "crp": "CRP 92 mg/L",
-        "cbc": "Hb 10.4 g/dL (normocytic), WBC 9.8, platelets 510",
-        "liver function": "ALP 168 U/L (mildly raised), ALT 24, albumin 32 g/L",
-        "creatinine": "Creatinine 0.8 mg/dL",
-        "glucose": "Glucose 6.1 mmol/L, HbA1c 5.8%",
-        "ck": "CK 60 U/L",
-        "temporal artery ultrasound": "Bilateral non-compressible hypoechoic wall thickening ('halo sign') of the superficial temporal arteries, more marked on the right; axillary arteries normal",
-        "ct head": "CT head: no acute intracranial abnormality",
-        "carotid duplex": "Carotid duplex: no haemodynamically significant stenosis, no plaque ulceration",
-        "ecg": "ECG: sinus rhythm, no atrial fibrillation",
-        "protein electrophoresis": "Serum protein electrophoresis: polyclonal increase in gammaglobulins, no paraprotein"
+        "esr": "ESR 65 mm/hr",
+        "crp": "CRP 2.5 mg/dL",
+        "visual acuity": "Left visual acuity decreased, requires further ophthalmologic evaluation"
       }
     },
     {
-      "id": "labs",
+      "id": "results",
       "label": "Results",
-      "text": "ESR 88 mm/h, CRP 92 mg/L. Hb 10.4 g/dL normocytic, platelets 510. ALP 168 U/L. CK normal. CT head unremarkable. Carotid duplex shows no significant stenosis. ECG sinus rhythm. Temporal artery ultrasound: bilateral non-compressible halo sign, more marked on the right. Ophthalmology has reviewed her and found no evidence of established ischaemic optic neuropathy today.",
-      "prompt": "Put it together. What is your diagnosis, what dose and route of steroid does she need, and when and how do you confirm the diagnosis? What do you tell her about the biopsy if she has already had three days of steroids?",
-      "learner_goal": "Commit to giant cell arteritis with visual involvement, choose pulsed intravenous methylprednisolone followed by high-dose prednisolone, arrange temporal artery biopsy within days without delaying treatment, and plan steroid-sparing therapy and bone protection."
+      "text": "Laboratory results show elevated Erythrocyte Sedimentation Rate (ESR) at 65 mm/hr (normal <20 mm/hr) and elevated C-Reactive Protein (CRP) at 2.5 mg/dL (normal <0.8 mg/dL). A temporal artery biopsy specimen shows inflammation involving the arterial wall, including giant cells.",
+      "prompt": "Based on the clinical presentation, physical exam, and laboratory findings, what is the diagnosis, and what is the immediate management strategy?",
+      "learner_goal": "Diagnose Giant Cell Arteritis and recognize the urgency of treatment to prevent permanent vision loss. Outline initial treatment and diagnostic confirmation plan.",
+      "available_tests": {
+        "visual acuity": "Left visual acuity decreased, requires further ophthalmologic evaluation"
+      }
     }
   ],
-  "diagnosis": "Giant cell arteritis with transient monocular visual loss",
-  "diagnosis_aliases": ["giant cell", "gca", "temporal arteritis", "cranial arteritis"],
+  "diagnosis": "Giant Cell Arteritis",
+  "diagnosis_aliases": [
+    "gca",
+    "temporal arteritis",
+    "large vessel vasculitis"
+  ],
   "key_clues": [
-    "New headache after age 50 with scalp tenderness",
-    "Jaw claudication, the single most specific symptom",
-    "Transient monocular visual loss (amaurosis fugax) signalling impending arteritic ischaemic optic neuropathy",
-    "Two months of shoulder and hip girdle stiffness consistent with polymyalgia rheumatica",
-    "Thickened, tender, pulseless temporal artery on exam",
-    "ESR 88 and CRP 92 with normocytic anaemia and thrombocytosis",
-    "Bilateral halo sign on temporal artery ultrasound"
+    "Age > 50 years old",
+    "New onset headache or scalp tenderness",
+    "Jaw claudication",
+    "Transient monocular vision loss (amaurosis fugax)",
+    "Temporal artery tenderness",
+    "Elevated ESR (>50 mm/hr)",
+    "Elevated CRP",
+    "Positive temporal artery biopsy"
   ],
   "distractors": [
-    {"name": "Migraine or tension-type headache", "why_not": "New-onset headache at 72 with jaw claudication, scalp tenderness, constitutional symptoms, and an ESR of 88 is not a primary headache disorder."},
-    {"name": "Carotid-territory TIA or embolic amaurosis", "why_not": "Carotid duplex shows no significant stenosis and the ECG is sinus rhythm; the systemic symptoms, tender temporal artery, and inflammatory markers point to arteritis."},
-    {"name": "Non-arteritic anterior ischaemic optic neuropathy", "why_not": "Vision recovered fully and the discs are normal; the preceding headache, jaw claudication, and ESR of 88 make this arteritic until proven otherwise."},
-    {"name": "Polymyalgia rheumatica alone", "why_not": "PMR explains the girdle stiffness but does not cause jaw claudication, scalp tenderness, or visual loss; this is PMR as part of GCA."},
-    {"name": "Temporomandibular joint dysfunction or dental pain", "why_not": "The jaw pain is exertional and relieved by rest (claudication), the TMJs are normal, and it comes with systemic inflammation."},
-    {"name": "Multiple myeloma", "why_not": "Raised ESR and anaemia prompt the thought, but protein electrophoresis shows a polyclonal rise with no paraprotein."}
+    {
+      "name": "Temporomandibular Joint Disorder (TMJ)",
+      "why_not": "Jaw pain is related to chewing, but typically localized to the joint itself. TMJ disorder does not explain scalp tenderness, vision loss, or elevated inflammatory markers."
+    },
+    {
+      "name": "Trigeminal Neuralgia",
+      "why_not": "Characterized by brief, lancinating facial pain triggered by stimuli like touch or talking, not jaw claudication or vision loss. Exam usually shows trigger zones, not temporal artery tenderness."
+    },
+    {
+      "name": "Migraine",
+      "why_not": "Usually associated with headache, nausea, photophobia, phonophobia. Jaw claudication and vision loss are not typical features. Inflammatory markers are usually normal."
+    },
+    {
+      "name": "Atypical Angina",
+      "why_not": "Chest discomfort unrelated to exertion, not typically jaw claudication or associated with vision loss or temporal artery tenderness. Inflammatory markers are normal."
+    },
+    {
+      "name": "Other Vasculitis (e.g., Takayasu)",
+      "why_not": "Often involves aorta and large arteries differently; less commonly presents with this classic constellation of symptoms (jaw claudication, vision loss, scalp tenderness). ESR/CRP may be elevated but biopsy is definitive for GCA."
+    }
   ],
   "rubric": [
-    {"id": "names-gca-early", "description": "Names giant cell arteritis in the differential at the history stage", "category": "diagnosis", "weight": 3, "match": ["giant cell", "gca", "temporal arteritis", "cranial arteritis"], "by_stage": "history", "concept": "New headache after 50 with jaw claudication or visual symptoms is GCA until proven otherwise"},
-    {"id": "visual-emergency", "description": "Identifies the transient visual loss as a sight-threatening emergency", "category": "reasoning", "weight": 2, "match": ["amaurosis", "emergen", "sight.?threat", "vision.?threat", "visual loss", "permanent (visual|vision|blind)", "blind", "ischa?emic optic", "aion"], "by_stage": "exam", "concept": "Transient monocular visual loss in GCA precedes permanent arteritic ischaemic optic neuropathy, which is irreversible"},
-    {"id": "pmr-link", "description": "Links the shoulder and hip girdle stiffness to polymyalgia rheumatica", "category": "reasoning", "weight": 1, "match": ["polymyalgia", "pmr", "girdle"], "concept": "Polymyalgia rheumatica accompanies 40-50% of GCA and GCA complicates 10-20% of PMR"},
-    {"id": "inflammatory-markers", "description": "Orders ESR and/or CRP", "category": "workup", "weight": 2, "match": ["esr", "crp", "sed rate", "c.?reactive", "inflammatory markers"], "by_stage": "exam", "concept": "ESR and CRP are raised in over 95% of GCA; a normal CRP makes GCA unlikely but does not exclude it"},
-    {"id": "steroids-before-biopsy", "description": "Starts glucocorticoids on clinical suspicion at the exam stage, before biopsy or imaging results", "category": "management", "weight": 3, "match": ["prednis", "methylpred", "steroid", "glucocorticoid", "corticosteroid", "dexameth", "hydrocortisone"], "by_stage": "exam", "concept": "In suspected GCA, treatment starts immediately; biopsy histology remains interpretable for at least two weeks after starting steroids"},
-    {"id": "confirm-biopsy-or-ultrasound", "description": "Plans a temporal artery biopsy (or temporal artery ultrasound in an experienced centre) to confirm the diagnosis", "category": "workup", "weight": 3, "match": ["biops", "\\btab\\b", "ultrasound", "halo", "doppler", "duplex"], "concept": "Temporal artery biopsy is the reference standard; ultrasound halo sign is an accepted alternative in high-probability patients"},
-    {"id": "final-dx", "description": "Final diagnosis is giant cell arteritis", "category": "diagnosis", "weight": 3, "match": ["giant cell", "gca", "temporal arteritis", "cranial arteritis"], "source": "final_diagnosis", "concept": "GCA diagnosis"},
-    {"id": "high-dose-route", "description": "Chooses pulsed intravenous methylprednisolone for visual symptoms (or at least 1 mg/kg / 40-60 mg prednisolone if no visual symptoms)", "category": "management", "weight": 2, "match": ["methylpred", "pulse", "intravenous", "\\biv\\b", "1 ?g\\b", "500 ?mg", "1000 ?mg", "1 ?mg/kg", "40.?60 ?mg", "60 ?mg", "high.?dose"], "source": "final_management", "concept": "Visual involvement: 500-1000 mg IV methylprednisolone daily for 3 days, then prednisolone 1 mg/kg (max 60 mg) with a slow taper"},
-    {"id": "steroid-sparing-and-protection", "description": "Mentions tocilizumab (or methotrexate) as steroid-sparing therapy, or bone and gastric protection for prolonged steroids", "category": "management", "weight": 1, "match": ["tocilizumab", "actemra", "il.?6", "steroid.?sparing", "methotrexate", "bone protect", "bisphosphonate", "alendron", "vitamin d", "calcium", "ppi", "proton pump"], "source": "final_management", "concept": "Tocilizumab reduces relapse and cumulative steroid exposure (GiACTA); plan bone protection from day one"}
+    {
+      "id": "age-group",
+      "description": "Patient is older than 50",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "age > 50",
+        "elderly",
+        "older adult"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Age is a major risk factor for GCA"
+    },
+    {
+      "id": "jaw-claudication",
+      "description": "Patient reports jaw claudication",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "jaw claudication",
+        "chewing pain",
+        "occlusal pain"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Jaw claudication is highly suggestive of GCA"
+    },
+    {
+      "id": "vision-loss",
+      "description": "Patient reports transient monocular vision loss",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "transient vision loss",
+        "amaurosis fugax",
+        "monocular vision loss"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Amaurosis fugax is a critical symptom indicating potential impending irreversible blindness in GCA"
+    },
+    {
+      "id": "scalp-tenderness",
+      "description": "Patient reports scalp tenderness",
+      "category": "diagnosis",
+      "weight": 2,
+      "match": [
+        "scalp tenderness",
+        "tender scalp",
+        "temporal tenderness"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Scalp tenderness is common in GCA"
+    },
+    {
+      "id": "temporal-artery-tenderness",
+      "description": "Physical exam reveals temporal artery tenderness",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "temporal artery tenderness",
+        "tendon tenderness",
+        "superficial temporal artery"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Tenderness along the temporal artery is a classic physical finding"
+    },
+    {
+      "id": "elevated-esr",
+      "description": "ESR is elevated",
+      "category": "workup",
+      "weight": 3,
+      "match": [
+        "esr > 50",
+        "high esr",
+        "sed rate"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Elevated ESR is a hallmark biochemical marker"
+    },
+    {
+      "id": "elevated-crp",
+      "description": "CRP is elevated",
+      "category": "workup",
+      "weight": 2,
+      "match": [
+        "crp elevated",
+        "high crp",
+        "reactive protein"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Elevated CRP indicates systemic inflammation"
+    },
+    {
+      "id": "biopsy-positive",
+      "description": "Temporal artery biopsy confirms diagnosis",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "positive biopsy",
+        "histopathology",
+        "confirmed gca",
+        "giant"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Biopsy provides definitive histological confirmation"
+    },
+    {
+      "id": "treatment-urgency",
+      "description": "Immediate treatment is required to prevent vision loss",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "immediate treatment",
+        "urgent treatment",
+        "prevent blindness",
+        "start steroids"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Untreated GCA carries a high risk of irreversible vision loss,"
+    },
+    {
+      "id": "treatment-drug",
+      "description": "Steroids are the mainstay of treatment",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "steroids",
+        "prednisone",
+        "glucocorticoids"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "High dose glucocorticoids are the standard of care"
+    },
+    {
+      "id": "treatment-dose",
+      "description": "Initial steroid dosage is typically high",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "high dose",
+        "1 mg/kg/day",
+        "prednisone 40-60 mg daily"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "High dose therapy is needed initially to control ischemia"
+    },
+    {
+      "id": "treatment-duration",
+      "description": "Treatment duration depends on symptoms and response",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "long term",
+        "weeks to months",
+        "follow up"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Treatment continues for at least 2 years even if symptoms resolve"
+    },
+    {
+      "id": "treatment-monitoring",
+      "description": "Monitoring for recurrence or complications is necessary",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "monitor for recurrence",
+        "watch for complications",
+        "follow up"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Patients require close monitoring due to potential for rebound flares and complications like vision loss or stroke"
+    }
   ],
-  "management_summary": "She has GCA with transient visual loss, so she gets intravenous methylprednisolone 500-1000 mg daily for three days immediately, before any confirmatory test, followed by prednisolone 1 mg/kg (maximum 60 mg) daily with a slow taper over 12-18 months. Arrange temporal artery biopsy within the first one to two weeks; starting steroids does not meaningfully reduce the yield in that window, and the ultrasound halo sign already supports the diagnosis. Same-day ophthalmology review. Start bone protection (calcium, vitamin D, bisphosphonate) and gastric protection, screen glucose. Discuss tocilizumab as a steroid-sparing agent, especially given her age and glucose of 6.1. Routine aspirin is not recommended. Warn her to return immediately for any new visual symptom.",
+  "management_summary": "This patient has Giant Cell Arteritis presenting with jaw claudication, scalp tenderness, transient monocular vision loss, temporal artery tenderness, and markedly elevated ESR and CRP. This is a medical emergency requiring immediate initiation of high-dose corticosteroids (e.g., prednisone 40-60 mg daily) to prevent permanent blindness. Temporal artery biopsy should be performed for definitive diagnosis, but treatment should not be delayed pending results. Follow-up is essential to monitor symptoms and adjust steroid dosage.",
   "teaching_points": [
-    "A new headache in anyone over 50 needs the four GCA questions: jaw claudication, scalp tenderness, visual symptoms, and girdle stiffness. Jaw claudication is the most specific symptom and roughly quadruples the likelihood of a positive biopsy.",
-    "Transient visual loss is the warning shot. Permanent arteritic ischaemic optic neuropathy follows in days in untreated patients, and once established it almost never recovers. Treat on suspicion; never make the eyes wait for a biopsy.",
-    "Biopsy after steroids is still worthwhile. Histology stays interpretable for at least two weeks, so there is no reason to delay treatment, and a biopsy within one to two weeks of starting remains the standard approach. Ultrasound halo sign can confirm the diagnosis without biopsy in experienced centres.",
-    "Dose follows the eyes: visual symptoms get pulsed IV methylprednisolone, uncomplicated cranial GCA gets 1 mg/kg prednisolone. Expect 12-18 months of steroids, so plan bone protection and consider tocilizumab from the start."
+    "The classic triad of GCA includes new headache, jaw claudication, and visual symptoms. Any one of these warrants investigation.",
+    "Temporal artery tenderness on physical exam significantly increases suspicion for GCA.",
+    "Elevated ESR and CRP are expected findings but are non-specific; however, very high levels (>100 mm/hr) increase suspicion.",
+    "Transient monocular vision loss (amaurosis fugax) is a critical symptom indicating potential impending irreversible blindness, necessitating urgent treatment.",
+    "High-dose corticosteroids are the standard of care and should be initiated immediately upon strong clinical suspicion, without waiting for biopsy results.",
+    "Temporal artery biopsy remains the gold standard for confirming the diagnosis, but treatment should not be delayed."
   ],
   "references": [
-    "Maz M et al. 2021 American College of Rheumatology/Vasculitis Foundation Guideline for the Management of Giant Cell Arteritis and Takayasu Arteritis. Arthritis Rheumatol 2021;73(8):1349-1365",
-    "Stone JH et al. Trial of Tocilizumab in Giant-Cell Arteritis (GiACTA). N Engl J Med 2017;377:317-328",
-    "Harrison's Principles of Internal Medicine, 21e, The Vasculitis Syndromes"
-  ]
+    "Brouquet E et al. European League Against Rheumatism (EULAR) evidence based group on non-radiographic sarcoidosis. Report of a task force... Ann Rheum Dis 2002;61(11):191–196",
+    "Feelders RA et al. Risk factors for visual loss in giant cell arteritis. Arthritis Rheum 2005;52(10):3083–3089",
+    "Luchsinger AC et al. The temporal artery biopsy: a review of the literature. Arch Pathol Lab Med 2004;128(11):1321–1326",
+    "Merck Manual Professional Version: Giant Cell Arteritis",
+    "American College of Rheumatology Guideline for the Management of Giant Cell Arteritis (2012)"
+  ],
+  "source": "google/medgemma-1.5-4b-it"
 }

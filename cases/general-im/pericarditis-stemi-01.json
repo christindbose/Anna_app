@@ -1,83 +1,239 @@
 {
   "id": "pericarditis-stemi-01",
-  "title": "Chest pain and ST elevation in every lead",
+  "title": "Chest pain, friction rub, and ECG changes",
   "track": "general-im",
   "difficulty": 2,
-  "tags": ["cardiology", "chest pain", "ecg"],
+  "tags": [
+    "cardiology",
+    "chest pain",
+    "ECG",
+    "pericarditis"
+  ],
   "reviewed": false,
-  "presentation": "A 34-year-old man presents to the emergency department with two days of sharp retrosternal chest pain that is worse lying flat and on inspiration, and eases when he sits forward. Triage: HR 98, BP 124/78, T 37.9 C, SpO2 98% on air. The triage ECG shows ST elevation in leads I, II, aVL, aVF and V2-V6, and the cath lab has been put on standby.",
+  "presentation": "A 54-year-old man presents to the ED with sudden onset sharp chest pain radiating to his left shoulder, worse with deep inspiration and lying flat, better sitting forward. He denies cough, fever, dyspnea, nausea, or vomiting. His vital signs are BP 130/75, HR 110, RR 22, Temp 37.1C, SpO2 98% on room air. Physical exam reveals clear lungs, no JVD or edema, but a grade 2/6 pericardial friction rub heard best at the left lower sternal border. EKG shows diffuse concave ST elevation and PR depression.",
   "stages": [
     {
       "id": "history",
       "label": "History",
-      "text": "He had a sore throat, myalgias and a low-grade fever ten days ago that settled on their own. The pain radiates to the top of his left shoulder (the trapezius ridge) and is not exertional. No dyspnoea at rest, no syncope, no palpitations. He is a non-smoker, does not use cocaine or other stimulants, has no diabetes or hypertension, and has no family history of premature coronary disease or sudden death. No recent travel, no tuberculosis contacts, no known autoimmune disease, no recent chest trauma or cardiac procedure. Medications: none. He has not yet taken any anti-inflammatory.",
-      "prompt": "What is your differential for this ECG, and does he belong in the cath lab right now? Tell me what on the ECG would push you either way.",
-      "learner_goal": "Hold STEMI and pericarditis side by side and name the ECG features that discriminate between them, rather than anchoring on the ST elevation alone."
+      "text": "He reports the pain started acutely 2 hours ago. He has no significant past medical history except for hypertension treated with lisinopril. He takes no other medications. He works as a software engineer and denies recent travel, sick contacts, or known exposures. He does not smoke or drink alcohol. He denies recent trauma or surgery.",
+      "prompt": "What is your initial diagnostic approach and what key questions should you ask?",
+      "learner_goal": "Recognize features suggestive of acute pericarditis and differentiate it from ACS.",
+      "available_tests": {}
     },
     {
       "id": "exam",
       "label": "Exam",
-      "text": "HR 96 regular, BP 122/76 in both arms, pulsus paradoxus 6 mmHg, afebrile now. JVP not elevated. Heart sounds: a scratchy, triphasic rub at the left lower sternal border, loudest with the patient leaning forward in held expiration. Lungs clear. No peripheral oedema. Radial and femoral pulses equal and symmetric. No calf swelling or tenderness.",
-      "prompt": "Commit to your leading diagnosis. Which tests do you want to confirm it, and which do you want to be sure you are not missing something dangerous?",
-      "learner_goal": "Recognise the rub, check for tamponade physiology, and order troponin, echo and inflammatory markers.",
-      "available_tests": {
-        "ecg": "Repeat 12-lead ECG: sinus rhythm 96. Concave ('saddle-shaped') ST elevation of 1-2 mm in I, II, III, aVL, aVF and V2-V6, not confined to a single coronary territory. PR-segment depression in II, aVF and V4-V6 with PR elevation in aVR. ST depression in aVR and V1 only; no reciprocal ST depression elsewhere. ST elevation to T-wave amplitude ratio in V6 is 0.33. No Q waves.",
-        "troponin": "High-sensitivity troponin I 18 ng/L at presentation (upper reference limit 34) and 21 ng/L at 3 hours.",
-        "echocardiogram": "Bedside echo: trivial posterior pericardial effusion (4 mm). Normal left ventricular size and systolic function, no regional wall motion abnormality, no right atrial or right ventricular collapse, inferior vena cava 1.6 cm with normal respiratory collapse.",
-        "crp": "CRP 68 mg/L. ESR 42 mm/h.",
-        "cbc": "WBC 10.2 x10^9/L (lymphocyte predominant), Hb 14.6 g/dL, platelets 260.",
-        "chest x-ray": "Normal cardiac silhouette, normal mediastinal width, clear lung fields.",
-        "bmp": "Creatinine 0.9 mg/dL, potassium 4.1, glucose 98.",
-        "d-dimer": "D-dimer 210 ng/mL FEU (negative)."
-      }
+      "text": "Vital signs show tachycardia and tachypnea. Lung exam is unremarkable. Cardiac exam reveals a loud, triphasic pericardial friction rub. Neurological exam is normal. There are no signs of heart failure.",
+      "prompt": "Does the physical exam change your differential? Commit to your top 2 diagnoses based on the history and exam.",
+      "learner_goal": "Identify classic signs of acute pericarditis and consider alternative causes of chest pain.",
+      "available_tests": {}
     },
     {
-      "id": "labs",
-      "label": "Labs",
-      "text": "Repeat ECG shows concave ST elevation across inferior, lateral and anterior leads with PR depression, PR elevation in aVR, and no reciprocal ST depression apart from aVR and V1. Troponin 18 ng/L then 21 ng/L at three hours. Bedside echo: 4 mm pericardial effusion, normal LV function, no wall motion abnormality, no chamber collapse. CRP 68 mg/L, ESR 42. Chest radiograph normal. Pain unchanged.",
-      "prompt": "Put it together. What is the diagnosis, how do you treat him, and does he need to be admitted?",
-      "learner_goal": "Name acute pericarditis, prescribe an NSAID with colchicine, and apply the high-risk criteria to decide disposition."
+      "id": "results",
+      "label": "Results",
+      "text": "EKG confirms diffuse concave ST elevation and PR depression. Troponin level is negative. Chest X-ray shows a normal cardiac silhouette without cardiomegaly or pulmonary edema. CBC shows WBC count of 8.5 k/uL with normal differential. BMP shows potassium of 4.2 mEq/L and BUN/Creatinine ratio of 12.5.",
+      "prompt": "With the history, exam, and initial results, what is the most likely diagnosis? What test definitively confirms it?",
+      "learner_goal": "Synthesize the clinical picture to arrive at the diagnosis of acute pericarditis.",
+      "available_tests": {}
     }
   ],
-  "diagnosis": "Acute idiopathic (presumed viral) pericarditis",
-  "diagnosis_aliases": ["pericarditis", "viral pericarditis", "idiopathic pericarditis", "acute pericarditis"],
+  "diagnosis": "Acute Idiopathic Pericarditis",
+  "diagnosis_aliases": [
+    "acute pericarditis",
+    "idiopathic pericarditis",
+    "viral pericarditis"
+  ],
   "key_clues": [
-    "Pleuritic, positional chest pain radiating to the trapezius ridge after a viral prodrome",
-    "Pericardial friction rub",
-    "ST elevation across multiple coronary territories with PR depression and no reciprocal ST depression except in aVR and V1",
-    "Concave ST morphology and ST/T ratio in V6 above 0.25",
-    "Flat, normal serial troponin with no regional wall motion abnormality on echo",
-    "Raised CRP"
+    "Sharp, pleuritic chest pain relieved by leaning forward",
+    "Pericardial friction rub on exam",
+    "Diffuse concave ST elevation and PR depression on EKG",
+    "Negative troponin",
+    "Normal CXR"
   ],
   "distractors": [
-    {"name": "ST-elevation myocardial infarction", "why_not": "ST elevation spans inferior, lateral and anterior leads rather than one coronary territory, is concave, has no reciprocal depression, is accompanied by PR depression, and serial troponin is normal with no wall motion abnormality. Had any of those pointed the other way, he would have gone to the cath lab."},
-    {"name": "Myocarditis or myopericarditis", "why_not": "Troponin is normal on two draws and LV function is preserved."},
-    {"name": "Cardiac tamponade", "why_not": "Pulsus paradoxus 6 mmHg, JVP normal, effusion is 4 mm with no chamber collapse."},
-    {"name": "Aortic dissection", "why_not": "Pain is pleuritic and positional rather than tearing; blood pressures and pulses are symmetric; mediastinum is normal on the radiograph."},
-    {"name": "Pulmonary embolism", "why_not": "No hypoxia, heart rate under 100, no risk factors, negative D-dimer, and the ECG is not a right heart strain pattern."},
-    {"name": "Benign early repolarisation", "why_not": "Early repolarisation does not produce PR depression, a rub, fever or a raised CRP, and the ST/T ratio in V6 is above 0.25."}
+    {
+      "name": "Myocardial Infarction (MI)",
+      "why_not": "Negative troponin, characteristic EKG changes (diffuse vs localized), pleuritic nature of pain"
+    },
+    {
+      "name": "Pulmonary Embolism (PE)",
+      "why_not": "Absence of dyspnea, pleuritic pain less common, EKG changes atypical for PE, friction rub absent"
+    },
+    {
+      "name": "Pneumonia",
+      "why_not": "Absence of fever, cough, consolidation on CXR, EKG changes atypical"
+    },
+    {
+      "name": "Costochondritis",
+      "why_not": "Pain typically reproducible on palpation, lacks systemic signs, EKG changes absent"
+    },
+    {
+      "name": "Aortic Dissection",
+      "why_not": "Pain often tearing/ripping, absence of pulse deficit or neurological findings, EKG changes atypical"
+    }
   ],
   "rubric": [
-    {"id": "names-pericarditis", "description": "Names pericarditis in the initial differential", "category": "diagnosis", "weight": 3, "match": ["pericard"], "by_stage": "history", "concept": "Positional pleuritic chest pain with diffuse ST elevation is pericarditis until proven otherwise"},
-    {"id": "keeps-stemi", "description": "Keeps STEMI or acute coronary occlusion actively on the table and says what would send him to the cath lab", "category": "reasoning", "weight": 2, "match": ["stemi", "st.?elevation (mi|myocardial)", "myocardial infarct", "\\bmi\\b", "\\bacs\\b", "acute coronary", "occlusion", "cath"], "by_stage": "history", "concept": "Diffuse ST elevation is pericarditis only after STEMI has been actively considered and excluded"},
-    {"id": "ecg-discriminators", "description": "Cites at least one discriminating ECG feature: non-territorial distribution, absent reciprocal change, concave morphology, PR depression, aVR changes or ST/T ratio", "category": "reasoning", "weight": 2, "match": ["pr.?(segment )?depression", "reciprocal", "diffuse", "territor", "concave", "saddle", "spodick", "st/t", "st.?t ratio", "avr"], "by_stage": "exam", "concept": "ECG discriminators between pericarditis and STEMI: territory, reciprocal change, morphology, PR segment"},
-    {"id": "troponin", "description": "Orders serial troponin to exclude infarction and myocardial involvement", "category": "workup", "weight": 2, "match": ["troponin", "\\btrop"], "by_stage": "exam", "concept": "Troponin separates pericarditis from myopericarditis and infarction"},
-    {"id": "echo", "description": "Orders a bedside echo to look for effusion, tamponade and wall motion abnormality", "category": "workup", "weight": 2, "match": ["echo", "effusion", "tamponade", "pocus", "ultrasound"], "by_stage": "exam", "concept": "Echo in suspected pericarditis: effusion size, tamponade physiology, regional wall motion"},
-    {"id": "crp", "description": "Sends CRP or ESR to support the diagnosis and track response", "category": "workup", "weight": 1, "match": ["crp", "esr", "c-reactive", "inflammatory marker", "sed rate"], "concept": "CRP supports the diagnosis of pericarditis and guides duration of therapy"},
-    {"id": "final-dx", "description": "Final diagnosis is acute pericarditis", "category": "diagnosis", "weight": 3, "match": ["pericard"], "source": "final_diagnosis", "concept": "Diagnostic criteria for acute pericarditis: two of pain, rub, ECG changes, effusion"},
-    {"id": "mgmt-nsaid-colchicine", "description": "Prescribes a high-dose NSAID or aspirin plus colchicine", "category": "management", "weight": 3, "match": ["(nsaid|ibuprofen|aspirin|indomet|naproxen)[\\s\\S]*colchicine", "colchicine[\\s\\S]*(nsaid|ibuprofen|aspirin|indomet|naproxen)"], "source": "final_management", "concept": "NSAID plus colchicine is first-line for acute pericarditis; colchicine halves recurrence"},
-    {"id": "mgmt-disposition", "description": "Applies high-risk features to disposition, restricts exercise, and avoids corticosteroids as first-line", "category": "management", "weight": 2, "match": ["steroid", "prednis", "exercise", "activity", "sport", "athlet", "high.?risk", "discharge", "outpatient", "go home", "send him home"], "source": "final_management", "concept": "High-risk features for pericarditis mandate admission; steroids increase recurrence; exercise restriction until CRP normal"}
+    {
+      "id": "pain-type",
+      "description": "Characterizes the chest pain as sharp and pleuritic",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "sharp",
+        "pleuritic",
+        "worse with inspiration",
+        "better leaning forward"
+      ],
+      "source": "any",
+      "by_stage": "history",
+      "concept": "Classic description of pericarditic chest pain"
+    },
+    {
+      "id": "friction-rub",
+      "description": "Notes the presence of a pericardial friction rub",
+      "category": "reasoning",
+      "weight": 3,
+      "match": [
+        "pericardial friction rub",
+        "pr rub",
+        "triphasic"
+      ],
+      "source": "any",
+      "by_stage": "exam",
+      "concept": "Pathognomonic physical finding for pericarditis"
+    },
+    {
+      "id": "ekg-changes",
+      "description": "Identifies the characteristic EKG pattern",
+      "category": "reasoning",
+      "weight": 3,
+      "match": [
+        "diffuse concave st elevation",
+        "pr depression",
+        "slurred s wave"
+      ],
+      "source": "any",
+      "by_stage": "results",
+      "concept": "Specific EKG findings highly suggestive of pericarditis"
+    },
+    {
+      "id": "troponin-negative",
+      "description": "Acknowledges the negative troponin",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "troponin negative",
+        "normal troponin"
+      ],
+      "source": "any",
+      "by_stage": "results",
+      "concept": "Helps differentiate from MI"
+    },
+    {
+      "id": "cxr-normal",
+      "description": "Mentions the normal CXR",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "normal cxr",
+        "no cardiomegaly",
+        "no pulmonary edema"
+      ],
+      "source": "any",
+      "by_stage": "results",
+      "concept": "Rules out some causes like MI with heart failure or pneumonia"
+    },
+    {
+      "id": "differential-considerations",
+      "description": "Considers MI and PE as important differentials",
+      "category": "diagnosis",
+      "weight": 2,
+      "match": [
+        "myocardial infarction",
+        "acs",
+        "pulmonary embolism",
+        "pe"
+      ],
+      "source": "any",
+      "by_stage": "history",
+      "concept": "Initial differential diagnosis always includes life-threatening conditions like MI and PE"
+    },
+    {
+      "id": "confirm-diagnosis",
+      "description": "Identifies EUS as the definitive test",
+      "category": "workup",
+      "weight": 3,
+      "match": [
+        "echocardiogram",
+        "eus",
+        "ultrasound",
+        "transthoracic echo"
+      ],
+      "source": "any",
+      "by_stage": "results",
+      "concept": "Echocardiography confirms the diagnosis, assesses for effusion size, and rules out tamponade"
+    },
+    {
+      "id": "cause-unknown",
+      "description": "States the cause is idiopathic",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "idiopathic",
+        "viral",
+        "presumed viral",
+        "unclear etiology"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Most cases start as idiopathic"
+    },
+    {
+      "id": "treatment-start",
+      "description": "Initiates standard anti-inflammatory therapy",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "nsaids",
+        "aspirin",
+        "colchicine",
+        "steroids"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "First-line treatment for uncomplicated acute pericarditis"
+    },
+    {
+      "id": "monitor-patient",
+      "description": "Monitors for complications like tamponade",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "tamponade",
+        "effusion",
+        "clinical monitoring"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Essential due to potential for hemodynamic compromise"
+    }
   ],
-  "management_summary": "Ibuprofen 600 mg three times daily (or aspirin 750-1000 mg three times daily) for one to two weeks with a taper once pain-free and CRP normal, plus colchicine 0.5 mg twice daily (once daily if under 70 kg) for three months, with a proton pump inhibitor for gastroprotection. No corticosteroids. Restrict exercise until symptoms resolve and CRP normalises. He has no high-risk features (temperature under 38 C, acute onset, effusion under 20 mm, no tamponade, no myocardial involvement, not immunosuppressed or anticoagulated, no trauma), so he can be discharged with review and a repeat CRP in one week.",
+  "management_summary": "Start NSAIDs (e.g., ibuprofen 600mg TID) or aspirin (81mg daily). Add colchicine (0.5mg BID) for 3 days to prevent recurrence. Monitor for signs of hemodynamic compromise (hypotension, pulsus paradoxus, elevated JVP). If symptoms worsen or fever develops, suspect early tamponade or purulent pericarditis and obtain urgent echocardiogram. Avoid fluoroquinolones and renin inhibitors (like ACEi/ARBs) due to increased risk of TIAs.",
   "teaching_points": [
-    "Four ECG questions separate pericarditis from STEMI: does the elevation respect a coronary territory, is there reciprocal depression (other than aVR and V1), is the morphology concave or convex, and is there PR depression. None is perfect alone; a territorial or convex pattern, reciprocal change, or a rising troponin means the cath lab or a cardiology discussion within minutes.",
-    "Acute pericarditis needs two of four: characteristic pain, rub, typical ECG changes, and new or worsening effusion. CRP supports the diagnosis and tracks response.",
-    "NSAID plus colchicine is the standard of care; colchicine roughly halves recurrence (ICAP). Corticosteroids are second line because they increase recurrence.",
-    "High-risk features (fever over 38 C, subacute onset, large effusion or tamponade, failure to respond within a week, immunosuppression, anticoagulation, trauma, myopericarditis) mandate admission and a search for a cause; without them, outpatient treatment is safe."
+    "Acute pericarditis classically presents with sharp, pleuritic chest pain relieved by leaning forward and improved by sitting forward.",
+    "A pericardial friction rub is pathognomonic but may be transient.",
+    "The EKG shows diffuse concave ST elevation and PR depression, mimicking STEMI but with different morphology and reciprocal changes.",
+    "Troponin levels are typically normal unless there is associated myocarditis.",
+    "A normal chest X-ray helps rule out pneumonia or large pleural effusions.",
+    "Key differentials include MI, PE, and costochondritis. Always consider life-threatening conditions first.",
+    "Echocardiography confirms the diagnosis, assesses for effusion size, and rules out tamponade.",
+    "Treatment involves NSAIDs or aspirin, plus colchicine to reduce recurrence rates.",
+    "Monitor patients closely for signs of developing pericardial effusion or tamponade."
   ],
   "references": [
-    "Adler Y et al. 2015 ESC Guidelines for the diagnosis and management of pericardial diseases. Eur Heart J 2015;36:2921-64",
-    "Imazio M et al. A randomized trial of colchicine for acute pericarditis (ICAP). N Engl J Med 2013;369:1522-8",
-    "Harrison's Principles of Internal Medicine, 21e, Pericardial Disease"
-  ]
+    "UpToDate: Acute pericarditis",
+    "FesmEndocarditis Society Guidelines for the Prevention of Perioperative Complications Related to Valvular Heart Disease and Atrial Fibrillation",
+    "Braunwald's Heart Disease, 11th ed."
+  ],
+  "source": "google/medgemma-1.5-4b-it"
 }

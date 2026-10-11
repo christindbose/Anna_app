@@ -1,84 +1,258 @@
 {
   "id": "aki-nsaid-obstruction-01",
-  "title": "A creatinine of 3.1 and a dribble",
+  "title": "Acute Kidney Injury Secondary to Bilateral Obstructive Uropathy",
   "track": "general-im",
   "difficulty": 2,
-  "tags": ["nephrology", "acute kidney injury", "urology"],
+  "tags": [
+    "acute kidney injury",
+    "obstructive uropathy",
+    "benign prostatic hyperplasia",
+    "pharmacology"
+  ],
   "reviewed": false,
-  "presentation": "A 74-year-old man presents with three days of nausea, poor appetite and difficulty passing urine: frequency, a weak stream, waking four times a night, and since this morning only a dribble. Triage labs: creatinine 3.1 mg/dL (1.0 six months ago), BUN 58, K 5.6, HCO3 19, Na 137. HR 92, BP 148/88, T 36.9 C.",
+  "presentation": "A 72-year-old male presents to the ED with a 3-day history of shortness of breath and lower extremity edema. He denies chest pain or palpitations. His vital signs show BP 140/85 mmHg, HR 110 bpm, RR 22 breaths/min, Temp 37.1°C, O2 sat 94% on room air. Triage labs show BUN 45 mg/dL, Creatinine 2.8 mg/dL, Potassium 5.1 mEq/L, Sodium 138 mEq/L, Glucose 110 mg/dL, Bicarbonate 22 mEq/L. He reports taking furosemide 40mg daily for 2 years and lisinopril 20mg daily for hypertension. He denies any recent surgery or trauma.",
   "stages": [
     {
       "id": "history",
       "label": "History",
-      "text": "Past history: hypertension, osteoarthritis of both knees, and prostatic symptoms for two years that he has never had treated. Medications: lisinopril 20 mg daily and hydrochlorothiazide 25 mg daily for years. Three weeks ago he started over-the-counter naproxen 500 mg twice daily for his knees. One week ago he started diphenhydramine 50 mg at night for sleep. He has deliberately cut down on fluids 'so I don't have to keep going'. No haematuria, no flank pain, no fever, no rash, no joint swelling, no recent contrast, antibiotics or new prescriptions. No vomiting or diarrhoea. No known kidney disease.",
-      "prompt": "Organise your differential into prerenal, intrinsic and post-renal causes. Before any laboratory test, what one bedside thing do you want?",
-      "learner_goal": "Use the three-bucket framework, flag the NSAID/ACE inhibitor/diuretic combination and the new anticholinergic, and ask for a bladder scan or catheter before anything else."
+      "text": "He describes the shortness of breath as non-productive and the edema as bilateral and pitting, worse in the evening. He notes he has been feeling increasingly fatigued over the past week. He denies fever, chills, flank pain, dysuria, or nocturia. He denies any known history of kidney disease, diabetes, or heart failure. He does report needing to get up multiple times during the night to urinate for the past month, which he initially attributed to needing more sleep. He denies any recent increases in his diuretic dose or lisinopril dosage. He lives alone and manages his own medications.",
+      "prompt": "What are your key concerns based on the history, and what initial investigations would you perform?",
+      "learner_goal": "Identify potential causes of AKI including obstructive uropathy, volume depletion, and medication effects, and prioritize investigations.",
+      "available_tests": {}
     },
     {
       "id": "exam",
       "label": "Exam",
-      "text": "HR 92, BP 148/88 lying and 140/84 standing. Mucous membranes slightly dry, JVP low-normal, no oedema. Abdomen: a tense, dull, mildly tender suprapubic mass rising to the umbilicus. Rectal examination: smoothly enlarged prostate, no nodules, normal anal tone. No rash, no joint effusions. Lungs clear.",
-      "prompt": "Which test first, and what does it tell you? Commit to the main mechanism of his kidney injury and say what else is contributing.",
-      "learner_goal": "Recognise retention on exam, confirm it with a bladder scan, and use the urinalysis and drug history to weigh obstruction against prerenal and intrinsic causes.",
-      "available_tests": {
-        "bladder scan": "Post-void residual 1,150 mL.",
-        "urinalysis": "Specific gravity 1.012, pH 6, no blood, trace protein, no leukocytes or nitrites. Microscopy: occasional hyaline casts, no granular or muddy brown casts, no red cell casts, no white cells, no crystals.",
-        "urine electrolytes": "Urine sodium 48 mEq/L, urine creatinine 42 mg/dL; FENa 2.4% (on a thiazide). Urine urea 180 mg/dL; FEUrea 41%.",
-        "renal ultrasound": "Bilateral moderate hydronephrosis with dilated ureters to the bladder. Bladder distended with a thickened wall. Kidneys 11.2 and 11.5 cm with preserved cortical thickness. No stones.",
-        "cbc": "Hb 13.4 g/dL, WBC 8.9 x10^9/L with a normal eosinophil count, platelets 230.",
-        "ecg": "Sinus rhythm 90, no peaked T waves, QRS 92 ms.",
-        "ck": "Creatine kinase 140 U/L.",
-        "bmp repeat": "Creatinine 3.2, K 5.7, HCO3 18, phosphate 4.9, calcium 8.9.",
-        "psa": "Deferred: PSA is unreliable during retention and after catheterisation."
-      }
+      "text": "On examination, the patient is alert and oriented but appears uncomfortable. He has bibasilar crackles on lung auscultation. There is significant bilateral pitting edema extending to the mid-shin. Peripheral pulses are intact, and there is no peripheral edema. JVP is unremarkable. Heart sounds are regular without murmurs. Abdomen is soft and non-tender. His urine output was measured as 30 ml in the last hour. He denies any recent illness or hospitalizations.",
+      "prompt": "How does the physical exam support or refute the history, and what are the next steps in the workup?",
+      "learner_goal": "Assess for volume overload and oliguria, supporting obstructive uropathy, and plan further diagnostic testing.",
+      "available_tests": {}
     },
     {
-      "id": "catheter",
-      "label": "After the catheter",
-      "text": "A urethral catheter passes easily and drains 1,400 mL of clear urine immediately. Ultrasound shows bilateral moderate hydronephrosis with a thick-walled bladder and normal-sized kidneys. Urinalysis is bland with hyaline casts only. Naproxen, lisinopril, hydrochlorothiazide and diphenhydramine are held. Over the next 12 hours he passes 4.2 L of urine. At 24 hours creatinine is 2.2 and K 4.6; at 72 hours creatinine is 1.3.",
-      "prompt": "What happened here, and what contributed? How do you manage the next 48 hours, and what goes on his discharge medication list?",
-      "learner_goal": "Name obstructive AKI with haemodynamic contributors, manage post-obstructive diuresis and hyperkalaemia, and plan drug review, an alpha-blocker and urology follow-up."
+      "id": "results",
+      "label": "Results",
+      "text": "Further laboratory results include CBC showing Hgb 14 g/dL, WBC 8.5 k/uL, Plt 250 k/uL. Urinalysis reveals hematuria (microscopic +2 RBCs), proteinuria (trace), and pyuria (WBC 100/uL). Renal ultrasound shows bilateral hydronephrosis and bladder distention. A CT scan of the abdomen confirms bilateral ureteral obstruction due to enlarged prostate, with no evidence of stones or masses. Serum potassium remains elevated at 5.3 mEq/L. Serum bicarbonate decreases to 18 mEq/L.",
+      "prompt": "Putting it all together, what is the most likely diagnosis, and what is the immediate management goal?",
+      "learner_goal": "Synthesize clinical data to confirm obstructive uropathy causing AKI, and determine the priority for intervention.",
+      "available_tests": {}
     }
   ],
-  "diagnosis": "Acute kidney injury from acute urinary retention (bilateral obstructive uropathy due to benign prostatic hyperplasia precipitated by an anticholinergic), with a prerenal contribution from NSAID, ACE inhibitor and thiazide",
-  "diagnosis_aliases": ["obstructive", "obstruction", "post-renal", "postrenal", "urinary retention", "hydronephrosis", "bph", "prostat", "obstructive uropathy"],
+  "diagnosis": "Bilateral Obstructive Uropathy secondary to Benign Prostatic Hyperplasia causing Acute Kidney Injury",
+  "diagnosis_aliases": [
+    "obstructive nephropathy",
+    "postrenal acute kidney injury"
+  ],
   "key_clues": [
-    "New lower urinary tract symptoms progressing to a dribble in a man with untreated prostatic symptoms",
-    "Diphenhydramine started one week ago (anticholinergic precipitant of retention)",
-    "Palpable, dull suprapubic mass with a post-void residual of 1,150 mL and bilateral hydronephrosis",
-    "Naproxen plus lisinopril plus hydrochlorothiazide with reduced fluid intake",
-    "Bland urine sediment with no granular casts",
-    "Creatinine falls to 1.3 within 72 hours of catheter drainage"
+    "History of nocturia suggests underlying BPH",
+    "Physical exam findings of volume overload (crackles, edema) and oliguria (30 ml/hr)",
+    "Urinalysis showing hematuria and pyuria",
+    "Renal ultrasound confirming bilateral hydronephrosis",
+    "CT confirming bilateral ureteral obstruction due to BPH",
+    "Elevated potassium and decreased bicarbonate indicating metabolic acidosis",
+    "Patient taking furosemide (loop diuretic) exacerbates volume overload"
   ],
   "distractors": [
-    {"name": "Prerenal AKI from poor intake and the NSAID/ACE inhibitor/diuretic combination", "why_not": "Contributes, but there is no orthostasis, a 1.4 L bladder and bilateral hydronephrosis explain the injury, and creatinine fell only after the catheter."},
-    {"name": "Acute tubular necrosis", "why_not": "Urine sediment is bland with no granular casts, and creatinine fell to 1.3 within 72 hours of decompression; ATN recovers over one to three weeks."},
-    {"name": "Acute interstitial nephritis from naproxen", "why_not": "No pyuria, white cell casts, rash, fever or eosinophilia, and recovery was too fast."},
-    {"name": "Prostate cancer with obstruction", "why_not": "Prostate is smooth without nodules; PSA cannot be interpreted during retention, so check it after recovery."},
-    {"name": "Rhabdomyolysis", "why_not": "CK is normal and the dipstick is negative for blood."},
-    {"name": "Bilateral renal artery stenosis unmasked by the ACE inhibitor", "why_not": "Kidneys are symmetric and normal sized, and hydronephrosis provides the explanation."}
+    {
+      "name": "Intrinsic renal disease",
+      "why_not": "Ultrasound showed hydronephrosis, not parenchymal changes like glomerulonephritis or interstitial nephritis"
+    },
+    {
+      "name": "Acute tubular necrosis (ATN)",
+      "why_not": "No history of sepsis, rhabdomyolysis, or contrast exposure; ultrasound shows obstruction, not ischemic changes"
+    },
+    {
+      "name": "Volume depletion",
+      "why_not": "Clinical exam shows volume overload; diuretic use also points away from dehydration"
+    },
+    {
+      "name": "Diuretic-induced volume depletion",
+      "why_not": "While possible, the volume overload findings (edema, crackles, oliguria) strongly suggest obstruction"
+    },
+    {
+      "name": "Heart failure",
+      "why_not": "While symptoms overlap, the primary finding is bilateral hydronephrosis confirmed by imaging, pointing to a urinary tract issue."
+    }
   ],
   "rubric": [
-    {"id": "three-buckets", "description": "Frames the differential as prerenal, intrinsic and post-renal", "category": "reasoning", "weight": 2, "match": ["pre.?renal", "intrinsic", "post.?renal", "obstruct", "\\batn\\b", "tubular necrosis", "interstitial"], "by_stage": "history", "concept": "AKI is sorted into prerenal, intrinsic and post-renal before anything else"},
-    {"id": "obstruction-early", "description": "Raises obstruction or retention from the history alone", "category": "diagnosis", "weight": 2, "match": ["obstruct", "retention", "post.?renal", "\\bbph\\b", "prostat", "hydronephro"], "by_stage": "history", "concept": "New lower urinary tract symptoms with AKI means obstruction until the bladder is scanned"},
-    {"id": "drug-review", "description": "Flags the NSAID, ACE inhibitor and thiazide combination and the new anticholinergic", "category": "reasoning", "weight": 2, "match": ["nsaid", "naproxen", "\\bace\\b", "acei", "lisinopril", "diuretic", "hctz", "thiazide", "hydrochlorothiazide", "triple whammy", "diphenhydramine", "anticholinergic", "antihistamine"], "by_stage": "history", "concept": "The triple whammy (NSAID + RAAS blocker + diuretic) and anticholinergics in BPH are the commonest avoidable causes of AKI in older men"},
-    {"id": "bladder-scan", "description": "Asks for a bladder scan or catheter (or renal ultrasound) before or alongside the labs", "category": "workup", "weight": 3, "match": ["bladder scan", "post.?void", "residual", "catheter", "foley", "ultrasound", "renal us", "hydronephro", "bladder"], "by_stage": "exam", "concept": "Bladder scan is the first test in AKI: obstruction is the most quickly reversible cause"},
-    {"id": "urine-exam", "description": "Looks at the urine (dipstick, sediment, urine sodium or FEUrea) and knows FENa is unreliable on a diuretic", "category": "workup", "weight": 2, "match": ["urinalysis", "\\bua\\b", "sediment", "casts", "muddy", "granular", "microscopy", "dipstick", "fena", "fe ?urea", "urine (na|sodium)", "fractional excretion"], "by_stage": "exam", "concept": "Urine sediment separates ATN and interstitial nephritis from prerenal and obstructive AKI; FEUrea replaces FENa on diuretics"},
-    {"id": "final-dx", "description": "Final diagnosis names obstruction or urinary retention as the main mechanism", "category": "diagnosis", "weight": 3, "match": ["obstruct", "retention", "post.?renal", "hydronephro", "\\bbph\\b", "prostat"], "source": "final_diagnosis", "concept": "Obstructive AKI from acute urinary retention"},
-    {"id": "mgmt-decompress", "description": "Decompresses the bladder with a catheter and leaves it in", "category": "management", "weight": 3, "match": ["catheter", "foley", "decompress", "relie", "drain"], "source": "final_management", "concept": "Relief of obstruction is the treatment; the earlier the relief, the more complete the recovery"},
-    {"id": "mgmt-hold-nephrotoxins", "description": "Stops the NSAID and anticholinergic, and holds the ACE inhibitor and diuretic until recovery", "category": "management", "weight": 2, "match": ["(hold|stop|withhold|discontinu|avoid|cease|no more)[^.]{0,60}(nsaid|naproxen|lisinopril|\\bace|diuretic|thiazide|hydrochlorothiazide|hctz|diphenhydramine|anticholinergic)", "(nsaid|naproxen|lisinopril|ace inhibitor|diuretic|thiazide|hydrochlorothiazide|hctz|diphenhydramine)[^.]{0,40}(hold|stop|withh|discontinu|avoid|off)"], "source": "final_management", "concept": "Remove haemodynamic insults during AKI; restart RAAS blockade only after recovery"},
-    {"id": "mgmt-post-obstructive-diuresis", "description": "Anticipates post-obstructive diuresis: monitors urine output and electrolytes and replaces losses when needed", "category": "management", "weight": 2, "match": ["post.?obstructive", "diuresis", "urine output", "hourly (urine|output)", "strict (ins|input|intake|fluid balance|i/o)", "(replace|match)[^.]{0,30}(urine|output|loss)", "electrolyte", "potassium", "hyperkal", "magnesium"], "source": "final_management", "concept": "Post-obstructive diuresis can cause volume depletion and electrolyte loss in the first 24 to 48 hours"}
+    {
+      "id": "volume-status",
+      "description": "Assesses volume status before committing to a cause",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "volume overload",
+        "edema",
+        "crackles",
+        "oliguria",
+        "jvp",
+        "pulses",
+        "mucous membranes",
+        "skin turgor",
+        "pitting edema",
+        "peripheral edema",
+        "ascites",
+        "ascites"
+      ],
+      "source": "any",
+      "by_stage": "exam",
+      "concept": "Volume status classification guides differential diagnosis"
+    },
+    {
+      "id": "urinary-findings",
+      "description": "Notes urinalysis findings suggesting infection or inflammation",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "hematuria",
+        "pyuria",
+        "casts",
+        "proteinuria",
+        "infection",
+        "inflammation",
+        "cystitis",
+        "pyelonephritis"
+      ],
+      "source": "any",
+      "by_stage": "results",
+      "concept": "Urinalysis helps differentiate causes of AKI"
+    },
+    {
+      "id": "imaging-findings",
+      "description": "Identifies hydronephrosis and obstruction",
+      "category": "workup",
+      "weight": 3,
+      "match": [
+        "hydronephrosis",
+        "ureteromegaly",
+        "bladder distension",
+        "obstruction",
+        "dilation",
+        "ultrasound",
+        "ct",
+        "renal ultrasound",
+        "ct urography"
+      ],
+      "source": "any",
+      "by_stage": "results",
+      "concept": "Imaging confirms the obstructive etiology"
+    },
+    {
+      "id": "medication-effects",
+      "description": "Considers the role of diuretics",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "furosemide",
+        "loop diuretic",
+        "volume overload",
+        "diuretic resistance",
+        "polyuria"
+      ],
+      "source": "any",
+      "by_stage": "history",
+      "concept": "Diuretics can exacerbate volume overload in obstruction"
+    },
+    {
+      "id": "bph-link",
+      "description": "Connects BPH to the diagnosis",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "benign prostatic hyperplasia",
+        "enlarged prostate",
+        "lower urinary tract symptoms",
+        "luts",
+        "nocturia",
+        "urination frequency",
+        "hesitancy"
+      ],
+      "source": "any",
+      "by_stage": "history",
+      "concept": "History of LUTS is suggestive of BPH as the cause of obstruction"
+    },
+    {
+      "id": "naming-diagnosis",
+      "description": "Names the diagnosis",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "obstructive uropathy",
+        "postrenal acute kidney injury",
+        "bilateral obstructive uropathy",
+        "benign prostatic hyperplasia"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Diagnosis naming"
+    },
+    {
+      "id": "management-priority",
+      "description": "Identifies relieving the obstruction as the priority",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "relieve obstruction",
+        "drain urine",
+        "catheterization",
+        "ureteral stent",
+        "percutaneous nephrostomy",
+        "remove obstruction"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Immediate goal is to relieve the urinary backup"
+    },
+    {
+      "id": "treatment-goals",
+      "description": "States goals of therapy",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "improve renal function",
+        "resolve aki",
+        "manage complications",
+        "electrolyte correction",
+        "acidosis correction",
+        "prevent complications",
+        "infection",
+        "contractures"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Therapeutic goals include reversing AKI and managing associated issues"
+    },
+    {
+      "id": "monitoring-response",
+      "description": "Mentions monitoring response to therapy",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "monitor renal function",
+        "urine output",
+        "creatinine",
+        "potassium",
+        "bicarbonate",
+        "therapy effect"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Monitoring is crucial to assess effectiveness and guide further care"
+    }
   ],
-  "management_summary": "Leave the catheter in. Expect post-obstructive diuresis: hourly urine output, daily weights, and electrolytes (potassium, sodium, magnesium, phosphate) every 6 to 12 hours for the first 24 hours; replace roughly half of the urine output with 0.45% saline only if he becomes volume deplete or the output exceeds about 200 mL/h for several hours, because most of the diuresis is physiological off-loading. Repeat ECG and potassium, and treat hyperkalaemia if it rises or the ECG changes. Stop naproxen and diphenhydramine permanently; hold lisinopril and hydrochlorothiazide until creatinine is back to baseline, then restart one at a time with a creatinine check at one week. Start tamsulosin, plan a trial of void in one to two weeks with urology follow-up, and check PSA after the acute episode. Paracetamol and topical NSAID for the knees.",
+  "management_summary": "The immediate priority is to relieve the urinary obstruction. This is typically achieved via urethral catheterization if possible, or placement of a ureteral stent or percutaneous nephrostomy tube if urethral access is difficult or unsuccessful. The goal is to restore urine flow, improve renal function, resolve the metabolic acidosis, and correct electrolyte abnormalities. Monitoring of urine output, renal function markers, and electrolytes is essential. Antibiotics should be considered given the pyuria, although definitive culture results are pending.",
   "teaching_points": [
-    "Every AKI gets three questions in order: is the bladder full (bladder scan or catheter), is the patient volume deplete, and what is in the urine. Obstruction is the most quickly reversible cause and the easiest to miss in a man with 'just prostate symptoms'.",
-    "NSAID plus ACE inhibitor or ARB plus diuretic, the 'triple whammy', removes the kidney's defences against hypoperfusion: prostaglandin-dependent afferent dilatation, angiotensin-dependent efferent constriction, and volume. Add a new anticholinergic in a man with BPH and retention follows.",
-    "Urine indices have caveats: FENa is uninterpretable on a diuretic (use FEUrea; under 35% suggests prerenal), and obstruction can give any pattern. A bland sediment argues against ATN and interstitial nephritis; the speed of recovery after relief is the final arbiter.",
-    "After decompression, monitor for post-obstructive diuresis and electrolyte loss, and restart renin-angiotensin blockade only once the kidney has recovered."
+    "Obstructive uropathy is a common cause of AKI, especially in older men with BPH.",
+    "History of LUTS is important.",
+    "Clinical signs of volume overload (edema, crackles) and oliguria point towards obstruction.",
+    "Urinalysis often shows hematuria and pyuria in obstructive uropathy.",
+    "Imaging (ultrasound or CT) confirms hydronephrosis and identifies the level/cause of obstruction.",
+    "Diuretics can exacerbate volume overload in patients with urinary obstruction.",
+    "Relieving the obstruction is the cornerstone of management to reverse AKI and correct associated metabolic derangements."
   ],
   "references": [
-    "Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group. KDIGO Clinical Practice Guideline for Acute Kidney Injury. Kidney Int Suppl 2012;2:1-138",
-    "Lapi F et al. Concurrent use of diuretics, angiotensin converting enzyme inhibitors, and angiotensin receptor blockers with non-steroidal anti-inflammatory drugs and risk of acute kidney injury: nested case-control study. BMJ 2013;346:e8525",
-    "Harrison's Principles of Internal Medicine, 21e, Acute Kidney Injury"
-  ]
+    "UpToDate article on Acute Kidney Injury",
+    "KDIGO Guideline on Management of Acute Kidney Injury",
+    "American College of Emergency Physicians (ACEP) Clinical Policies"
+  ],
+  "source": "google/medgemma-1.5-4b-it"
 }

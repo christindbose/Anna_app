@@ -33,6 +33,7 @@ ap.add_argument("--port", type=int, default=8001)
 ap.add_argument("--host", default="127.0.0.1")
 ap.add_argument("--dtype", default="float16")
 ap.add_argument("--max-new-tokens", type=int, default=1024)
+ap.add_argument("--repetition-penalty", type=float, default=1.0, help="HF repetition_penalty; ~1.1 curbs loops in long JSON drafts")
 args = ap.parse_args()
 
 DTYPE = getattr(torch, args.dtype)
@@ -107,6 +108,8 @@ def _generate(messages, max_tokens, temperature, streamer=None):
     kwargs = dict(max_new_tokens=min(max_tokens, args.max_new_tokens), do_sample=temperature > 0, pad_token_id=tokenizer.eos_token_id)
     if BAD_WORDS:
         kwargs["bad_words_ids"] = BAD_WORDS
+    if args.repetition_penalty != 1.0:
+        kwargs["repetition_penalty"] = args.repetition_penalty
     if temperature > 0:
         kwargs["temperature"] = temperature
         kwargs["top_p"] = 0.95

@@ -123,7 +123,7 @@ Anna as the silent reviewer for a few, or a resident friend). Target 30 cases at
 
 ### Week 2: library and coaching depth
 - [x] Script to draft cases from a topic list, with a review checklist.
-- [~] 13 drafted cases (8 general IM, 5 rheum), all `reviewed: false`. Grow to 30 and review.
+- [~] Case library is drafted by MedGemma itself (`scripts/draft_library.py`: draft pass + self-review pass, deterministic schema normalisation). 3 cases live (AKI/obstruction, pericarditis, GCA), all `reviewed: false`; the 10 hand-written cases were retired on 2026-10-11 at the user's request.
 - [x] "Senior attending" mode: pushes back on the differential, asks for defense.
 - [x] Progress dashboard: cases done, rubric items missed, topic heatmap.
 - [x] SQLite persistence, single-user auth.
@@ -176,3 +176,4 @@ Anna as the silent reviewer for a few, or a resident friend). Target 30 cases at
   route, configurable server address stored on the phone) and deployed to GitHub Pages by
   `.github/workflows/pages.yml` after the repo went public. Backend stays on the GPU box behind a
   Cloudflare quick tunnel started by the user; app password set in `.env`.
+- 2026-10-11: Library regenerated from MedGemma on the user's request ("all cases from MedGemma knowledge", "only 3 for now"). Drafting needed: repetition penalty 1.1, compact JSON, 6000-token budget, and a normaliser for schema slips. Known MedGemma errors to review: pericarditis colchicine duration (says 3 days; guideline is 3 months), aspirin dose, an invented reference or two.

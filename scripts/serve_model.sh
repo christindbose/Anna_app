@@ -15,4 +15,4 @@ export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 if [ -z "${ANNA_LLM_DTYPE:-}" ]; then
   case "$MODEL" in *gemma*|*Gemma*) ANNA_LLM_DTYPE=float32 ;; *) ANNA_LLM_DTYPE=float16 ;; esac
 fi
-exec python "$(dirname "$0")/model_server.py" --model "$MODEL" --dtype "$ANNA_LLM_DTYPE" --port 8001 --host 127.0.0.1 "$@"
+exec python "$(dirname "$0")/model_server.py" --model "$MODEL" --dtype "$ANNA_LLM_DTYPE" --port 8001 --host 127.0.0.1 --max-new-tokens "${ANNA_LLM_MAX_NEW_TOKENS:-4096}" "$@"

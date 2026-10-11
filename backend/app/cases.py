@@ -55,6 +55,7 @@ class Case(BaseModel):
     management_summary: str = ""
     teaching_points: list[str] = Field(default_factory=list)
     references: list[str] = Field(default_factory=list)
+    source: str | None = None  # e.g. the model that drafted it
 
     @field_validator("stages")
     @classmethod

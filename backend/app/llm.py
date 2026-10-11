@@ -75,7 +75,14 @@ def extract_json(text: str) -> dict:
     text = text.strip()
     text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text, flags=re.IGNORECASE)
     start = text.find("{")
-    end = text.rfind("}")
-    if start == -1 or end == -1:
+    if start == -1:
         raise ValueError("no JSON object in model reply")
-    return json.loads(text[start : end + 1])
+    # Parse the first complete object and ignore anything the model appended after it.
+    try:
+        obj, _ = json.JSONDecoder().raw_decode(text[start:])
+        return obj
+    except json.JSONDecodeError:
+        end = text.rfind("}")
+        if end == -1:
+            raise
+        return json.loads(text[start : end + 1])

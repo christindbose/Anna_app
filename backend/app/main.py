@@ -47,6 +47,14 @@ class StartRequest(BaseModel):
     track: str | None = None
 
 
+
+def _case_title(case_id: str) -> str:
+    """Title for listings; sessions may outlive a case that was removed from the library."""
+    try:
+        return get_case(case_id).title
+    except KeyError:
+        return f"{case_id} (retired case)"
+
 class RespondRequest(BaseModel):
     text: str
 
@@ -191,12 +199,12 @@ async def finish(_: Auth, db: DB, session_id: str, body: FinishRequest):
 @app.get("/api/sessions")
 def list_sessions(_: Auth, db: DB):
     rows = db.exec(select(CaseSession).order_by(CaseSession.started_at.desc()).limit(50))
-    return [{"id": s.id, "case_id": s.case_id, "title": get_case(s.case_id).title, "status": s.status, "attending_id": s.attending_id, "score": s.score, "max_score": s.max_score, "started_at": s.started_at, "finished_at": s.finished_at} for s in rows]
+    return [{"id": s.id, "case_id": s.case_id, "title": _case_title(s.case_id), "status": s.status, "attending_id": s.attending_id, "score": s.score, "max_score": s.max_score, "started_at": s.started_at, "finished_at": s.finished_at} for s in rows]
 
 
 @app.get("/api/reviews/due")
 def reviews_due(_: Auth, db: DB):
-    return [{"id": r.id, "concept": r.concept, "question": r.question, "answer": r.answer, "case_title": get_case(r.case_id).title, "due_at": r.due_at, "repetitions": r.repetitions} for r in eng.due_reviews(db)]
+    return [{"id": r.id, "concept": r.concept, "question": r.question, "answer": r.answer, "case_title": _case_title(r.case_id), "due_at": r.due_at, "repetitions": r.repetitions} for r in eng.due_reviews(db)]
 
 
 @app.post("/api/reviews/{item_id}/grade")
