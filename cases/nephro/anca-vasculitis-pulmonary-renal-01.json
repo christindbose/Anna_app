@@ -1,0 +1,277 @@
+{
+  "id": "anca-vasculitis-pulmonary-renal-01",
+  "title": "Hemoptysis, Rapidly Progressive Glomerulonephritis, and Sinus Disease",
+  "track": "nephro",
+  "difficulty": 4,
+  "tags": [
+    "ancva",
+    "pulmonary-renal",
+    "sinusitis",
+    "vasculitis",
+    "anti-gbm"
+  ],
+  "reviewed": false,
+  "presentation": "A 58-year-old male smoker with a 40 pack-year history presents with three weeks of intermittent hemoptysis, followed by the development of shortness of breath and facial swelling. He denies fever, chills, or significant pain. Triage vital signs: BP 130/80 mmHg, HR 95 bpm, RR 22 breaths/min, SpO2 90% on room air. Initial labs show Hgb 10.5 g/dL, WBC 11.2 k/uL, BUN 35 mg/dL, Cr 2.2 mg/dL, SCr 1.5 mg/dL, eGFR 40 ml/min/1.73m2. Urinalysis reveals microscopic hematuria and proteinuria. A chest X-ray shows bilateral patchy opacities, particularly prominent in the lower lobes, and mild cardiomegaly.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "Patient reports a 3-week history of non-productive cough evolving into intermittent episodes of blood-streaked sputum ('hemoptysis'). He also describes increasing dyspnea over the past week, specifically on exertion, and bilateral facial puffiness noticed yesterday. He denies constitutional symptoms like fever, night sweats, or weight loss. His social history is significant for a 40 pack-year smoking history, currently smoking half a pack per day. He works as a construction worker. Past medical history includes hypertension, managed with lisinopril, and type 2 diabetes mellitus, treated with metformin. He denies recent travel, sick contacts, or new medications. He notes he sometimes uses over-the-counter nasal decongestants occasionally for seasonal allergies but doesn't remember the specifics.",
+      "prompt": "What is your differential diagnosis for this patient's presentation, and what key information do you need to pursue further?",
+      "learner_goal": "Generate a broad differential including pulmonary-renal syndromes, anti-GBM disease, ANCA-associated vasculitis, and other causes of pulmonary hemorrhage and glomerulonephritis. Focus on gathering details about respiratory symptoms, renal function, autoimmune history, and social factors.",
+      "available_tests": {}
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "On examination, the patient is alert and oriented but appears mildly dyspneic. Vital signs show tachycardia (HR 95 bpm), tachypnea (RR 22 breaths/min), and hypoxia (SpO2 90% on room air). Blood pressure is 130/80 mmHg. Lung auscultation reveals crackles predominantly in the bases bilaterally. Heart sounds are normal except for mild S3 gallop. Abdominal examination is unremarkable. Skin examination shows no rashes or purpura. Neurological examination is grossly intact.",
+      "prompt": "How does the physical exam influence your differential diagnosis? Which tests should you prioritize?",
+      "learner_goal": null,
+      "available_tests": {
+        "chest xray": "Bilateral patchy opacities, lower lobe predominant",
+        "urinalysis": "Microscopic hematuria, moderate proteinuria",
+        "complete blood count": "Hgb 10.5 g/dL, WBC 11.2 k/uL",
+        "renal function": "BUN 35 mg/dL, Cr 2.2 mg/dL, SCr 1.5 mg/dL, eGFR 40 ml/min/1.73m2",
+        "pulse oximetry": "SpO2 90% on room air",
+        "nasal endoscopy": "Mild posterior epistaxis, clear mucosa",
+        "arthralgia": "None reported",
+        "serologic testing": "ANA, ANCA, Anti-GBM antibodies",
+        "tissue biopsy": "Lung biopsy, kidney biopsy",
+        "imaging": "CT angiography chest"
+      }
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "Repeat laboratory investigations confirm anemia (Hgb 9.8 g/dL), leukocytosis (WBC 12.5 k/uL), elevated BUN (40 mg/dL), significantly elevated Creatinine (3.5 mg/dL), SCr (2.3 mg/dL), and severely decreased eGFR (25 ml/min/1.73m2). Urinalysis confirms moderate proteinuria (3+ on dipstick, 1.8 g/day protein excretion) and persistent microscopic hematuria. Chest X-ray findings are confirmed with CT angiography showing bilateral diffuse ground-glass opacities and consolidation, suggestive of alveolar hemorrhage, along with evidence of pulmonary artery filling defects suggesting pulmonary embolism. Renal ultrasound shows normal size kidneys with no hydronephrosis. Serological workup shows negative ANA, negative ANCA (C-ANCA and P-ANCA), and negative anti-GBM antibody ELISA.",
+      "prompt": "Integrate the clinical picture and lab results. What is the most likely diagnosis, and what immediate steps should be taken?",
+      "learner_goal": "Synthesize the findings of pulmonary hemorrhage, rapidly progressive glomerulonephritis, negative autoantibodies, and consider the differential diagnoses. Recognize the urgency due to severe renal impairment and respiratory distress.",
+      "available_tests": {}
+    }
+  ],
+  "diagnosis": "ANCA-associated vasculitis (granulomatosis with polyangiitis) with diffuse alveolar haemorrhage and rapidly progressive glomerulonephritis",
+  "diagnosis_aliases": [
+    "ancva",
+    "gpa",
+    "pulmonary-renal",
+    "vasculitis",
+    "anti-gbm"
+  ],
+  "key_clues": [
+    "Pulmonary hemorrhage (hemoptysis, hypoxia, CXR findings, CT angiogram)",
+    "Rapidly progressive glomerulonephritis (elevated Cr, proteinuria, hematuria)",
+    "Negative ANCA and anti-GBM antibodies",
+    "Smoking history",
+    "Absence of systemic symptoms like fever, rash, arthralgias",
+    "Evidence of pulmonary embolism"
+  ],
+  "distractors": [
+    {
+      "name": "Anti-GBM disease",
+      "why_not": "Negative anti-GBM antibodies"
+    },
+    {
+      "name": "Goodpasture's Syndrome",
+      "why_not": "Negative anti-GBM antibodies"
+    },
+    {
+      "name": "Granulomatosis with Polyangiitis (GPA)",
+      "why_not": "Negative ANCA"
+    },
+    {
+      "name": "Microscopic Polyangiitis (MPA)",
+      "why_not": "Negative ANCA"
+    },
+    {
+      "name": "Diffuse Alveolar Hemorrhage (DAH)",
+      "why_not": "This is a pattern, not a diagnosis; requires underlying cause."
+    },
+    {
+      "name": "Severe Asthma Exacerbation",
+      "why_not": "Lack of typical asthma history, presence of hemoptysis and RPGN"
+    }
+  ],
+  "rubric": [
+    {
+      "id": "pulmonary-hemodynamics",
+      "description": "Assess the need for further pulmonary vascular imaging",
+      "category": "workup",
+      "weight": 2,
+      "match": [
+        "ct angiography",
+        "cta",
+        "v/q scan",
+        "pulmonary embolism",
+        "pa catheterisation"
+      ],
+      "source": "any",
+      "by_stage": "results",
+      "concept": "Pulmonary embolism is common in GPA and needs ruling out/treating"
+    },
+    {
+      "id": "renal-function",
+      "description": "Quantifies the severity of renal failure",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "cr < 2",
+        "cr 2-3",
+        "cr > 3",
+        "renal failure",
+        "acute kidney injury",
+        "akd"
+      ],
+      "source": "any",
+      "by_stage": "results",
+      "concept": "Severity guides urgency and potential interventions like dialysis"
+    },
+    {
+      "id": "autoimmune-workup",
+      "description": "Initial serologies rule out common mimics",
+      "category": "workup",
+      "weight": 2,
+      "match": [
+        "ana",
+        "anca",
+        "anti-gbm",
+        "autoimmune",
+        "serology",
+        "antibody"
+      ],
+      "source": "any",
+      "by_stage": "results",
+      "concept": "Negative serologies narrow down the differential significantly"
+    },
+    {
+      "id": "vasculitis-features",
+      "description": "Features point towards vasculitis rather than isolated DAH",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "hemoptysis",
+        "glomerulonephritis",
+        "pulmonary hemorrhage",
+        "renal failure",
+        "hematuria",
+        "proteinuria"
+      ],
+      "source": "any",
+      "by_stage": "results",
+      "concept": "Combination of pulmonary and renal involvement strongly suggests vasculitis"
+    },
+    {
+      "id": "smoking-association",
+      "description": "Smoking history increases suspicion for GPA",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "smoker",
+        "pack-years",
+        "smoking",
+        "associations",
+        "risk factor"
+      ],
+      "source": "any",
+      "by_stage": "results",
+      "concept": "Smoking is a major risk factor for GPA"
+    },
+    {
+      "id": "treatment-urgency",
+      "description": "Need for urgent immunosuppression",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "immunosuppression",
+        "induction therapy",
+        "cyclophosphamide",
+        "rituximab",
+        "steroids",
+        "vasculitis",
+        "urgent"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "GPA requires prompt initiation of potent immunosuppression"
+    },
+    {
+      "id": "mortality-risk",
+      "description": "High mortality associated with severe GPA",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "high mortality",
+        "poor prognosis",
+        "severe vasculitis",
+        "risk factor",
+        "survival"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Severe GPA carries substantial morbidity and mortality"
+    },
+    {
+      "id": "renal-support",
+      "description": "Consider dialysis",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "dialysis",
+        "renal replacement therapy",
+        "crt",
+        "renal support",
+        "kidney failure"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Severe AKD requires consideration of renal replacement therapy"
+    },
+    {
+      "id": "diagnosis-confirmation",
+      "description": "Biopsy is needed for definitive diagnosis",
+      "category": "workup",
+      "weight": 2,
+      "match": [
+        "biopsy",
+        "lung biopsy",
+        "kidney biopsy",
+        "histopathology",
+        "definitive",
+        "confirm"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Histopathological confirmation is required for definitive diagnosis"
+    },
+    {
+      "id": "final-diagnosis",
+      "description": "Names the final diagnosis",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "ancva",
+        "gpa",
+        "pulmonary\\-renal",
+        "vasculitis",
+        "anti\\-gbm",
+        "anca\\-associated vasculitis"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "ANCA-associated vasculitis (granulomatosis with polyangiitis) with diffuse alveolar haemorrhage and rapidly progressive glomerulonephritis"
+    }
+  ],
+  "management_summary": "This patient has severe ANCA-associated vasculitis (likely GPA) with pulmonary hemorrhage and rapidly progressive glomerulonephritis, necessitating urgent inpatient care. Initiate induction immunosuppression immediately with cyclophosphamide 500mg IV daily plus prednisone 1 mg/kg/day. Consider rituximab as an alternative or adjunct, especially if cyclophosphamide is contraindicated. Provide supportive care including oxygen supplementation, potentially mechanical ventilation if respiratory failure develops, and renal replacement therapy (dialysis) given the severe acute kidney injury (Cr 3.5 mg/dL, eGFR 25 ml/min/1.73m2). Further investigation includes CT angiography of the chest to definitively assess for pulmonary embolism and lung biopsy to confirm vasculitis. Avoid NSAIDs and ACE inhibitors (lisinopril). Disposition: Admit to ICU.",
+  "teaching_points": [
+    "The combination of pulmonary hemorrhage and rapidly progressive glomerulonephritis in a smoker without positive ANCA or anti-GBM antibodies strongly suggests ANCA-associated vasculitis, particularly GPA.",
+    "Seronegative vasculitis requires careful exclusion of mimics, but the clinical picture here is highly characteristic.",
+    "Prompt initiation of aggressive immunosuppression (cyclophosphamide +/- steroids) is crucial for survival in severe GPA.",
+    "Severe renal failure often necessitates temporary or permanent dialysis.",
+    "Pulmonary embolism is a common comorbidity and needs to be addressed concurrently."
+  ],
+  "references": [
+    "UpToDate: Pulmonary-Renal Syndromes",
+    "UpToDate: Granulomatosis with Polyangiitis",
+    "Gomperts GT et al. N Engl J Med 2007;357(26):2676-84"
+  ],
+  "source": "google/medgemma-1.5-4b-it"
+}

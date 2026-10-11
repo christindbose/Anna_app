@@ -6,18 +6,35 @@
     "topic": "Staphylococcus aureus aortic valve infective endocarditis complicated by aortic root abscess (new PR prolongation progressing to heart block) and an embolic stroke; the stroke is the presenting complaint and the murmur is subtle",
     "diagnosis_keywords": [
       "endocarditis"
+    ],
+    "diagnosis_name": "Staphylococcus aureus aortic valve infective endocarditis with aortic root abscess, heart block and embolic stroke",
+    "management_keywords": [
+      "vancomycin",
+      "cefazolin",
+      "flucloxacillin",
+      "nafcillin",
+      "oxacillin",
+      "surg"
     ]
   },
   {
-    "id": "anti-gbm-pulmonary-renal-01",
+    "id": "anca-vasculitis-pulmonary-renal-01",
     "track": "nephro",
     "difficulty": 4,
-    "topic": "Anti-glomerular basement membrane disease presenting as haemoptysis and rapidly progressive glomerulonephritis in a smoker, initially mistaken for pneumonia; distinguishing from ANCA vasculitis and deciding on plasmapheresis",
+    "topic": "ANCA-associated vasculitis (granulomatosis with polyangiitis) presenting as pulmonary-renal syndrome: haemoptysis, rapidly progressive glomerulonephritis and sinus disease in a smoker initially treated as pneumonia; distinguishing from anti-GBM disease and deciding on induction immunosuppression",
     "diagnosis_keywords": [
-      "anti-gbm",
-      "anti-glomerular",
-      "glomerular basement",
-      "goodpasture"
+      "anca",
+      "granulomatosis",
+      "polyangiitis",
+      "gpa"
+    ],
+    "diagnosis_name": "ANCA-associated vasculitis (granulomatosis with polyangiitis) with diffuse alveolar haemorrhage and rapidly progressive glomerulonephritis",
+    "management_keywords": [
+      "cyclophosphamide",
+      "rituximab",
+      "methylpred",
+      "steroid",
+      "plasma"
     ]
   },
   {
@@ -28,6 +45,14 @@
     "diagnosis_keywords": [
       "obesity hypoventilation",
       "ohs"
+    ],
+    "diagnosis_name": "Acute-on-chronic hypercapnic respiratory failure from obesity hypoventilation syndrome with obstructive sleep apnoea",
+    "management_keywords": [
+      "non-invasive",
+      "noninvasive",
+      "bipap",
+      "niv",
+      "bilevel"
     ]
   },
   {
@@ -38,6 +63,11 @@
     "diagnosis_keywords": [
       "spontaneous bacterial peritonitis",
       "sbp"
+    ],
+    "diagnosis_name": "Spontaneous bacterial peritonitis with hepatorenal syndrome-AKI in decompensated cirrhosis",
+    "management_keywords": [
+      "cef",
+      "albumin"
     ]
   },
   {
@@ -49,6 +79,11 @@
       "haemophagocytic",
       "hemophagocytic",
       "hlh"
+    ],
+    "diagnosis_name": "Secondary haemophagocytic lymphohistiocytosis triggered by EBV-associated lymphoma",
+    "management_keywords": [
+      "etoposide",
+      "dexamethasone"
     ]
   },
   {
@@ -59,6 +94,10 @@
     "diagnosis_keywords": [
       "malaria",
       "falciparum"
+    ],
+    "diagnosis_name": "Severe Plasmodium falciparum malaria",
+    "management_keywords": [
+      "artesunate"
     ]
   },
   {
@@ -68,6 +107,10 @@
     "topic": "Primary adrenal insufficiency presenting as hypotension unresponsive to fluids, hyponatraemia and hyperkalaemia in a young woman with autoimmune hypothyroidism recently started on levothyroxine; recognising adrenal crisis and giving hydrocortisone before confirmation",
     "diagnosis_keywords": [
       "adrenal"
+    ],
+    "diagnosis_name": "Primary adrenal insufficiency (Addison's disease) presenting as adrenal crisis",
+    "management_keywords": [
+      "hydrocortisone"
     ]
   },
   {
@@ -77,6 +120,14 @@
     "topic": "Adult-onset Still's disease in a young adult with quotidian fever, evanescent salmon rash, arthritis, sore throat and very high ferritin after extensive negative infectious workup; Yamaguchi criteria and macrophage activation syndrome as a complication",
     "diagnosis_keywords": [
       "still"
+    ],
+    "diagnosis_name": "Adult-onset Still's disease complicated by macrophage activation syndrome",
+    "management_keywords": [
+      "steroid",
+      "prednis",
+      "methylpred",
+      "anakinra",
+      "il-1"
     ]
   },
   {
@@ -87,6 +138,11 @@
     "diagnosis_keywords": [
       "herpes",
       "hsv"
+    ],
+    "diagnosis_name": "Herpes simplex virus encephalitis",
+    "management_keywords": [
+      "acyclovir",
+      "aciclovir"
     ]
   },
   {
@@ -99,6 +155,14 @@
       "humoral hypercalc",
       "squamous",
       "lung"
+    ],
+    "diagnosis_name": "PTHrP-mediated humoral hypercalcaemia of malignancy from squamous cell lung cancer",
+    "management_keywords": [
+      "zoledron",
+      "bisphosphonate",
+      "pamidronate",
+      "saline",
+      "calcitonin"
     ]
   }
 ]

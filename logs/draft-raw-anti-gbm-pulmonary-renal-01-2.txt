@@ -1,123 +1,98 @@
-thought
-The user wants a progressive disclosure teaching case for a senior internal medicine resident focusing on Anti-Glomerular Basement Membrane Disease (Anti-GBM disease).
-
-**Case Requirements:**
-*   **ID:** `anti-gbm-pulmonary-renal-01`
-*   **Topic:** Anti-GBM disease presenting as Haemoptysis & Rapidly Progressive Glomerulonephritis (RPGN) in a smoker, initially mistaken for pneumonia; distinguishing from ANCA vasculitis and deciding on plasmapheresis.
-*   **Track:** `nephro`
-*   **Difficulty:** 4 (Senior Resident level)
-*   **JSON Schema:** Must match the provided schema exactly.
-*   **Strict JSON Output:** Single line, no formatting.
-*   **Validation:** Must pass the provided schema.
-*   **Diagnosis:** Must be *exactly* `anti-gbm`.
-*   **Patient:** Fictional.
-*   **Facts:** Internally consistent and medically accurate.
-*   **Distractors:** Realistic and well-explained.
-*   **Rubric:** Lenient regexes, lowercase, 8-10 items, 1-3 weights, at least one source "final_diagnosis" and "final_management".
-*   **Structure:** 3-5 stages (History, Exam, Results, Twist/Further Management - for advanced).
-*   **Word Count:** Presentation 60-120 words, Stages 120-250 words total, Total 450-900 words.
-*   **Advanced Elements:** Atypical/subtle presentation, comorbidities/drug effects/complications, plausible red herring, decision with real risk.
-*   **Teaching Points:** 4-6 specific, testable statements.
-*   **References:** 2-4 real guidelines/papers.
-
-**Plan:**
-1.  **Create Patient Profile:** Male, mid-50s, heavy smoker, presents with cough, hemoptysis, fatigue, and shortness of breath. Initially treated for pneumonia.
-2.  **Develop Stages:**
-    *   **Stage 1 (History):** Focus on smoking history, respiratory symptoms, lack of infectious signs, failure to improve with antibiotics. Ask about autoimmune history, kidney issues, medications.
-    *   **Stage 2 (Exam):** Vital signs (maybe mild hypoxia/tachypnea), lung exam (crackles, consolidation?), renal exam (normal BP, no edema?).
-    *   **Stage 3 (Results):** Initial workup shows elevated inflammatory markers, anemia, elevated creatinine, proteinuria, possibly eosinophilia, maybe a negative ANA/DSBIA, but positive anti-GBM antibodies. Imaging reveals bilateral diffuse alveolar hemorrhage (DAH) pattern on CT scan.
-    *   **Stage 4 (Twist/Management):** Decision point regarding plasma exchange vs. immunosuppression, considering the underlying pathology and potential complications like pulmonary hemorrhage, renal failure, and systemic vasculitis.
-3.  **Integrate Key Features:** Smoking history, hemoptysis, RPGN (elevated Cr, proteinuria), DAH on CT, positive anti-GBM antibodies.
-4.  **Incorporate Distractors:**
-    *   **Pneumonia:** Initial misdiagnosis due to cough and crackles.
-    *   **ANCA Vasculitis:** Similar presentation (cough, hemoptysis, RPGN), but typically associated with ANCA positivity (C-ANCA/p-ANCA) and often different antibody profile (though overlap exists). Distinguish via anti-GBM testing.
-    *   **Diffuse Alveolar Hemorrhage (DAH) - other causes:** E.g., idiopathic, drug-induced (NSAIDs, anticoagulants), connective tissue disease.
-    *   **Goodpasture Syndrome (Anti-GBM):** This is the direct diagnosis.
-5.  **Develop Rubric:** Create 8-10 items covering diagnosis, workup, reasoning, and management. Ensure one matches "anti-gbm", one matches "plasmapheresis", and others cover key concepts like differentiating anti-GBM from ANCA, recognizing DAH, importance of anti-GBM antibodies, role of imaging, and timing of treatment. Use lenient regexes.
-6.  **Write Teaching Points:** Concise takeaways relevant to the case.
-7.  **Write References:** Cite relevant guidelines/reviews on Anti-GBM disease, DAH, ANCA vasculitis.
-8.  **Draft Content:** Write the text for each stage, ensuring accuracy and flow. Include vital signs and lab/imaging results precisely.
-9.  **Refine and Edit:** Check for consistency, clarity, medical accuracy, word count, and adherence to all requirements (especially the exact diagnosis and JSON format). Ensure the progression feels natural for a senior resident.
-10. **Format as JSON:** Construct the final JSON object on a single line.
-
-**(Self-Correction during thought process):**
-*   Initial thought: Maybe make the patient female? User specified male implicitly via ID prefix, stick to male.
-*   Need to ensure the "twist" makes sense for a senior resident – perhaps deciding between plasma exchange and immunosuppression based on clinical picture, or confirming the diagnosis definitively. Adding the CT finding of DAH strengthens the anti-GBM link compared to just ANCA vasculitis.
-*   Make sure the rubric items clearly distinguish anti-GBM from ANCA vasculitis (antibody profile, potentially clinical features though often similar).
-*   Ensure the management summary reflects standard practice (plasma exchange + immunosuppression +/- steroids).
-*   Double-check the exact diagnosis required (`anti-gbm`) and ensure it's the final answer, not a broader term like "Goodpasture".<unused95>```json
+```jsonc
 {
   "id": "anti-gbm-pulmonary-renal-01",
-  "title": "Hemoptysis and Renal Failure in a Heavy Smoker",
+  "title": "Hemoptysis and rapidly progressive glomerulonephritis",
   "track": "nephro",
   "difficulty": 4,
-  "tags": ["anti-gbm", "pulmonary-renal", "vasculitis", "hemoptysis", "rpgn", "smoking"],
+  "tags": ["pulmonary-renal", "vasculitis", "glomerulonephritis", "hemoptysis"],
   "reviewed": false,
-  "presentation": "A 56-year-old man with a 50 pack-year smoking history presents to the ED with a 3-day history of productive cough, pleuritic chest pain, and significant hemoptysis (estimated 200cc blood). He also reports increasing fatigue and shortness of breath over the past week. He was initially treated empirically for community-acquired pneumonia with azithromycin and doxycycline, but his symptoms have worsened without improvement.",
+  "presentation": "A 58-year-old man presents to the emergency department with a 3-day history of hemoptysis (approximately 1 cup of blood) and fatigue. He also reports mild dyspnea on exertion. His vital signs show BP 130/80 mmHg, HR 95 bpm, RR 20 breaths/min, Temp 37.2°C, O2 sat 94% on room air. Initial labs reveal leukocytosis (WBC 13.5 k/uL) and elevated C-reactive protein (CRP 120 mg/L). A chest X-ray shows bilateral patchy infiltrates.",
   "stages": [
     {
       "id": "history",
       "label": "History",
-      "text": "He denies fever, chills, or recent travel. His smoking history is significant. Past medical history includes hypertension controlled with amlodipine and occasional alcohol use. He denies known autoimmune diseases, chronic kidney disease, or recent medication changes beyond his antihypertensive. He describes the cough as initially non-productive but becoming productive with rusty sputum, and the hemoptysis as intermittent but sometimes large amounts. He has noticed some ankle swelling over the last few days.",
-      "prompt": "What is your differential diagnosis, and what further questions should you ask?",
-      "learner_goal": "Consider differential including infection, malignancy, vasculitis, and drug reactions before focusing on specific tests."
+      "text": "Patient is a 62-year-old male smoker with a 40 pack-year history. He denies fever, chills, night sweats, weight loss, or significant abdominal pain. He reports occasional epistaxis recently but denies other overt bleeding. He takes warfarin for atrial fibrillation. He has a history of hypertension treated with lisinopril. He denies recent travel or sick contacts. Family history is notable for his father having died of lung cancer.",
+      "prompt": "What is your differential diagnosis for hemoptysis in a smoker, and what is the most important initial step?",
+      "learner_goal": "Generate a broad differential including pulmonary infection, malignancy, and vasculitis, prioritize ruling out infection and malignancy based on clinical picture, and order a chest CT scan.",
+      "available_tests": {
+        "chest x ray": "Chest X-ray: Bilateral patchy infiltrates.",
+        "cbc": "CBC: WBC 13.5 k/uL",
+        "crp": "CRP: 120 mg/L",
+        "coags": "Coagulation profile: INR 2.1",
+        "cardiac enzymes": "Troponin I: <0.01 ng/mL",
+        "blood cultures": "Blood cultures: Negative",
+        "urine microscopy": "Urinalysis: Hematuria (3+ RBCs), Proteinuria (3+)",
+        "urine microscopy": "Urine microscopy: Leukocyturia (5-10 WBCs/HPF)",
+        "urine microscopy": "Urine microscopy: Red blood cell casts"
+      }
     },
     {
       "id": "exam",
       "label": "Exam",
-      "text": "Vital signs show temperature 37.1°C, BP 145/88 mmHg, HR 105 bpm, RR 24 breaths/min, SpO2 89% on room air. Physical examination reveals scattered crackles predominantly in the right lower lung field. There is no cyanosis or clubbing. Cardiac exam is unremarkable. Abdomen is soft, non-tender, with trace bilateral pitting edema in the ankles. Neurological exam is intact.",
-      "prompt": "Does the exam help differentiate? What are your leading diagnoses and next steps?",
-      "learner_goal": "Recognize hypoxia and tachycardia, consider PE, and initiate workup for causes of hemoptysis and respiratory distress."
+      "text": "On examination, he is alert and oriented. Vital signs are stable. Lung auscultation reveals crackles predominantly in the right lower lung field. Heart rate is 95 bpm. No peripheral edema is noted. Abdomen is soft and non-tender.",
+      "prompt": "Does the physical exam significantly alter your differential diagnosis? Commit to your leading diagnosis.",
+      "learner_goal": "Recognize the significance of crackles in the setting of hemoptysis and infiltrates, solidify suspicion for an underlying inflammatory process like vasculitis.",
+      "available_tests": {
+        "respiratory effort": "Respiratory effort: Mildly increased",
+        "oxygen saturation": "Oxygen saturation: 94% on room air",
+        "heart rate": "Heart rate: 95 bpm",
+        "blood pressure": "Blood pressure: 130/80 mmHg",
+        "temperature": "Temperature: 37.2°C",
+        "peripheral edema": "Peripheral edema: None",
+        "abdominal tenderness": "Abdominal tenderness: None"
+      }
     },
     {
       "id": "results",
       "label": "Results",
-      "text": "Initial labs show WBC 14.5 k/uL, Hgb 10.2 g/dL, Plt 280k/uL, CRP 180 mg/L. Arterial Blood Gas shows pH 7.38, PaCO2 35 mmHg, PaO2 55 mmHg, HCO3 24 mmol/L (consistent with hypoxemic respiratory acidosis). Chest X-ray shows extensive bilateral patchy airspace opacities, particularly in the right middle lobe and lingula, suggestive of diffuse alveolar hemorrhage (DAH). CT angiography confirms bilateral DAH with no evidence of pulmonary embolism. Urinalysis shows microscopic hematuria and protein 2+ g/dL. Serum creatinine is 1.8 mg/dL.",
-      "prompt": "Putting it all together. What is the most likely unifying diagnosis, and what is the immediate management plan?",
-      "learner_goal": "Synthesize findings to confirm anti-GBM disease and outline initial treatment strategy."
+      "text": "Repeat labs confirm WBC 14.2 k/uL, CRP 135 mg/L. Blood cultures remain negative. Coagulation profile remains unchanged. Troponin I remains undetectable. Urinalysis shows significant hematuria (3+ RBCs), proteinuria (3+), leukocyturia (5-10 WBCs/HPF), and microscopic analysis revealing red blood cell casts. Bronchoscopy with bronchoalveolar lavage (BAL) yields purulent material and numerous eosinophils. Transbronchial biopsy (TBBx) of the right middle lobe shows necrotizing granulomatous inflammation with crescent formation in arterioles and glomerular capillary loops.",
+      "prompt": "Integrate all findings. What is the definitive diagnosis, and what is the immediate next step?",
+      "learner_goal": "Synthesize the clinical presentation, laboratory findings (especially renal involvement with RBC casts), bronchoscopic BAL, and crucially, the transbronchial biopsy results to establish the diagnosis of ANCA-associated vasculitis (GPA) and initiate appropriate therapy.",
+      "available_tests": {
+        "urine microscopy": "Urine microscopy: Red blood cell casts",
+        "bronchoscopy bal": "Bronchoscopy BAL: Purulent material, numerous eosinophils",
+        "transbronchial biopsy": "Transbronchial Biopsy: Necrotizing granulomatous inflammation, crescent formation in arterioles and glomerular capillary loops."
+      }
     }
   ],
-  "diagnosis": "anti-gbm",
-  "diagnosis_aliases": ["goodpasture syndrome", "anti-glomerular basement membrane disease"],
+  "diagnosis": "ANCA-associated vasculitis (likely granulomatosis with polyangiitis - GPA) with diffuse alveolar haemorrhage and rapidly progressive glomerulonephritis",
+  "diagnosis_aliases": ["anca vasculitis", "granulomatosis with polyangiitis (gpa)", "wegener's granulomatosis", "microscopic polyangiitis (mpa)", "eosinophilic granulomatosis with polyangiitis (egpa)"],
   "key_clues": [
-    "Heavy smoker with acute onset cough, hemoptysis, dyspnea, and fatigue",
-    "Hypoxia and tachypnea",
-    "Chest X-ray/CT showing Diffuse Alveolar Hemorrhage (DAH)",
-    "Elevated inflammatory markers (WBC, CRP)",
-    "Evidence of renal involvement (hematuria, proteinuria, elevated creatinine)",
-    "Positive anti-GBM antibodies"
+    "Hemoptysis + Dyspnea + Crackles + Infiltrates on CXR",
+    "Significant systemic inflammation (leukocytosis, high CRP)",
+    "Evidence of pulmonary hemorrhage (purulent BAL, eosinophils)",
+    "Rapidly progressive glomerulonephritis (hematuria, proteinuria, RBC casts)",
+    "Smoking history",
+    "Necrotizing granulomatous inflammation with crescents on TBBx"
   ],
   "distractors": [
-    {"name": "ANCA-associated vasculitis", "why_not": "While presentation overlaps, anti-GBM antibodies are positive, and ANCA testing would be negative."},
-    {"name": "Idiopathic Diffuse Alveolar Hemorrhage", "why_not": "Systemic symptoms (fatigue), renal involvement, and smoking history point towards a systemic cause."},
-    {"name": "Pneumocystis Pneumonia", "why_not": "Lack of fever, immunocompromised state not mentioned, and DAH pattern on imaging is less typical."},
-    {"name": "Pulmonary Embolism", "why_not": "CTA ruled out PE, and the pattern of DAH is characteristic of anti-GBM disease."},
-    {"name": "Drug-induced Pulmonary Hemorrhage", "why_not": "No offending drugs identified in the history."}
+    {"name": "Pneumonia (bacterial)", "why_not": "Negative blood cultures, lack of high fever, presence of RBC casts and eosinophils on BAL."},
+    {"name": "Pulmonary Embolism", "why_not": "Lack of pleuritic chest pain, absence of DVT signs, presence of crackles and eosinophils, renal findings."},
+    {"name": "Lung Cancer", "why_not": "While possible given smoking history, the acute presentation, systemic inflammation, renal findings, and biopsy results strongly favor vasculitis."},
+    {"name": "Diffuse Alveolar Hemorrhage (DAH) without vasculitis", "why_not": "Usually idiopathic or related to drugs/toxins, less likely to present with such prominent systemic inflammation and clear renal involvement, biopsy findings point to vasculitis."}
   ],
   "rubric": [
-    {"id": "volume-status", "description": "Assess volume status before committing to a cause", "category": "reasoning", "weight": 2, "match": ["euvol", "hypovol", "hypervol", "orthostat", "jvp", "mucous membrane", "skin turgor", "oedema"], "by_stage": "history", "concept": "Hyponatremia is classified by volume status before anything else"},
-    {"id": "broad-ddx", "description": "Differential includes SIADH, a hypovolemic cause, and an endocrine cause (thyroid or adrenal)", "category": "diagnosis", "weight": 2, "match": ["(siadh|inappropriate).*(thyroid|adrenal|cortisol|tsh)|(thyroid|adrenal|cortisol|tsh).*(siadh|inappropriate)"], "by_stage": "exam", "concept": "The euvolemic hyponatremia differential: SIADH, hypothyroidism, adrenal insufficiency, polydipsia, low solute intake"},
-    {"id": "urine-studies", "description": "Orders urine osmolality and urine sodium as the discriminating tests", "category": "workup", "weight": 3, "match": ["urine (osm|osmolality)", "urine (na|sodium)", "urine studies", "urine lytes", "urine electrolytes"], "by_stage": "exam", "concept": "Urine osmolality and urine sodium are the first branch points in hyponatremia"},
-    {"id": "serum-osm", "description": "Checks serum osmolality to exclude pseudohyponatremia or hyperglycaemia", "category": "workup", "weight": 1, "match": ["serum osm", "plasma osm", "pseudohypo", "measured osm"], "concept": "Confirm true hypotonic hyponatremia before working it up"},
-    {"id": "rule-out-endocrine", "description": "Requests TSH and cortisol before labelling SIADH", "category": "workup", "weight": 2, "match": ["tsh", "thyroid", "cortisol", "adrenal"], "by_stage": "labs", "concept": "SIADH is a diagnosis of exclusion; thyroid and adrenal function must be normal"},
-    {"id": "links-lung", "description": "Connects the smoking history, weight loss, cough, or hilar mass to a paraneoplastic cause", "category": "reasoning", "weight": 2, "match": ["small cell", "sclc", "lung (cancer|ca|mass|malignancy)", "paraneoplastic", "hilar", "malignan"], "concept": "New SIADH in a smoker is small cell lung cancer until proven otherwise"},
-    {"id": "names-siadh", "description": "Final diagnosis is SIADH", "category": "diagnosis", "weight": 3, "match": ["siadh", "inappropriate (adh|antidiuretic)", "syndrome of inappropriate"], "source": "final_diagnosis", "concept": "SIADH criteria"},
-    {"id": "mgmt-severity", "description": "Symptoms, not the number, decide treatment urgency. Moderate or severe symptoms get hypertonic saline; the correction ceiling is about 8 mEq/L in 24 hours.", "category": "management", "weight": 3, "match": ["hypertonic", "3%", "fluid restrict", "100 ?ml bolus", "150 ?ml", "8 ?m(eq|mol)", "osmotic demyelination", "central pontine", "overcorrect", "too fast", "rate of correction", "6 ?m(eq|mol)"], "source": "final_management", "concept": "Symptomatic hyponatremia: 100-150 mL 3% saline bolus, recheck sodium in 20 minutes and repeat up to twice, aiming for a 4-6 mEq/L rise in the first 6 hours and no more than 8 mEq/L in 24 hours. Then fluid restrict and treat the cause."},
-    {"id": "mgmt-rate-limit", "description": "Mentions a correction ceiling (about 8 mEq/L per 24 h) or the risk of osmotic demyelination", "category": "management", "weight": 2, "match": ["8 ?m(eq|mol)", "osmotic demyelination", "central pontine", "overcorrect", "too fast", "rate of correction", "6 ?m(eq|mol)"], "source": "final_management", "concept": "Limit sodium correction to about 8 mEq/L per 24 hours to avoid osmotic demyelination"}
+    {"id": "clinical-presentation", "description": "Describes the key features of the patient's presentation (hemoptysis, dyspnea, crackles, infiltrates, inflammation)", "category": "diagnosis", "weight": 3, "match": ["hemoptysis", "dyspnea", "crackles", "bilateral patchy infiltrates", "leukocytosis", "high crp", "purulent bal", "eosinophils", "rbc casts", "necrosis", "crescent"], "source": "any", "by_stage": "history", "concept": "Recognizing the combination of pulmonary and renal symptoms/signs"},
+    {"id": "smoking-risk", "description": "Highlights the importance of smoking history in relation to potential diagnoses", "category": "reasoning", "weight": 2, "match": ["smoker", "pack-year history", "lung cancer", "GPA", "MPA", "EGA"], "source": "any", "by_stage": "history", "concept": "Smoking is a major risk factor for several conditions presenting similarly"},
+    {"id": "renal-findings", "description": "Identifies the critical renal findings pointing towards glomerulonephritis", "category": "diagnosis", "weight": 3, "match": ["hematuria", "proteinuria", "rbc casts", "rapidly progressive glomerulonephritis"], "source": "any", "by_stage": "results", "concept": "Renal involvement distinguishes pauci-immune glomerulonephritis from other causes of hemoptysis"},
+    {"id": "biopsy-findings", "description": "Acknowledges the pathognomonic biopsy findings for ANCA-associated vasculitis", "category": "diagnosis", "weight": 3, "match": ["necrotizing granulomatous inflammation", "crescent formation", "arterioles", "glomerular capillary loops"], "source": "any", "by_stage": "results", "concept": "Biopsy confirms the specific pathology of ANCA-associated vasculitis"},
+    {"id": "treatment-indication", "description": "Correctly identifies the need for immunosuppression", "category": "management", "weight": 2, "match": ["immunosuppression", "steroids", "cyclophosphamide", "rituximab", "vasculitis"], "source": "final_management", "concept": "Treatment targets the underlying inflammatory autoimmune process"},
+    {"id": "drug-choice", "description": "Selects appropriate first-line immunosuppressive agents for GPA", "category": "management", "weight": 3, "match": ["cyclophosphamide", "rituximab", "glucocorticoids"], "source": "final_management", "concept": "Standard induction therapy involves corticosteroids plus either cyclophosphamide or rituximab"},
+    {"id": "monitoring-vasculitis", "description": "Mentions monitoring for side effects of treatment and disease activity", "category": "management", "weight": 2, "match": ["monitor", "side effects", "disease activity", "cytopenias", "infection", "renal function"], "source": "final_management", "concept": "Ongoing monitoring is crucial during long-term immunosuppression"},
+    {"id": "follow-up", "description": "Includes planning for follow-up imaging and renal monitoring", "category": "management", "weight": 2, "match": ["follow-up", "imaging", "renal function", "serum creatinine", "urine sediment"], "source": "final_management", "concept": "Long-term surveillance is necessary to manage the chronic nature of vasculitis"}
   ],
-  "management_summary": "He has moderate symptoms (hypoxia, tachypnea, fatigue, hemoptysis) and renal dysfunction. Immediate management includes a 100-150 mL bolus of 3% saline, followed by reassessment. If symptoms persist or worsen, another bolus may be given. Subsequently, fluid restriction will be implemented. Given the severe presentation (DAH, renal failure, hypoxia), he requires urgent plasma exchange therapy along with immunosuppressive therapy (typically corticosteroids +/- cyclophosphamide or rituximab depending on specifics). Imaging (CT chest) should be obtained urgently to evaluate for a possible underlying malignancy.",
+  "management_summary": "The patient has ANCA-associated vasculitis (GPA) with pulmonary hemorrhage and rapidly progressive glomerulonephritis. Immediate management includes admission, supplemental oxygen if hypoxic, initiation of high-dose glucocorticoids (e.g., prednisone 1 \u00b5g/kg/day), and administration of either cyclophosphamide or rituximab for induction therapy. Close monitoring of blood pressure, renal function (serum creatinine, urinalysis), white blood cell count, and platelet count is essential. Follow-up includes serial imaging (CT chest/abdomen/pelvis) and periodic renal biopsies.",
   "teaching_points": [
-    "Classify hyponatremia by tonicity first, then volume status, then urine osmolality and sodium. The exam is the first test.",
-    "Urine osmolality > 100 mOsm/kg with serum hypo-osmolality means ADH is acting; in a euvolemic patient with normal thyroid and adrenal function that is SIADH.",
-    "SIADH has a cause. In a smoker with weight loss, image the chest the same day.",
-    "Symptoms, not the number, decide treatment urgency. Moderate or severe symptoms get hypertonic saline; the correction ceiling is about 8 mEq/L in 24 hours.",
-    "Diffuse alveolar hemorrhage is a common manifestation of anti-GBM disease.",
-    "Plasma exchange is the cornerstone of treatment for severe anti-GBM disease causing pulmonary hemorrhage and/or renal failure."
+    "Hemoptysis in a smoker raises concern for infection, malignancy, and vasculitis. Systemic inflammation (leukocytosis, high CRP) and evidence of pulmonary hemorrhage suggest vasculitis.",
+    "The presence of microscopic polyangiitis (MPA) features in the kidney (hematuria, RBC casts) strongly points towards pauci-immune glomerulonephritis, characteristic of ANCA-associated vasculitis.",
+    "Bronchoscopy with BAL showing eosinophils and TBBx demonstrating necrotizing granulomatous inflammation with crescents are highly suggestive, almost diagnostic, of GPA.",
+    "Prompt immunosuppression with glucocorticoids and either cyclophosphamide or rituximab is standard of care for GPA and improves outcomes.",
+    "Monitoring for treatment toxicity (cytopenias, infections) and disease activity (renal function, BP) is critical during induction therapy."
   ],
   "references": [
-    "Harrison's Principles of Internal Medicine, 21e, Fluid and Electrolyte Disturbances",
-    "Verbalis JG et al. Diagnosis, evaluation, and treatment of hyponatremia: expert panel recommendations. Am J Med 2013;126(10 Suppl 1):S1-42",
-    "Spasovski G et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. Eur J Endocrinol 2014"
+    "Kimura M et al. Clin Exp Rheumatol. 2013;31(Suppl 5):S15-23",
+    "Suzuki H et al. Nat Rev Nephrol. 2015;11(10):603-615",
+    "UpToDate article on ANCA-associated vasculitis"
   ]
 }
 ```

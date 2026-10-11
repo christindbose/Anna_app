@@ -1,0 +1,95 @@
+```jsonc
+{
+  "id": "ohs-hypercapnia-01",
+  "title": "Acute-on-chronic hypercapnic respiratory failure from obesity hypoventilation syndrome with obstructive sleep apnoea",
+  "track": "pulm",
+  "difficulty": 3,
+  "tags": ["respiratory", "obesity", "sleep apnea", "hypercapnia", "COPD"],
+  "reviewed": false,
+  "presentation": "A 58-year-old man with a history of COPD presents to the ED with worsening shortness of breath for 3 days, productive cough with rust-colored sputum, and increasing daytime somnolence over the past month. Triage vitals: BP 140/85, HR 105, RR 28, SpO2 89% on room air, Temp 37.3°C. Initial labs show pH 7.23, PaCO2 65 mmHg, PaO2 55 mmHg, HCO3 28 mEq/L.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He reports a 30 pack-year smoking history, primarily unfiltered cigarettes, quit 10 years ago. He has a known diagnosis of severe COPD (FEV1 30%) and uses supplemental oxygen at home (flow rate not specified). His wife notes he has been increasingly tired and having trouble staying awake during the day, particularly upon waking, for the past few months. He denies recent falls, fevers, or changes in medications except for increased use of his rescue inhaler (albuterol nebulizer). He is taking rosuvastatin and aspirin daily.\n\nHe describes feeling 'winded' easily, especially climbing stairs, but has been managing relatively well until the last few days. He does not report chest pain, palpitations, or abdominal pain. His wife confirms his usual bedtime snoring but notes he seems even more lethargic lately.",
+      "prompt": "What is your initial differential diagnosis based on his presentation, and what key question do you need to answer next?",
+      "learner_goal": "Generate a differential including COPD exacerbation, heart failure, pneumonia, and sleep disorder-related issues. Ask about his baseline oxygen therapy."
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "On examination, he is alert but appears fatigued. His lungs are diffusely clear to auscultation bilaterally, without crackles or wheezes. Heart rate is 105 bpm, regular rhythm. Blood pressure is 140/85 mmHg. Oxygen saturation is 89% on room air. There is no peripheral edema. Neurological exam is unremarkable, except for mild drowsiness when asked about events from the preceding hour.",
+      "prompt": "Does the physical exam change your differential? Commit to your top two possibilities and describe the key investigation needed to differentiate them.",
+      "learner_goal": "Recognize the absence of signs suggesting acute heart failure or significant pneumonia, reinforcing the likelihood of a primary pulmonary or sleep-related issue. Order arterial blood gas analysis."
+    },
+    {
+      "id": "results",
+      "text": "Arterial blood gas analysis shows pH 7.23, PaCO2 65 mmHg, PaO2 55 mmHg, HCO3 28 mEq/L. A chest X-ray reveals bilateral hyperinflation and flattened diaphragms consistent with COPD, but no consolidation or overt signs of heart failure. His home oxygen flow rate was 2 liters per minute.",
+      "prompt": "Integrate the ABG and CXR findings. How does this fit your differential diagnoses, and what is the most crucial piece of information missing?",
+      "learner_goal": "Interpret the ABG showing acute respiratory acidosis (low pH, high PaCO2) superimposed on chronic respiratory acidosis (elevated bicarbonate indicates metabolic compensation). Recognize the high PaCO2 as a critical clue pointing towards hypercapnia, potentially related to his underlying COPD and possible sleep apnea.",
+      "available_tests": {
+        "abg": "pH 7.23, PaCO2 65 mmHg, PaO2 55 mmHg, HCO3 28 mEq/L",
+        "cxr": "Bilateral hyperinflation, flattened diaphragms.",
+        "oximetry": "SpO2 89% on room air",
+        "home o2": "2 L/min"
+      }
+    },
+    {
+      "id": "twist",
+      "label": "Twist",
+      "text": "An overnight polysomnography study performed the following morning confirms moderate Obstructive Sleep Apnea (OSA) with an estimated Apnea-Hypopnea Index (AHI) of 35 events per hour. Further investigation reveals a mildly elevated Arteriovenous Oximetry (AVO) index of 15, indicating impaired oxygen delivery during sleep. His home oxygen usage continues unchanged.",
+      "prompt": "How does the polysomnography result explain the patient's current state? What is the definitive diagnostic step required now?",
+      "learner_goal": "Connect the confirmed OSA and elevated AVO index to the patient's chronic hypercapnia and acute-on-chronic respiratory failure. Understand that while OSA contributes significantly to his chronic CO2 retention, the acute decompensation requires further evaluation.",
+      "available_tests": {
+        "polysomnography": "Moderate OSA (AHI=35)",
+        "avoxi": "Elevated AVO index (15)"
+      }
+    }
+  ],
+  "diagnosis": "Acute-on-chronic hypercapnic respiratory failure from obesity hypoventilation syndrome with obstructive sleep apnoea",
+  "diagnosis_aliases": ["acute-on-chronic hypercapnia", "obesity hypoventilation syndrome", "sleep apnea", "copd exacerbation"],
+  "key_clues": [
+    "Chronic respiratory acidosis (high HCO3)",
+    "Acute respiratory acidosis (low pH, high PaCO2)",
+    "High PaCO2 (>45 mmHg)",
+    "Confirmation of moderate OSA (AHI>30)",
+    "Elevated AVO index (>10)",
+    "History of COPD",
+    "Clinical picture of acute decompensation (worsening SOB, somnolence)"
+  ],
+  "distractors": [
+    {"name": "Pneumonia", "why_not": "Chest X-ray negative for consolidation"},
+    {"name": "Heart Failure", "why_not": "Absence of crackles, peripheral edema, or CXR findings suggestive of CHF"},
+    {"name": "COPD Exacerbation alone", "why_not": "While exacerbation is present, the profound hypercapnia and sleep study findings point to a contributing factor beyond just infection or inflammation"},
+    {"name": "Metformin-associated lactic acidosis", "why_not": "Patient is not on metformin, and lactate levels were not reported but typically present in MALA"},
+    {"name"; "Diabetic Ketoacidosis", "why_not": "Glucose level was not reported but typically very high in DKA"}
+  ],
+  "rubric": [
+    {"id": "volume-status", "description": "Assess volume status using exam findings before committing", "category": "reasoning", "weight": 2, "match": ["euvol", "hypovol", "hypervol", "orthostat", "jvp", "mucous membrane", "skin turgor", "oedema", "edema"], "by_stage": "exam", "concept": "Volume status guides differential, but here exam suggests euvolemia"},
+    {"id": "broad-ddx", "description": "Differential includes COPD exacerbation, heart failure, pneumonia, sleep disorder-related issues", "category": "diagnosis", "weight": 2, "match": ["(copd|asthma|pneumonia|heart|failure|sleep|apnea|obesity|hypoventilation|hypercapnia|acidosis)"], "by_stage": "history", "concept": "Initial DDx considers common causes of acute respiratory distress"},
+    {"id": "co2-levels", "description": "Check PaCO2 early", "category": "workup", "weight": 3, "match": ["pa co2", "paco2", "hypercapnia", "respiratory acidosis"], "by_stage": "results", "concept": "Hypercapnia is a key differentiator and guides further investigation"},
+    {"id": "ahipolysomnography", "description": "Order polysomnography given chronic hypercapnia", "category": "workup", "weight": 3, "match": ["polysomnography", "ahs", "osa", "ahipolysomnography", "sleep study", "apnea-hypopnea index", "ahi"], "by_stage": "twist", "concept": "Polysomnography is indicated for chronic hypercapnia >30 days"},
+    {"id": "avoxi", "description": "Check AVO index", "category": "workup", "weight": 2, "match": ["avoxi", "arteriovenous oximetry", "avo index", "oxygen delivery"], "by_stage": "results", "concept": "AVO index helps assess severity of hypoxia and oxygen transport"},
+    {"id": "link-osa-hypercapnia", "description": "Link OSA/AVO index to hypercapnia", "category": "reasoning", "weight": 2, "match": ["osa", "apnea", "hypopnea", "avo", "oxygen delivery", "hypercapnia", "co2 retention", "obesity", "hypoventilation"], "concept": "Explain how OSA leads to chronic hypercapnia via sustained hypoventilation"},
+    {"id": "names-diagnosis", "description": "Final diagnosis is Acute-on-chronic hypercapnic respiratory failure from Obesity Hypoventilation Syndrome with Obstructive Sleep Apnoea", "category": "diagnosis", "weight": 3, "match": ["acute-on-chronic hypercapnic respiratory failure", "obesity hypoventilation syndrome", "obstructive sleep apnoea"], "source": "final_diagnosis", "concept": "Specific diagnosis definition"},
+    {"id": "mgmt-initial", "description": "Initial management focuses on improving ventilation and oxygenation", "category": "management", "weight": 3, "match": ["intubation", "mechanical ventilation", "noninvasive ventilation", "NIV", "oxygen therapy", "venturi mask", "nasal cannula", "continuous positive airway pressure", "cpap", "biPAP", "epap", "hipap", "titrated"], "source": "final_management", "concept": "Initial management often involves NIV to improve ventilation and oxygenation"},
+    {"id": "mgmt-longterm", "description": "Long term management involves treating OSA (CPAP) and optimizing COPD care", "category": "management", "weight": 3, "match": ["cpap", "cpap machine", "positive airway pressure", "pap", "airway pressure", "medication review", "bronchodilators", "steroids", "antibiotics", "oxygen therapy", "home oxygen", "smoking cessation", "weight loss", "exercise", "diet"], "source": "final_management", "concept": "Long term management addresses both OSA and underlying COPD"},
+    {"id": "mgmt-correction-ceiling", "description": "Mention the correction ceiling for hypercapnia", "category": "management", "weight": 2, "match": ["8 ?m(eq|mol)", "osmotic demyelination", "central pontine", "overcorrect", "too fast", "rate of correction", "6 ?m(eq|mol)", "100 ?ml", "150 ?ml", "bolus"], "source": "final_management", "concept": "Limit sodium correction to about 8 mEq/L in 24 hours"},
+    {"id": "mgmt-disposition", "description": "Discharge planning should include CPAP initiation", "category": "management", "weight": 2, "match": ["discharge", "home", "cpap", "follow up", "clinic", "hospital"], "source": "final_management", "concept": "Discharge planning emphasizes starting CPAP and close follow-up"}
+  ],
+  "management_summary": "The patient presents with acute-on-chronic hypercapnic respiratory failure, likely due to obesity hypoventilation syndrome exacerbated by moderate obstructive sleep apnea. Initial management includes noninvasive ventilation (NIV) to improve oxygenation and ventilation, followed by oxygen therapy. Long-term management requires initiating CPAP therapy to address the OSA, optimizing his COPD regimen (including potential steroid burst and antibiotics if infection suspected), ensuring adequate home oxygen supply, and addressing his obesity through weight management and exercise.",
+  "teaching_points": [
+    "Obesity hypoventilation syndrome is characterized by chronic alveolar hypoventilation leading to chronic hypercapnia, often associated with OSA.",
+    "Acute-on-chronic hypercapnia occurs when chronic hypercapnia is superimposed with an acute insult, such as pneumonia, COPD exacerbation, or cardiac failure.",
+    "Key investigations for chronic hypercapnia include ABG, CXR, polysomnography, and AVO index.",
+    "OSA is a major contributor to hypercapnia in obese patients; CPAP is the cornerstone of treatment.",
+    "Initial management of acute-on-chronic hypercapnia often involves NIV to stabilize ventilation and oxygenation.",
+    "The correction ceiling for hypercapnia is approximately 8 mEq/L in 24 hours to prevent osmotic demyelination."
+  ],
+  "references": [
+    "Mokhber K et al. Obesity hypoventilation syndrome. Lancet Respir Med 2018;6(6):513-522.",
+    "Verbalis JG et al. Diagnosis, evaluation, and treatment of hyponatremia: expert panel recommendations. Am J Med 2013;126(10 Suppl 1):S1-42.",
+    "American Thoracic Society/Society for Pulmonary Hypertension. Guidelines for the Management of Obstructive Sleep Apnea. Am J Respir Crit Care Med 2016;193(6):645-679."
+  ]
+}
+```

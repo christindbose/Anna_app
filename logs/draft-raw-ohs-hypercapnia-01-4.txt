@@ -1,0 +1,82 @@
+```jsonc
+{
+  "id": "ohs-hypercapnia-01",
+  "title": "Acute-on-chronic hypercapnic respiratory failure from obesity hypoventilation syndrome with undiagnosed obstructive sleep apnoea, worsened by opioids and over-oxygenation in the emergency department; distinguishing from COPD",
+  "track": "pulm",
+  "difficulty": 3,
+  "tags": ["respiratory failure", "obesity hypoventilation", "sleep apnea", "opioids", "COPD", "emergency medicine"],
+  "reviewed": false,
+  "presentation": "A 56-year-old male with a history of COPD presents to the ED with worsening shortness of breath, increased sputum production (yellow), and lethargy over the past 24 hours. His wife reports he often falls asleep while driving and has difficulty concentrating recently. He takes prednisone 10mg daily for his COPD exacerbations. On arrival, his BP is 110/70 mmHg, HR 100 bpm, RR 28 breaths/min, SpO2 88% on room air. He appears drowsy and tachypneic.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He has a 20 pack-year smoking history, diagnosed with COPD 5 years ago, primarily using a nebulized albuterol/ipratropium regimen. His wife confirms his excessive daytime sleepiness and recent episodes of falling asleep while driving. He denies fever, chest pain, or orthopnea. He was prescribed oxycodone 5mg q4hr for chronic pain due to degenerative disc disease 3 months ago. He does not take any other medications, including diuretics or beta-blockers. He has no known allergies.",
+      "prompt": "What is your initial differential diagnosis for this patient's respiratory distress, and what key questions should you answer next?",
+      "learner_goal": "Generate a broad differential for acute exacerbation of COPD (AECOPD) versus alternative diagnoses like heart failure, pulmonary embolism, or something related to his sleepiness and opioid use."
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "On examination, his temperature is 37.2°C, BP 110/70 mmHg, HR 100 bpm, RR 28 breaths/min, SpO2 88% on room air. He is alert but drowsy, lethargic, and speaks in slow phrases. Lung auscultation reveals diffuse bilateral crackles, especially in the lower lobes. There is no wheezing noted. Heart sounds are regular without murmurs. Abdomen is soft and non-tender. Peripheral pulses are equal bilaterally, with no significant edema. Neurological exam is unremarkable except for drowsiness.",
+      "prompt": "How does the physical exam help narrow your differential? Which test will differentiate between COPD exacerbation and heart failure?",
+      "learner_goal": "Recognize signs suggestive of fluid overload (crackles, drowsiness) and prioritize cardiac biomarkers."
+    },
+    {
+      "id": "results",
+      "text": "Initial laboratory results show arterial blood gas (ABG) analysis revealing pH 7.24, PaCO2 68 mmHg, PaO2 55 mmHg, HCO3 26 mEq/L. Serum troponin I is elevated at 0.5 ng/mL. CBC shows WBC count 14.2 x 10^9/L with neutrophilia. Chest X-ray demonstrates mild cardiomegaly and bilateral interstitial infiltrates.",
+      "prompt": "Based on the ABG and clinical picture, what is the primary physiological disturbance, and what is the most important next investigation?",
+      "learner_goal": "Identify hypercapnic respiratory acidosis and recognize the need for urgent echocardiography."
+    },
+    {
+      "id": "twist",
+      "label": "Twist",
+      "text": "His oxygen saturation improves to 94% after administration of supplemental oxygen via nasal cannula. His mental status remains drowsy despite this improvement.",
+      "prompt": "What immediate action should be taken based on the response to oxygen therapy?",
+      "learner_goal": "Understand the dangers of over-oxygenation in patients with chronic CO2 retention and plan appropriate intervention."
+    }
+  ],
+  "diagnosis": "Acute-on-chronic hypercapnic respiratory failure from obesity hypoventilation syndrome with undiagnosed obstructive sleep apnoea, worsened by opioids and over-oxygenation in the emergency department",
+  "diagnosis_aliases": ["ohs-hypercapnia", "co2 retention", "sleep apnea", "opioid-induced hypercapnia", "respiratory acidosis"],
+  "key_clues": [
+    "Chronic COPD history + excessive daytime sleepiness suggests underlying OSA",
+    "ABG: pH < 7.35, PaCO2 > 45 mmHg indicates hypercapnic respiratory acidosis",
+    "PaO2 < 60 mmHg indicates hypoxemia",
+    "Normal HCO3 suggests acute or acute-on-chronic process rather than pure metabolic acidosis",
+    "Elevated troponin suggests possible concurrent cardiac injury or strain",
+    "Drowsiness and lethargy despite improving O2 sat suggest CO2 narcosis / opioid effect",
+    "Chest X-ray showing infiltrates could represent atelectasis, infection, or pulmonary edema",
+    "Opioid use exacerbates both OSA and hypercapnia",
+    "Over-oxygenation worsens hypercapnia by decreasing hypoxic drive and increasing bicarbonate elimination",
+    "Crackles can be seen in COPD exacerbation (infection/inflammation) or heart failure"
+  ],
+  "distractors": [
+    {"name": "Pneumonia", "why_not": "While possible given crackles and leukocytosis, the profound drowsiness and marked hypercapnia point towards a different primary issue."},
+    {"name": "Heart Failure Exacerbation", "why_not": "Troponin is mildly elevated, but the primary ABG is respiratory acidosis, not typically seen acutely in HF unless there's associated LV dysfunction or pulmonary edema leading to ventilation issues. Crackles could fit, but drowsiness is less classic."},
+    {"name": "Pulmonary Embolism", "why_not": "Lack of pleuritic chest pain, tachycardia, or hypoxia disproportionate to effort, although PE cannot be entirely excluded without further testing."},
+    {"name": "Severe COPD Exacerbation", "why_not": "While COPD exacerbation is present, the degree of hypercapnia and drowsiness is beyond typical uncomplicated AECOPD and points strongly toward the contribution of OSA, opioids, and over-oxygenation."},
+    {"name": "Metformin-associated lactic acidosis", "why_not": "No mention of metformin use, and the ABG profile is classic for respiratory acidosis, not lactic acidosis (which typically involves anion gap metabolic acidosis)."}
+  ],
+  "rubric": [
+    {"id": "volume-status", "description": "Assess volume status explicitly (euvolemia vs. fluid overload)", "category": "reasoning", "weight": 2, "match": ["euvolemic", "fluid overloaded", "orthostatic", "jvp", "edema", "crackles", "pulmonary edema"], "by_stage": "exam", "concept": "Volume status guides differential (HF vs. others) and influences management (diuretics vs. fluid restriction)."},
+    {"id": "cardiac-markers", "description": "Check cardiac markers (troponin) early in acute dyspnea", "category": "workup", "weight": 2, "match": ["troponin", "ck-mb", "hs-crn", "cardiac enzymes"], "by_stage": "results", "concept": "Troponin helps differentiate cardiac causes (MI, HF) from primary respiratory causes."},
+    {"id": "abg-interpretation", "description": "Interpret ABG for pH, PaCO2, PaO2, HCO3", "category": "workup", "weight": 3, "match": ["pH < 7.35", "PaCO2 > 45", "PaO2 < 60", "HCO3 26"], "by_stage": "results", "concept": "Recognize the pattern of hypercapnic respiratory acidosis characteristic of OHSS/OSA/opioids."},
+    {"id": "over-oxygenation", "description": "Understand the mechanism and consequences of over-oxygenation in hypercapnia", "category": "reasoning", "weight": 2, "match": ["hypoxic drive", "bicarbonate excretion", "narcosis", "drowsiness", "lethargy", "CO2 narcosis", "opioid effect"], "by_stage": "twist", "concept": "Explain why giving oxygen worsens the patient's primary problem."},
+    {"id": "diagnosis-naming", "description": "Identify the core diagnosis: OHSS/OSA contributing to respiratory failure", "category": "diagnosis", "weight": 3, "match": ["obesity hypoventilation", "sleep apnea", "hypercapnia", "respiratory failure", "OHSS"], "source": "final_diagnosis", "concept": "List the components of the final diagnosis string."}
+  ],
+  "management_summary": "Administer naloxone 0.4mg IV cautiously due to potential opioid withdrawal and respiratory depression. Administer 100-150 mL bolus of 3% saline, rechecking ABG in 20 minutes and repeating up to twice, targeting a 4-6 mEq/L rise in pH within the first 6 hours. Avoid further oxygen supplementation. Initiate non-invasive ventilation (NIV) if respiratory distress persists or worsens. Consider admission for continued monitoring, management of underlying COPD, and addressing the OSA and opioid dependence.",
+  "teaching_points": [
+    "Hypercapnia often results from CO2 retention, common in obstructive sleep apnea and obesity hypoventilation syndrome.",
+    "Patients with chronic hypercapnia are susceptible to CO2 narcosis, presenting as drowsiness, lethargy, and altered mental status, especially with opioid use.",
+    "Over-oxygenation worsens hypercapnia by suppressing hypoxic respiratory drive and accelerating renal bicarbonate excretion.",
+    "Managing hypercapnia requires cautious administration of 3% saline boluses, followed by fluid restriction, and treating the underlying cause (OSA, opioids).",
+    "Non-invasive ventilation can provide ventilatory support in moderate to severe hypercapnic respiratory failure.",
+    "Be wary of administering oxygen to patients with significant hypercapnia."
+  ],
+  "references": [
+    "National Institutes of Health, National Heart, Lung, and Blood Institute. Sleep Apnea Information Page. https://www.nhlbi.nih.gov/health/sleep-apnea",
+    "American Thoracic Society/Society for Pulmonary Hypertension. Guidelines for the Management of Obstructive Sleep Apnea. Am J Respir Crit Care Med. 2016;193(6):645-659.",
+    "World Health Organization. Pneumonia. https://www.who.int/news-room/fact-sheets/detail/pneumonia"
+  ]
+}
+```

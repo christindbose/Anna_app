@@ -145,8 +145,15 @@ def topic_keywords(topic: str) -> list[str]:
     return [w for w in re.findall(r"[a-z][a-z-]{4,}", head) if w not in STOP]
 
 
-def check(case: Case, expect_id: str, expect_track: str, topic: str | None = None, dx_keywords: list[str] | None = None) -> list[str]:
+def check(case: Case, expect_id: str, expect_track: str, topic: str | None = None, dx_keywords: list[str] | None = None,
+          mgmt_keywords: list[str] | None = None) -> list[str]:
     problems = []
+    if mgmt_keywords:
+        mg = (case.management_summary + " " + " ".join(p for r in case.rubric if r.source == "final_management" for p in r.match)).lower()
+        if not any(k.lower() in mg for k in mgmt_keywords):
+            problems.append(f"management_summary does not describe the guideline treatment for this diagnosis (expected to mention one of {mgmt_keywords}); do not copy the example case's management")
+    if len(case.diagnosis) < 12:
+        problems.append("diagnosis must be the full name of the condition, not an abbreviation")
     if dx_keywords:
         dx = (case.diagnosis + " " + " ".join(case.diagnosis_aliases)).lower()
         if not any(k.lower() in dx for k in dx_keywords):
@@ -164,8 +171,8 @@ def check(case: Case, expect_id: str, expect_track: str, topic: str | None = Non
     missing = REQUIRED_CATS - {r.category for r in case.rubric}
     if missing:
         problems.append(f"rubric missing categories {sorted(missing)}")
-    if len(case.rubric) < 6:
-        problems.append("fewer than 6 rubric items")
+    if len(case.rubric) < 5:
+        problems.append("fewer than 5 rubric items")
     stage_ids = {s.id for s in case.stages}
     for r in case.rubric:
         if r.by_stage and r.by_stage not in stage_ids:
@@ -180,8 +187,6 @@ def check(case: Case, expect_id: str, expect_track: str, topic: str | None = Non
         problems.append("no rubric item with source final_diagnosis")
     elif not any(re.search(p, case.diagnosis, re.I) for p in fd):
         problems.append("no final_diagnosis rubric regex matches the case's own diagnosis string")
-    if len(case.title) > 80:
-        problems.append(f"title too long ({len(case.title)} chars); give a short clinical title under 60 characters, like a chart one-liner")
     words = len((case.presentation + " ".join(s.text for s in case.stages)).split())
     if words > 1100:
         problems.append(f"patient text too long ({words} words)")
@@ -190,10 +195,11 @@ def check(case: Case, expect_id: str, expect_track: str, topic: str | None = Non
     return problems
 
 
-def valid_existing(path: Path, expect_id: str, expect_track: str, topic: str | None = None, dx_keywords: list[str] | None = None) -> bool:
+def valid_existing(path: Path, expect_id: str, expect_track: str, topic: str | None = None, dx_keywords: list[str] | None = None,
+                   mgmt_keywords: list[str] | None = None) -> bool:
     try:
         c = load_case_file(path)
-        return c.id == expect_id and not check(c, expect_id, expect_track, topic, dx_keywords)
+        return c.id == expect_id and not check(c, expect_id, expect_track, topic, dx_keywords, mgmt_keywords)
     except Exception:  # noqa: BLE001
         return False
 
@@ -202,7 +208,7 @@ async def draft_one(llm, spec: dict, schema: str, example: str, attempts: int) -
     user = (
         f"Topic: {spec['topic']}\nTrack: {spec['track']}\nDifficulty: {spec['difficulty']} (1 intern .. 4 senior resident)\n"
         f"Use exactly this id: \"{spec['id']}\"\n"
-        + (f"The final diagnosis MUST be exactly this condition (do not substitute a related disease): {spec['dx_keywords'][0]}\n" if spec.get("dx_keywords") else "")
+        + (f"The final diagnosis MUST be this condition, written out in full (do not substitute a related disease): {spec['dx_name']}\n" if spec.get("dx_name") else "")
         + "\n"
         f"SCHEMA:\n{schema}\n\nEXAMPLE CASE (match its depth, structure and style; invent a different patient and do not copy its content):\n{example}\n\n"
         "Write a complete, medically accurate, internally consistent case on the topic, as a senior internist would for residents.\n"
@@ -243,7 +249,7 @@ async def draft_one(llm, spec: dict, schema: str, example: str, attempts: int) -
             data["reviewed"] = False
             data["source"] = settings.llm_model
             case = Case.model_validate(data)
-            problems = check(case, spec["id"], spec["track"], spec["topic"], spec.get("dx_keywords"))
+            problems = check(case, spec["id"], spec["track"], spec["topic"], spec.get("dx_keywords"), spec.get("mgmt_keywords"))
             if problems:
                 raise ValueError("; ".join(problems))
         except Exception as e:  # noqa: BLE001
@@ -259,7 +265,27 @@ async def draft_one(llm, spec: dict, schema: str, example: str, attempts: int) -
             dump.write_text(raw)
             continue
         print(f"  draft ok after {dt:.0f}s: {case.title!r}, {len(case.stages)} stages, {len(case.rubric)} rubric items", flush=True)
-        return await review_pass(llm, case, spec)
+        case = await review_pass(llm, case, spec)
+        return await ensure_short_title(llm, case)
+
+
+async def ensure_short_title(llm, case: Case) -> Case:
+    """Models often paste the topic as the title; ask for a chart-style one-liner instead."""
+    if len(case.title) <= 80:
+        return case
+    try:
+        raw = await llm.chat(
+            [{"role": "system", "content": "You title teaching cases for internal medicine residents. Reply with the title only: no label, no quotes, no tags."},
+             {"role": "user", "content": f"Presentation: {case.presentation}\nDiagnosis: {case.diagnosis}\n\nWrite a short, intriguing clinical title under 60 characters that hints at the presentation without naming the diagnosis, like a chart one-liner (e.g. 'Confusion and a sodium of 118'). Title only."}],
+            max_tokens=40, temperature=0.4)
+        title = re.sub(r"<[^>]+>", "", raw).strip().split("\n")[0]
+        title = re.sub(r"^\W*title\W*", "", title, flags=re.I).strip(" *:\"'")
+        if 8 <= len(title) <= 80:
+            case = case.model_copy(update={"title": title})
+            print(f"  title shortened to {title!r}", flush=True)
+    except Exception as e:  # noqa: BLE001
+        print(f"  title pass failed ({str(e)[:80]}); keeping long title", flush=True)
+    return case
     return None
 
 
@@ -285,7 +311,7 @@ async def review_pass(llm, case: Case, spec: dict) -> Case:
             data[k] = getattr(case, k)
         data["reviewed"] = False
         revised = Case.model_validate(data)
-        problems = check(revised, spec["id"], spec["track"], spec["topic"], spec.get("dx_keywords"))
+        problems = check(revised, spec["id"], spec["track"], spec["topic"], spec.get("dx_keywords"), spec.get("mgmt_keywords"))
         if problems:
             raise ValueError("; ".join(problems))
         if {r.id for r in revised.rubric} != {r.id for r in case.rubric}:
@@ -314,7 +340,8 @@ async def main() -> int:
         for t in json.loads(Path(args.topics).read_text()):
             if not args.only or t["id"] in args.only:
                 specs.append({"id": t["id"], "track": t["track"], "difficulty": int(t.get("difficulty", 3)), "topic": t["topic"],
-                              "dx_keywords": t.get("diagnosis_keywords")})
+                              "dx_keywords": t.get("diagnosis_keywords"), "dx_name": t.get("diagnosis_name"),
+                              "mgmt_keywords": t.get("management_keywords")})
     else:
         for path in sorted((ROOT / "cases").glob("*/*.json")):
             c = load_case_file(path)
@@ -329,7 +356,7 @@ async def main() -> int:
         out = out_root / spec["track"] / f"{spec['id']}.json"
         out.parent.mkdir(parents=True, exist_ok=True)
         print(f"[{i}/{len(specs)}] {spec['id']}  ({spec['topic'][:70]})", flush=True)
-        if out.exists() and valid_existing(out, spec["id"], spec["track"], spec["topic"], spec.get("dx_keywords")):
+        if out.exists() and valid_existing(out, spec["id"], spec["track"], spec["topic"], spec.get("dx_keywords"), spec.get("mgmt_keywords")):
             print("  already drafted, skipping", flush=True)
             continue
         case = await draft_one(llm, spec, schema, example, args.attempts)

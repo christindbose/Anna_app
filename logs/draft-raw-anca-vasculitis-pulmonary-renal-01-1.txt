@@ -1,0 +1,75 @@
+```jsonc
+{
+  "id": "ancva-pulmonary-renal-01",
+  "title": "Hemoptysis and rapid kidney decline",
+  "track": "nephro",
+  "difficulty": 4,
+  "tags": ["vasculitis", "pulmonary-renal", "ancvas", "hemoptysis", "glomerulonephritis", "sinusitis"],
+  "reviewed": false,
+  "presentation": "A 56-year-old man presents to the ED with a 3-day history of hemoptysis ('blood-streaked sputum') and progressive shortness of breath. He also reports sinusitis and facial pain. He is a 40 pack-year smoker. His vital signs show BP 125/75 mmHg, HR 95 bpm, RR 22 breaths/min, Temp 37.1 C, O2 sat 93% on room air. Initial labs show Hgb 10.2 g/dL, BUN 35 mg/dL, Cr 1.8 mg/dL, WBC 12.8 k/uL. Chest X-ray shows bilateral infiltrates and hilar adenopathy.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He denies fever, chills, chest pain, or abdominal pain. He has a history of asthma managed with albuterol MDI PRN and occasional prednisone for exacerbations. He denies recent travel or sick contacts. His wife notes he has had a chronic cough for several months, worse in the morning. He has no known allergies beyond his asthma medications. His wife confirms he recently started taking an over-the-counter cold remedy containing pseudoephedrine daily for his sinusitis symptoms, which he says have been 'getting worse'. He quit smoking 10 years ago but still smokes 1 pack per day.",
+      "prompt": "What is your differential diagnosis for this patient's presentation, considering his smoking history and respiratory symptoms?"
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "Physical examination reveals clear lungs bilaterally except for scattered wheezes consistent with his history of asthma. Heart sounds are normal. Abdomen is non-tender. Neurological examination is unremarkable. There is mild facial edema noted around the eyes.",
+      "prompt": "How does the physical exam help narrow down the differential? What is the next most appropriate step?"
+    },
+    {
+      "id": "initial-investigations",
+      "label": "Initial Investigations",
+      "text": "Chest X-ray shows bilateral patchy opacities, predominantly in the lower lobes, along with significant bilateral hilar lymphadenopathy. Labs confirm anemia (Hgb 10.2 g/dL), elevated BUN (35 mg/dL) and creatinine (Cr 1.8 mg/dL), leukocytosis (WBC 12.8 k/uL), and mild thrombocytopenia (Platelets 150 k/uL). Serum ACE level is elevated at 75 IU/L. A CT angiogram of the chest was performed and showed bilateral pulmonary artery filling defects consistent with multiple renal emboli and patchy consolidation in the lung parenchyma.",
+      "prompt": "What is the unifying diagnosis? What are the key findings that differentiate it from other possibilities like idiopathic pulmonary fibrosis or infection?"
+    },
+    {
+      "id": "further-workup",
+      "label": "Further Workup",
+      "text": "Bronchoscopy with bronchoalveolar lavage (BAL) was performed. BAL fluid analysis showed eosinophilia (absolute count 250 cells/mm³). Sputum cultures were negative for bacterial pathogens. Kidney biopsy via percutaneous needle aspiration revealed pauci-immune crescentic glomerulonephritis on light microscopy, with predominant IgA deposits on immunofluorescence and strong staining for cytoplasmic IgA on electron microscopy. Skin biopsy showed necrotizing granulomatous inflammation.",
+      "prompt": "Based on the bronchoscopy and kidney biopsy results, what is the definitive diagnosis? What is the most important next diagnostic step given the potential for irreversible vision loss?"
+    }
+  ],
+  "diagnosis": "ANCA-associated vasculitis (granulomatosis with polyangiitis) with pulmonary hemorrhage and rapidly progressive glomerulonephritis",
+  "diagnosis_aliases": ["ancvas", "gpa", "mpa", "sarcoidosis", "idiopathic pulmonary fibrosis", "infection"],
+  "key_clues": [
+    "Hemoptysis, dyspnea, sinusitis, hilar adenopathy in a smoker",
+    "Pulmonary artery filling defects on CTA suggesting renal emboli",
+    "Pauci-immune crescentic GN with IgA deposits on biopsy",
+    "BAL eosinophilia",
+    "Elevated serum ACE (though nonspecific)",
+    "Necrotizing granulomatous inflammation on skin biopsy"
+  ],
+  "distractors": [
+    {"name": "Idiopathic Pulmonary Fibrosis (IPF)", "why_not": "Lack of restrictive pattern on PFTs, presence of hematuria, renal failure, and granulomas on biopsy."},
+    {"name": "Sarcoidosis", "why_not": "Granulomas are typically non-caseating in sarcoidosis; renal involvement is less common, and IgA deposition is characteristic of GPA, not sarcoidosis."},
+    {"name": "Infection (e.g., fungal, mycobacterial)", "why_not": "Negative cultures, absence of high fever, characteristic renal biopsy findings (pauci-immune GN), and granulomatous inflammation."},
+    {"name": "Goodpasture Syndrome (Anti-GBM Disease)", "why_not": "Renal biopsy shows pauci-immune GN, not linear IgG deposition; lung findings are due to hemorrhage, not anti-GBM nephritis; BAL eosinophilia is not typical."},
+    {"name": "Allergic Bronchopulmonary Aspergillosis (ABPA)", "why_not": "While BAL eosinophilia is present, the systemic features (renal failure, hemoptysis, sinusitis, granulomas) point strongly towards vasculitis, and the renal biopsy is classic for GPA."}
+  ],
+  "rubric": [
+    {"id": "vasculitis-features", "description": "Identifies key features suggestive of ANCA-associated vasculitis (hemoptysis, sinusitis, renal failure, constitutional symptoms possible)", "category": "reasoning", "weight": 3, "match": ["hemoptysis", "sinusitis", "renal failure", "constitutional symptoms", "vasculitis"], "source": "any", "by_stage": "history", "concept": "Features pointing towards a systemic inflammatory process affecting multiple organs."},
+    {"id": "renal-biopsy", "description": "Recognizes the pathognomonic renal biopsy findings (pauci-immune crescentic GN with IgA deposits)", "category": "diagnosis", "weight": 4, "match": ["pauci-immune", "crescentic", "IgA deposits", "immunofluorescence", "electron microscopy", "GN"], "source": "final_diagnosis", "by_stage": "further-workup", "concept": "The definitive diagnosis relies entirely on the kidney biopsy findings."},
+    {"id": "lung-imaging", "description": "Interprets the significance of pulmonary artery filling defects on CT angiography", "category": "reasoning", "weight": 2, "match": ["pulmonary artery filling defects", "renal emboli", "CTA", "CT angiogram", "pulmonary hemorrhage"], "source": "any", "by_stage": "initial-investigations", "concept": "Filling defects indicate blood clots traveling from the kidneys to the lungs."},
+    {"id": "bronchoscopy-findings", "description": "Notes the relevance of BAL eosinophilia", "category": "reasoning", "weight": 2, "match": ["eosinophilia", "BAL", "bronchoscopy", "airway inflammation"], "source": "any", "by_stage": "further-workup", "concept": "BAL eosinophilia can be seen in various conditions, including eosinophilic bronchitis and some vasculitides."},
+    {"id": "smoker-risk", "description": "Considers the increased risk associated with smoking in patients with ANCA-associated vasculitis", "category": "reasoning", "weight": 2, "match": ["smoker", "smoking history", "ANCA-associated vasculitis"], "source": "any", "by_stage": "history", "concept": "Smoking significantly increases the risk of developing ANCA-associated vasculitis."}
+  ],
+  "management_summary": "Immediate management involves supportive care including oxygen therapy, blood pressure control, and consideration of plasma exchange (plasmapheresis) for severe pulmonary hemorrhage (defined by hypoxemia refractory to oxygen or acute respiratory distress). High-dose corticosteroids are initiated promptly. Cyclophosphamide or rituximab is added for induction immunosuppression. Close monitoring of renal function and blood pressure is crucial. Smoking cessation counseling should commence immediately.",
+  "teaching_points": [
+    "ANCA-associated vasculitis often presents with pulmonary-renal syndrome, particularly in smokers. Hemoptysis, sinusitis, and renal failure are cardinal symptoms.",
+    "The hallmark of ANCA-associated vasculitis is pauci-immune crescentic glomerulonephritis. IgA deposits are highly specific for Granulomatosis with Polyangiitis (GPA).",
+    "Pulmonary artery filling defects on CT angiography suggest renal emboli, confirming the pulmonary-renal link.",
+    "BAL eosinophilia is non-specific but can occur in GPA and needs careful interpretation.",
+    "Smoking is a major risk factor for ANCA-associated vasculitis. Prompt diagnosis and aggressive immunosuppression are required to prevent irreversible organ damage."
+  ],
+  "references": [
+    "UpToDate article on ANCA-Associated Vasculitis",
+    "Levi M, et al. Nat Rev Nephrol. 2016;12(11):699-713",
+    "Ravaud P, et al. Lancet. 2015;385(9970):1095-1106",
+    "Karrison TL, et al. Semin Arthritis Rheum. 2013;43(1):1-10"
+  ]
+}
+```

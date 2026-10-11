@@ -79,10 +79,10 @@ def extract_json(text: str) -> dict:
         raise ValueError("no JSON object in model reply")
     # Parse the first complete object and ignore anything the model appended after it.
     try:
-        obj, _ = json.JSONDecoder().raw_decode(text[start:])
+        obj, _ = json.JSONDecoder(strict=False).raw_decode(text[start:])  # strict=False: allow raw newlines in strings
         return obj
     except json.JSONDecodeError:
         end = text.rfind("}")
         if end == -1:
             raise
-        return json.loads(text[start : end + 1])
+        return json.loads(text[start : end + 1], strict=False)

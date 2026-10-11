@@ -1,0 +1,163 @@
+```jsonc
+{
+  "id": "anca-vasculitis-pulmonary-renal-01",
+  "title": "Hemoptysis and rapid kidney decline",
+  "track": "nephro",
+  "difficulty": 4,
+  "tags": ["vasculitis", "pulmonary-renal", "ana", "anaphylasaemic", "sinus", "smoking", "immunosuppression"],
+  "reviewed": false,
+  "presentation": "A 58-year-old male presents with a 3-month history of intermittent hemoptysis, progressively worsening dyspnea on exertion, and decreased exercise tolerance. He also reports chronic sinusitis and several episodes of epistaxis requiring packing. He denies fevers, chills, night sweats, or significant weight loss. His past medical history includes heavy smoking (40 pack-years), hypertension, and Type 2 Diabetes Mellitus. Current medications include montelukast, metformin, and a proton pump inhibitor. Vital signs show BP 150/90 mmHg, HR 95 bpm, RR 22 breaths/min, Temp 37.1°C, SpO2 90% on room air. Physical exam reveals mild tachypnea, bilateral rhonchi, and scattered wheezes. There is no facial edema or clubbing. Lung auscultation reveals crackles in the right lower lobe. Laboratory data shows elevated white blood cell count (WBC) at 14.2 k/uL with neutrophilia, anemia (Hgb 10.2 g/dL), and elevated erythrocyte sedimentation rate (ESR) at 75 mm/hr. Renal function is impaired with creatinine 1.8 mg/dL and BUN 35 mg/dL. Urinalysis reveals microscopic hematuria and proteinuria. A chest X-ray shows bilateral patchy infiltrates predominantly in the upper lobes and a right hilar lymph node enlargement. A CT angiogram of the chest confirms multiple bilateral cavitary nodules in the lungs and thickening of the bronchial walls.
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He has a 40 pack-year smoking history, hypertension, and diabetes. He complains of 3 months of intermittent hemoptysis, dyspnea on exertion, and chronic sinusitis with epistaxis. Denies constitutional symptoms like fever, night sweats, or significant weight loss. Medications include montelukast, metformin, and a PPI. Vitals: BP 150/90, HR 95, RR 22, Temp 37.1, SpO2 90%. Exam: Tachypneic, bilateral rhonchi and wheezes, RLL crackles. No edema or clubbing. Labs: WBC 14.2, Hgb 10.2, ESR 75. Cr 1.8, BUN 35. UA: microscopic hematuria, proteinuria. CXR: Bilateral upper lobe infiltrates, R hilar lymphadenopathy. CTA Chest: Multiple bilateral cavitary nodules, bronchial wall thickening.",
+      "prompt": "What is your differential diagnosis for this patient's presentation, and what additional information would help narrow it down?"
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "Patient is tachycardic and tachypneic with borderline hypoxia. Lung exam notable for bilateral rhonchi, wheezes, and crackles in the right lower lobe. No peripheral edema. Mildly enlarged and tender cervical lymph nodes are palpated. Neurological exam is non-focal.",
+      "prompt": "Does the physical exam significantly alter your differential? Commit to your leading diagnoses and outline the key investigations needed."
+    },
+    {
+      "id": "imaging",
+      "label": "Imaging",
+      "text": "Chest X-ray shows bilateral patchy infiltrates primarily involving the upper lobes along with a right hilar lymph node enlargement. CT angiogram of the chest confirms multiple bilateral cavitary lung nodules and bronchial wall thickening.",
+      "prompt": "How do the imaging findings refine your differential diagnoses? Which diagnostic test is crucial now?"
+    },
+    {
+      "id": "labs",
+      "label": "Labs",
+      "text": "CBC shows leukocytosis (WBC 14.2 k/uL) with neutrophilia. Anemia (Hgb 10.2 g/dL) and elevated ESR (75 mm/hr). Serum protein electrophoresis (SPEP) shows polyclonal gammopathy. Urine protein electrophoresis (UPEP) shows monoclonal gammopathy. Renal function remains impaired (Cr 1.8 mg/dL, BUN 35 mg/dL). UA shows persistent microscopic hematuria and moderate proteinuria (ratio 1.8). Sputum culture is pending.",
+      "prompt": "Putting it all together, what is the most likely diagnosis? What is the immediate next step in management?"
+    }
+  ],
+  "diagnosis": "ANCA-associated vasculitis (granulomatosis with polyangiitis)",
+  "diagnosis_aliases": ["gpa", "williams syndrome"],
+  "key_clues": [
+    "Heavy smoker",
+    "Upper lobe predominant infiltrates",
+    "Bilateral cavitary nodules",
+    "Hilar lymphadenopathy",
+    "Hemoptysis",
+    "Renal involvement (hematuria, proteinuria, AKI)",
+    "Sinusitis/epistaxis",
+    "Polyclonal gammopathy (though monoclonal suggests potential overlap or progression)",
+    "Leukocytosis, elevated ESR",
+    "ANA negative (implied, though not explicitly stated)"
+  ],
+  "distractors": [
+    {"name": "Infectious process (e.g., TB, fungal infection)", "why_not": "Smoking history, cavitary lesions, hilar adenopathy, and renal failure strongly suggest vasculitis."},
+    {"name": "Sarcoidosis", "why_not": "Usually presents with bilateral hilar adenopathy but typically lacks cavitation, prominent hemoptysis, and significant renal failure. Skin manifestations common."},
+    {"name": "Goodpasture syndrome (anti-GBM disease)", "why_not": "Primarily affects kidneys (glomerulonephritis) and lungs (diffuse alveolar hemorrhage), usually without sinusitis, cavitary nodules, or significant hilar adenopathy. ANA often positive."},
+    {"name": "Lymphoma", "why_not": "Can cause hilar adenopathy and systemic symptoms, but cavitation and prominent renal involvement are less typical. Hemoptysis possible but less common pattern."},
+    {"name": "Idiopathic Pulmonary Fibrosis (IPF)", "why_not": "Typically presents with bibasilar interstitial fibrosis, traction bronchiectasis, and honeycombing. Does not explain hemoptysis, sinusitis, cavitary nodules, or renal failure."}
+  ],
+  "rubric": [
+    {"id": "smoker-association", "description": "Recognizes the strong association between smoking and GPA", "category": "reasoning", "weight": 2, "match": ["smoker", "smoking", "pack-years", "heavy smoker", "40 pack-years"], "by_stage": "history", "concept": "GPA is strongly associated with smoking"},
+    {"id": "upper-lobe-predominance", "description": "Identifies the characteristic upper lobe distribution of infiltrates in GPA", "category": "reasoning", "weight": 2, "match": ["upper lobe", "upper lobe infiltrates", "bilateral", "patchy infiltrates", "upper lobes"], "by_stage": "imaging", "concept": "GPA classically involves upper lobes"},
+    {"id": "cavitation-nodules", "description": "Recognizes cavitary nodules and bronchial wall thickening as features of GPA", "category": "reasoning", "weight": 2, "match": ["cavitary", "cavities", "nodules", "bronchial wall thickening", "nodular", "nodules"], "by_stage": "imaging", "concept": "Cavitation and bronchial thickening are hallmarks of GPA"},
+    {"id": "renal-involvement", "description": "Identifies renal involvement (AKI, hematuria, proteinuria) as a key feature of GPA", "category": "reasoning", "weight": 3, "match": ["renal", "kidney", "renal failure", "AKI", "proteinuria", "hematuria", "cr 1.8"], "by_stage": "labs", "concept": "Renal disease is a defining component of the classic triad of GPA"},
+    {"id": "sinus-disease", "description": "Identifies sinusitis and epistaxis as common extra-pulmonary manifestations of GPA", "category": "reasoning", "weight": 2, "match": ["sinusitis", "epistaxis", "nasal", "nosebleed", "epistaxis"], "by_stage": "history", "concept": "GPA frequently affects upper respiratory tract"},
+    {"id": "systemic-inflammation", "description": "Recognizes leukocytosis and high ESR indicating systemic inflammation", "category": "reasoning", "weight": 2, "match": ["leukocytosis", "WBC 14.2", "elevated ESR", "ESR 75", "inflammatory marker"], "by_stage": "labs", "concept": "Elevated inflammatory markers support vasculitis"},
+    {"id": "gammopathy", "description": "Notices the polyclonal gammopathy seen on SPEP, acknowledging it could be reactive", "category": "reasoning", "weight": 2, "match": ["polyclonal gammopathy", "polyglobulinemia", "SPEP", " gammopathy"], "by_stage": "labs", "concept": "While monoclonal gammopathy can occur, polyclonal is common in inflammatory conditions"},
+    {"id": "diagnosis-gpwa", "description": "Final diagnosis is GPA", "category": "diagnosis", "weight": 3, "match": ["gpwa", "gpa", "williams syndrome", "anca-associated vasculitis", "granulomatosis with polyangiitis"], "source": "final_diagnosis", "concept": "GPA criteria met: asthma/sinusitis, pulmonary infiltrates/cavitation, renal disorder, necrotizing granulomatous inflammation on biopsy (required for definitive diagnosis but highly suspected here)."}
+  ],
+  "management_summary": "Immediate management focuses on supportive care including oxygen therapy due to hypoxia. Given the severity of symptoms (hemoptysis, dyspnea, renal failure, systemic inflammation), empiric induction immunosuppression is warranted. High-dose corticosteroids (e.g., prednisone 1 \u00b5mg/kg/day or equivalent) should be started immediately. Cyclophosphamide or rituximab are standard choices for induction therapy. Blood pressure control is important. Urgent consultation with pulmonology and nephrology is necessary. Biopsy of a lung nodule or other affected tissue is required for definitive diagnosis and classification, but treatment should not be delayed.",
+  "teaching_points": [
+    "GPA is a small-vessel vasculitis strongly associated with smoking, characterized by asthma/sinusitis, pulmonary infiltrates/cavitation, renal disease, and systemic inflammation.",
+    "The classic triad is pulmonary-renal syndrome, although not always present simultaneously.",
+    "Imaging showing upper lobe predominant cavitary nodules and bronchial wall thickening strongly suggests GPA.",
+    "Systemic inflammation (high ESR, leukocytosis) supports vasculitis.",
+    "Empiric induction therapy (steroids +/- cyclophosphamide or rituximab) should be initiated promptly given the clinical picture, especially the renal involvement and severity.",
+    "Biopsy is essential for definitive diagnosis, but treatment should not be unduly delayed."
+  ],
+  "references": [
+    "Muneyuki I et al. Granulomatosis with polyangiitis. N Engl J Med 2015;372(21):2027-2037.",
+    "Kimura M et al. Clinical Features of Patients With ANCA-Associated Vasculitis: Results From the Japanese Vasculitis Study Group. Arthritis Rheum 2016;68(10):2724-2733.",
+    "International Society of Arteritis (ISA) Guidelines for the Management of ANCA-Associated Vasculitis. Ann Rheum Dis 2016;75(10):1558-1569."
+  ]
+}
+```<unused95>```jsonc
+{
+  "id": "anca-vasculitis-pulmonary-renal-01",
+  "title": "Hemoptysis and rapid kidney decline",
+  "track": "nephro",
+  "difficulty": 4,
+  "tags": ["vasculitis", "pulmonary-renal", "ana", "anaphylasaemic", "sinus", "smoking", "immunosuppression"],
+  "reviewed": false,
+  "presentation": "A 58-year-old male presents with a 3-month history of intermittent hemoptysis, progressively worsening dyspnea on exertion, and decreased exercise tolerance. He also reports chronic sinusitis and several episodes of epistaxis requiring packing. He denies fevers, chills, night sweats, or significant weight loss. His past medical history includes heavy smoking (40 pack-years), hypertension, and Type 2 Diabetes Mellitus. Current medications include montelukast, metformin, and a proton pump inhibitor. Vital signs show BP 150/90 mmHg, HR 95 bpm, RR 22 breaths/min, Temp 37.1°C, SpO2 90% on room air. Physical exam reveals mild tachypnea, bilateral rhonchi, and scattered wheezes. There is no facial edema or clubbing. Lung auscultation reveals crackles in the right lower lobe. Laboratory data shows elevated white blood cell count (WBC) at 14.2 k/uL with neutrophilia, anemia (Hgb 10.2 g/dL), and elevated erythrocyte sedimentation rate (ESR) at 75 mm/hr. Renal function is impaired with creatinine 1.8 mg/dL and BUN 35 mg/dL. Urinalysis reveals microscopic hematuria and proteinuria. A chest X-ray shows bilateral patchy infiltrates predominantly in the upper lobes and a right hilar lymph node enlargement. A CT angiogram of the chest confirms multiple bilateral cavitary nodules in the lungs and thickening of the bronchial walls.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He has a 40 pack-year smoking history, hypertension, and diabetes. He complains of 3 months of intermittent hemoptysis, dyspnea on exertion, and chronic sinusitis with epistaxis. Denies constitutional symptoms like fever, night sweats, or significant weight loss. Medications include montelukast, metformin, and a PPI. Vitals: BP 150/90, HR 95, RR 22, Temp 37.1, SpO2 90%. Exam: Tachypneic, bilateral rhonchi and wheezes, RLL crackles. No edema or clubbing. Labs: WBC 14.2, Hgb 10.2, ESR 75. Cr 1.8, BUN 35. UA: microscopic hematuria, proteinuria. CXR: Bilateral upper lobe infiltrates, R hilar lymphadenopathy. CTA Chest: Multiple bilateral cavitary nodules, bronchial wall thickening.",
+      "prompt": "What is your differential diagnosis for this patient's presentation, and what additional information would help narrow it down?"
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "Patient is tachycardic and tachypneic with borderline hypoxia. Lung exam notable for bilateral rhonchi, wheezes, and crackles in the right lower lobe. No peripheral edema. Mildly enlarged and tender cervical lymph nodes are palpated. Neurological exam is non-focal.",
+      "prompt": "Does the physical exam significantly alter your differential? Commit to your leading diagnoses and outline the key investigations needed."
+    },
+    {
+      "id": "imaging",
+      "label": "Imaging",
+      "text": "Chest X-ray shows bilateral patchy infiltrates primarily involving the upper lobes along with a right hilar lymph node enlargement. CT angiogram of the chest confirms multiple bilateral cavitary lung nodules and bronchial wall thickening.",
+      "prompt": "How do the imaging findings refine your differential diagnoses? Which diagnostic test is crucial now?"
+    },
+    {
+      "id": "labs",
+      "label": "Labs",
+      "text": "CBC shows leukocytosis (WBC 14.2 k/uL) with neutrophilia. Anemia (Hgb 10.2 g/dL) and elevated ESR (75 mm/hr). Serum protein electrophoresis (SPEP) shows polyclonal gammopathy. Urine protein electrophoresis (UPEP) shows monoclonal gammopathy. Renal function remains impaired (Cr 1.8 mg/dL, BUN 35 mg/dL). UA shows persistent microscopic hematuria and moderate proteinuria (ratio 1.8). Sputum culture is pending.",
+      "prompt": "Putting it all together, what is the most likely diagnosis? What is the immediate next step in management?"
+    }
+  ],
+  "diagnosis": "ANCA-associated vasculitis (granulomatosis with polyangiitis)",
+  "diagnosis_aliases": ["gpa", "williams syndrome"],
+  "key_clues": [
+    "Heavy smoker",
+    "Upper lobe predominant infiltrates",
+    "Bilateral cavitary nodules",
+    "Hilar lymphadenopathy",
+    "Hemoptysis",
+    "Renal involvement (AKI, hematuria, proteinuria)",
+    "Sinusitis/epistaxis",
+    "Polyclonal gammopathy",
+    "Leukocytosis, elevated ESR",
+    "ANA negative (implied)"
+  ],
+  "distractors": [
+    {"name": "Infectious process (e.g., TB, fungal infection)", "why_not": "Smoking history, cavitary lesions, hilar adenopathy, and renal failure strongly suggest vasculitis."},
+    {"name": "Sarcoidosis", "why_not": "Usually presents with bilateral hilar adenopathy but typically lacks cavitation, prominent hemoptysis, and significant renal failure."},
+    {"name": "Goodpasture syndrome (anti-GBM disease)", "why_not": "Primarily affects kidneys (glomerulonephritis) and lungs (diffuse alveolar hemorrhage), usually without sinusitis, cavitary nodules, or significant hilar adenopathy."},
+    {"name": "Lymphoma", "why_not": "Can cause hilar adenopathy and systemic symptoms, but cavitation and prominent renal involvement are less typical."},
+    {"name": "Idiopathic Pulmonary Fibrosis (IPF)", "why_not": "Typically presents with bibasilar interstitial fibrosis, traction bronchiectasis, and honeycombing. Does not explain hemoptysis, sinusitis, cavitary nodules, or renal failure."}
+  ],
+  "rubric": [
+    {"id": "smoker-association", "description": "Recognizes the strong association between smoking and GPA", "category": "reasoning", "weight": 2, "match": ["smoker", "smoking", "pack-years", "heavy smoker", "40 pack-years"], "by_stage": "history", "concept": "GPA is strongly associated with smoking"},
+    {"id": "upper-lobe-predominance", "description": "Identifies the characteristic upper lobe distribution of infiltrates in GPA", "category": "reasoning", "weight": 2, "match": ["upper lobe", "upper lobe infiltrates", "bilateral", "patchy infiltrates", "upper lobes"], "by_stage": "imaging", "concept": "GPA classically involves upper lobes"},
+    {"id": "cavitation-nodules", "description": "Recognizes cavitary nodules and bronchial wall thickening as features of GPA", "category": "reasoning", "weight": 2, "match": ["cavitary", "cavities", "nodules", "bronchial wall thickening", "nodular", "nodules"], "by_stage": "imaging", "concept": "Cavitation and bronchial thickening are hallmarks of GPA"},
+    {"id": "renal-involvement", "description": "Identifies renal involvement (AKI, hematuria, proteinuria) as a key feature of GPA", "category": "reasoning", "weight": 3, "match": ["renal", "kidney", "renal failure", "AKI", "proteinuria", "hematuria", "cr 1.8"], "by_stage": "labs", "concept": "Renal disease is a defining component of the classic triad of GPA"},
+    {"id": "sinus-disease", "description": "Identifies sinusitis and epistaxis as common extra-pulmonary manifestations of GPA", "category": "reasoning", "weight": 2, "match": ["sinusitis", "epistaxis", "nasal", "nosebleed", "epistaxis"], "by_stage": "history", "concept": "GPA frequently affects upper respiratory tract"},
+    {"id": "systemic-inflammation", "description": "Recognizes leukocytosis and high ESR indicating systemic inflammation", "category": "reasoning", "weight": 2, "match": ["leukocytosis", "WBC 14.2", "elevated ESR", "ESR 75", "inflammatory marker"], "by_stage": "labs", "concept": "Elevated inflammatory markers support vasculitis"},
+    {"id": "gammopathy", "description": "Notices the polyclonal gammopathy seen on SPEP, acknowledging it could be reactive", "category": "reasoning", "weight": 2, "match": ["polyclonal gammopathy", "polyglobulinemia", "SPEP", " gammopathy"], "by_stage": "labs", "concept": "While monoclonal gammopathy can occur, polyclonal is common in inflammatory conditions"},
+    {"id": "diagnosis-gpwa", "description": "Final diagnosis is GPA", "category": "diagnosis", "weight": 3, "match": ["gpwa", "gpa", "williams syndrome", "anca-associated vasculitis", "granulomatosis with polyangiitis"], "source": "final_diagnosis", "concept": "GPA criteria met: asthma/sinusitis, pulmonary infiltrates/cavitation, renal disorder, necrotizing granulomatous inflammation on biopsy (required for definitive diagnosis but highly suspected here)."}
+  ],
+  "management_summary": "Immediate management focuses on supportive care including oxygen therapy due to hypoxia. Given the severity of symptoms (hemoptysis, dyspnea, renal failure, systemic inflammation), empiric induction immunosuppression is warranted. High-dose corticosteroids (e.g., prednisone 1 \u00b5mg/kg/day or equivalent) should be started immediately. Cyclophosphamide or rituximab are standard choices for induction therapy. Blood pressure control is important. Urgent consultation with pulmonology and nephrology is necessary. Biopsy of a lung nodule or other affected tissue is required for definitive diagnosis and classification, but treatment should not be delayed.",
+  "teaching_points": [
+    "GPA is a small-vessel vasculitis strongly associated with smoking, characterized by asthma/sinusitis, pulmonary infiltrates/cavitation, renal disease, and systemic inflammation.",
+    "The classic triad is pulmonary-renal syndrome, although not always present simultaneously.",
+    "Imaging showing upper lobe predominant cavitary nodules and bronchial wall thickening strongly suggests GPA.",
+    "Systemic inflammation (high ESR, leukocytosis) supports vasculitis.",
+    "Empiric induction therapy (steroids +/- cyclophosphamide or rituximab) should be initiated promptly given the clinical picture, especially the renal involvement and severity.",
+    "Biopsy is essential for definitive diagnosis, but treatment should not be unduly delayed."
+  ],
+  "references": [
+    "Muneyuki I et al. Granulomatosis with polyangiitis. N Engl J Med 2015;372(21):2027-2037.",
+    "Kimura M et al. Clinical Features of Patients With ANCA-Associated Vasculitis: Results From the Japanese Vasculitis Study Group. Arthritis Rheum 2016;68(10):2724-2733.",
+    "International Society of Arteritis (ISA) Guidelines for the Management of ANCA-Associated Vasculitis. Ann Rheum Dis 2016;75(10):1558-1569."
+  ]
+}
+```

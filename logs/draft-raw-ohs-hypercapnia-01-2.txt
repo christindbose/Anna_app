@@ -1,0 +1,99 @@
+```jsonc
+{
+  "id": "ohs-hypercapnia-01",
+  "title": "Acute-on-chronic hypercapnic respiratory failure from obesity hypoventilation syndrome with obstructive sleep apnoea, worsened by opioids and over-oxygenation in the emergency department; distinguishing from COPD",
+  "track": "pulm",
+  "difficulty": 3,
+  "tags": ["respiratory failure", "obesity", "sleep apnea", "COPD", "opioids", "overoxygenation", "emergency"],
+  "reviewed": false,
+  "presentation": "A 58-year-old male is brought to the ED by his wife due to worsening shortness of breath and confusion for the past 24 hours. His vital signs show BP 110/70, HR 110, RR 32, SpO2 88% on room air, temp 37.2C. He is alert but lethargic, speaking in short sentences. There is mild accessory muscle use. Lung auscultation reveals diffuse bilateral crackles throughout both lung fields. Heart rate is regular rhythm.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "Patient reports a history of COPD diagnosed 10 years ago, primarily managed with montelukast and occasional albuterol inhaler. He also has hypertension treated with lisinopril. He denies recent exacerbations, hospitalizations, or significant changes in his usual medications. His wife notes he often falls asleep during the day, particularly while driving, and sometimes snorts loudly when sleeping. He takes oxycodone 10mg q6h for chronic back pain, taken regularly for the past 3 months. He denies recent changes in opioid dosage or frequency. He has no known allergies.",
+      "prompt": "What is your initial approach to this patient's acute respiratory distress, and what key features of his history raise suspicion for a non-COPD etiology?",
+      "learner_goal": "Assess ABCs, obtain oxygen, initiate non-invasive ventilation, and consider underlying causes beyond COPD."
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "Vital signs: BP 110/70 mmHg, HR 110 bpm, RR 32 breaths/min, SpO2 88% on room air, Temp 37.2°C. Patient is lethargic, speaking in short phrases, using accessory muscles. Lungs: Diffuse bilateral crackles heard throughout both lung fields. Heart: Regular rhythm, no murmurs. Abdomen: Soft, non-tender. Extremities: No edema. Neurologic: Alert but lethargic, pupils equal round reactive, cranial nerves intact.",
+      "prompt": "Based on the examination, what is your immediate plan, and what additional investigations are crucial to differentiate between a COPD exacerbation and another cause of hypercapnic respiratory failure?",
+      "learner_goal": "Initiate NIPPV, confirm hypercapnia, assess volume status, and evaluate for opioid toxicity and hypoxia.",
+      "available_tests": {
+        "pulse oximetry": "SpO2 88% on RA",
+        "heart rate": "HR 110 bpm",
+        "respiratory rate": "RR 32 breaths/min",
+        "blood pressure": "BP 110/70 mmHg",
+        "temperature": "Temp 37.2°C",
+        "oxygen saturation": "SpO2 88% on room air",
+        "auscultation": "Diffuse bilateral crackles",
+        "neurological": "Lethargy, short phrases",
+        "pupils": "Equal round reactive",
+        "abdomination": "Soft, non-tender",
+        "extremities": "No edema",
+        "drug screen": "Opioid level pending",
+        "arterial blood gas": "ABG showing PaCO2 65 mmHg, pH 7.28",
+        "complete blood count": "WBC 12k, Hgb 14.5",
+        "electrolyte panel": "Na 138, K 4.1, Cl 102",
+        "creatinine": "Cr 1.2",
+        "liver function tests": "AST 25, ALT 30",
+        "chest x-ray": "CXR shows cardiomegaly and pulmonary vascular congestion.",
+        "nasal fentanyl": "Nasal fentanyl level 150 ng/mL"
+      }
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "Arterial Blood Gas analysis reveals PaCO2 65 mmHg, pH 7.28, PaO2 55 mmHg on 5L nasal cannula, HCO3 24 mEq/L. Serum electrolyte panel shows Na 138 mEq/L, K 4.1 mEq/L, Cl 102 mEq/L. CBC shows WBC 12 k/uL, Hgb 14.5 g/dL. Creatinine is 1.2 mg/dL. Liver function tests are within normal limits. Opioid level is 150 ng/mL. Chest X-ray confirms cardiomegaly and pulmonary vascular congestion. A portable chest CT scan shows bilateral pleural effusions and severe centrilobular emphysema.",
+      "prompt": "Integrate the ABG, opioid levels, CXR, and CT findings. What is the most likely diagnosis explaining this patient's presentation, and what is the immediate management priority?",
+      "learner_goal": "Synthesize the data to identify Obesity Hypoventilation Syndrome complicated by opioid overdose and hypoxia, and prioritize reversing opioid effects and improving ventilation."
+    }
+  ],
+  "diagnosis": "Obesity hypoventilation syndrome with obstructive sleep apnoea, worsened by opioids and over-oxygenation in the emergency department",
+  "diagnosis_aliases": ["ohs", "hypoventilation", "sleep apnea", "opioid-induced respiratory depression", "hypoxia", "COPD exacerbation"],
+  "key_clues": [
+    "Patient profile: obese male with COPD, OSA symptoms, opioid use.",
+    "Clinical picture: acute hypercapnic respiratory failure with altered mental status.",
+    "Key labs/imaging: High PaCO2, low pH, normal bicarbonate (suggesting chronic CO2 retention), very high opioid level, hypoxia despite supplemental O2.",
+    "Chest X-ray/CT: Findings consistent with heart failure/volume overload (cardiomegaly, congestion, effusions) potentially related to chronic hypoventilation.",
+    "Over-oxygenation exacerbates hypercapnia in OHSS."
+  ],
+  "distractors": [
+    {"name": "Severe COPD exacerbation", "why_not": "Normal bicarbonate suggests chronic CO2 retention, not just acute increase; high opioid level explains altered mental status better."},
+    {"name": "Pulmonary embolism", "why_not": "Crackles are less common in PE; CXR doesn't show typical PE findings like Westermark sign or Hampton hump; high opioid level is a direct explanation."},
+    {"name": "Pneumonia", "why_not": "No fever reported, WBC not significantly elevated, CXR findings point towards cardiac congestion rather than consolidation."},
+    {"name": "Heart failure", "why_not": "While CXR suggests HF, the primary driver of hypercapnia and altered mental status is the opioid overdose superimposed on chronic hypoventilation."}
+  ],
+  "rubric": [
+    {"id": "volume-status", "description": "Assess volume status based on exam and CXR findings", "category": "reasoning", "weight": 2, "match": ["volume status", "euvol", "hypovol", "hypervol", "orthostat", "jvp", "mucous membrane", "skin turgor", "oedema", "edema", "congestion", "effusion", "cardiomegaly"], "by_stage": "exam", "concept": "Volume status guides differential, but here, evidence points towards heart failure/volume overload."},
+    {"id": "co2-retention", "description": "Note the normal bicarbonate level suggesting chronic CO2 retention", "category": "reasoning", "weight": 2, "match": ["HCO3", "bicarb", "normal", "elevated", "low"], "by_stage": "results", "concept": "Chronic CO2 retention distinguishes this from simple acute COPD exacerbation."},
+    {"id": "opioid-level", "description": "Check opioid level given the clinical picture and history", "category": "reasoning", "weight": 3, "match": ["opioid", "naloxone", "fentanyl", "level", "high", "low", "150 ng/mL"], "by_stage": "results", "concept": "High opioid level is a critical clue linking the history to the acute presentation."},
+    {"id": "overoxygenation", "description": "Consider the effect of supplemental oxygen in the setting of hypoventilation", "category": "reasoning", "weight": 2, "match": ["overoxygenation", "hypoxia", "PaO2", "SpO2", "5L", "88%"], "by_stage": "results", "concept": "Supplemental oxygen worsens hypercapnia in OHSS."},
+    {"id": "diagnosis-ohs", "description": "Identify Obesity Hypoventilation Syndrome", "category": "diagnosis", "weight": 3, "match": ["obesity", "hypoventilation", "syndrome", "OHSS", "OSA"], "source": "final_diagnosis", "concept": "OHSS criteria include obesity, daytime hypercapnia, nocturnal hypoxemia, and exclusion of other causes."},
+    {"id": "diagnosis-opioid", "description": "Diagnose Opioid Toxicity", "category": "diagnosis", "weight": 3, "match": ["opioid", "toxicity", "overdose", "naloxone", "fentanyl", "level", "150 ng/mL"], "source": "final_diagnosis", "concept": "Opioid toxicity criteria include respiratory depression, altered mental status, and high opioid level."},
+    {"id": "management-naloxone", "description": "Administer Naloxone for opioid reversal", "category": "management", "weight": 3, "match": ["naloxone", "reverse", "opioid", "respiratory depression", "altered mental status", "100 ug"], "source": "final_management", "concept": "Naloxone administration is the first step in managing suspected opioid toxicity."},
+    {"id": "management-ventilation", "description": "Initiate non-invasive positive pressure ventilation (NIPPV)", "category": "management", "weight": 3, "match": ["NIPPV", "BiPAP", "CPAP", "ventilation", "breathing support", "CO2 removal", "pH", "PaCO2", "65"], "source": "final_management", "concept": "NIPPV is indicated for hypercapnic respiratory failure (pH < 7.35, PaCO2 > 45) when patient is conscious enough."},
+    {"id": "management-oxygen", "description": "Reduce supplemental oxygen therapy", "category": "management", "weight": 2, "match": ["oxygen", "O2", "reduce", "decrease", "supplemental", "5L", "nasal cannula"], "source": "final_management", "concept": "Reducing oxygen helps decrease CO2 production and can improve ventilation."},
+    {"id": "management-fluids", "description": "Fluid restriction may be necessary depending on volume status", "category": "management", "weight": 2, "match": ["fluids", "restrict", "hydration", "volume status", "edema"], "source": "final_management", "concept": "Fluid restriction helps manage fluid overload seen in heart failure component."},
+    {"id": "management-continue", "description": "Continue opioid pain management carefully, monitor closely", "category": "management", "weight": 2, "match": ["pain", "opioid", "manage", "monitor", "morphine", "oxycodone"], "source": "final_management", "concept": "Pain management continues, but opioid dose needs careful adjustment."}
+  ],
+  "management_summary": "The patient presents with acute hypercapnic respiratory failure, likely due to opioid toxicity superimposed on Obesity Hypoventilation Syndrome exacerbated by supplemental oxygen. Immediate management includes administering naloxone (100 µg IV repeated as needed), initiating non-invasive positive pressure ventilation (BiPAP) to improve ventilation and reduce PaCO2, reducing supplemental oxygen delivery, and assessing volume status to guide fluid management. Monitor response closely and adjust opioid therapy cautiously.",
+  "teaching_points": [
+    "In patients with COPD presenting with acute respiratory failure, always consider non-COPD causes, especially opioid toxicity and hypoxia.",
+    "Chronic CO2 retention (normal bicarbonate) suggests a chronic process like OHSS, differentiating it from simple acute exacerbations.",
+    "High opioid levels directly explain respiratory depression and altered mental status, correlating with the patient's history.",
+    "Supplemental oxygen can worsen hypercapnia in OHSS by increasing CO2 production; reducing oxygen is part of management.",
+    "Non-invasive ventilation is the standard of care for hypercapnic respiratory failure in conscious patients.",
+    "Obesity and sleep apnea are risk factors for OHSS; the patient's history provides clues.",
+    "Chest X-ray findings can suggest associated conditions like heart failure/volume overload."
+  ],
+  "references": [
+    "UpToDate - Management of acute hypercapnic respiratory failure",
+    "American Thoracic Society/European Respiratory Society/Japanese Respiratory Society/Latin American Thoracic Association guidelines on the diagnosis and management of eosinophilic pneumonia",
+    "Guidelines for the Use of Noninvasive Positive Pressure Ventilation in Adult Patients With Acute Respiratory Failure: A Clinical Practice Guideline From the American College of Critical Care Medicine",
+    "UpToDate - Obesity hypoventilation syndrome"
+  ]
+}
+```
