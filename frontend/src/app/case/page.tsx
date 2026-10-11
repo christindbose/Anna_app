@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import {
   CATEGORIES,
   api,
@@ -20,9 +20,17 @@ import { useApi } from "@/lib/useApi";
 import { readAloudEnabled, setReadAloudEnabled, speakAs, stopSpeaking, ttsSupported, unlockAudio } from "@/lib/speech";
 import { BackLink, Button, Card, Collapsible, ErrorNote, Skeleton, Spinner } from "@/components/ui";
 
+// Static export (GitHub Pages) cannot build dynamic routes, so the session id travels as ?id=.
 export default function CasePage() {
-  const params = useParams<{ id: string }>();
-  const id = params.id;
+  return (
+    <Suspense fallback={<LoadingCase />}>
+      <CaseInner />
+    </Suspense>
+  );
+}
+
+function CaseInner() {
+  const id = useSearchParams().get("id") ?? "";
   const loaded = useApi(() => api.session(id), `session:${id}`);
 
   // Local, mutable copy of the session once loaded.

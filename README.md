@@ -59,3 +59,27 @@ python scripts/draft_case.py --track general-im "topic"   # model-drafted case, 
 ```
 
 Cases are marked `"reviewed": false` until a human has checked them. Review before relying on one.
+
+## Live on GitHub Pages
+
+The front end is published automatically by `.github/workflows/pages.yml` on every push to
+`main` that touches `frontend/`, at **https://christindbose.github.io/Anna_app/**. GitHub only
+hosts the static app; the AI attending (FastAPI + MedGemma + Kokoro) keeps running on the GPU box
+and is reached over HTTPS through a tunnel.
+
+To use it:
+
+1. On the GPU box, make sure `ANNA_APP_PASSWORD` is set in `.env` (the API is about to be on the
+   internet), then run `scripts/start_all.sh` and, in another shell, `scripts/tunnel.sh`. The
+   tunnel prints an address like `https://<words>.trycloudflare.com`.
+2. Open the Pages site on the phone. A "Server" sheet asks for that address and the password; both
+   are remembered on the phone. The sheet is also under "Server settings" at the bottom of Home.
+3. Add to Home Screen as usual.
+
+Quick tunnels get a new address every time they start. For a permanent one, create a named tunnel
+in a Cloudflare account (free) and set the repository variable `ANNA_API_BASE` to its URL so the
+Pages build defaults to it, or use Tailscale Funnel.
+
+The static build has no `/api` proxy, so the app calls the backend cross-origin; the Pages origin
+is in the backend's CORS allow-list (`ANNA_CORS_ORIGINS` to add more). Session links use
+`/case?id=...` rather than a dynamic route so the site can be exported statically.

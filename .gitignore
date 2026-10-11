@@ -10,3 +10,5 @@ out/
 *.log
 models/
 .DS_Store
+.next-export/
+out/

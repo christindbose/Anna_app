@@ -1,4 +1,38 @@
-/* API client for the FastAPI backend (same-origin via the /api rewrite). */
+/* API client for the FastAPI backend.
+ * Served by `next start`, /api is proxied same-origin. In the static GitHub Pages build there is
+ * no proxy: the backend address comes from NEXT_PUBLIC_API_BASE at build time or, preferably,
+ * from the "Server" setting the user enters in the app (stored in localStorage). */
+
+/** Prefix for files in /public when the site is served under a sub-path (GitHub Pages). */
+export const ASSET_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+export const STATIC_BUILD = process.env.NEXT_PUBLIC_STATIC === "1";
+export const SERVER_KEY = "anna_server";
+export const SERVER_EVENT = "anna:server"; // open the server settings sheet
+export const UNREACHABLE_EVENT = "anna:unreachable"; // fetch itself failed
+
+export function getServerBase(): string {
+  try {
+    const saved = typeof window === "undefined" ? null : window.localStorage.getItem(SERVER_KEY);
+    if (saved) return saved.replace(/\/+$/, "");
+  } catch {
+    /* ignore */
+  }
+  return (process.env.NEXT_PUBLIC_API_BASE ?? "").replace(/\/+$/, "");
+}
+
+export function setServerBase(url: string): void {
+  try {
+    const v = url.trim().replace(/\/+$/, "");
+    if (v) window.localStorage.setItem(SERVER_KEY, v);
+    else window.localStorage.removeItem(SERVER_KEY);
+  } catch {
+    /* private mode */
+  }
+}
+
+export function openServerSettings(): void {
+  if (typeof window !== "undefined") window.dispatchEvent(new Event(SERVER_EVENT));
+}
 
 export class ApiError extends Error {
   status: number;
@@ -77,15 +111,22 @@ async function errorMessage(res: Response): Promise<string> {
 
 async function doFetch(path: string, init: RequestInit & { silent401?: boolean } = {}): Promise<Response> {
   const { silent401, ...rest } = init;
+  if (STATIC_BUILD && !getServerBase()) {
+    // Hosted on GitHub Pages with no backend address yet: open the server sheet.
+    // Deferred: the first fetches fire from page effects before the Shell's listener mounts.
+    if (typeof window !== "undefined") setTimeout(() => window.dispatchEvent(new Event(UNREACHABLE_EVENT)), 0);
+    throw new ApiError(0, "No server address set. Open Server settings and paste the tunnel link.");
+  }
   let res: Response;
   try {
-    res = await fetch(`/api${path}`, {
+    res = await fetch(`${getServerBase()}/api${path}`, {
       ...rest,
       headers: { ...buildHeaders(rest.body != null), ...(rest.headers as Record<string, string> | undefined) },
     });
   } catch (e) {
     if (e instanceof DOMException && e.name === "AbortError") throw e;
-    throw new ApiError(0, "Can't reach the server. Check your connection and try again.");
+    if (typeof window !== "undefined") window.dispatchEvent(new Event(UNREACHABLE_EVENT));
+    throw new ApiError(0, STATIC_BUILD ? "Can't reach the server. Check the server address in settings." : "Can't reach the server. Check your connection and try again.");
   }
   if (res.status === 401) {
     if (!silent401) notifyUnauthorized();
@@ -120,7 +161,7 @@ export interface Attending {
   voice: { lang: string; gender: string; rate: number; pitch: number; accent: string; model_voice: string; speed: number };
 }
 
-export const attendingAvatar = (id: string) => `/attendings/${encodeURIComponent(id)}.svg`;
+export const attendingAvatar = (id: string) => `${ASSET_BASE}/attendings/${encodeURIComponent(id)}.svg`;
 export type Category = "diagnosis" | "workup" | "reasoning" | "management";
 
 export interface Health {

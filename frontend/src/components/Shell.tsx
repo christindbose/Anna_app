@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
-import { AUTH_EVENT, PW_KEY, TOAST_EVENT, UNAUTHORIZED_EVENT, UnauthorizedError, api, messageOf } from "@/lib/api";
+import { AUTH_EVENT, PW_KEY, SERVER_EVENT, STATIC_BUILD, TOAST_EVENT, UNAUTHORIZED_EVENT, UNREACHABLE_EVENT, UnauthorizedError, api, getServerBase, messageOf, setPassword, setServerBase } from "@/lib/api";
 
 const TABS = [
   { href: "/", label: "Home", icon: HomeIcon },
@@ -13,12 +13,13 @@ const TABS = [
 
 export function Shell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const inCase = pathname?.startsWith("/case/");
+  const inCase = pathname?.startsWith("/case");
   return (
     <>
       <div className={inCase ? "" : "pb-[calc(4.5rem+var(--sa-bottom))]"}>{children}</div>
       {!inCase && <TabBar pathname={pathname ?? "/"} />}
       <PasswordGate />
+      <ServerGate />
       <Toaster />
     </>
   );
@@ -115,6 +116,114 @@ function PasswordGate() {
         >
           {busy ? "Checking…" : "Continue"}
         </button>
+      </form>
+    </div>
+  );
+}
+
+function ServerGate() {
+  const [open, setOpen] = useState(false);
+  const [url, setUrl] = useState("");
+  const [pw, setPw] = useState("");
+  const [err, setErr] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    const show = () => {
+      setUrl(getServerBase());
+      setErr(null);
+      setOpen(true);
+    };
+    // In the static build the backend address is the first thing to fix when fetches fail.
+    const onUnreachable = () => {
+      if (STATIC_BUILD) show();
+    };
+    window.addEventListener(SERVER_EVENT, show);
+    window.addEventListener(UNREACHABLE_EVENT, onUnreachable);
+    if (STATIC_BUILD && !getServerBase()) show();
+    return () => {
+      window.removeEventListener(SERVER_EVENT, show);
+      window.removeEventListener(UNREACHABLE_EVENT, onUnreachable);
+    };
+  }, []);
+
+  async function submit(e: FormEvent) {
+    e.preventDefault();
+    const v = url.trim().replace(/\/+$/, "");
+    if (v && !/^https?:\/\//.test(v)) {
+      setErr("Start the address with https:// (or http:// on a local network).");
+      return;
+    }
+    if (v.startsWith("http://") && window.location.protocol === "https:") {
+      setErr("This page is https, so the server address must be https too. A Cloudflare tunnel gives you one.");
+      return;
+    }
+    setBusy(true);
+    setErr(null);
+    setServerBase(v);
+    if (pw.trim()) setPassword(pw.trim());
+    try {
+      const h = await api.health();
+      setOpen(false);
+      setPw("");
+      window.dispatchEvent(new Event(AUTH_EVENT));
+      window.dispatchEvent(new CustomEvent(TOAST_EVENT, { detail: `Connected · ${h.llm_model.split("/").pop()}` }));
+    } catch (e2) {
+      setErr(e2 instanceof UnauthorizedError ? "Connected, but the password is wrong." : messageOf(e2));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  if (!open) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-4 sm:items-center" style={{ paddingBottom: "calc(1rem + var(--sa-bottom))" }}>
+      <form onSubmit={submit} className="w-full max-w-sm rounded-2xl border border-line bg-surface p-5 shadow-xl">
+        <h2 className="text-lg font-semibold">Server</h2>
+        <p className="mt-1 text-sm text-muted">
+          {STATIC_BUILD
+            ? "This page is hosted on GitHub; the AI attending runs on a private GPU server. Paste its address (the tunnel link) and the shared password."
+            : "Where the AI attending runs. Leave blank to use this site's own backend."}
+        </p>
+        <label className="mt-4 block text-xs font-medium uppercase tracking-wide text-muted" htmlFor="server-url">
+          Server address
+        </label>
+        <input
+          id="server-url"
+          type="url"
+          inputMode="url"
+          autoCapitalize="none"
+          autoCorrect="off"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          className="mt-1 min-h-11 w-full rounded-xl border border-line bg-bg px-3 text-[16px] outline-none focus:border-accent"
+          placeholder="https://something.trycloudflare.com"
+        />
+        <label className="mt-3 block text-xs font-medium uppercase tracking-wide text-muted" htmlFor="server-pw">
+          Password
+        </label>
+        <input
+          id="server-pw"
+          type="password"
+          autoComplete="current-password"
+          value={pw}
+          onChange={(e) => setPw(e.target.value)}
+          className="mt-1 min-h-11 w-full rounded-xl border border-line bg-bg px-3 text-[16px] outline-none focus:border-accent"
+          placeholder="Leave blank to keep the saved one"
+        />
+        {err && (
+          <p role="alert" className="mt-2 text-sm text-danger">
+            {err}
+          </p>
+        )}
+        <div className="mt-4 flex gap-2">
+          <button type="button" onClick={() => setOpen(false)} className="min-h-11 flex-1 rounded-xl border border-line bg-surface font-medium">
+            Cancel
+          </button>
+          <button type="submit" disabled={busy} className="min-h-11 flex-1 rounded-xl bg-accent font-medium text-white disabled:opacity-50 dark:text-[#06201d]">
+            {busy ? "Connecting…" : "Connect"}
+          </button>
+        </div>
       </form>
     </div>
   );

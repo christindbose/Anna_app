@@ -25,7 +25,8 @@ class Settings(BaseSettings):
     app_password: str = ""  # empty disables auth
     db_path: Path = REPO_ROOT / "data" / "anna.db"
     cases_dir: Path = REPO_ROOT / "cases"
-    cors_origins: list[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
+    # Add the GitHub Pages origin so the static build can call this API through a tunnel.
+    cors_origins: list[str] = ["http://localhost:3000", "http://127.0.0.1:3000", "https://christindbose.github.io"]
 
 
 settings = Settings()

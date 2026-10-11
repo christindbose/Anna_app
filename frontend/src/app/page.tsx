@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { api, attendingAvatar, messageOf, toast, type Track } from "@/lib/api";
+import { api, attendingAvatar, messageOf, openServerSettings, toast, type Track } from "@/lib/api";
 import { useApi } from "@/lib/useApi";
 import { Button, Card, DifficultyDots, ErrorNote, Segmented, Skeleton, Tag } from "@/components/ui";
 
@@ -46,7 +46,7 @@ export default function HomePage() {
     setStarting(caseId ?? "random");
     try {
       const s = await api.startSession({ case_id: caseId ?? null, attending_id: attendingId, track: track === "all" ? null : track });
-      router.push(`/case/${s.id}`);
+      router.push(`/case?id=${encodeURIComponent(s.id)}`);
     } catch (e) {
       toast(messageOf(e));
       setStarting(null);
@@ -228,7 +228,12 @@ export default function HomePage() {
         )}
       </section>
 
-      <footer className="mt-8 pb-2 text-center text-xs text-muted">Educational simulation with fictional patients. Not medical advice.</footer>
+      <footer className="mt-8 pb-2 text-center text-xs text-muted">
+        Educational simulation with fictional patients. Not medical advice.
+        <button type="button" onClick={openServerSettings} className="mt-2 block w-full min-h-9 text-xs text-muted underline-offset-2 hover:underline">
+          Server settings{health.data ? ` · ${health.data.llm_model.split("/").pop()}` : ""}
+        </button>
+      </footer>
     </main>
   );
 }

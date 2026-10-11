@@ -118,7 +118,7 @@ export default function ProgressPage() {
                   const pct = r.max_score ? Math.round((100 * (r.score ?? 0)) / r.max_score) : null;
                   return (
                     <li key={r.session_id}>
-                      <Link href={`/case/${r.session_id}`} className="-mx-1 flex min-h-12 items-center justify-between gap-3 rounded-lg px-1 py-2 active:bg-surface-2">
+                      <Link href={`/case?id=${encodeURIComponent(r.session_id)}`} className="-mx-1 flex min-h-12 items-center justify-between gap-3 rounded-lg px-1 py-2 active:bg-surface-2">
                         <div className="min-w-0">
                           <p className="line-clamp-2 text-[15px] font-medium leading-snug">{titles.get(r.case_id) ?? r.case_id}</p>
                           <p className="text-xs text-muted">

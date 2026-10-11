@@ -132,7 +132,7 @@ Anna as the silent reviewer for a few, or a resident friend). Target 30 cases at
 - [x] Weak-spot follow-ups: generate a short question on each missed concept, scheduled
       with SM-2 spaced repetition.
 - [x] PWA manifest and mobile layout. Offline shell not done.
-- [ ] Tailscale/Cloudflare tunnel, systemd units for model server + API + frontend.
+- [x] systemd units for model server + API + frontend. Front end on GitHub Pages via Actions (2026-10-11); `scripts/tunnel.sh` exposes the API (user runs it).
 - [ ] Personal touches: a welcome screen, her name, a case track for things she has
       mentioned struggling with.
 
@@ -172,3 +172,7 @@ Anna as the silent reviewer for a few, or a resident friend). Target 30 cases at
   260 tokens with sentence-boundary trimming, and restating length rules in the last user message.
   Debrief prompt now treats rubric HITs as authoritative after a debrief claimed a missed test the
   learner had ordered. Pericarditis 19/20, TTP 22/22 on the real model.
+- 2026-10-11: Front end made static-exportable (`STATIC_EXPORT=1`, `/case?id=` instead of a dynamic
+  route, configurable server address stored on the phone) and deployed to GitHub Pages by
+  `.github/workflows/pages.yml` after the repo went public. Backend stays on the GPU box behind a
+  Cloudflare quick tunnel started by the user; app password set in `.env`.

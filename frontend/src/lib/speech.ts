@@ -1,3 +1,4 @@
+import { getServerBase } from "./api";
 /* Read-aloud for attending replies using the browser's SpeechSynthesis.
  * Voice choice is best-effort: pick an installed voice matching the attending's language and
  * gender hint, else any voice for that language, else the browser default. */
@@ -103,7 +104,7 @@ export async function probeServerTts(): Promise<boolean> {
         return "";
       }
     })();
-    const r = await fetch("/api/tts/health", { headers: pw ? { "X-App-Password": pw } : {} });
+    const r = await fetch(`${getServerBase()}/api/tts/health`, { headers: pw ? { "X-App-Password": pw } : {} });
     const j = (await r.json()) as { ok?: boolean };
     serverTts = Boolean(j.ok);
   } catch {
@@ -137,7 +138,7 @@ async function fetchWav(text: string, attendingId: string, signal: AbortSignal):
       return "";
     }
   })();
-  const r = await fetch("/api/tts", {
+  const r = await fetch(`${getServerBase()}/api/tts`, {
     method: "POST",
     headers: { "Content-Type": "application/json", ...(pw ? { "X-App-Password": pw } : {}) },
     body: JSON.stringify({ text, attending_id: attendingId }),
