@@ -17,7 +17,7 @@ import {
   attendingAvatar,
 } from "@/lib/api";
 import { useApi } from "@/lib/useApi";
-import { readAloudEnabled, setReadAloudEnabled, speak, stopSpeaking, ttsSupported } from "@/lib/speech";
+import { readAloudEnabled, setReadAloudEnabled, speakAs, stopSpeaking, ttsSupported, unlockAudio } from "@/lib/speech";
 import { BackLink, Button, Card, Collapsible, ErrorNote, Skeleton, Spinner } from "@/components/ui";
 
 export default function CasePage() {
@@ -95,8 +95,9 @@ function Player({ session, setSession }: { session: SessionView; setSession: (s:
     setReadAloud(next);
     setReadAloudEnabled(next);
     if (next) {
-      // Speaking from a tap also unlocks audio on iOS for later, non-gesture replies.
-      speak(`${session.attending.name} here. ${session.attending.signature}`, session.attending.voice);
+      // A tap is needed to unlock audio on iOS for later, non-gesture replies.
+      unlockAudio();
+      void speakAs(`${session.attending.name} here. ${session.attending.signature}`, session.attending.id, session.attending.voice);
     } else {
       stopSpeaking();
     }
@@ -164,7 +165,7 @@ function Player({ session, setSession }: { session: SessionView; setSession: (s:
       }
       const attending: Turn = { role: "attending", stage_index: current, content: reply.trim() };
       setSession({ ...withLearner, turns: [...withLearner.turns, attending] });
-      if (readAloud) speak(attending.content, session.attending.voice);
+      if (readAloud) void speakAs(attending.content, session.attending.id, session.attending.voice);
     } catch (err) {
       if (!(err instanceof DOMException && err.name === "AbortError")) {
         toast(messageOf(err));
@@ -366,7 +367,7 @@ function Player({ session, setSession }: { session: SessionView; setSession: (s:
           onFinished={(s) => {
             setSheetOpen(false);
             setSession(s);
-            if (readAloud && s.result?.debrief) speak(s.result.debrief, s.attending.voice);
+            if (readAloud && s.result?.debrief) void speakAs(s.result.debrief, s.attending.id, s.attending.voice);
           }}
           sessionId={session.id}
         />

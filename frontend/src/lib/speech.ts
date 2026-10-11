@@ -14,7 +14,7 @@ const FEMALE_HINTS = /female|woman|samantha|karen|moira|tessa|veena|kate|serena|
 const MALE_HINTS = /\bmale\b|\bman\b|daniel|alex|fred|arthur|gordon|oliver|rishi|ravi|prabhat|david|george|james|mark|tom|aaron|lee|jamie|ryan|guy/i;
 
 export function ttsSupported(): boolean {
-  return typeof window !== "undefined" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  return typeof window !== "undefined" && (("speechSynthesis" in window && "SpeechSynthesisUtterance" in window) || "Audio" in window);
 }
 
 let voicesCache: SpeechSynthesisVoice[] = [];
@@ -68,6 +68,126 @@ function clean(text: string): string {
     .trim();
 }
 
+/* ---------- server-side neural voices (Kokoro via /api/tts) ---------- */
+
+let serverTts: boolean | null = null; // null = unknown yet
+let audioEl: HTMLAudioElement | null = null;
+let queueToken = 0;
+
+function getAudio(): HTMLAudioElement {
+  if (!audioEl) {
+    audioEl = new Audio();
+    audioEl.preload = "auto";
+  }
+  return audioEl;
+}
+
+/** Call from a user gesture (the toggle tap) so later programmatic playback is allowed on iOS. */
+export function unlockAudio(): void {
+  try {
+    const a = getAudio();
+    a.src = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=";
+    void a.play().catch(() => undefined);
+  } catch {
+    /* ignore */
+  }
+}
+
+export async function probeServerTts(): Promise<boolean> {
+  if (serverTts !== null) return serverTts;
+  try {
+    const pw = (() => {
+      try {
+        return window.localStorage.getItem("anna_pw") ?? "";
+      } catch {
+        return "";
+      }
+    })();
+    const r = await fetch("/api/tts/health", { headers: pw ? { "X-App-Password": pw } : {} });
+    const j = (await r.json()) as { ok?: boolean };
+    serverTts = Boolean(j.ok);
+  } catch {
+    serverTts = false;
+  }
+  return serverTts;
+}
+
+function sentences(text: string): string[] {
+  const body = clean(text);
+  const parts = body.match(/[^.!?]+[.!?]+["')\]]*|[^.!?]+$/g) ?? [body];
+  // Group into ~220-char chunks so each request is short but not choppy.
+  const out: string[] = [];
+  let cur = "";
+  for (const p of parts) {
+    if ((cur + p).length > 220 && cur) {
+      out.push(cur.trim());
+      cur = "";
+    }
+    cur += p + " ";
+  }
+  if (cur.trim()) out.push(cur.trim());
+  return out;
+}
+
+async function fetchWav(text: string, attendingId: string, signal: AbortSignal): Promise<string> {
+  const pw = (() => {
+    try {
+      return window.localStorage.getItem("anna_pw") ?? "";
+    } catch {
+      return "";
+    }
+  })();
+  const r = await fetch("/api/tts", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...(pw ? { "X-App-Password": pw } : {}) },
+    body: JSON.stringify({ text, attending_id: attendingId }),
+    signal,
+  });
+  if (!r.ok) throw new Error(`tts ${r.status}`);
+  return URL.createObjectURL(await r.blob());
+}
+
+let abortCtrl: AbortController | null = null;
+
+/** Speak with the server voice: sentences are fetched ahead of playback and played in order. */
+export async function speakServer(text: string, attendingId: string, onEnd?: () => void): Promise<void> {
+  stopSpeaking();
+  const token = ++queueToken;
+  const ctrl = new AbortController();
+  abortCtrl = ctrl;
+  const a = getAudio();
+  const parts = sentences(text);
+  if (!parts.length) return;
+  // Prefetch all chunks concurrently; play sequentially as they arrive.
+  const urls = parts.map((p) => fetchWav(p, attendingId, ctrl.signal));
+  try {
+    for (const u of urls) {
+      const url = await u;
+      if (token !== queueToken) {
+        URL.revokeObjectURL(url);
+        return;
+      }
+      await new Promise<void>((resolve) => {
+        a.onended = () => resolve();
+        a.onerror = () => resolve();
+        a.src = url;
+        a.play().catch(() => resolve());
+      });
+      URL.revokeObjectURL(url);
+      if (token !== queueToken) return;
+    }
+    onEnd?.();
+  } catch {
+    /* aborted or network error: fall through silently */
+  }
+}
+
+/** Public entry point: server voice if available, else browser voice. */
+export async function speakAs(text: string, attendingId: string, hint: VoiceHint, onEnd?: () => void): Promise<void> {
+  if (await probeServerTts()) return speakServer(text, attendingId, onEnd);
+  speak(text, hint, onEnd);
+}
+
 export function speak(text: string, hint: VoiceHint, onEnd?: () => void): void {
   if (!ttsSupported()) return;
   const synth = window.speechSynthesis;
@@ -93,6 +213,18 @@ export function speak(text: string, hint: VoiceHint, onEnd?: () => void): void {
 }
 
 export function stopSpeaking(): void {
+  queueToken += 1;
+  abortCtrl?.abort();
+  abortCtrl = null;
+  if (audioEl) {
+    try {
+      audioEl.pause();
+      audioEl.removeAttribute("src");
+      audioEl.load();
+    } catch {
+      /* ignore */
+    }
+  }
   if (ttsSupported()) window.speechSynthesis.cancel();
 }
 

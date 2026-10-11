@@ -16,6 +16,9 @@ class Settings(BaseSettings):
     llm_max_tokens: int = 400
     llm_temperature: float = 0.6
 
+    # TTS (Kokoro server; empty disables server-side voices and the UI falls back to browser speech)
+    tts_base_url: str = "http://127.0.0.1:8002"
+
     # App
     learner_name: str = "Anna"
     app_password: str = ""  # empty disables auth

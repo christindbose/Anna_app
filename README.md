@@ -5,7 +5,8 @@ one clue at a time; the learner commits to a differential, gets challenged by an
 and ends with a rubric-scored debrief. Missed concepts come back as spaced-repetition questions.
 
 Six attending personas (`backend/app/attendings.py`), from a gentle mentor to an adversarial
-skeptic, each with a difficulty level that sets how much they help and how hard they push.
+skeptic, each with a difficulty level that sets how much they help and how hard they push, a
+caricature, and a neural voice with its own accent (Kokoro-82M, `scripts/tts_server.py`).
 
 Case facts live in reviewed JSON files (`cases/`). The model coaches from them and never invents
 the patient. Scoring is deterministic (`backend/app/scoring.py`); the model only writes feedback.
@@ -32,10 +33,13 @@ conda activate anna             # python 3.11 env with fastapi (backend); anna-m
 # 1. model server (GPU 0, port 8001). Needs MedGemma terms accepted on Hugging Face.
 scripts/serve_model.sh
 
-# 2. backend (port 8000). Use ANNA_LLM_PROVIDER=mock to run without the model.
+# 2. voices: Kokoro TTS server (port 8002). Optional; the UI falls back to browser speech.
+scripts/serve_tts.sh
+
+# 3. backend (port 8000). Use ANNA_LLM_PROVIDER=mock to run without the model.
 scripts/run_api.sh
 
-# 3. frontend (port 3000)
+# 4. frontend (port 3000)
 cd frontend && npm install && npm run dev
 ```
 

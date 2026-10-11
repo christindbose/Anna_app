@@ -6,7 +6,8 @@ from typing import Annotated
 
 from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
+import httpx
+from fastapi.responses import Response, StreamingResponse
 from pydantic import BaseModel
 from sqlmodel import Session, select
 
@@ -57,6 +58,11 @@ class FinishRequest(BaseModel):
 
 class GradeRequest(BaseModel):
     grade: int
+
+
+class TTSRequest(BaseModel):
+    text: str
+    attending_id: str = "mentor"
 
 
 # ---------- routes ----------
@@ -200,6 +206,36 @@ def grade(_: Auth, db: DB, item_id: str, body: GradeRequest):
     except KeyError:
         raise HTTPException(404, "unknown review item")
     return {"id": r.id, "due_at": r.due_at, "interval_days": r.interval_days, "repetitions": r.repetitions}
+
+
+@app.get("/api/tts/health")
+async def tts_health(_: Auth):
+    if not settings.tts_base_url:
+        return {"ok": False, "reason": "disabled"}
+    try:
+        async with httpx.AsyncClient(timeout=3) as c:
+            r = await c.get(f"{settings.tts_base_url}/health")
+            return {"ok": r.status_code == 200, **(r.json() if r.status_code == 200 else {})}
+    except Exception as e:  # noqa: BLE001
+        return {"ok": False, "reason": str(e)[:100]}
+
+
+@app.post("/api/tts")
+async def tts(_: Auth, body: TTSRequest):
+    if not settings.tts_base_url:
+        raise HTTPException(503, "tts disabled")
+    v = get_attending(body.attending_id).voice
+    text = body.text.strip()[:4000]
+    if not text:
+        raise HTTPException(422, "empty text")
+    try:
+        async with httpx.AsyncClient(timeout=60) as c:
+            r = await c.post(f"{settings.tts_base_url}/tts", json={"text": text, "voice": v.model_voice, "speed": v.speed})
+    except Exception as e:  # noqa: BLE001
+        raise HTTPException(502, f"tts unavailable: {e}")
+    if r.status_code != 200:
+        raise HTTPException(502, f"tts error {r.status_code}")
+    return Response(content=r.content, media_type="audio/wav", headers={"Cache-Control": "no-store"})
 
 
 @app.get("/api/progress")

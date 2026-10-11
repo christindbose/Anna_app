@@ -117,7 +117,7 @@ export interface Attending {
   description: string;
   emoji: string;
   signature: string;
-  voice: { lang: string; gender: string; rate: number; pitch: number; accent: string };
+  voice: { lang: string; gender: string; rate: number; pitch: number; accent: string; model_voice: string; speed: number };
 }
 
 export const attendingAvatar = (id: string) => `/attendings/${encodeURIComponent(id)}.svg`;
@@ -255,6 +255,7 @@ export const api = {
   authCheck: (silent401 = true) => post<{ ok: boolean }>("/auth/check", undefined, { silent401 }),
   cases: () => request<CaseSummary[]>("/cases"),
   attendings: () => request<Attending[]>("/attendings"),
+  ttsHealth: () => request<{ ok: boolean; engine?: string }>("/tts/health"),
   startSession: (body: { case_id?: string | null; attending_id: string; track?: Track | null }) =>
     post<SessionView>("/sessions", body),
   session: (id: string) => request<SessionView>(`/sessions/${encodeURIComponent(id)}`),
