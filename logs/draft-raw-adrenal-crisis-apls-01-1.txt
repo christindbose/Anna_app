@@ -1,0 +1,73 @@
+```jsonc
+{
+  "id": "adrenal-crisis-apls-01",
+  "title": "Acute Adrenal Insufficiency Mimicking Myocardial Infarction",
+  "track": "cardiology",
+  "difficulty": 4,
+  "tags": ["adrenal insufficiency", "acute coronary syndrome", "hypotension", "electrolyte imbalance"],
+  "reviewed": false,
+  "presentation": "A 58-year-old male presents to the ED with chest pain radiating to his jaw, shortness of breath, and diaphoresis. He has a history of hypertension and type 2 diabetes mellitus, treated with metoprolol and metformin. His wife reports he collapsed while walking home yesterday evening. On arrival, he is alert but anxious, BP 85/50 mmHg, HR 110 bpm, RR 24 breaths/min, SpO2 93% on room air. Initial ECG shows sinus tachycardia and ST elevation in leads II, III, and aVF. Troponin I is elevated. He requires IV access and fluid resuscitation.\n",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "Patient denies any previous episodes of syncope or significant cardiac issues. He has been taking metoprolol 100mg daily for several years for hypertension. Metformin was started 3 months ago for diabetes. He reports feeling generally well except for occasional fatigue. No known allergies. Family history is positive for hypertension in his father. Social history includes smoking 1 pack per day for 20 years, quit 5 years ago. Denies illicit drug use. No recent travel or sick contacts.",
+      "prompt": "What is your differential diagnosis given the presentation, and what key information do you need to help narrow it down?"
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "On examination, the patient is hemodynamically unstable despite 1 liter of lactated Ringer's infusion. Blood pressure remains low at 90/50 mmHg, heart rate 105 bpm. He is diaphoretic and appears slightly confused. There is no cyanosis or clubbing. Lungs are clear bilaterally without crackles. Abdomen is soft, non-tender, and non-distended. Extremities show no signs of edema or pallor. Neurological exam reveals mild disorientation to place and time, but no focal deficits. Skin is warm and dry.",
+      "prompt": "How does the physical exam affect your differential? What specific tests should you order now to confirm or refute your leading hypothesis?"
+    },
+    {
+      "id": "results",
+      "text": "Initial investigations include ECG showing persistent ST elevation in inferior leads, elevated troponin I confirming myocardial injury, and a normal white blood cell count. Serum potassium is 5.2 mEq/L, BUN 28 mg/dL, Creatinine 1.1 mg/dL, Sodium 138 mEq/L, Glucose 180 mg/dL. An urgent ACTH stimulation test is ordered, yielding an inadequate cortisol response (<18 mcg/dL after synthetic ACTH administration). A morning cortisol level is 3 mcg/dL. A random plasma ACTH level is 180 pg/mL.",
+      "prompt": "Putting all the findings together, what is the most likely diagnosis? And what is the immediate management step?"
+    }
+  ],
+  "diagnosis": "Acute Adrenal Insufficiency (Addisonian Crisis)",
+  "diagnosis_aliases": ["adrenal crisis", "addisonian crisis", "adrenal insufficiency"],
+  "key_clues": [
+    "Hemodynamic instability (hypotension, tachycardia) despite fluid resuscitation",
+    "Electrolyte abnormalities (hyperkalemia, although mild here)",
+    "Inadequate cortisol response to ACTH stimulation test",
+    "Low morning cortisol level",
+    "High baseline ACTH level",
+    "Myocardial infarction presentation mimicking adrenal crisis",
+    "History of chronic steroid use (though not mentioned here, common cause)"
+  ],
+  "distractors": [
+    {"name": "Severe Myocardial Infarction", "why_not": "Although MI is present, the profound hypotension refractory to fluids, hyperkalemia, and especially the biochemical evidence of adrenal insufficiency make this less likely as the sole explanation."},
+    {"name": "Pheochromocytoma Crisis", "why_not": "Typically associated with hypertension, palpitations, sweating, headaches; this patient is hypotensive."},
+    {"name": "Hypovolemic Shock due to other causes (e.g., sepsis)", "why_not": "While potentially causing hypotension, lacks the characteristic electrolyte pattern and definitive hormonal evidence of adrenal insufficiency."},
+    {"name": "Thyrotoxicosis", "why_not": "Can cause tachycardia, anxiety, and sometimes hypotension, but usually associated with hypertension, tremor, weight loss, and often normal or low potassium, not hyperkalemia."},
+    {"name": "Drug-induced Hypotension (e.g., Beta-blocker overdose)", "why_not": "Metoprolol could contribute, but unlikely to cause such profound shock, hyperkalemia, and the specific hormonal profile seen here. Also, the patient wasn't overdosed."},
+    {"name": "Anaphylaxis", "why_not": "Usually involves urticaria, angioedema, bronchospasm, and often rapid improvement with epinephrine, none of which are described here."}
+  ],
+  "rubric": [
+    {"id": "diagnosis-type", "description": "Identifies the condition as Acute Adrenal Insufficiency", "category": "diagnosis", "weight": 3, "match": ["acute adrenal insufficiency", "adrenal crisis", "addisonian crisis"], "source": "final_diagnosis", "concept": "Diagnosis identification"},
+    {"id": "cause-speculation", "description": "Speculates on the etiology (likely primary, given high ACTH)", "category": "reasoning", "weight": 2, "match": ["primary adrenal insufficiency", "autoimmune adrenalitis", "Addison's disease"], "source": "final_diagnosis", "concept": "Differentiating primary vs secondary adrenal insufficiency based on ACTH levels"},
+    {"id": "treatment-first-line", "description": "Chooses intravenous glucocorticoid therapy as the initial treatment", "category": "management", "weight": 3, "match": ["intravenous glucocorticoids", "hydrocortisone", "stress dose steroids"], "source": "final_management", "concept": "Immediate management of acute adrenal insufficiency"},
+    {"id": "treatment-second-line", "description": "Includes mineralocorticoid replacement (fludrocortisone) for long-term management", "category": "management", "weight": 2, "match": ["mineralocorticoid replacement", "fludrocortisone", "salt tablets"], "source": "final_management", "concept": "Long-term management of primary adrenal insufficiency"},
+    {"id": "assessment-criteria", "description": "Uses clinical signs (hypotension, altered mental status) and biochemical markers (low cortisol, high ACTH, hyperkalemia) to support the diagnosis", "category": "reasoning", "weight": 2, "match": ["clinical hypotension", "low cortisol", "high ACTH", "hyperkalemia", "ACTH stimulation test"], "source": "final_diagnosis", "concept": "Diagnostic criteria for Addison's disease"},
+    {"id": "management-fluids", "description": "Administers intravenous fluids aggressively", "category": "management", "weight": 2, "match": ["aggressive intravenous fluids", "fluid resuscitation", "lactated ringer's"], "source": "final_management", "concept": "Initial supportive care for adrenal crisis"},
+    {"id": "management-monitoring", "description": "Monitors vital signs, electrolytes, and glucose closely during treatment", "category": "management", "weight": 2, "match": ["vital sign monitoring", "electrolyte monitoring", "glucose monitoring", "repeat labs"], "source": "final_management", "concept": "Ongoing management during acute phase"},
+    {"id": "diagnosis-mimic", "description": "Recognizes the overlap between MI and adrenal crisis presentations", "category": "reasoning", "weight": 2, "match": ["myocardial infarction", "chest pain", "ST elevation", "elevated troponin"], "source": "final_diagnosis", "concept": "Differential diagnosis considerations"}
+  ],
+  "management_summary": "This patient has acute adrenal insufficiency (Addisonian crisis) presenting initially as a myocardial infarction. Immediate management involves aggressive intravenous fluid resuscitation and prompt administration of intravenous glucocorticoids (typically hydrocortisone 100 mg IV followed by continuous infusion or repeated doses). Intravenous fludrocortisone should also be administered for mineralocorticoid replacement. Close monitoring of vital signs, electrolytes (especially potassium), glucose, and renal function is crucial. Further investigation into the underlying cause, including autoimmune screening and adrenal autoantibodies, should be pursued once the patient is stabilized.",
+  "teaching_points": [
+    "Acute adrenal insufficiency can mimic critical illness like myocardial infarction, presenting with chest pain, hypotension, and ECG changes.",
+    "Key diagnostic clues include refractory hypotension to fluids, hyperkalemia, low cortisol, and high ACTH.",
+    "The cornerstone of treatment is immediate intravenous glucocorticoid replacement (hydrocortisone is preferred due to stress dose capability).",
+    "Aggressive fluid resuscitation is essential in the initial stabilization phase.",
+    "Mineralocorticoid replacement (fludrocortisone) is required for long-term management of primary adrenal insufficiency.",
+    "Consider adrenal insufficiency in patients with unexplained shock, particularly those with risk factors like prior steroid use (even if not explicitly stated)."
+  ],
+  "references": [
+    "UpToDate: Acute adrenal insufficiency",
+    "Briel F et al. JAMA 2004;291(24):2751-2757",
+    "Mancuso M et al. N Engl J Med 2004;351(21):2159-2169"
+  ]
+}
+```

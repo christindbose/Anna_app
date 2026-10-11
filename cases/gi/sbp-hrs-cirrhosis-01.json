@@ -1,0 +1,345 @@
+{
+  "id": "sbp-hrs-cirrhosis-01",
+  "title": "Subtle Confusion and Ascitic Fluid",
+  "track": "gi",
+  "difficulty": 3,
+  "tags": [
+    "ascites",
+    "spontaneous bacterial peritonitis",
+    "hepatorenal syndrome",
+    "cirrhosis",
+    "abdominal pain"
+  ],
+  "reviewed": false,
+  "presentation": "A 58-year-old man with known alcoholic cirrhosis presents with a two-day history of worsening confusion and anorexia. He denies fever or abdominal pain. His wife reports he has been drinking heavily recently but stopped abruptly one week ago. Triage vital signs show BP 105/60 mmHg, HR 100 bpm, RR 20 breaths/min, Temp 37.1°C, SpO2 95% on room air. Labs show WBC 11.2 x 10^9/L, BUN 35 mg/dL, Creatinine 1.8 mg/dL, Albumin 2.8 g/dL, Sodium 130 mEq/L, Glucose 110 mg/dL.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He was diagnosed with alcoholic cirrhosis 5 years ago and has received multiple paracenteses for large-volume ascites without recurrent SBP. He takes prednisone daily for refractory ascites. He has tried lactulose for hepatic encephalopathy previously but discontinued it due to side effects. He drinks approximately 100g of ethanol per day. Onset of confusion coincides with stopping alcohol, but he also denies fever or abdominal pain. His wife notes he has become increasingly fatigued and less responsive lately.",
+      "prompt": "What is your differential diagnosis for his presentation, and what key piece of information do you need immediately?",
+      "learner_goal": null,
+      "available_tests": {}
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "On examination, he is alert but confused, oriented to person only. Vital signs are as noted above. Abdominal exam reveals significant diffuse ascites, moderate tenderness below the umbilicus, and guarding. There is no rebound tenderness or rigidity. Liver span is palpable 4cm below the costal margin. Skin is warm and dry. Extremities are pale and cool. No edema is noted. Neurological exam confirms confusion, no focal deficits. Respiratory exam shows mild bilateral crackles at the bases.",
+      "prompt": "How does the physical exam influence your differential? What is the most critical laboratory value to obtain now?",
+      "learner_goal": null,
+      "available_tests": {}
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "Lab results: WBC 11.2 x 10^9/L, BUN 35 mg/dL, Creatinine 1.8 mg/dL, Albumin 2.8 g/dL, Sodium 130 mEq/L, Glucose 110 mg/dL, AST 150 IU/L, ALT 120 IU/L, INR 2.0, Platelets 80 x 10^9/L. Abdominal ultrasound: Large ascites, liver size 20cm, splenomegaly, portal vein diameter 1.8 cm. Hepatic venous pressure gradient (HVPG) estimated at 18 mmHg. CT abdomen: Large amount of ascites, no pneumoperitoneum, no loculated ascites, no free intraperitoneal air. Aortic dissection ruled out.\n\nCulture of ascitic fluid: Negative for bacteria.",
+      "prompt": "Putting it all together, what is the most likely diagnosis, and what is the immediate next step in management?",
+      "learner_goal": null,
+      "available_tests": {}
+    }
+  ],
+  "diagnosis": "Spontaneous Bacterial Peritonitis (SBP) in decompensated cirrhosis with evolving hepatorenal syndrome (HRS)-AKI",
+  "diagnosis_aliases": [
+    "sbp",
+    "ascites infection",
+    "hepatorenal syndrome",
+    "hrs",
+    "ak",
+    "cirrhosis complications",
+    "liver failure"
+  ],
+  "key_clues": [
+    "Known cirrhotic patient with prior SBP",
+    "Signs of systemic inflammation (WBC>10k, elevated LFTs, fatigue)",
+    "Diffuse abdominal tenderness and guarding in the setting of ascites",
+    "Confusion (hepatic encephalopathy component)",
+    "Elevated BUN/Creatinine suggesting renal dysfunction",
+    "Negative ascitic fluid culture is common in SBP",
+    "High HVPG suggests portal hypertension",
+    "Low albumin and platelets suggest advanced liver disease",
+    "Stopping alcohol abruptly can precipitate HE or HRS",
+    "No fever reported, but absence doesn't rule out SBP",
+    "Leukocytosis (WBC 11.2)"
+  ],
+  "distractors": [
+    {
+      "name": "Hepatic Encephalopathy (HE)",
+      "why_not": "Confusion is present, but the abdominal findings point towards an infectious etiology."
+    },
+    {
+      "name": "Acute Pancreatitis",
+      "why_not": "No characteristic epigastric pain, lipase/amylase levels not provided, but clinical picture less suggestive."
+    },
+    {
+      "name": "Ruptured Esophageal Varices",
+      "why_not": "No hematemesis or melena reported, abdominal exam focused on ascites and tenderness, CT ruled out free air."
+    },
+    {
+      "name": "Drug Toxicity",
+      "why_not": "Patient is on prednisone, but unlikely to cause this constellation of symptoms including abdominal signs and AKI."
+    },
+    {
+      "name": "Infection elsewhere (e.g., UTI, pneumonia)",
+      "why_not": "Clinical focus is abdominal, and other sources less likely given presentation."
+    }
+  ],
+  "rubric": [
+    {
+      "id": "infection-risk",
+      "description": "Identifies risk factors for SBP (prior episodes, low albumin, platelets, ascites)",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "(prior sbp|recurrent sbp)",
+        "(albumin < 2.5|< 2.8)",
+        "(platelets < 100|< 150)",
+        "(ascites)",
+        "(low albumin|high bilirubin|low platelets|prior sbp)"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "SBP risk factors"
+    },
+    {
+      "id": "abdominal-tenderness",
+      "description": "Notes abdominal tenderness/guarding as a key sign",
+      "category": "reasoning",
+      "weight": 3,
+      "match": [
+        "abdominal tenderness",
+        "abdominal guarding",
+        "diffuse abdominal tenderness",
+        "below umbilicus tenderness",
+        "abdominal signs"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Abdominal signs are crucial for SBP diagnosis"
+    },
+    {
+      "id": "clinical-suspicion",
+      "description": "Clinically suspends disbelief and diagnoses SBP based on symptoms",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "spontaneous bacterial peritonitis",
+        "sbp",
+        "ascites infection",
+        "abdominal infection"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Clinical suspicion is paramount"
+    },
+    {
+      "id": "negative-culture",
+      "description": "Acknowledges negative ascitic fluid culture is common",
+      "category": "workup",
+      "weight": 2,
+      "match": [
+        "negative culture",
+        "sterile fluid",
+        "negative asp fluid",
+        "culture negative"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Negative cultures don't exclude SBP"
+    },
+    {
+      "id": "renal-dysfunction",
+      "description": "Recognizes AKI/HRS component",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "elevated bun",
+        "elevated creatinine",
+        "renal dysfunction",
+        "hrs",
+        "ak",
+        "renal impairment"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "HRS is often associated with SBP"
+    },
+    {
+      "id": "inflammation",
+      "description": "Notes systemic inflammatory markers",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "leukocytosis",
+        "elevated wbc",
+        "systemic inflammation",
+        "inflammatory markers"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "WBC elevation supports infection"
+    },
+    {
+      "id": "management-antibiotics",
+      "description": "Initiates empiric antibiotics promptly",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "empirical antibiotics",
+        "start antibiotics",
+        "third generation cephalosporin",
+        "ceftriaxone",
+        "fluoroquinolone",
+        "prompt antibiotics"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Immediate empiric antibiotics are required"
+    },
+    {
+      "id": "management-fluids",
+      "description": "Initiates appropriate fluid management for SBP",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "fluid restriction",
+        "avoid excessive fluids",
+        "maintain intravascular volume",
+        "fluid management",
+        "volume resuscitation"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Fluid management is key in SBP"
+    },
+    {
+      "id": "management-hemodialysis",
+      "description": "Considers hemodialysis for HRS",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "hemodialysis",
+        "renal replacement therapy",
+        "hrs",
+        "renal failure",
+        "dialysis"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Dialysis is indicated for severe HRS"
+    },
+    {
+      "id": "management-steroids",
+      "description": "May consider steroids cautiously",
+      "category": "management",
+      "weight": 1,
+      "match": [
+        "prednisone",
+        "steroid dose reduction",
+        "consider steroids",
+        "steroids +/-",
+        "steroids for ascites"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Steroids can help manage ascites but may worsen SBP; careful consideration needed"
+    },
+    {
+      "id": "management-alcohol",
+      "description": "Addresses alcohol cessation",
+      "category": "management",
+      "weight": 1,
+      "match": [
+        "alcohol cessation",
+        "stop drinking",
+        "alcohol withdrawal",
+        "manage alcohol use"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Alcohol cessation helps prevent recurrence"
+    },
+    {
+      "id": "management-repeat-sampling",
+      "description": "Plans for repeat ascitic fluid sampling",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "repeat fluid sample",
+        "repeat ascitic fluid",
+        "monitor response",
+        "repeat cultures",
+        "assess response"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Repeat sampling is needed to confirm resolution of infection"
+    },
+    {
+      "id": "management-transport",
+      "description": "Recognizes need for hospitalization",
+      "category": "management",
+      "weight": 1,
+      "match": [
+        "hospitalization",
+        "admits patient",
+        "inpatient care",
+        "medical ward"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "SBP requires inpatient management"
+    },
+    {
+      "id": "management-lactulose",
+      "description": "Reconsiders lactulose for HE",
+      "category": "management",
+      "weight": 1,
+      "match": [
+        "lactulose",
+        "reinitiate lactulose",
+        "hepatic encephalopathy",
+        "he",
+        "mental status"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Consider restarting lactulose if HE worsens"
+    },
+    {
+      "id": "final-diagnosis",
+      "description": "Names the final diagnosis",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "sbp",
+        "ascites\\ infection",
+        "hepatorenal\\ syndrome",
+        "hrs",
+        "ak",
+        "cirrhosis\\ complications",
+        "liver\\ failure",
+        "spontaneous bacterial"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Spontaneous Bacterial Peritonitis (SBP) in decompensated cirrhosis with evolving hepatorenal syndrome (HRS)-AKI"
+    }
+  ],
+  "management_summary": "The patient has clinical signs highly suspicious for SBP (abdominal tenderness, leukocytosis, confusion, known cirrhosis risk factors). Empiric third-generation antibiotics (e.g., ceftriaxone) should be started immediately. Fluid management should aim to maintain adequate intravascular volume while avoiding overload. Given the elevated BUN/Cr (AKI/HRS), hemodialysis should be considered if renal function deteriorates further. Steroid dosage may need adjustment. Alcohol cessation is essential. Repeat ascitic fluid analysis is necessary to confirm resolution of infection. The patient requires hospital admission.",
+  "teaching_points": [
+    "SBP is a life-threatening infection in cirrhotic patients presenting with abdominal signs, even without fever.",
+    "Risk factors include prior SBP, low albumin (<2.5 g/dL), thrombocytopenia (<100 x 10^9/L), and large-volume ascites.",
+    "Abdominal tenderness and guarding are key diagnostic clues, especially when combined with systemic signs like leukocytosis or altered mental status.",
+    "Ascitic fluid cultures are often negative, so diagnosis relies on clinical suspicion and empiric treatment.",
+    "AKI/HRS frequently complicates SBP and requires aggressive management, potentially including hemodialysis.",
+    "Prompt initiation of empiric antibiotics is critical for improving outcomes in SBP.",
+    "Managing ascites (e.g., steroids) during active SBP requires caution as it may worsen the infection.",
+    "Alcohol cessation is crucial for preventing recurrence."
+  ],
+  "references": [
+    "Gines P et al. AASLD Practice Guidelines Update for the Management of Patients With Decompensated Cirrhosis. Hepatol Int 2018;12(2):268-283.",
+    "Arango R et al. Spontaneous Bacterial Peritonitis in Adults: Updated Evidence Review and Recommendations. Gastroenterology 2016;150(6):1323-1335.",
+    "Jain S et al. Spontaneous Bacterial Peritonitis in Cirrhosis: A Comprehensive Review. Gastroenterology 2018;154(7):1782-1794."
+  ],
+  "source": "google/medgemma-1.5-4b-it"
+}

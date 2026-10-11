@@ -1,0 +1,287 @@
+{
+  "id": "adrenal-crisis-apls-01",
+  "title": "Hypotension unresponsive to fluids, hyponatremia and hyperkalemia",
+  "track": "endo",
+  "difficulty": 3,
+  "tags": [
+    "adrenal",
+    "electrolyte",
+    "hypotension",
+    "shock",
+    "autonomic"
+  ],
+  "reviewed": false,
+  "presentation": "A 45-year-old man presents to the ED with a 3-day history of worsening fatigue, dizziness, and near syncope. He also reports orthostatic lightheadedness. His wife notes he has been unusually thirsty but denies nausea, vomiting, diarrhea, or abdominal pain. On arrival, his BP is 80/40 mmHg, HR 110 bpm, RR 24, SpO2 94%. Initial labs show Na 128 mEq/L, K 5.8 mEq/L, Glucose 110 mg/dL, BUN 25 mg/dL, Cr 1.1 mg/dL. He has no rash or skin lesions noted.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "Past medical history includes Type 2 Diabetes Mellitus requiring metformin, hypertension treated with lisinopril, and chronic kidney disease stage 3. He recently started levothyroxine one month ago for presumed subclinical hypothyroidism based on a prior TSH of 5.2. He denies recent travel, sick contacts, or known exposures. He reports taking his medications regularly except for skipping one dose of his levothyroxine yesterday morning. His wife confirms he has been feeling increasingly unwell, reporting increased thirst and frequency of urination over the past week, though he denied significant nausea or vomiting. He has no history of allergies or previous episodes of similar symptoms.",
+      "prompt": "What is your differential for this patient's presentation, and what key question do you need to answer immediately?",
+      "learner_goal": null,
+      "available_tests": {}
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "He is lying flat, appears pale and diaphoretic. Vital signs remain unstable: BP 85/45 mmHg, HR 115 bpm, RR 26, SpO2 94%. He is slightly warm to touch. There is no jaundice, rash, or lymphadenopathy. Lung fields are clear bilaterally without crackles or wheezes. Cardiac exam reveals a regular rhythm without murmurs. Abdomen is soft and non-tender. Neurologically, he is alert but drowsy, oriented to person only, with mild diffuse muscle weakness. Skin examination shows no rashes or stigmata of chronic liver disease. Peripheral pulses are weak.\n\nInitial Labs:\nSodium: 128 mEq/L\nPotassium: 5.8 mEq/L\nGlucose: 110 mg/dL\nBUN: 25 mg/dL\nCreatinine: 1.1 mg/dL\nHematocrit: 38%\nPlatelets: 250,000/uL\nMCV: 95 fL\nWhite Blood Cell Count: 6,500/uL\nProthrombin Time: 11 sec\nPainting Time: 35 sec\n\nUrinalysis:\nSpecific Gravity: 1.010\nProtein: negative\nBlood: negative\npH: 5.5\nGlucose: negative\nKetones: negative\nNitrite: negative\nLeukocyte Esterase: negative\nUrine Microscopy: No cells or casts seen.",
+      "prompt": "How does the physical exam and initial labs change your differential diagnosis? Which condition requires immediate intervention?",
+      "learner_goal": null,
+      "available_tests": {}
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "Repeat labs show Na 126 mEq/L, K 6.2 mEq/L, Glucose 105 mg/dL, BUN 26 mg/dL, Creatinine 1.1 mg/dL. Serum Osmolality 255 mOsm/kg. Urine Osmolality 200 mOsm/kg. Urine Sodium 80 mEq/L. Prothrombin Time 11.5 sec, Painting Time 38 sec. Chest X-ray shows no infiltrates or effusions. A bedside point-of-care cortisol level is 3 mcg/dL.",
+      "prompt": "Based on the full clinical picture, including labs and imaging, what is the most likely diagnosis, and what is the critical next step in management?",
+      "learner_goal": null,
+      "available_tests": {}
+    }
+  ],
+  "diagnosis": "Acute Adrenal Insufficiency (Addison's Disease) presenting as adrenal crisis",
+  "diagnosis_aliases": [
+    "adrenal crisis",
+    "addisonian crisis",
+    "acute adrenal insufficiency",
+    "primary adrenal failure"
+  ],
+  "key_clues": [
+    "Unexplained hypotension unresponsive to fluids",
+    "Hyponatremia AND Hyperkalemia",
+    "Normal serum osmolality (suggests non-hypotonic hyponatremia)",
+    "Low urine osmolality relative to serum osmolality (inappropriately dilute urine)",
+    "High urine sodium (>20-30 mEq/L)",
+    "Evidence of adrenal insufficiency (low cortisol, prolonged PT/PTT)",
+    "Recent initiation of levothyroxine (potential trigger for adrenal crisis in susceptible individuals)"
+  ],
+  "distractors": [
+    {
+      "name": "Hypovolemic hyponatremia due to GI losses",
+      "why_not": "Patient denies vomiting/diarrhea; exam is euvolemic; urine sodium is high."
+    },
+    {
+      "name": "Syndrome of Inappropriate Antidiuretic Hormone (SIADH)",
+      "why_not": "Urine osmolality is low (200 vs >100); potassium is high (normal in SIADH); cortisol is low."
+    },
+    {
+      "name": "Hypothyroidism",
+      "why_not": "TSH was previously elevated; TSH is not given now; cortisol is low."
+    },
+    {
+      "name": "Renal failure",
+      "why_not": "Cr is only mildly elevated; hyperkalemia is present but likely due to aldosterone deficiency rather than renal failure alone; urine osmolality is inappropriately low for renal failure."
+    },
+    {
+      "name": "Drug-induced hyponatremia (e.g., thiazides)",
+      "why_not": "No thiazide mentioned; hyperkalemia is unusual unless concurrent hypoaldosteronism."
+    },
+    {
+      "name": "Hepatic encephalopathy",
+      "why_not": "Mental status is altered but patient is alert; no other signs of liver failure; hyperkalemia unexplained."
+    },
+    {
+      "name": "Hypokalemic periodic paralysis",
+      "why_not": "Patient has hyperkalemia."
+    }
+  ],
+  "rubric": [
+    {
+      "id": "clinical-picture",
+      "description": "Recognizes hypotension + hyponatremia + hyperkalemia",
+      "category": "reasoning",
+      "weight": 3,
+      "match": [
+        "hypotension",
+        "hyponatremia",
+        "hyperkalemia",
+        "shock",
+        "electrolyte imbalance"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Classic triad of adrenal crisis."
+    },
+    {
+      "id": "volume-status",
+      "description": "Assesses volume status before diagnosing SIADH",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "euvolemic",
+        "hypovolemic",
+        "hypervolemic",
+        "orthostasis",
+        "jvp",
+        "mucous membrane",
+        "skin turgor"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Distinguish SIADH from hypovolemia."
+    },
+    {
+      "id": "urine-study-pattern",
+      "description": "Identifies inappropriately dilute urine (Urine Osm < Serum Osm) and high Urine Sodium",
+      "category": "workup",
+      "weight": 3,
+      "match": [
+        "urine (osm|osmolality)",
+        "urine (na|sodium)",
+        "urine studies",
+        "urine lytes",
+        "urine electrolytes",
+        "dilute",
+        "concentrated",
+        "high",
+        "low"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Key differentiating features for SIADH vs Hypovolemia."
+    },
+    {
+      "id": "adrenal-insufficiency-markers",
+      "description": "Recognizes low cortisol and prolonged coagulation times",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "cortisol",
+        "adrenal",
+        "prolonged pt",
+        "prolonged ptt",
+        "coags",
+        "adrenal failure"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Direct evidence of adrenal dysfunction."
+    },
+    {
+      "id": "triggers",
+      "description": "Identifies potential triggers like initiating levothyroxine",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "levothyroxine",
+        "thyroid hormone",
+        "trigger",
+        "precipitant"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Susceptible patients may experience adrenal crisis after starting thyroid replacement."
+    },
+    {
+      "id": "diagnosis-name",
+      "description": "Correctly identifies Acute Adrenal Insufficiency / Crisis",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "adrenal crisis",
+        "addisonian crisis",
+        "acute adrenal insufficiency",
+        "primary adrenal failure"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "SIADH criteria"
+    },
+    {
+      "id": "initial-treatment",
+      "description": "Initiates appropriate empiric steroid therapy",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "hydrocortisone",
+        "steroids",
+        "glucocorticoid",
+        "empiric",
+        "immediate"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Immediate life-saving treatment for suspected adrenal crisis."
+    },
+    {
+      "id": "fluids",
+      "description": "Administers intravenous fluids cautiously",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "iv fluids",
+        "fluids",
+        "bolus",
+        "rate",
+        "volume expansion"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Volume resuscitation needed but should not delay steroids; careful monitoring required."
+    },
+    {
+      "id": "lab-monitoring",
+      "description": "Monitors electrolytes and glucose frequently",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "electrolytes",
+        "glucose",
+        "monitor",
+        "repeat",
+        "frequent",
+        "blood draw"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Essential for guiding further therapy and assessing response."
+    },
+    {
+      "id": "imaging",
+      "description": "Orders urgent imaging to confirm adrenal pathology",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "imaging",
+        "ct",
+        "adrenal glands",
+        "pathology",
+        "confirm"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Definitive diagnosis requires adrenal gland imaging."
+    },
+    {
+      "id": "mgmt-ceiling",
+      "description": "Recognizes the need for careful rate of correction",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "rate of correction",
+        "8 ?m(eq|mol)",
+        "osmotic demyelination",
+        "slow",
+        "cautious",
+        "avoid"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Limit sodium correction to about 8 mEq/L in 24 hours."
+    }
+  ],
+  "management_summary": "Empiric IV hydrocortisone 100 mg followed by a second dose of 100 mg 6 hours later. Simultaneously administer cautious IV fluid resuscitation (e.g., 1 liter normal saline) while monitoring vital signs and electrolytes frequently. Order urgent CT scan of the adrenals. Monitor sodium levels closely; aim for a rise of 4-6 mEq/L in the first 6 hours and no more than 8 mEq/L in 24 hours. Consider hypertonic saline (3%) if symptoms worsen or sodium falls below 120 mEq/L.",
+  "teaching_points": [
+    "Adrenal crisis is a medical emergency characterized by hypotension, electrolyte abnormalities (hyponatremia, hyperkalemia), and low cortisol.",
+    "The classic triad helps diagnose, but the combination of hypotension, hyponatremia, and hyperkalemia is highly suggestive.",
+    "Inappropriately dilute urine (UOsm < Sosm) combined with high urine sodium (>30 mEq/L) in a euvolemic patient with normal thyroid and adrenal function points towards SIADH.",
+    "Low cortisol levels (<3 mcg/dL) and prolonged coagulation times (PT/PTT) strongly support adrenal insufficiency.",
+    "Potential triggers include initiation of thyroid hormone replacement in susceptible individuals, sepsis, trauma, or surgery.",
+    "Immediate empiric glucocorticoid therapy (hydrocortisone) is crucial and should not be delayed pending diagnostic confirmation."
+  ],
+  "references": [
+    "UpToDate: Management of acute adrenal insufficiency.",
+    "American Association of Clinical Endocrinologists (AACE)/American College of Endocrinology (ACE) Position Statement on the Evaluation and Treatment of Pheochromocytoma and Paraganglioma",
+    "Saper JR, et al. N Engl J Med 2011;364(26):2520-2529"
+  ],
+  "source": "google/medgemma-1.5-4b-it"
+}

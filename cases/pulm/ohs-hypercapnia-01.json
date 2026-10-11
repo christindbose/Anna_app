@@ -1,0 +1,224 @@
+{
+  "id": "ohs-hypercapnia-01",
+  "title": "Unresponsive Collapse, Cyanosis, and Confusion",
+  "track": "pulm",
+  "difficulty": 3,
+  "tags": [
+    "respiratory",
+    "emergency",
+    "obesity",
+    "sleep apnea",
+    "opioids",
+    "COPD"
+  ],
+  "reviewed": false,
+  "presentation": "A 65-year-old man is brought to the ED by his wife after he collapsed while sitting in his armchair. He was found unresponsive, grunting, and cyanotic. His wife reports he frequently snorts his medications and has a history of COPD and hypertension treated with nifedipine and lisinopril. Vital signs upon arrival: BP 110/60 mmHg, HR 110 bpm, RR 28 breaths/min, SpO2 82% on room air, Temp 37.2°C, GCS 3. Wife states he takes oxycodone 10mg q4h for chronic pain. Last dose was 4 hours ago.\n",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "Patient presents with acute collapse and respiratory distress. History includes COPD, hypertension, chronic opioid use (oxycodone 10mg q4h for pain), and frequent snorting of medications. Wife notes he often appears drowsy during the day and snores loudly. Patient denies recent changes in medication or diet. He has had COPD exacerbations requiring hospitalization previously but does not recall specifics. Denies known allergies.",
+      "prompt": "What is your immediate concern and what key questions should you ask?",
+      "learner_goal": "Recognize acute respiratory failure, prioritize airway protection, and gather information about underlying conditions and potential triggers.",
+      "available_tests": {}
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "On arrival, patient is intubated and mechanically ventilated. Oxygen saturation is 92% on 15 L/min via nasal cannula. Auscultation reveals bilateral crackles predominantly in the right lower lobe. Heart rate is 108 bpm, blood pressure 112/70 mmHg, temperature 37.1°C. Neurological exam shows decreased level of consciousness (GCS 3), pupils are equal, round, and reactive to light. There is no obvious neck stiffness or focal neurological deficit.",
+      "prompt": "Does the physical examination findings alter your primary diagnostic considerations? What is the most critical intervention required immediately?",
+      "learner_goal": "Assess the patient's current state, recognize the need for immediate airway management and ventilation support, and consider differentials based on clinical findings.",
+      "available_tests": {}
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "ABG on 15 L/min O2: pH 7.24, PaCO2 75 mmHg, PaO2 70 mmHg, HCO3 26 mEq/L. Serum sodium 138 mEq/L. Creatinine 1.1 mg/dL. CXR shows bilateral interstitial edema and consolidation in the right lower lobe. ECG shows sinus tachycardia.",
+      "prompt": "Based on the ABG and CXR, what is the patient's primary physiological problem, and what additional investigations are needed?",
+      "learner_goal": "Interpret the ABG to confirm hypercapnia and identify the likely underlying cause based on CXR and history.",
+      "available_tests": {}
+    },
+    {
+      "id": "twist",
+      "label": "Twist",
+      "text": "Repeat ABG after 10 minutes on 15 L/min O2: pH 7.18, PaCO2 68 mmHg, PaO2 75 mmHg, HCO3 27 mEq/L. Arterial lactate 3.5 mmol/L. Patient's condition deteriorates further despite positive pressure ventilation.",
+      "prompt": "Given the worsening respiratory acidosis despite oxygen therapy, what is the most likely explanation, and what is the next step?",
+      "learner_goal": "Identify the effect of excessive oxygen administration on CO2 elimination in patients with underlying chronic CO2 retention and determine the appropriate management strategy.",
+      "available_tests": {}
+    }
+  ],
+  "diagnosis": "Acute-on-chronic hypercapnic respiratory failure due to obesity hypoventilation syndrome (OHS) exacerbated by opioid use and over-oxygenation.",
+  "diagnosis_aliases": [
+    "acute hypercapnia",
+    "acute respiratory acidosis",
+    "respiratory failure",
+    "ventilatory failure",
+    "OHS exacerbation"
+  ],
+  "key_clues": [
+    "Chronic CO2 retention (high baseline PaCO2, elevated HCO3 suggests chronicity)",
+    "Significant overlap between COPD and OHSSymptoms (drowsiness, snoring, obesity)",
+    "Severe respiratory acidosis (pH < 7.35) with hypercapnia (PaCO2 > 45 mmHg)",
+    "Worsening acidosis and hypercapnia after oxygen administration",
+    "Opioid use exacerbating respiratory depression",
+    "Right lower lobe consolidation suggesting pneumonia as trigger",
+    "Patient profile: older male, obese, COPD, snoring, drowsiness, opioid use"
+  ],
+  "distractors": [
+    {
+      "name": "COPD exacerbation without significant hypercapnia",
+      "why_not": "ABG shows severe hypercapnia and acidosis; also, the rapid deterioration post-oxygen is characteristic of OHS."
+    },
+    {
+      "name": "Pneumonia causing respiratory failure",
+      "why_not": "While pneumonia is present, it doesn't fully explain the severe hypercapnia and the rapid worsening after oxygen; this pattern strongly points to OHS."
+    },
+    {
+      "name": "Drug overdose (opioids)",
+      "why_not": "While opioids contribute, the chronicity suggested by the bicarbonate level and the specific response to oxygen point towards OHS as the primary driver of the ventilatory failure."
+    },
+    {
+      "name": "Heart failure causing pulmonary edema",
+      "why_not": "CXR shows edema, but the primary issue is ventilatory failure with severe hypercapnia and acidosis, not primarily cardiogenic pulmonary edema."
+    },
+    {
+      "name": "Metformin-associated lactic acidosis",
+      "why_not": "Lactate is mildly elevated but not dramatically high; the dominant feature is severe respiratory acidosis."
+    }
+  ],
+  "rubric": [
+    {
+      "id": "patient-profile",
+      "description": "Recognizes patient demographics and comorbidities associated with OHS",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "older male",
+        "obese",
+        "copd",
+        "snoring",
+        "drowsiness",
+        "opioid use",
+        "chronic hypercapnia"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Risk factors for OHS include older age, male sex, obesity, and COPD."
+    },
+    {
+      "id": "abg-interpretation",
+      "description": "Interprets the ABG to identify hypercapnia and acidosis, recognizing the significance of the bicarbonate level",
+      "category": "workup",
+      "weight": 3,
+      "match": [
+        "pa co2 > 45",
+        "ph < 7.35",
+        "bicarb > 26",
+        "chronically elevated pa co2",
+        "acute decompensation"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "High bicarbonate indicates chronic CO2 retention; pH < 7.35 confirms acidosis; PaCO2 > 45 defines hypercapnia."
+    },
+    {
+      "id": "post-oxygen-effect",
+      "description": "Identifies the phenomenon of worsening hypercapnia and acidosis after oxygen administration in patients with chronic CO2 retention",
+      "category": "reasoning",
+      "weight": 3,
+      "match": [
+        "worsening ph",
+        "worsening pa co2",
+        "after oxygen",
+        "venturi mask",
+        "over-oxygenation",
+        "vasodilation",
+        "increased shunting"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Oxygen administration causes cerebral vasodilation, increasing blood flow to the brain and potentially increasing CO2 production relative to elimination capacity, worsening hypercapnia."
+    },
+    {
+      "id": "management-strategy",
+      "description": "Appropriate management involves cautious oxygen administration (often using a Venturi mask) and addressing the underlying cause",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "venturi mask",
+        "low fio2",
+        "monitor pa co2",
+        "address cause",
+        "opioid review",
+        "antibiotics",
+        "fluids"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Venturi masks allow titration of FiO2 to maintain SpO2 targets while minimizing oxygen delivery to the brain."
+    },
+    {
+      "id": "clinical-course",
+      "description": "Recognizes the importance of monitoring serial ABGs to guide oxygen therapy",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "serial abgs",
+        "monitor pa co2",
+        "guide oxygen",
+        "avoid over-oxygenation"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Serial ABGs are crucial to track the effect of oxygen therapy and adjust the FiO2 accordingly."
+    },
+    {
+      "id": "opioid-role",
+      "description": "Acknowledges the contribution of opioids to respiratory depression",
+      "category": "reasoning",
+      "weight": 1,
+      "match": [
+        "opioid",
+        "oxycodone",
+        "respiratory depression",
+        "exacerbation",
+        "dose reduction"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Opioids exacerbate respiratory depression and should be minimized or discontinued if possible."
+    },
+    {
+      "id": "final-diagnosis",
+      "description": "Names the final diagnosis",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "acute\\ hypercapnia",
+        "acute\\ respiratory\\ acidosis",
+        "respiratory\\ failure",
+        "ventilatory\\ failure",
+        "ohs\\ exacerbation",
+        "acute\\-on\\-chronic hypercapnic"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Acute-on-chronic hypercapnic respiratory failure due to obesity hypoventilation syndrome (OHS) exacerbated by opioid use and over-oxygenation."
+    }
+  ],
+  "management_summary": "He requires intubation and mechanical ventilation. We will use a Venturi mask to deliver supplemental oxygen, starting at 21% FiO2, and titrate carefully based on serial ABGs to maintain SpO2 around 90-92%. Monitor PaCO2 closely. Address the trigger (likely pneumonia given RLL consolidation) with antibiotics. Review and potentially reduce the opioid dose. Continue supportive care including fluids and sedation adjustment as needed.",
+  "teaching_points": [
+    "Obesity Hypoventilation Syndrome typically affects older men with obesity and COPD, characterized by chronic daytime sleepiness and snoring.",
+    "The hallmark of OHS is hypercapnia (PaCO2 > 45 mmHg) with evidence of chronicity (HCO3 > 26 mEq/L).",
+    "Supplemental oxygen can acutely worsen hypercapnia and acidosis in patients with chronic CO2 retention due to cerebral vasodilation and increased CO2 production.",
+    "Always use a Venturi mask when delivering oxygen to patients with suspected OHS to allow controlled FiO2 delivery.",
+    "Treat the underlying precipitant (like pneumonia) alongside managing the ventilatory failure.",
+    "Opioids exacerbate respiratory depression and should be minimized or discontinued if possible."
+  ],
+  "references": [
+    "West DW, et al. Obesity Hypoventilation Syndrome. N Engl J Med. 2014",
+    "Verbalis JG, et al. Guidelines for the diagnosis and management of obesity hypoventilation syndrome. Obes Rev. 2014",
+    "Cooper DJ, et al. Obesity hypoventilation syndrome. Lancet Respir Med. 2014"
+  ],
+  "source": "google/medgemma-1.5-4b-it"
+}

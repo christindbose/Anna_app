@@ -141,13 +141,17 @@ def topic_keywords(topic: str) -> list[str]:
     return [w for w in re.findall(r"[a-z][a-z-]{4,}", head) if w not in STOP]
 
 
-def check(case: Case, expect_id: str, expect_track: str, topic: str | None = None) -> list[str]:
+def check(case: Case, expect_id: str, expect_track: str, topic: str | None = None, dx_keywords: list[str] | None = None) -> list[str]:
     problems = []
+    if dx_keywords:
+        dx = (case.diagnosis + " " + " ".join(case.diagnosis_aliases)).lower()
+        if not any(k.lower() in dx for k in dx_keywords):
+            problems.append(f"the final diagnosis must be the requested one (expected it to mention one of {dx_keywords}); got {case.diagnosis!r}")
     if topic:
         kws = topic_keywords(topic)
         hay = (case.title + " " + case.diagnosis + " " + " ".join(case.diagnosis_aliases) + " " + case.presentation).lower()
         hits = [k for k in kws if k[:6] in hay]
-        if kws and len(hits) < max(2, len(kws) // 4):
+        if kws and len(hits) < min(2, len(kws)):
             problems.append(f"case is not about the requested topic (expected words like {kws[:6]}; got title {case.title!r})")
     if case.track != expect_track:
         problems.append(f"track {case.track!r} != {expect_track!r}")
@@ -172,6 +176,8 @@ def check(case: Case, expect_id: str, expect_track: str, topic: str | None = Non
         problems.append("no rubric item with source final_diagnosis")
     elif not any(re.search(p, case.diagnosis, re.I) for p in fd):
         problems.append("no final_diagnosis rubric regex matches the case's own diagnosis string")
+    if len(case.title) > 80:
+        problems.append(f"title too long ({len(case.title)} chars); give a short clinical title under 60 characters, like a chart one-liner")
     words = len((case.presentation + " ".join(s.text for s in case.stages)).split())
     if words > 1100:
         problems.append(f"patient text too long ({words} words)")
@@ -180,10 +186,10 @@ def check(case: Case, expect_id: str, expect_track: str, topic: str | None = Non
     return problems
 
 
-def valid_existing(path: Path, expect_id: str, expect_track: str, topic: str | None = None) -> bool:
+def valid_existing(path: Path, expect_id: str, expect_track: str, topic: str | None = None, dx_keywords: list[str] | None = None) -> bool:
     try:
         c = load_case_file(path)
-        return c.id == expect_id and not check(c, expect_id, expect_track, topic)
+        return c.id == expect_id and not check(c, expect_id, expect_track, topic, dx_keywords)
     except Exception:  # noqa: BLE001
         return False
 
@@ -191,7 +197,9 @@ def valid_existing(path: Path, expect_id: str, expect_track: str, topic: str | N
 async def draft_one(llm, spec: dict, schema: str, example: str, attempts: int) -> Case | None:
     user = (
         f"Topic: {spec['topic']}\nTrack: {spec['track']}\nDifficulty: {spec['difficulty']} (1 intern .. 4 senior resident)\n"
-        f"Use exactly this id: \"{spec['id']}\"\n\n"
+        f"Use exactly this id: \"{spec['id']}\"\n"
+        + (f"The final diagnosis MUST be exactly this condition (do not substitute a related disease): {spec['dx_keywords'][0]}\n" if spec.get("dx_keywords") else "")
+        + "\n"
         f"SCHEMA:\n{schema}\n\nEXAMPLE CASE (match its depth, structure and style; invent a different patient and do not copy its content):\n{example}\n\n"
         "Write a complete, medically accurate, internally consistent case on the topic, as a senior internist would for residents.\n"
         + ("This is an ADVANCED case for a senior internal medicine resident: atypical or subtle presentation, at least two interacting "
@@ -231,7 +239,7 @@ async def draft_one(llm, spec: dict, schema: str, example: str, attempts: int) -
             data["reviewed"] = False
             data["source"] = settings.llm_model
             case = Case.model_validate(data)
-            problems = check(case, spec["id"], spec["track"], spec["topic"])
+            problems = check(case, spec["id"], spec["track"], spec["topic"], spec.get("dx_keywords"))
             if problems:
                 raise ValueError("; ".join(problems))
         except Exception as e:  # noqa: BLE001
@@ -273,7 +281,7 @@ async def review_pass(llm, case: Case, spec: dict) -> Case:
             data[k] = getattr(case, k)
         data["reviewed"] = False
         revised = Case.model_validate(data)
-        problems = check(revised, spec["id"], spec["track"], spec["topic"])
+        problems = check(revised, spec["id"], spec["track"], spec["topic"], spec.get("dx_keywords"))
         if problems:
             raise ValueError("; ".join(problems))
         if {r.id for r in revised.rubric} != {r.id for r in case.rubric}:
@@ -301,7 +309,8 @@ async def main() -> int:
     if args.topics:
         for t in json.loads(Path(args.topics).read_text()):
             if not args.only or t["id"] in args.only:
-                specs.append({"id": t["id"], "track": t["track"], "difficulty": int(t.get("difficulty", 3)), "topic": t["topic"]})
+                specs.append({"id": t["id"], "track": t["track"], "difficulty": int(t.get("difficulty", 3)), "topic": t["topic"],
+                              "dx_keywords": t.get("diagnosis_keywords")})
     else:
         for path in sorted((ROOT / "cases").glob("*/*.json")):
             c = load_case_file(path)
@@ -316,7 +325,7 @@ async def main() -> int:
         out = out_root / spec["track"] / f"{spec['id']}.json"
         out.parent.mkdir(parents=True, exist_ok=True)
         print(f"[{i}/{len(specs)}] {spec['id']}  ({spec['topic'][:70]})", flush=True)
-        if out.exists() and valid_existing(out, spec["id"], spec["track"], spec["topic"]):
+        if out.exists() and valid_existing(out, spec["id"], spec["track"], spec["topic"], spec.get("dx_keywords")):
             print("  already drafted, skipping", flush=True)
             continue
         case = await draft_one(llm, spec, schema, example, args.attempts)

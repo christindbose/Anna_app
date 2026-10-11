@@ -1,0 +1,219 @@
+{
+  "id": "severe-malaria-traveller-01",
+  "title": "Severe Plasmodium falciparum Malaria",
+  "track": "id",
+  "difficulty": 3,
+  "tags": [
+    "infectious diseases",
+    "tropical medicine",
+    "malaria",
+    "travel medicine",
+    "severe malaria"
+  ],
+  "reviewed": false,
+  "presentation": "A 58-year-old male returning from travel to Southeast Asia presents with 3 days of fever, chills, body aches, headache, nausea, and confusion. He took no prophylactic measures for his trip. On arrival, he is tachycardic (HR 110), febrile (T 39.5°C), and appears acutely ill. Triage labs show anemia (Hb 8.2 g/dL), thrombocytopenia (platelets 80k/uL), leukocytosis (WBC 15k/uL), elevated LDH (1800 IU/L), and hyperglycemia (glucose 280 mg/dL). Blood smear review shows multiple ring forms and parasites in all stages, confirming P. falciparum infection.\n",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He reports arriving back 2 days ago. His travel was 3 weeks long, mostly involving trekking in rural areas. He denies other significant medical history besides hypertension managed with lisinopril and occasional alcohol use. He reports consuming some local food and water but feels generally well prior to the onset of symptoms. He denies known exposures to sick contacts or bites.",
+      "prompt": "Given the patient's presentation and travel history, what is your most likely diagnosis, and what key information do you need to confirm it?",
+      "learner_goal": null,
+      "available_tests": {}
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "On examination, he is conscious but confused and lethargic. He has a petechial rash on his lower extremities. His blood pressure is 110/70 mmHg, heart rate 110 bpm, respiratory rate 26 breaths/min, and oxygen saturation 94% on room air. Jugular venous pressure is flat, there is no edema, and abdominal exam is unremarkable. Neurological exam reveals disorientation to time and place, mild ataxia, and no focal deficits. Laboratory findings include Hb 8.2 g/dL, Platelets 80K/uL, WBC 15K/uL, LDH 1800 IU/L, Glucose 280 mg/dL.",
+      "prompt": "Does the physical exam or laboratory findings change your primary diagnosis? What additional tests are crucial now?",
+      "learner_goal": null,
+      "available_tests": {}
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "Blood smear confirms P. falciparum infection with multiple ring forms and parasites in various developmental stages. Peripheral blood smear analysis shows marked thrombocytopenia (platelets 80K/uL), anemia (Hb 8.2 g/dL), leukocytosis (WBC 15K/uL), elevated LDH (1800 IU/L), and hyperglycemia (glucose 280 mg/dL). A rapid plasma zika antigen test is negative. A urine dipstick shows proteinuria (2+).",
+      "prompt": "Based on the clinical picture, laboratory results, and blood smear findings, what is the definitive diagnosis, and what immediate management step should be taken?",
+      "learner_goal": null,
+      "available_tests": {}
+    }
+  ],
+  "diagnosis": "Severe Plasmodium falciparum Malaria",
+  "diagnosis_aliases": [
+    "p. falciparum malaria",
+    "falciparum malaria",
+    "severe malaria"
+  ],
+  "key_clues": [
+    "Travel history to endemic area without prophylaxis",
+    "Acute febrile illness with multi-system involvement (neurologic, hematologic, metabolic)",
+    "Blood smear showing P. falciparum",
+    "Presence of multiple parasite life cycle stages (ring forms, gametocytes)",
+    "Thrombocytopenia, anemia, leukocytosis, elevated LDH, hyperglycemia",
+    "Signs of severe disease: altered mental status (confusion), tachypnea, petechiae"
+  ],
+  "distractors": [
+    {
+      "name": "Viral hemorrhagic fever",
+      "why_not": "Blood smear confirmed P. falciparum, no specific viral signs reported"
+    },
+    {
+      "name": "Dengue fever",
+      "why_not": "Blood smear confirmed P. falciparum, no classic dengue features like rash or joint pain described"
+    },
+    {
+      "name": "Typhoid fever",
+      "why_not": "Blood smear confirmed P. falciparum, no characteristic rose spots or relative bradycardia noted"
+    },
+    {
+      "name": "Alcohol withdrawal delirium tremens",
+      "why_not": "Patient reports only occasional alcohol use, typically denies withdrawal symptoms"
+    },
+    {
+      "name": "Drug reaction",
+      "why_not": "No mention of new medications, rash pattern not typical for common drug reactions"
+    }
+  ],
+  "rubric": [
+    {
+      "id": "diagnosis",
+      "description": "Identifies P. falciparum malaria as the correct diagnosis",
+      "category": "diagnosis",
+      "weight": 3,
+      "match": [
+        "plasmodium falciparum",
+        "p. falciparum",
+        "falciparum malaria",
+        "severe malaria"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "Key diagnostic clue: blood smear microscopy"
+    },
+    {
+      "id": "severity",
+      "description": "Recognizes the presence of severe manifestations",
+      "category": "diagnosis",
+      "weight": 2,
+      "match": [
+        "severe",
+        "complicated",
+        "altered mental status",
+        "tachypnea",
+        "petechiae",
+        "thrombocytopenia",
+        "anemia",
+        "leukocytosis",
+        "elevated ldh",
+        "hyperglycemia"
+      ],
+      "source": "final_diagnosis",
+      "by_stage": null,
+      "concept": "WHO criteria for severe malaria"
+    },
+    {
+      "id": "treatment",
+      "description": "Selects intravenous artesunate as the appropriate first-line therapy",
+      "category": "management",
+      "weight": 3,
+      "match": [
+        "artesunate",
+        "iv artesunate",
+        "intravenous artesunate",
+        "parenteral artesunate",
+        "quinine"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "WHO recommendation for severe malaria treatment"
+    },
+    {
+      "id": "supportive",
+      "description": "Includes supportive care measures necessary for severe malaria",
+      "category": "workup",
+      "weight": 2,
+      "match": [
+        "fluids",
+        "respiratory support",
+        "antiemetics",
+        "glucose monitoring",
+        "monitoring vital signs",
+        "monitoring neurological status",
+        "monitoring renal function"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Essential components of managing severe malaria"
+    },
+    {
+      "id": "prophylaxis",
+      "description": "Recommends appropriate malaria chemoprophylaxis for future travel",
+      "category": "management",
+      "weight": 2,
+      "match": [
+        "prophylaxis",
+        "preventative",
+        "medication",
+        "chloroquine",
+        "mefloquine",
+        "doxycycline",
+        "atovaquone proguanil",
+        "hydroxychloroquine",
+        "moxifloxacin",
+        "mefloquine"
+      ],
+      "source": "final_management",
+      "by_stage": null,
+      "concept": "Importance of preventing recurrence"
+    },
+    {
+      "id": "diagnosis-mimics",
+      "description": "Considers differential diagnoses including viral hepatitis, sepsis, and drug fever",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "hepatitis",
+        "sepsis",
+        "drug fever",
+        "viral",
+        "bacterial",
+        "fungal",
+        "parasitic"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Distinguishing severe malaria from mimics"
+    },
+    {
+      "id": "patient-factors",
+      "description": "Considers patient factors like age, comorbidities, and adherence",
+      "category": "reasoning",
+      "weight": 2,
+      "match": [
+        "age",
+        "comorbidities",
+        "adherence",
+        "risk factors",
+        "immune status",
+        "lifestyle"
+      ],
+      "source": "any",
+      "by_stage": null,
+      "concept": "Factors influencing disease course and outcome"
+    }
+  ],
+  "management_summary": "Immediate management includes administration of intravenous artesunate (typically 2.4 mg/kg loading dose followed by 1.2 mg/kg q8h). Supportive care is critical and includes aggressive fluid resuscitation (careful monitoring of renal function), respiratory support if needed, antiemetics, glucose monitoring and management, close monitoring of neurological status, vital signs, and bleeding risk (including platelet transfusion if <50k/uL or active bleeding). Investigations include CBC, liver enzymes, renal function, blood gas, and malaria parasite density measurement. Treatment continues for 3 days post-fever clearance. Appropriate malaria prophylaxis should be discussed for future travel.",
+  "teaching_points": [
+    "Malaria is diagnosed by identifying Plasmodium parasites in a blood smear. The presence of multiple rings and parasites in all stages indicates P. falciparum.",
+    "Severe malaria is defined by WHO criteria based on clinical signs and parasitological findings. This patient meets several criteria: altered mental status, tachypnea, petechiae, thrombocytopenia, anemia, leukocytosis, elevated LDH, and hyperglycemia.",
+    "Intravenous artesunate is the recommended first-line treatment for severe malaria globally due to superior efficacy compared to quinine.",
+    "Supportive care is essential for managing complications of severe malaria, including fluid management, respiratory support, and monitoring.",
+    "Patients should receive appropriate malaria chemoprophylaxis for future travel to endemic regions."
+  ],
+  "references": [
+    "World Health Organization. Guidelines for the treatment of malaria. Geneva: WHO; 2023.",
+    "Gama GJ, et al. Randomized trial of artesunate monotherapy versus quinine monotherapy for severe malaria. N Engl J Med 2011;364(23):2145-2154.",
+    "WHO. World Malaria Report 2023."
+  ],
+  "source": "google/medgemma-1.5-4b-it"
+}

@@ -1,22 +1,104 @@
 [
-  {"id": "ie-root-abscess-01", "track": "cardio", "difficulty": 4,
-   "topic": "Staphylococcus aureus aortic valve infective endocarditis complicated by aortic root abscess (new PR prolongation progressing to heart block) and an embolic stroke; the stroke is the presenting complaint and the murmur is subtle"},
-  {"id": "anti-gbm-pulmonary-renal-01", "track": "nephro", "difficulty": 4,
-   "topic": "Anti-glomerular basement membrane disease presenting as haemoptysis and rapidly progressive glomerulonephritis in a smoker, initially mistaken for pneumonia; distinguishing from ANCA vasculitis and deciding on plasmapheresis"},
-  {"id": "ohs-hypercapnia-01", "track": "pulm", "difficulty": 3,
-   "topic": "Acute-on-chronic hypercapnic respiratory failure from obesity hypoventilation syndrome with undiagnosed obstructive sleep apnoea, worsened by opioids and over-oxygenation in the emergency department; distinguishing from COPD"},
-  {"id": "sbp-hrs-cirrhosis-01", "track": "gi", "difficulty": 3,
-   "topic": "Spontaneous bacterial peritonitis in decompensated alcohol-related cirrhosis with evolving hepatorenal syndrome-AKI; recognising subtle presentation (confusion, no abdominal pain), ascitic fluid interpretation, albumin and antibiotic choice"},
-  {"id": "hlh-ebv-lymphoma-01", "track": "heme", "difficulty": 4,
-   "topic": "Secondary haemophagocytic lymphohistiocytosis in an adult with persistent fever, cytopenias, splenomegaly and very high ferritin, triggered by EBV-associated lymphoma; distinguishing from sepsis and applying HLH-2004 criteria"},
-  {"id": "severe-malaria-traveller-01", "track": "id", "difficulty": 3,
-   "topic": "Severe Plasmodium falciparum malaria in a returning traveller who took no prophylaxis, presenting with fever, jaundice, thrombocytopenia and confusion; distinguishing from dengue and typhoid, and starting IV artesunate"},
-  {"id": "adrenal-crisis-apls-01", "track": "endo", "difficulty": 3,
-   "topic": "Primary adrenal insufficiency presenting as hypotension unresponsive to fluids, hyponatraemia and hyperkalaemia in a young woman with autoimmune hypothyroidism recently started on levothyroxine; recognising adrenal crisis and giving hydrocortisone before confirmation"},
-  {"id": "aosd-fever-rash-01", "track": "rheum", "difficulty": 4,
-   "topic": "Adult-onset Still's disease in a young adult with quotidian fever, evanescent salmon rash, arthritis, sore throat and very high ferritin after extensive negative infectious workup; Yamaguchi criteria and macrophage activation syndrome as a complication"},
-  {"id": "hsv-encephalitis-01", "track": "neuro", "difficulty": 3,
-   "topic": "Herpes simplex encephalitis in an adult with fever, behavioural change, aphasia and a focal seizure; CSF interpretation, temporal lobe changes on MRI, and starting empiric acyclovir with bacterial meningitis cover before results"},
-  {"id": "hypercalcaemia-malignancy-01", "track": "onc", "difficulty": 3,
-   "topic": "Hypercalcaemia of malignancy (PTHrP-mediated, squamous lung cancer) presenting as confusion, constipation and AKI in a smoker; distinguishing from primary hyperparathyroidism and myeloma, and acute management with fluids, zoledronic acid and calcitonin"}
+  {
+    "id": "ie-root-abscess-01",
+    "track": "cardio",
+    "difficulty": 4,
+    "topic": "Staphylococcus aureus aortic valve infective endocarditis complicated by aortic root abscess (new PR prolongation progressing to heart block) and an embolic stroke; the stroke is the presenting complaint and the murmur is subtle",
+    "diagnosis_keywords": [
+      "endocarditis"
+    ]
+  },
+  {
+    "id": "anti-gbm-pulmonary-renal-01",
+    "track": "nephro",
+    "difficulty": 4,
+    "topic": "Anti-glomerular basement membrane disease presenting as haemoptysis and rapidly progressive glomerulonephritis in a smoker, initially mistaken for pneumonia; distinguishing from ANCA vasculitis and deciding on plasmapheresis",
+    "diagnosis_keywords": [
+      "anti-gbm",
+      "anti-glomerular",
+      "glomerular basement",
+      "goodpasture"
+    ]
+  },
+  {
+    "id": "ohs-hypercapnia-01",
+    "track": "pulm",
+    "difficulty": 3,
+    "topic": "Acute-on-chronic hypercapnic respiratory failure from obesity hypoventilation syndrome with undiagnosed obstructive sleep apnoea, worsened by opioids and over-oxygenation in the emergency department; distinguishing from COPD",
+    "diagnosis_keywords": [
+      "obesity hypoventilation",
+      "ohs"
+    ]
+  },
+  {
+    "id": "sbp-hrs-cirrhosis-01",
+    "track": "gi",
+    "difficulty": 3,
+    "topic": "Spontaneous bacterial peritonitis in decompensated alcohol-related cirrhosis with evolving hepatorenal syndrome-AKI; recognising subtle presentation (confusion, no abdominal pain), ascitic fluid interpretation, albumin and antibiotic choice",
+    "diagnosis_keywords": [
+      "spontaneous bacterial peritonitis",
+      "sbp"
+    ]
+  },
+  {
+    "id": "hlh-ebv-lymphoma-01",
+    "track": "heme",
+    "difficulty": 4,
+    "topic": "Secondary haemophagocytic lymphohistiocytosis in an adult with persistent fever, cytopenias, splenomegaly and very high ferritin, triggered by EBV-associated lymphoma; distinguishing from sepsis and applying HLH-2004 criteria",
+    "diagnosis_keywords": [
+      "haemophagocytic",
+      "hemophagocytic",
+      "hlh"
+    ]
+  },
+  {
+    "id": "severe-malaria-traveller-01",
+    "track": "id",
+    "difficulty": 3,
+    "topic": "Severe Plasmodium falciparum malaria in a returning traveller who took no prophylaxis, presenting with fever, jaundice, thrombocytopenia and confusion; distinguishing from dengue and typhoid, and starting IV artesunate",
+    "diagnosis_keywords": [
+      "malaria",
+      "falciparum"
+    ]
+  },
+  {
+    "id": "adrenal-crisis-apls-01",
+    "track": "endo",
+    "difficulty": 3,
+    "topic": "Primary adrenal insufficiency presenting as hypotension unresponsive to fluids, hyponatraemia and hyperkalaemia in a young woman with autoimmune hypothyroidism recently started on levothyroxine; recognising adrenal crisis and giving hydrocortisone before confirmation",
+    "diagnosis_keywords": [
+      "adrenal"
+    ]
+  },
+  {
+    "id": "aosd-fever-rash-01",
+    "track": "rheum",
+    "difficulty": 4,
+    "topic": "Adult-onset Still's disease in a young adult with quotidian fever, evanescent salmon rash, arthritis, sore throat and very high ferritin after extensive negative infectious workup; Yamaguchi criteria and macrophage activation syndrome as a complication",
+    "diagnosis_keywords": [
+      "still"
+    ]
+  },
+  {
+    "id": "hsv-encephalitis-01",
+    "track": "neuro",
+    "difficulty": 3,
+    "topic": "Herpes simplex encephalitis in an adult with fever, behavioural change, aphasia and a focal seizure; CSF interpretation, temporal lobe changes on MRI, and starting empiric acyclovir with bacterial meningitis cover before results",
+    "diagnosis_keywords": [
+      "herpes",
+      "hsv"
+    ]
+  },
+  {
+    "id": "hypercalcaemia-malignancy-01",
+    "track": "onc",
+    "difficulty": 3,
+    "topic": "Hypercalcaemia of malignancy (PTHrP-mediated, squamous lung cancer) presenting as confusion, constipation and AKI in a smoker; distinguishing from primary hyperparathyroidism and myeloma, and acute management with fluids, zoledronic acid and calcitonin",
+    "diagnosis_keywords": [
+      "pthrp",
+      "humoral hypercalc",
+      "squamous",
+      "lung"
+    ]
+  }
 ]

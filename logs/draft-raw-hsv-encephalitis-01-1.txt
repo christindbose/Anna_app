@@ -1,0 +1,106 @@
+```jsonc
+{
+  "id": "hsv-encephalitis-01",
+  "title": "Confusion and a sodium of 118",
+  "track": "neuro",
+  "difficulty": 3,
+  "tags": ["herpes", "encephalitis", "seizure", "focal", "aphasia", "behavioural change", "fever", "csf", "temporal lobe", "empiric acyclovir"],
+  "reviewed": false,
+  "presentation": "A 62-year-old man is brought to the ED by his wife who found him confused and having a generalized seizure earlier today. He has a history of alcohol abuse and hepatitis C. His vital signs show fever (38.5°C), tachycardia (HR 110), tachypnea (RR 24), and mild hypotension (BP 110/60 mmHg). Initial labs show leukocytosis (WBC 14k), thrombocytopenia (Plt 150k), elevated AST/ALT, and hyperglycemia (glucose 180 mg/dL). A non-contrast head CT shows no hemorrhage or large infarct but reveals subtle cortical edema.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He reports being homeless recently and has been drinking heavily. He denies recent trauma or rash. His wife states he has had vague neurological complaints like tingling in his hands for the past month but didn't seek care. He has no known allergies.",
+      "prompt": "What is your initial differential for his presentation, and what questions would you ask?",
+      "learner_goal": "Formulate a broad differential including infection, stroke, metabolic encephalopathy, and intoxication, focusing on CNS pathology given the seizure and altered mental status."
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "On exam, he is disoriented to place and time, intermittently agitated, and has slurred speech. There is no focal motor or sensory deficit noted initially. Pupils are equal and reactive to light. Reflexes are brisk. Chest exam reveals crackles at both bases. Neck exam is unremarkable.",
+      "prompt": "Does this change your differential? What key physical finding should guide your next step?",
+      "learner_goal": "Recognize the potential for meningitis or encephalitis based on fever, altered mental status, and seizures, prompting immediate lumbar puncture.",
+      "available_tests": {
+        "temp": "38.5°C",
+        "hr": "110 bpm",
+        "rr": "24 breaths/min",
+        "bp": "110/60 mmHg",
+        "wbc": "14,000 cells/mm³, "
+        "plt": "150,000 cells/mm³",
+        "ast": "150 IU/L",
+        "alt": "180 IU/L",
+        "glu": "180 mg/dL",
+        "chest x-ray": "Bilateral basal crackles"
+      }
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "Lumbar puncture is performed. CSF analysis shows WBC 1200 cells/mm³ with lymphocytic predominance, RBC 50 cells/mm³, protein 150 mg/dL, and glucose 50 mg/dL (CSF/serum ratio 0.4). HSV PCR is positive. Empiric acyclovir is started immediately. Head MRI demonstrates diffuse T2/FLAIR hyperintensities involving the bilateral medial temporal lobes and insula, with corresponding enhancement.",
+      "prompt": "Synthesize the information. What is the most likely diagnosis, and what other important investigation should be done urgently?",
+      "learner_goal": "Identify herpes simplex virus encephalitis, recognize the need for urgent brain biopsy for definitive diagnosis and pathogen identification, and consider the risks associated with empiric acyclovir.",
+      "available_tests": {
+        "lumbar (wbc)": "1200 cells/mm³",
+        "lumbar (pmns)": "Lymphocytic",
+        "lumbar (rbc)": "50 cells/mm³",
+        "lumbar (protein)": "150 mg/dL",
+        "lumbar (glucose)": "50 mg/dL",
+        "lumbar (ratio)": "0.4",
+        "hsv (pcr)": "Positive",
+        "head (mri)": "Diffuse T2/FLAIR hyperintensities bilateral medial temporal lobes and insula, enhancement"
+      }
+    },
+    {
+      "id": "management",
+      "label": "Management",
+      "text": "He is admitted to the ICU. He receives intravenous acyclovir. Due to persistent clinical deterioration and lack of response to therapy within 48 hours, an urgent brain biopsy is performed. Histopathology confirms HSV encephalitis. The biopsy also identifies multiple bacterial colonies, consistent with bacterial meningitis coexisting with HSV encephalitis.",
+      "prompt": "What is the appropriate next step in management?",
+      "learner_goal": "Recognize the critical need for simultaneous treatment of both viral and bacterial infections, including appropriate antibiotic selection and administration.",
+      "available_tests": {
+        "biopsy (histology)": "HSV positive, multiple bacterial colonies identified"
+      }
+    }
+  ],
+  "diagnosis": "Herpes simplex virus encephalitis complicated by bacterial meningitis",
+  "diagnosis_aliases": ["hsv encephalitis", "viral encephalitis", "bacterial meningitis", "meningoencephalitis"],
+  "key_clues": [
+    "Fever, altered mental status, focal neurological signs (seizure, aphasia), and CSF pleocytosis with lymphocytic predominance suggests viral meningoencephalitis.",
+    "Positive HSV PCR strongly supports HSV encephalitis.",
+    "Clinical deterioration despite empiric acyclovir raises concern for concurrent bacterial infection.",
+    "Brain biopsy showing both HSV and bacteria confirms co-infection.",
+    "Temporal lobe involvement on MRI is characteristic of HSV encephalitis."
+  ],
+  "distractors": [
+    {"name": "Bacterial meningitis without encephalitis", "why_not": "CSF profile (lymphocytic predominance, relatively low glucose) and MRI findings are less typical for pure bacterial meningitis."},
+    {"name": "Viral meningitis without encephalitis", "why_not": "Altered mental status, seizures, and MRI findings point towards encephalitis."},
+    {"name": "Cryptococcal meningitis", "why_not": "Less common in immunocompetent individuals, CSF glucose typically lower, India ink stain negative."},
+    {"name": "Autoimmune encephalitis", "why_not": "While possible, the rapid onset, fever, CSF profile, and MRI findings fit better with infectious etiology, especially given the positive HSV PCR."},
+    {"name": "Toxic encephalopathy", "why_not": "Lack of clear exposure history, presence of fever, seizures, and specific MRI findings make this less likely."}
+  ],
+  "rubric": [
+    {"id": "diagnosis-hsv", "description": "Identifies HSV encephalitis as the primary infectious process", "category": "diagnosis", "weight": 3, "match": ["herpes simplex virus encephalitis", "hsv encephalitis", "viral encephalitis", "temporal lobe involvement", "positive hsv pcr", "medial temporal lobe"], "source": "final_diagnosis", "concept": "HSV encephalitis diagnostic criteria"},
+    {"id": "diagnosis-bacteria", "description": "Identifies concomitant bacterial meningitis", "category": "diagnosis", "weight": 2, "match": ["bacterial meningitis", "meningitis", "co-infection", "brain biopsy", "multiple bacterial colonies", "meningoencephalitis"], "source": "final_diagnosis", "concept": "Bacterial meningitis diagnostic criteria"},
+    {"id": "diagnostic-pathway", "description": "Recognizes the need for brain biopsy when empiric treatment fails", "category": "reasoning", "weight": 2, "match": ["brain biopsy", "urgent brain biopsy", "failure of empiric therapy", "clinical deterioration"], "concept": "Diagnostic pathway for suspected encephalitis with failed empiric treatment"},
+    {"id": "treatment-hiv", "description": "Selects appropriate antibiotics for bacterial meningitis", "category": "management", "weight": 2, "match": ["ceftriaxone", "vancomycin", "ampicillin", "meningitis treatment", "antibiotics"], "source": "final_management", "concept": "Standard empiric antibiotic regimen for bacterial meningitis"},
+    {"id": "treatment-hiv", "description": "Includes empiric acyclovir", "category": "management", "weight": 2, "match": ["acyclovir", "empiric acyclovir", "intravenous acyclovir", "viral encephalitis treatment"], "source": "final_management", "concept": "Treatment for HSV encephalitis"},
+    {"id": "treatment-hiv", "description": "Mentions admission to ICU", "category": "management", "weight": 1, "match": ["icu", "intensive care unit", "admission", "severe illness"], "source": "final_management", "concept": "Severity of illness dictates level of care"},
+    {"id": "management-hiv", "description": "Recognizes the importance of managing both pathogens simultaneously", "category": "management", "weight": 3, "match": ["simultaneous treatment", "co-infection management", "manage both viruses and bacteria"], "source": "final_management", "concept": "Co-infection requires combined antimicrobial therapy."},
+    {"id": "management-hiv", "description": "States the need for further investigation into the source of the bacteria", "category": "reasoning", "weight": 2, "match": ["source control", "identify bacterial source", "culture blood", "stool culture", "urine culture", "investigate source"], "concept": "Identifying the source of bacterial infection is crucial for targeted therapy and prevention of recurrence."},
+    {"id": "management-hiv", "description": "Considers the impact of immunosuppression (alcoholism)", "category": "reasoning", "weight": 2, "match": ["immunosuppression", "alcoholism", "hepatitis c", "risk factors", "patient vulnerability"], "concept": "Immunocompromised state increases risk for opportunistic infections and complicates management."}
+  ],
+  "management_summary": "Patient was admitted to the ICU and received intravenous acyclovir. Due to clinical deterioration, an urgent brain biopsy was performed, revealing HSV encephalitis and co-existing bacterial meningitis. Appropriate empiric antibiotics (ceftriaxone + vancomycin +/- ampicillin) were initiated. Further investigation is needed to identify the source of the bacterial infection.",
+  "teaching_points": [
+    "Infectious encephalitis often presents with fever, altered mental status, seizures, and CSF pleocytosis.",
+    "A positive HSV PCR significantly increases the likelihood of HSV encephalitis, particularly with classic MRI findings.",
+    "Clinical deterioration despite empiric antiviral therapy warrants suspicion of co-infection with bacterial meningitis.",
+    "Brain biopsy is indicated for suspected encephalitis with failure of empiric treatment to confirm the diagnosis and identify the pathogen.",
+    "Bacterial meningitis requires prompt administration of empiric antibiotics covering common pathogens (e.g., ceftriaxone + vancomycin +/- ampicillin)."
+  ],
+  "references": [
+    "Centers for Disease Control and Prevention. Viral Meningitis and Encephalitis. https://www.cdc.gov/ncidodhi/meningitis/index.html",
+    "Nelson Textbook of Pediatrics, 21st ed. Chapter 301: Meningitis and Encephalitis",
+    "Mandell, Douglas, and Bennett's Principles and Practice of Infectious Diseases, 9th ed. Chapter 56: Bacterial Meningitis"
+  ]
+}
+```
