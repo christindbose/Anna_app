@@ -1,0 +1,87 @@
+{
+  "id": "ie-pwid-01",
+  "title": "Fever and back pain in a man who injects",
+  "track": "general-im",
+  "difficulty": 3,
+  "tags": ["infectious disease", "cardiology", "addiction medicine"],
+  "reviewed": false,
+  "presentation": "A 29-year-old man presents with ten days of fevers and rigors and progressively severe low back pain; today he could not sit up in bed without help. Triage: T 39.1 C, HR 118, BP 104/62, RR 22, SpO2 95% on air.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "He injects heroin daily, often into the right groin because his arm veins are 'gone', and sometimes shares equipment. Last injection this morning. Hepatitis C antibody positive two years ago, never treated; HIV negative a year ago. The back pain is constant, worst at night, not relieved by lying still, centred on the low lumbar spine with some aching into the right buttock. He denies leg weakness, numbness, or trouble with bladder or bowels. Over the past week he has been short of breath climbing stairs, with a dry cough and two episodes of sharp right-sided chest pain on breathing in. No dysuria, no diarrhoea, no dental work, no previous endocarditis, no known heart murmur. No regular medications. He has lost about 6 kg in two months.",
+      "prompt": "What is your differential for fever with back pain in this man, and what is the one thing that must happen before antibiotics?",
+      "learner_goal": "Put endocarditis and vertebral osteomyelitis or epidural abscess at the top, link the chest symptoms to septic emboli, and insist on blood cultures before antibiotics."
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "T 38.8 C, HR 112, BP 106/64, RR 22, SpO2 94% on air. Thin and unkempt. Track marks in both antecubital fossae and over the right femoral vein, with a healing, non-fluctuant area in the right groin. Poor dentition. Cardiac: grade 2/6 holosystolic murmur at the left lower sternal border that becomes louder on inspiration; JVP raised to the angle of the jaw with prominent v waves; no third heart sound. Lungs: coarse crackles at the right base. Spine: tenderness over L4 and L5 with paraspinal spasm, no step. Straight-leg raise negative. Power 5/5 in both legs, reflexes symmetric, plantars downgoing, perianal sensation and anal tone normal, no saddle anaesthesia. No splinter haemorrhages, Osler nodes, Janeway lesions or Roth spots. Spleen not palpable.",
+      "prompt": "Commit to your top diagnosis and tell me what you will image and when. Is there anything on the exam that would have changed your pace?",
+      "learner_goal": "Recognise tricuspid regurgitation and septic pulmonary emboli, order echocardiography and MRI of the spine, and show that the neurological exam has been checked for cord or cauda compromise.",
+      "available_tests": {
+        "blood cultures": "Three sets drawn from separate sites over one hour before antibiotics: all three flag positive at 14 hours with gram-positive cocci in clusters, identified as methicillin-susceptible Staphylococcus aureus (MSSA). Repeat cultures at 48 hours on treatment: one of two sets positive; negative by 96 hours.",
+        "cbc": "WBC 17.4 x10^9/L with neutrophilia, Hb 10.2 g/dL, platelets 190.",
+        "inflammatory markers": "CRP 212 mg/L, ESR 98 mm/h.",
+        "chemistry": "Creatinine 1.1 mg/dL, lactate 1.9 mmol/L, AST 58, ALT 64, albumin 2.9 g/dL.",
+        "urinalysis": "10-20 red cells per high-power field, 1+ protein, no leukocytes, no nitrites, no casts.",
+        "hiv and hepatitis": "HIV antigen/antibody negative. Hepatitis C RNA 1.8 million IU/mL. Hepatitis B surface antigen and core antibody negative.",
+        "chest x-ray": "Multiple peripheral nodular opacities in both lungs, two with cavitation, and a small right pleural effusion.",
+        "ct chest": "Multiple peripheral, wedge-shaped and cavitating nodules in both lungs consistent with septic emboli; small right effusion, no empyema.",
+        "ecg": "Sinus tachycardia 112, PR 160 ms, narrow QRS, no conduction block.",
+        "echocardiogram": "Transthoracic echo: 1.4 cm mobile vegetation on the anterior tricuspid leaflet with severe tricuspid regurgitation. Mitral and aortic valves normal with no vegetation or regurgitation. Normal LV size and function, no pericardial effusion, no abscess. Transoesophageal echo the next day confirms isolated tricuspid involvement.",
+        "mri spine": "MRI lumbar spine with gadolinium: L4-L5 discitis-osteomyelitis with endplate destruction and a 6 mm anterior epidural phlegmon; thecal sac not compressed, no cauda equina involvement, no psoas abscess.",
+        "drug screen": "Urine drug screen positive for opiates and fentanyl."
+      }
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "Three of three blood culture sets grow methicillin-susceptible Staphylococcus aureus. TTE shows a 1.4 cm tricuspid vegetation with severe tricuspid regurgitation and normal left-sided valves; TOE confirms. CT chest shows multiple cavitating peripheral nodules consistent with septic emboli. MRI shows L4-L5 discitis-osteomyelitis with a small anterior epidural phlegmon and no neural compression. CRP 212, WBC 17.4, creatinine 1.1. Repeat blood cultures at 48 hours on treatment grow MSSA in one of two sets; by 96 hours they are clear. He is asking for something for his withdrawal.",
+      "prompt": "Give me the unifying diagnosis. What antibiotic, for how long, and what would make you call cardiothoracic surgery or neurosurgery? What else needs to be on the problem list before he leaves?",
+      "learner_goal": "Name right-sided S. aureus endocarditis with septic emboli and vertebral osteomyelitis, choose an antistaphylococcal beta-lactam for six weeks, know the surgical triggers, and address opioid use disorder and hepatitis C in the same admission."
+    }
+  ],
+  "diagnosis": "Right-sided (tricuspid valve) methicillin-susceptible Staphylococcus aureus infective endocarditis with septic pulmonary emboli and L4-L5 vertebral osteomyelitis",
+  "diagnosis_aliases": ["endocarditis", "infective endocarditis", "tricuspid valve endocarditis", "tricuspid endocarditis", "right-sided endocarditis", "right sided endocarditis", "bacterial endocarditis", "staph aureus endocarditis"],
+  "key_clues": [
+    "Daily injection drug use including femoral injection, with ten days of fever and rigors",
+    "New holosystolic murmur at the left lower sternal border louder on inspiration, raised JVP with v waves (tricuspid regurgitation)",
+    "Pleuritic chest pain and cough with multiple cavitating peripheral nodules (septic pulmonary emboli)",
+    "Staphylococcus aureus in three of three blood culture sets",
+    "Night-predominant focal lumbar tenderness with discitis-osteomyelitis on MRI",
+    "Microscopic haematuria from embolic or immune-complex renal involvement"
+  ],
+  "distractors": [
+    {"name": "Isolated vertebral osteomyelitis or discitis", "why_not": "Real, but it does not explain the new tricuspid regurgitation, the cavitating lung nodules or three of three positive cultures; it is a metastatic focus from the valve."},
+    {"name": "Spinal epidural abscess with cord or cauda compression", "why_not": "Neurological exam is normal and MRI shows a 6 mm phlegmon without thecal sac compression; this still needs serial neurological checks and a low threshold for repeat imaging."},
+    {"name": "Community-acquired pneumonia", "why_not": "The lung lesions are multiple, peripheral, wedge-shaped and cavitating in a bacteraemic patient with tricuspid regurgitation: septic embolism, not lobar pneumonia."},
+    {"name": "Left-sided endocarditis", "why_not": "TTE and TOE show only tricuspid involvement and there are no peripheral stigmata or stroke; still worth confirming by TOE because left-sided disease changes surgical thresholds and embolic risk."},
+    {"name": "Pyelonephritis", "why_not": "No dysuria or flank pain and no leukocytes or nitrites in the urine; the haematuria reflects renal emboli or immune-complex glomerulonephritis."},
+    {"name": "Groin injection-site abscess as the sole source", "why_not": "The groin lesion is healing and non-fluctuant; it may have been the portal of entry but is not the ongoing source."}
+  ],
+  "rubric": [
+    {"id": "names-ie", "description": "Names infective endocarditis in the initial differential", "category": "diagnosis", "weight": 3, "match": ["endocarditis", "\\bie\\b", "valve", "vegetation"], "by_stage": "history", "concept": "Fever in a person who injects drugs is endocarditis until proven otherwise"},
+    {"id": "spine-infection", "description": "Names vertebral osteomyelitis, discitis or epidural abscess as the explanation for the back pain", "category": "diagnosis", "weight": 2, "match": ["osteomyelitis", "discitis", "epidural", "spinal (abscess|infection)", "vertebral"], "by_stage": "history", "concept": "Fever plus back pain is spinal infection until imaged, especially with bacteraemia"},
+    {"id": "blood-cultures-first", "description": "Insists on three sets of blood cultures before any antibiotic", "category": "workup", "weight": 3, "match": ["blood culture", "cultures?\\b", "three sets", "3 sets", "before (any )?antibiotic"], "by_stage": "history", "concept": "Three sets of blood cultures from separate sites before antibiotics are the foundation of the endocarditis diagnosis"},
+    {"id": "echo-and-mri", "description": "Orders echocardiography and MRI of the spine to define both foci", "category": "workup", "weight": 2, "match": ["echo", "\\btte\\b", "\\btoe\\b", "\\btee\\b", "transthoracic", "trans.?(o|e)esophageal", "\\bmri\\b", "magnetic resonance"], "by_stage": "exam", "concept": "Echo for the valve, MRI with gadolinium for the spine; TOE if TTE is non-diagnostic or left-sided disease is a question"},
+    {"id": "neuro-red-flags", "description": "Checks for and plans to re-check cord or cauda equina compromise (power, reflexes, sphincter, saddle sensation)", "category": "reasoning", "weight": 2, "match": ["cord compression", "cauda", "neuro(logical)? (exam|assess|check|obs|status)", "saddle", "incontinence", "leg weakness", "power", "reflexes", "sphincter", "perianal", "anal tone", "red flag"], "by_stage": "exam", "concept": "Epidural infection can progress to irreversible paralysis in hours; neurological status sets the pace"},
+    {"id": "final-dx", "description": "Final diagnosis is infective endocarditis", "category": "diagnosis", "weight": 3, "match": ["endocarditis", "\\bie\\b"], "source": "final_diagnosis", "concept": "Right-sided S. aureus endocarditis with metastatic infection"},
+    {"id": "mgmt-antistaph-beta-lactam", "description": "Chooses an antistaphylococcal beta-lactam (cefazolin, flucloxacillin, nafcillin or oxacillin) for MSSA, with vancomycin only until susceptibilities are known", "category": "management", "weight": 3, "match": ["cefazolin", "flucloxacillin", "nafcillin", "oxacillin", "cloxacillin", "anti.?staph", "beta.?lactam", "(narrow|switch|de.?escalat|change)[^.]{0,40}(cefazolin|flucloxacillin|nafcillin|oxacillin)"], "source": "final_management", "concept": "Beta-lactams beat vancomycin for MSSA bacteraemia; narrow as soon as susceptibility is known"},
+    {"id": "mgmt-duration-surgery", "description": "Plans six weeks of therapy because of the osteomyelitis and names triggers for surgical referral", "category": "management", "weight": 2, "match": ["6 weeks", "six weeks", "4.?6 weeks", "surg", "cardiothoracic", "valve (repair|replace)", "persistent bacter", "heart failure", "recurrent embol", "neurosurg", "> ?20 ?mm", "2 cm"], "source": "final_management", "concept": "Duration follows the deepest focus; surgery for persistent bacteraemia, right heart failure, recurrent emboli with a large vegetation, or fungal infection"},
+    {"id": "mgmt-addiction-hcv", "description": "Addresses opioid use disorder (agonist therapy, naloxone, harm reduction), hepatitis C, and a realistic antibiotic completion plan", "category": "management", "weight": 2, "match": ["buprenorphine", "methadone", "suboxone", "opioid (use|agonist|substitution|replacement)", "addiction", "harm reduction", "naloxone", "hepatitis c", "\\bhcv\\b", "needle", "\\bopat\\b", "oral (step|switch)", "partial oral", "\\bpoet\\b", "withdrawal"], "source": "final_management", "concept": "Treating the infection without treating the opioid use disorder is half a treatment"}
+  ],
+  "management_summary": "Empirical vancomycin until the isolate is identified, then an antistaphylococcal beta-lactam (cefazolin 2 g IV every 8 hours, or flucloxacillin or nafcillin 2 g every 4 hours) once MSSA is confirmed; no gentamicin or rifampicin for native-valve disease. Uncomplicated right-sided MSSA endocarditis could be treated for two weeks, but the vertebral osteomyelitis sets the course at six weeks from the first negative culture. Repeat blood cultures every 24 to 48 hours until clear. Daily neurological checks while the epidural phlegmon is present, with repeat MRI and neurosurgical referral for any new deficit or rising pain. Cardiothoracic referral for bacteraemia persisting beyond seven days on appropriate therapy, right heart failure from tricuspid regurgitation that does not respond to diuretics, recurrent emboli with a vegetation over 20 mm, or fungal infection. Start buprenorphine or methadone for opioid use disorder on day one, offer naloxone and sterile equipment, treat hepatitis C with direct-acting antivirals during or after the course, and plan completion of therapy through a model he can finish (inpatient, supported OPAT, or a partial oral regimen once cultures are clear and he is engaged).",
+  "teaching_points": [
+    "Fever and back pain in a person who injects drugs is endocarditis with a metastatic focus until proven otherwise. Examine the heart for a new murmur, the lungs for septic emboli and the spine for focal tenderness, and take three sets of blood cultures before the first dose of antibiotic.",
+    "Right-sided endocarditis looks different: tricuspid regurgitation (holosystolic murmur louder on inspiration, v waves), pleuritic chest pain with cavitating peripheral nodules, and few peripheral stigmata. TTE is more sensitive for tricuspid than for left-sided disease, but TOE still clarifies left-sided involvement.",
+    "MSSA is treated with a beta-lactam, not vancomycin, which is inferior for MSSA bacteraemia. Duration follows the deepest focus: six weeks when bone is involved, with daily neurological checks whenever there is epidural disease.",
+    "Treating the infection without treating the opioid use disorder is half a treatment. Start opioid agonist therapy in hospital, offer hepatitis C treatment, and choose an antibiotic delivery model the patient can complete; the POET trial supports partial oral therapy in selected stable patients."
+  ],
+  "references": [
+    "Baddour LM et al. Infective endocarditis in adults: diagnosis, antimicrobial therapy, and management of complications. A scientific statement from the American Heart Association. Circulation 2015;132:1435-86",
+    "Delgado V et al. 2023 ESC Guidelines for the management of endocarditis. Eur Heart J 2023;44:3948-4042",
+    "Berbari EF et al. 2015 Infectious Diseases Society of America (IDSA) clinical practice guidelines for the diagnosis and treatment of native vertebral osteomyelitis in adults. Clin Infect Dis 2015;61:e26-46"
+  ]
+}

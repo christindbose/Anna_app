@@ -1,0 +1,88 @@
+{
+  "id": "euglycaemic-dka-sglt2-01",
+  "title": "Vomiting, Kussmaul breathing and a glucose of 192",
+  "track": "general-im",
+  "difficulty": 3,
+  "tags": ["endocrine", "diabetes", "acid-base"],
+  "reviewed": false,
+  "presentation": "A 54-year-old man with type 2 diabetes presents with two days of nausea, vomiting, diffuse abdominal pain and malaise. He is breathing fast. Triage: HR 108, BP 118/72, RR 26, T 37.2 C, SpO2 98% on air. Fingerstick glucose 192 mg/dL (10.7 mmol/L). The triage note says 'glucose OK, probably gastro'.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "Type 2 diabetes for nine years; HbA1c 7.8% three months ago. Medications: metformin 1 g twice daily, empagliflozin 25 mg daily (started five months ago), insulin glargine (reduced by his primary care doctor from 30 to 12 units nightly after the empagliflozin was started), atorvastatin and lisinopril. Three weeks ago he began a strict low-carbohydrate diet and has lost 4 kg. For the last two nights he skipped his glargine because he 'wasn't eating', but took the empagliflozin this morning as usual. No fever, no diarrhoea, no sick contacts. Drinks two beers at weekends, none this week. No chest pain. No new or over-the-counter medications.",
+      "prompt": "What is your differential for vomiting with tachypnoea in a diabetic whose glucose is 192? What is the first test you want?",
+      "learner_goal": "Refuse to be reassured by the glucose; recognise that tachypnoea plus vomiting means a blood gas and anion gap now."
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "HR 106, BP 114/70 lying and 96/60 standing, RR 26 with deep sighing respirations, afebrile. Dry mucous membranes, reduced skin turgor, a sweet smell on the breath. Abdomen soft with mild diffuse tenderness, no guarding or rebound, bowel sounds present. Alert and oriented. No focal neurology.",
+      "prompt": "Does the exam change your thinking? Commit to the diagnosis you are most worried about and tell me how you will prove it.",
+      "learner_goal": "Name ketoacidosis despite the near-normal glucose and order the gas, electrolytes and ketones that confirm it.",
+      "available_tests": {
+        "vbg": "Venous blood gas: pH 7.14, pCO2 24 mmHg, HCO3 9 mEq/L, base excess -18.",
+        "bmp": "Na 134, K 4.9, Cl 98, HCO3 9, BUN 28, creatinine 1.4 mg/dL (baseline 0.9), glucose 189 mg/dL. Anion gap 27.",
+        "ketones": "Serum beta-hydroxybutyrate 5.8 mmol/L (normal under 0.6). Urine ketones 3+.",
+        "urinalysis": "Glucose 3+, ketones 3+, no leukocytes, no nitrites, no blood.",
+        "lactate": "Lactate 1.6 mmol/L.",
+        "lipase": "Lipase 52 U/L (normal).",
+        "serum osmolality": "Measured 296 mOsm/kg; calculated 289 (osmolal gap 7).",
+        "toxicology": "Ethanol undetectable. Salicylate and acetaminophen undetectable.",
+        "ecg": "Sinus tachycardia 106, no ischaemic changes, no peaked T waves.",
+        "troponin": "High-sensitivity troponin I 6 ng/L (normal).",
+        "cbc": "WBC 13.1 x10^9/L, Hb 15.2 g/dL (haemoconcentrated), platelets 240.",
+        "lfts": "AST 30, ALT 34, bilirubin 0.8.",
+        "hba1c": "HbA1c 7.6%."
+      }
+    },
+    {
+      "id": "labs",
+      "label": "Labs",
+      "text": "Venous pH 7.14, HCO3 9, anion gap 27, beta-hydroxybutyrate 5.8 mmol/L, glucose 189 mg/dL, K 4.9, creatinine 1.4. Lactate 1.6, osmolal gap 7, ethanol and salicylate undetectable, lipase normal, troponin normal, ECG sinus tachycardia only. Urine: glucose 3+, ketones 3+.",
+      "prompt": "Name the diagnosis and its cause. How does your insulin and fluid plan differ from an ordinary DKA with a glucose of 450, what will you use to judge resolution, and what happens to his empagliflozin?",
+      "learner_goal": "Diagnose euglycaemic DKA from an SGLT2 inhibitor, run the DKA protocol with dextrose from the start, follow ketones and anion gap rather than glucose, and stop the SGLT2 inhibitor."
+    }
+  ],
+  "diagnosis": "Euglycaemic diabetic ketoacidosis precipitated by an SGLT2 inhibitor (empagliflozin), with insulin reduction and carbohydrate restriction as contributors",
+  "diagnosis_aliases": ["euglycaemic dka", "euglycemic dka", "euglycaemic ketoacidosis", "euglycemic ketoacidosis", "eudka", "dka", "diabetic ketoacidosis", "sglt2"],
+  "key_clues": [
+    "Kussmaul breathing and vomiting with a glucose under 250 mg/dL",
+    "High anion gap metabolic acidosis (pH 7.14, HCO3 9, gap 27)",
+    "Beta-hydroxybutyrate 5.8 mmol/L with normal lactate and osmolal gap",
+    "Empagliflozin continued while insulin was reduced then omitted and carbohydrate intake fell",
+    "Glycosuria 3+ despite a near-normal glucose, which is the SGLT2 inhibitor at work"
+  ],
+  "distractors": [
+    {"name": "Viral gastroenteritis with dehydration", "why_not": "Vomiting alone produces a hypochloraemic metabolic alkalosis, not a pH of 7.14 with an anion gap of 27 and ketones of 5.8."},
+    {"name": "Starvation ketosis", "why_not": "Starvation rarely lowers bicarbonate below 18 or raises beta-hydroxybutyrate above 3 mmol/L; this degree of acidosis in a patient on an SGLT2 inhibitor is DKA."},
+    {"name": "Alcoholic ketoacidosis", "why_not": "No binge, ethanol undetectable, and an SGLT2 inhibitor is the better explanation."},
+    {"name": "Metformin-associated lactic acidosis", "why_not": "Lactate is 1.6 mmol/L."},
+    {"name": "Toxic alcohol ingestion (methanol, ethylene glycol)", "why_not": "Osmolal gap is 7 and there is no exposure history."},
+    {"name": "Acute pancreatitis", "why_not": "Lipase is normal; the abdominal pain of DKA resolves as the acidosis is treated."},
+    {"name": "Acute coronary syndrome as the precipitant", "why_not": "No chest pain, ECG unremarkable, troponin normal."}
+  ],
+  "rubric": [
+    {"id": "gap-gas", "description": "Asks for a blood gas and anion gap as the first test", "category": "workup", "weight": 2, "match": ["anion gap", "\\bgap\\b", "\\bvbg\\b", "\\babg\\b", "blood gas", "bicarb", "\\bph\\b", "acidosis"], "by_stage": "history", "concept": "Tachypnoea with vomiting is an acid-base emergency until the gas says otherwise"},
+    {"id": "ketones", "description": "Orders serum ketones (beta-hydroxybutyrate)", "category": "workup", "weight": 3, "match": ["ketone", "beta.?hydroxy", "\\bbhb\\b", "ketoacid", "\\bdka\\b"], "by_stage": "exam", "concept": "Serum beta-hydroxybutyrate is the diagnostic test for ketoacidosis; urine ketones lag and underestimate"},
+    {"id": "names-dka", "description": "Names DKA despite the near-normal glucose by the end of the exam stage", "category": "diagnosis", "weight": 2, "match": ["euglyc", "\\bdka\\b", "ketoacidosis"], "by_stage": "exam", "concept": "DKA can occur with a glucose under 250 mg/dL"},
+    {"id": "links-sglt2", "description": "Identifies the SGLT2 inhibitor as the cause", "category": "reasoning", "weight": 3, "match": ["sglt", "empagliflozin", "flozin", "jardiance"], "concept": "SGLT2 inhibitors cause euglycaemic DKA by lowering glucose while permitting ketogenesis"},
+    {"id": "precipitants", "description": "Identifies the stacked precipitants: insulin reduction or omission, low-carbohydrate diet, poor intake", "category": "reasoning", "weight": 2, "match": ["insulin[^.]{0,40}(reduc|stop|omit|skip|held|miss|dose|cut)", "(reduc|stop|omit|skip|held|miss|cut)[^.]{0,40}insulin", "low.?carb", "keto(genic)? diet", "carbohydrate", "starv", "fasting", "poor (oral )?intake", "not eating"], "concept": "Euglycaemic DKA precipitants: insulin reduction, carbohydrate restriction, fasting, surgery, illness, alcohol"},
+    {"id": "other-gap-causes", "description": "Considers and excludes other causes of a high anion gap (lactate, toxic alcohols, salicylate, alcoholic ketoacidosis)", "category": "reasoning", "weight": 2, "match": ["lactate", "lactic", "metformin", "osmola?l? gap", "methanol", "ethylene glycol", "toxic alcohol", "alcoholic keto", "salicylate", "mudpiles", "gold ?mark"], "concept": "Work through the high anion gap differential even when ketones are the obvious culprit"},
+    {"id": "final-dx", "description": "Final diagnosis is euglycaemic DKA", "category": "diagnosis", "weight": 3, "match": ["euglyc", "\\bdka\\b", "ketoacidosis"], "source": "final_diagnosis", "concept": "Euglycaemic DKA"},
+    {"id": "mgmt-dextrose-from-start", "description": "Starts a fixed-rate insulin infusion with dextrose-containing fluid from the outset because the glucose is already under 250", "category": "management", "weight": 3, "match": ["dextrose", "\\bd5", "\\bd10", "glucose[^.]{0,30}(infusion|drip|fluid|alongside|with the insulin)", "(5|10) ?% (dextrose|glucose)"], "source": "final_management", "concept": "In euglycaemic DKA, dextrose runs with the insulin from the start so insulin is never reduced to protect the glucose"},
+    {"id": "mgmt-stop-sglt2", "description": "Stops the SGLT2 inhibitor and does not restart it", "category": "management", "weight": 2, "match": ["(stop|hold|discontinu|withh|cease|never|no more)[^.]{0,40}(sglt|empagli|flozin|jardiance)", "(sglt|empagli|flozin|jardiance)[^.]{0,40}(stop|hold|discontinu|withh|cease|never|not restart|off)"], "source": "final_management", "concept": "SGLT2 inhibitors are stopped during DKA and not restarted after an episode"}
+  ],
+  "management_summary": "Treat as DKA: 1 L of isotonic crystalloid over the first hour then guided by volume status, potassium replacement once K is under 5.5 and he is passing urine, and a fixed-rate intravenous insulin infusion (0.1 units/kg/h). Because glucose is already under 250 mg/dL, run 10% dextrose (or 5% dextrose alongside the saline) from the start so the insulin can continue at a ketone-clearing dose without hypoglycaemia. Judge resolution by beta-hydroxybutyrate under 0.6 mmol/L, bicarbonate over 18 and a closed anion gap, not by glucose. Restart basal insulin before stopping the infusion. Stop empagliflozin permanently and document the reaction; review the carbohydrate-restricted diet and the insulin dose reduction, and look for other precipitants (none found here beyond the drug, diet and insulin omission).",
+  "teaching_points": [
+    "SGLT2 inhibitors cause DKA with a glucose that may be normal or only mildly raised because urinary glucose loss blunts hyperglycaemia while low insulin and high glucagon drive ketogenesis. Any patient on one with vomiting, tachypnoea or malaise needs ketones and a gas regardless of the glucose.",
+    "The usual triggers are insulin reduction or omission, reduced carbohydrate intake, fasting, surgery, intercurrent illness and alcohol. Several often stack, as here.",
+    "Management is DKA management with one change: dextrose runs alongside the insulin from the start so insulin is never reduced to protect the glucose. Resolution is defined by ketones and the anion gap, never the glucose.",
+    "Stop the SGLT2 inhibitor at least three days before planned surgery or fasting, and do not restart it after an episode of DKA."
+  ],
+  "references": [
+    "Peters AL et al. Euglycemic diabetic ketoacidosis: a potential complication of treatment with sodium-glucose cotransporter 2 inhibition. Diabetes Care 2015;38:1687-93",
+    "Kitabchi AE et al. Hyperglycemic crises in adult patients with diabetes. Diabetes Care 2009;32:1335-43",
+    "Harrison's Principles of Internal Medicine, 21e, Diabetes Mellitus: Management and Therapies"
+  ]
+}

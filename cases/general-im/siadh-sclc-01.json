@@ -1,0 +1,81 @@
+{
+  "id": "siadh-sclc-01",
+  "title": "Confusion and a sodium of 118",
+  "track": "general-im",
+  "difficulty": 2,
+  "tags": ["electrolytes", "hyponatremia", "oncology"],
+  "reviewed": false,
+  "presentation": "A 62-year-old woman is brought to the emergency department by her daughter for two days of worsening confusion and one episode of vomiting. She has no headache, fever, or focal weakness. Triage labs: Na 118 mEq/L, K 4.0, glucose 104, creatinine 0.7.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "Past history: hypertension, COPD. Medications: amlodipine, tiotropium, and an albuterol inhaler. No diuretics, no SSRIs, no recent medication changes. She has smoked a pack a day for 40 years. Her daughter mentions she has lost about 5 kg over three months and has had a dry cough for six weeks. No vomiting or diarrhoea before the last two days. She drinks two cups of coffee a day and no excess water.",
+      "prompt": "What is your initial differential for her hyponatremia, and what do you want to know next?",
+      "learner_goal": "Build a broad differential for hyponatremia organised by volume status, and ask for volume assessment before committing."
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "BP 138/82, HR 84, afebrile, SpO2 94% on air. Moist mucous membranes, no orthostatic drop, JVP normal, no peripheral oedema, no ascites. Chest: scattered wheeze, reduced breath sounds at the right upper zone. Neuro: oriented to person only, no focal deficits, no asterixis.",
+      "prompt": "Does the exam change your differential? Commit to your top two causes and tell me which test separates them.",
+      "learner_goal": "Recognise euvolemia and move to urine studies.",
+      "available_tests": {
+        "serum osmolality": "Serum osmolality 248 mOsm/kg",
+        "urine osmolality": "Urine osmolality 452 mOsm/kg",
+        "urine sodium": "Urine sodium 64 mEq/L",
+        "tsh": "TSH 1.9 mIU/L",
+        "cortisol": "8 AM cortisol 18 mcg/dL",
+        "uric acid": "Serum uric acid 2.6 mg/dL",
+        "lipid panel": "Triglycerides 140 mg/dL (no pseudohyponatremia)"
+      }
+    },
+    {
+      "id": "labs",
+      "label": "Labs",
+      "text": "Serum osmolality 248 mOsm/kg. Urine osmolality 452 mOsm/kg. Urine sodium 64 mEq/L. TSH 1.9 mIU/L. 8 AM cortisol 18 mcg/dL. Uric acid 2.6 mg/dL. Chest radiograph: 3 cm right hilar mass with right upper lobe volume loss.",
+      "prompt": "Put it together. What is the unifying diagnosis, and what is the first thing you do for her sodium tonight?",
+      "learner_goal": "Name SIADH with a likely malignant cause and choose management proportional to symptom severity."
+    }
+  ],
+  "diagnosis": "SIADH secondary to small cell lung cancer",
+  "diagnosis_aliases": ["siadh", "inappropriate adh", "inappropriate antidiuretic", "syndrome of inappropriate"],
+  "key_clues": [
+    "Euvolemic on exam (no orthostasis, normal JVP, no oedema)",
+    "Urine osmolality > 100 mOsm/kg despite serum hypo-osmolality",
+    "Urine sodium > 30 mEq/L with no diuretic",
+    "40 pack-year smoker with weight loss, cough, and a hilar mass",
+    "Low uric acid supports SIADH over hypovolemia"
+  ],
+  "distractors": [
+    {"name": "Hypovolemic hyponatremia from vomiting", "why_not": "Vomiting began after the confusion; exam is euvolemic and urine sodium is high."},
+    {"name": "Thiazide-induced hyponatremia", "why_not": "No thiazide on the medication list."},
+    {"name": "Hypothyroidism", "why_not": "TSH is normal."},
+    {"name": "Adrenal insufficiency", "why_not": "Morning cortisol is 18; no hyperkalaemia or hypotension."},
+    {"name": "Primary polydipsia or beer potomania", "why_not": "Urine osmolality is high; polydipsia gives maximally dilute urine."},
+    {"name": "Pseudohyponatremia", "why_not": "Measured serum osmolality is genuinely low."}
+  ],
+  "rubric": [
+    {"id": "volume-status", "description": "Asks about or assesses volume status before committing to a cause", "category": "reasoning", "weight": 2, "match": ["volume status", "euvol", "hypovol", "hypervol", "orthostat", "jvp", "mucous membrane", "skin turgor", "oedema", "edema"], "by_stage": "history", "concept": "Hyponatremia is classified by volume status before anything else"},
+    {"id": "broad-ddx", "description": "Differential includes SIADH, a hypovolemic cause, and an endocrine cause (thyroid or adrenal)", "category": "diagnosis", "weight": 2, "match": ["(siadh|inappropriate).*(thyroid|adrenal|cortisol|tsh)|(thyroid|adrenal|cortisol|tsh).*(siadh|inappropriate)"], "by_stage": "exam", "concept": "The euvolemic hyponatremia differential: SIADH, hypothyroidism, adrenal insufficiency, polydipsia, low solute intake"},
+    {"id": "urine-studies", "description": "Orders urine osmolality and urine sodium as the discriminating tests", "category": "workup", "weight": 3, "match": ["urine (osm|osmolality)", "urine (na|sodium)", "urine studies", "urine lytes", "urine electrolytes"], "by_stage": "exam", "concept": "Urine osmolality and urine sodium are the first branch points in hyponatremia"},
+    {"id": "serum-osm", "description": "Checks serum osmolality to exclude pseudohyponatremia or hyperglycaemia", "category": "workup", "weight": 1, "match": ["serum osm", "plasma osm", "pseudohypo", "measured osm"], "concept": "Confirm true hypotonic hyponatremia before working it up"},
+    {"id": "rule-out-endocrine", "description": "Requests TSH and cortisol before labelling SIADH", "category": "workup", "weight": 2, "match": ["tsh", "thyroid", "cortisol", "adrenal"], "by_stage": "labs", "concept": "SIADH is a diagnosis of exclusion; thyroid and adrenal function must be normal"},
+    {"id": "links-lung", "description": "Connects the smoking history, weight loss, cough, or hilar mass to a paraneoplastic cause", "category": "reasoning", "weight": 2, "match": ["small cell", "sclc", "lung (cancer|ca|mass|malignancy)", "paraneoplastic", "hilar", "malignan"], "concept": "New SIADH in a smoker is small cell lung cancer until proven otherwise"},
+    {"id": "names-siadh", "description": "Final diagnosis is SIADH", "category": "diagnosis", "weight": 3, "match": ["siadh", "inappropriate (adh|antidiuretic)", "syndrome of inappropriate"], "source": "final_diagnosis", "concept": "SIADH criteria"},
+    {"id": "mgmt-severity", "description": "Management is proportional to symptoms: hypertonic saline bolus for moderate to severe symptoms, otherwise fluid restriction", "category": "management", "weight": 3, "match": ["hypertonic", "3%", "fluid restrict", "100 ?ml bolus", "150 ?ml"], "source": "final_management", "concept": "Symptomatic hyponatremia: 100-150 mL 3% saline bolus, target rise 4-6 mEq/L in the first 6 hours"},
+    {"id": "mgmt-rate-limit", "description": "Mentions a correction ceiling (about 8 mEq/L per 24 h) or the risk of osmotic demyelination", "category": "management", "weight": 2, "match": ["8 ?m(eq|mol)", "osmotic demyelination", "central pontine", "overcorrect", "too fast", "rate of correction", "6 ?m(eq|mol)"], "source": "final_management", "concept": "Limit sodium correction to about 8 mEq/L per 24 hours to avoid osmotic demyelination"}
+  ],
+  "management_summary": "She is moderately symptomatic (confusion), so give a 100-150 mL bolus of 3% saline, recheck sodium in 20 minutes and repeat up to twice, aiming for a 4-6 mEq/L rise in the first 6 hours and no more than 8 mEq/L in 24 hours. Then fluid restrict and treat the cause. Urgent CT chest and tissue diagnosis for the hilar mass.",
+  "teaching_points": [
+    "Classify hyponatremia by tonicity first, then volume status, then urine osmolality and sodium. The exam is the first test.",
+    "Urine osmolality above 100 mOsm/kg with serum hypo-osmolality means ADH is acting; in a euvolemic patient with normal thyroid and adrenal function that is SIADH.",
+    "SIADH has a cause. In a smoker with weight loss, image the chest the same day.",
+    "Symptoms, not the number, decide treatment urgency. Moderate or severe symptoms get hypertonic saline; the correction ceiling is about 8 mEq/L in 24 hours."
+  ],
+  "references": [
+    "Harrison's Principles of Internal Medicine, 21e, Fluid and Electrolyte Disturbances",
+    "Verbalis JG et al. Diagnosis, evaluation, and treatment of hyponatremia: expert panel recommendations. Am J Med 2013;126(10 Suppl 1):S1-42",
+    "Spasovski G et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. Eur J Endocrinol 2014"
+  ]
+}

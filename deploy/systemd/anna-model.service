@@ -1,0 +1,15 @@
+[Unit]
+Description=Anna's Attending - vLLM model server
+After=network.target
+
+[Service]
+Type=simple
+User=chris241
+WorkingDirectory=/home/tgrogers-raid/a/chris241/Anna_app
+EnvironmentFile=-/home/tgrogers-raid/a/chris241/Anna_app/.env
+ExecStart=/home/tgrogers-raid/a/chris241/Anna_app/scripts/serve_model.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,15 @@
+[Unit]
+Description=Anna's Attending - FastAPI backend
+After=anna-model.service
+
+[Service]
+Type=simple
+User=chris241
+WorkingDirectory=/home/tgrogers-raid/a/chris241/Anna_app
+EnvironmentFile=-/home/tgrogers-raid/a/chris241/Anna_app/.env
+ExecStart=/home/tgrogers-raid/a/chris241/Anna_app/scripts/run_api.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

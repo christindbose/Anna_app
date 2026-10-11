@@ -1,0 +1,88 @@
+{
+  "id": "ttp-01",
+  "title": "Platelets of 14 and a woman who is not making sense",
+  "track": "general-im",
+  "difficulty": 3,
+  "tags": ["haematology", "thrombocytopenia", "neurology"],
+  "reviewed": false,
+  "presentation": "A 41-year-old woman is brought in by her partner with two days of fluctuating confusion and word-finding difficulty, and a 20-minute episode of right arm weakness this morning that has resolved. She has had bruising on her legs for a week and her urine has been dark. Triage: T 37.8 C, HR 104, BP 142/86, SpO2 98% on air. Labs: Hb 8.1 g/dL, platelets 14 x10^9/L, WBC 9.2, creatinine 1.2 mg/dL.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "No previous medical problems. Her only medication is a combined oral contraceptive pill. No recent diarrhoea, bloody or otherwise, no travel, no sick contacts, no recent viral illness or vaccination. No heparin exposure, no new drugs, no herbal products, no cocaine or quinine. Non-drinker. No personal or family history of bleeding or clotting problems, and no autoimmune disease. A routine blood count four months ago was normal. Her partner says she has been intermittently drowsy and 'not herself' since yesterday. Last menstrual period two weeks ago, normal. No headache, no fever at home, no joint pains or rash.",
+      "prompt": "Give me three diagnoses that would explain thrombocytopenia with anaemia and neurological symptoms together. Which single test do you want back within 30 minutes?",
+      "learner_goal": "Name TTP, DIC and ITP (and HUS), and ask for a peripheral blood smear looking for schistocytes before anything else."
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "T 37.9 C, HR 102, BP 140/84. Pale with mild scleral icterus. Scattered petechiae on both shins, ecchymoses on the thighs, no mucosal bleeding. No lymphadenopathy, no hepatosplenomegaly. Neuro: fluctuating attention, dysnomia, power now 5/5 throughout, reflexes symmetric, no neck stiffness. Chest and abdomen unremarkable.",
+      "prompt": "Which results separate your three diagnoses? Commit to the most likely and say whether you would start treatment before every result is back.",
+      "learner_goal": "Use the smear, haemolysis markers and coagulation screen to separate TTP from ITP and DIC, and recognise that a presumptive diagnosis justifies urgent treatment.",
+      "available_tests": {
+        "peripheral smear": "Peripheral blood film: 3 to 4 schistocytes per high-power field, polychromasia, true thrombocytopenia with no platelet clumping, no spherocytes, no blasts, no left shift.",
+        "haemolysis labs": "LDH 1,480 U/L, haptoglobin undetectable (under 10 mg/dL), indirect bilirubin 2.4 mg/dL, reticulocytes 6.2%, direct antiglobulin (Coombs) test negative.",
+        "coagulation": "PT 12.8 s (INR 1.1), aPTT 29 s, fibrinogen 3.8 g/L, D-dimer 900 ng/mL FEU (mildly raised).",
+        "chemistry": "Creatinine 1.2 mg/dL, BUN 22, Na 138, K 4.2, lactate 1.4 mmol/L, troponin I 0.09 ng/mL (raised; reference under 0.04).",
+        "urinalysis": "1+ blood, 1+ protein, no casts, no leukocytes.",
+        "cbc indices": "MCV 88 fL. Repeat platelets 12 x10^9/L on a citrate tube.",
+        "ct head": "Non-contrast CT head: no haemorrhage, no infarct, no mass.",
+        "ecg": "Sinus tachycardia 102, no ischaemic change.",
+        "infection and pregnancy screen": "Blood cultures no growth at 24 hours. HIV antigen/antibody negative. Urine hCG negative.",
+        "b12 and folate": "Vitamin B12 480 pg/mL, folate normal.",
+        "adamts13": "ADAMTS13 activity sent to the reference laboratory before the first exchange; result expected in 48 to 72 hours. (It later returns at under 5% activity with an inhibitor detected.)"
+      }
+    },
+    {
+      "id": "labs",
+      "label": "Labs",
+      "text": "Smear shows 3 to 4 schistocytes per high-power field with polychromasia and no platelet clumps. LDH 1,480, haptoglobin undetectable, reticulocytes 6.2%, Coombs negative. PT, aPTT and fibrinogen normal, D-dimer mildly raised. Creatinine 1.2. Troponin raised at 0.09. CT head normal. Cultures negative, HIV negative, not pregnant, B12 normal. ADAMTS13 activity sent; the laboratory says the result will take 48 to 72 hours. Platelets now 12.",
+      "prompt": "Commit. What do you start tonight, what must you not give her, and what do you do if plasma exchange cannot start for six hours?",
+      "learner_goal": "Name acquired TTP, start plasma exchange and corticosteroids on clinical grounds, bridge with plasma infusion if exchange is delayed, and withhold platelet transfusion."
+    }
+  ],
+  "diagnosis": "Acquired (immune-mediated) thrombotic thrombocytopenic purpura",
+  "diagnosis_aliases": ["ttp", "thrombotic thrombocytopenic purpura", "thrombotic microangiopathy", "tma", "immune ttp", "ittp", "adamts13 deficiency"],
+  "key_clues": [
+    "Thrombocytopenia with microangiopathic haemolytic anaemia: schistocytes, LDH 1,480, undetectable haptoglobin, Coombs negative",
+    "Fluctuating confusion and a transient focal deficit",
+    "Normal PT, aPTT and fibrinogen (not DIC)",
+    "Near-normal creatinine and no diarrhoeal prodrome (favours TTP over HUS)",
+    "PLASMIC score 7: platelets under 30, haemolysis, no cancer, no transplant, MCV under 90, INR under 1.5, creatinine under 2",
+    "Raised troponin as a marker of cardiac microvascular involvement"
+  ],
+  "distractors": [
+    {"name": "Immune thrombocytopenia (ITP)", "why_not": "ITP is isolated thrombocytopenia: it does not cause schistocytes, haemolysis with an LDH of 1,480, or focal neurological deficits."},
+    {"name": "Disseminated intravascular coagulation", "why_not": "PT, aPTT and fibrinogen are normal with only a mildly raised D-dimer, and there is no sepsis, malignancy or obstetric trigger; DIC consumes clotting factors, TTP does not."},
+    {"name": "Haemolytic uraemic syndrome", "why_not": "No diarrhoeal prodrome, creatinine only 1.2 and neurological features dominate; a PLASMIC score of 7 predicts severe ADAMTS13 deficiency rather than HUS."},
+    {"name": "Evans syndrome (autoimmune haemolysis with ITP)", "why_not": "Coombs test negative and the film shows schistocytes, not spherocytes."},
+    {"name": "Sepsis with thrombocytopenia", "why_not": "Cultures negative, lactate normal, coagulation normal; a low-grade fever is part of TTP."},
+    {"name": "Heparin-induced thrombocytopenia", "why_not": "No heparin exposure."},
+    {"name": "Vitamin B12 deficiency mimicking a microangiopathy", "why_not": "B12 is normal, MCV 88, and reticulocytes are high rather than low."},
+    {"name": "Malignant hypertension", "why_not": "BP 142/86."}
+  ],
+  "rubric": [
+    {"id": "names-ttp", "description": "Names TTP (or thrombotic microangiopathy) in the initial differential", "category": "diagnosis", "weight": 3, "match": ["\\bttp\\b", "thrombotic thrombocytopenic", "microangiopath", "\\btma\\b"], "by_stage": "history", "concept": "Thrombocytopenia plus anaemia plus neurological symptoms is TTP until proven otherwise"},
+    {"id": "smear-and-haemolysis", "description": "Asks for a peripheral smear for schistocytes and haemolysis labs (LDH, haptoglobin, reticulocytes, Coombs)", "category": "workup", "weight": 3, "match": ["smear", "blood film", "\\bfilm\\b", "schistocyte", "fragment", "\\bldh\\b", "haptoglobin", "retic", "coombs", "\\bdat\\b", "antiglobulin", "h(a)?emolysis"], "by_stage": "exam", "concept": "The smear is the fastest test that separates TTP from ITP: schistocytes mean microangiopathy"},
+    {"id": "coag-vs-dic", "description": "Checks PT, aPTT, fibrinogen and D-dimer to separate TTP from DIC", "category": "workup", "weight": 2, "match": ["fibrinogen", "\\bpt\\b", "\\binr\\b", "aptt", "\\bptt\\b", "coag", "d.?dimer", "\\bdic\\b", "disseminated intravascular"], "by_stage": "exam", "concept": "DIC consumes clotting factors; TTP leaves the coagulation screen normal"},
+    {"id": "plasmic-adamts13", "description": "Uses the PLASMIC score and sends ADAMTS13 activity before the first exchange", "category": "reasoning", "weight": 2, "match": ["plasmic", "adamts"], "concept": "PLASMIC score estimates the probability of severe ADAMTS13 deficiency while the assay is pending; draw ADAMTS13 before plasma"},
+    {"id": "treat-on-clinical-grounds", "description": "Recognises that microangiopathic haemolysis plus thrombocytopenia without another cause is enough to start treatment; does not wait for the pentad or the ADAMTS13 result", "category": "reasoning", "weight": 2, "match": ["pentad", "don.?t wait", "do not wait", "without waiting", "before (the )?(result|adamts)", "clinical diagnosis", "presumptive", "empiric", "microangiopathic", "\\bmaha\\b", "(schistocyt|fragment)[^.]{0,80}(thrombocytopen|low platelet)", "(thrombocytopen|low platelet)[^.]{0,80}(schistocyt|fragment)"], "concept": "TTP is a clinical diagnosis: the full pentad is present in under 10% and waiting for it is fatal"},
+    {"id": "final-dx", "description": "Final diagnosis is TTP", "category": "diagnosis", "weight": 3, "match": ["\\bttp\\b", "thrombotic thrombocytopenic"], "source": "final_diagnosis", "concept": "Acquired thrombotic thrombocytopenic purpura"},
+    {"id": "mgmt-plasma-exchange", "description": "Starts plasma exchange urgently (with plasma infusion as a bridge if exchange is delayed)", "category": "management", "weight": 3, "match": ["plasma exchange", "plasmapheresis", "\\bpex\\b", "\\btpe\\b", "apheresis", "exchange"], "source": "final_management", "concept": "Daily plasma exchange is the life-saving treatment for TTP; plasma infusion bridges a delay"},
+    {"id": "mgmt-no-platelets", "description": "Withholds platelet transfusion unless there is life-threatening bleeding", "category": "management", "weight": 2, "match": ["(no|not|avoid|withhold|don.?t|do not|never|contraindicat|hold)[^.]{0,40}platelet (transfus|infus)", "platelet (transfus|infus)[^.]{0,80}(no|not|avoid|withhold|contraindicat|worsen|harm|danger|fuel|unless)", "(avoid|withhold|no|don.?t give|do not give)[^.]{0,15}platelets"], "source": "final_management", "concept": "Platelet transfusion in TTP feeds microvascular thrombosis and is reserved for life-threatening bleeding"},
+    {"id": "mgmt-steroids-caplacizumab", "description": "Adds corticosteroids, and caplacizumab or rituximab", "category": "management", "weight": 2, "match": ["steroid", "prednis", "methylpred", "caplacizumab", "rituximab"], "source": "final_management", "concept": "Immunosuppression (steroids, rituximab) treats the autoantibody; caplacizumab blocks platelet-vWF binding and reduces exacerbations"}
+  ],
+  "management_summary": "Treat as acquired TTP tonight on clinical grounds: microangiopathic haemolytic anaemia plus thrombocytopenia with no other explanation and a PLASMIC score of 7. Insert an apheresis catheter and start daily plasma exchange (1 to 1.5 plasma volumes) immediately; if exchange cannot start within a few hours, infuse plasma (FFP 10 to 15 mL/kg as volume allows) as a bridge, then exchange. Start methylprednisolone 1 g IV daily for three days or prednisolone 1 mg/kg. Add caplacizumab from day one where available, and rituximab once the diagnosis is confirmed (ADAMTS13 activity under 10%). Do not transfuse platelets unless there is life-threatening bleeding or an unavoidable procedure; red cells for symptomatic anaemia are fine. Folate supplementation, prophylactic low-molecular-weight heparin once platelets exceed 50, and stop the oestrogen-containing contraceptive. Continue daily exchange until platelets are over 150 for two consecutive days; follow troponin and neurological status as markers of organ ischaemia.",
+  "teaching_points": [
+    "Thrombocytopenia plus microangiopathic haemolytic anaemia (schistocytes, high LDH, low haptoglobin, negative Coombs) is TTP until proven otherwise. The classic pentad is present in fewer than 10% of patients; waiting for it kills.",
+    "ITP is isolated thrombocytopenia with a normal film; DIC consumes factors (prolonged PT and aPTT, low fibrinogen, high D-dimer). A normal coagulation screen with schistocytes points away from DIC and towards TTP or HUS. The PLASMIC score (7 here) estimates the chance of severe ADAMTS13 deficiency while the assay is pending.",
+    "Send ADAMTS13 before the first exchange, then treat without waiting. Plasma exchange cut mortality from about 90% to under 20%; steroids, caplacizumab and rituximab reduce exacerbations and relapse.",
+    "Platelet transfusion in TTP feeds the microthrombi and is associated with arterial thrombosis and death; it is reserved for life-threatening bleeding."
+  ],
+  "references": [
+    "Zheng XL et al. ISTH guidelines for treatment of thrombotic thrombocytopenic purpura. J Thromb Haemost 2020;18:2496-502",
+    "Rock GA et al. Comparison of plasma exchange with plasma infusion in the treatment of thrombotic thrombocytopenic purpura. N Engl J Med 1991;325:393-7",
+    "Scully M et al. Caplacizumab treatment for acquired thrombotic thrombocytopenic purpura (HERCULES). N Engl J Med 2019;380:335-46"
+  ]
+}

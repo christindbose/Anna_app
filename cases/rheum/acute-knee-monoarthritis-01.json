@@ -1,0 +1,96 @@
+{
+  "id": "acute-knee-monoarthritis-01",
+  "title": "A hot knee in a man who 'just has gout'",
+  "track": "rheum",
+  "difficulty": 2,
+  "tags": ["monoarthritis", "septic arthritis", "gout", "crystal arthropathy", "joint aspiration"],
+  "reviewed": false,
+  "presentation": "A 58-year-old man presents with 36 hours of a severely painful, hot, swollen right knee. He cannot bear weight. He tells triage 'it's my gout again, I just need the tablets'. He has had two previous attacks of podagra. Triage: T 38.4 C, HR 102, BP 128/78, SpO2 97% on air.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "Both previous gout attacks were in the right first MTP joint and settled within a week on colchicine. He was started on allopurinol 100 mg daily a year ago but ran out four weeks ago and has not refilled it. Past history: type 2 diabetes (metformin, HbA1c 8.2% last month), hypertension on hydrochlorothiazide, chronic kidney disease stage 3 (baseline eGFR 48). He drank several beers at a barbecue three days ago. No trauma. Yesterday evening he had rigors. No urethral discharge, no diarrhoea, no rash, no tick exposure, no recent travel, no intravenous drug use, no recent dental work or skin infection that he has noticed. No other joints are painful.",
+      "prompt": "What is your differential for an acute hot monoarthritis in this man, and what is the one thing you must do before any treatment?",
+      "learner_goal": "Build the hot-joint differential (septic, gout, pseudogout, less likely reactive, haemarthrosis) and recognise that aspiration is mandatory before antibiotics or steroids."
+    },
+    {
+      "id": "exam",
+      "label": "Exam and aspiration",
+      "text": "T 38.6 C, HR 104. He looks unwell and is sweaty. The right knee has a large tense effusion, is warm and erythematous, and is held in about 20 degrees of flexion; any attempted movement causes severe pain. The skin over the knee is intact with no wound, no cellulitis extending beyond the joint, and no prepatellar swelling. No tophi on the ears, hands, or elbows. No other joint is inflamed. No heart murmur, no splinter haemorrhages, no skin lesions, dentition poor. The knee is aspirated under aseptic technique: 45 mL of turbid yellow fluid.",
+      "prompt": "What do you send the fluid for, and what else do you send before any drug goes in? Which result decides whether this is 'just gout', and what will you do while you wait?",
+      "learner_goal": "Send synovial fluid for cell count, Gram stain, culture, and polarised crystal microscopy; take blood cultures; recognise that crystals do not exclude infection.",
+      "available_tests": {
+        "synovial fluid cell count": "Synovial fluid WBC 68,000/microlitre, 92% neutrophils",
+        "synovial fluid crystals": "Polarised microscopy: abundant needle-shaped, strongly negatively birefringent crystals, intracellular and extracellular (monosodium urate)",
+        "synovial fluid gram stain": "Gram stain: moderate Gram-positive cocci in clusters",
+        "synovial fluid culture": "Culture: pending (result at 48 hours)",
+        "blood cultures": "Two sets drawn before antibiotics; pending",
+        "cbc": "WBC 15.2 (neutrophils 13.1), Hb 13.8, platelets 290",
+        "crp": "CRP 190 mg/L",
+        "esr": "ESR 70 mm/h",
+        "serum urate": "Serum urate 7.1 mg/dL (420 micromol/L)",
+        "creatinine": "Creatinine 1.7 mg/dL (150 micromol/L), eGFR 43",
+        "glucose": "Glucose 9.8 mmol/L",
+        "knee x-ray": "Right knee radiograph: large effusion, no fracture, no chondrocalcinosis, no erosions, no periosteal reaction",
+        "coagulation": "INR 1.0, APTT normal"
+      }
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "text": "Synovial fluid: WBC 68,000/microlitre with 92% neutrophils. Polarised microscopy shows abundant needle-shaped, strongly negatively birefringent intracellular crystals. Gram stain: moderate Gram-positive cocci in clusters. Culture pending. Blood: WBC 15.2, CRP 190, ESR 70, serum urate 7.1 mg/dL, creatinine 1.7 mg/dL (eGFR 43). Knee radiograph: effusion only, no chondrocalcinosis. At 14 hours the microbiology laboratory telephones: both blood culture sets are growing Gram-positive cocci in clusters.",
+      "prompt": "The crystals are there. Is this gout? Commit to a diagnosis and tell me exactly what happens in the next six hours.",
+      "learner_goal": "Diagnose septic arthritis coexisting with gout, start intravenous anti-staphylococcal antibiotics now that cultures are taken, and refer for joint drainage."
+    },
+    {
+      "id": "day2",
+      "label": "Day 2",
+      "text": "Synovial fluid and both blood cultures grow methicillin-sensitive Staphylococcus aureus. Orthopaedics performed an arthroscopic washout overnight. He is afebrile this morning, HR 88. Creatinine 1.6 mg/dL. The knee remains painful and he asks whether he can have 'the usual' ibuprofen, and whether he should restart his allopurinol.",
+      "prompt": "Finalise the plan: antibiotic choice and duration, what else the bacteraemia obliges you to look for, how you will treat the gout component in a man with an eGFR of 43, and what you do about the allopurinol.",
+      "learner_goal": "Narrow antibiotics, plan duration and source assessment for S. aureus bacteraemia, treat the gout flare without NSAIDs or intra-articular steroid, and address urate-lowering therapy."
+    }
+  ],
+  "diagnosis": "Septic arthritis of the knee due to Staphylococcus aureus with coexisting acute gout",
+  "diagnosis_aliases": ["septic arthritis", "septic", "infective arthritis", "infectious arthritis", "bacterial arthritis", "staph", "staphylococc"],
+  "key_clues": [
+    "Fever 38.6 C and rigors with a single hot joint",
+    "Risk factors for septic arthritis: diabetes, CKD, prior joint damage from gout, age over 50",
+    "Synovial WBC 68,000 with 92% neutrophils",
+    "Gram-positive cocci in clusters on synovial fluid Gram stain",
+    "Blood cultures positive at 14 hours",
+    "Monosodium urate crystals present, which prove gout but do not exclude infection",
+    "Serum urate 7.1 mg/dL after stopping allopurinol (urate may be normal or low during a flare and does not decide anything)"
+  ],
+  "distractors": [
+    {"name": "Acute gout flare alone", "why_not": "Crystals are present, but fever of 38.6 C, rigors, Gram-positive cocci on the Gram stain, and positive blood cultures mean the joint is infected as well."},
+    {"name": "Pseudogout (CPPD arthritis)", "why_not": "The crystals are needle-shaped and strongly negatively birefringent (urate), not rhomboid and weakly positive; no chondrocalcinosis on radiograph."},
+    {"name": "Gonococcal arthritis", "why_not": "No urethritis, no migratory arthralgia or pustular skin lesions; the organism is Gram-positive cocci in clusters, not Gram-negative diplococci."},
+    {"name": "Reactive arthritis", "why_not": "No preceding enteric or genitourinary infection, and the synovial fluid culture is positive."},
+    {"name": "Haemarthrosis", "why_not": "No trauma, no anticoagulant, normal coagulation, and the fluid is turbid yellow, not bloody."},
+    {"name": "Prepatellar bursitis or cellulitis", "why_not": "The effusion is intra-articular with range of motion limited in every direction; bursitis spares passive flexion and there is no prepatellar swelling."}
+  ],
+  "rubric": [
+    {"id": "septic-on-ddx", "description": "Names septic (infective) arthritis in the differential at the history stage", "category": "diagnosis", "weight": 2, "match": ["septic", "infect", "bacterial"], "by_stage": "history", "concept": "An acute hot monoarthritis is septic arthritis until proven otherwise, whatever the past history"},
+    {"id": "tap-mandatory", "description": "States that the joint must be aspirated before any treatment", "category": "workup", "weight": 3, "match": ["aspirat", "\\btap", "arthrocentesis", "synovial fluid", "joint fluid"], "by_stage": "exam", "concept": "Aspirate every hot joint before antibiotics or steroids; the fluid is the diagnosis"},
+    {"id": "fluid-analysis", "description": "Sends synovial fluid for cell count, Gram stain, culture, and polarised crystal microscopy", "category": "workup", "weight": 2, "match": ["gram", "culture", "crystal", "cell count", "wbc", "white cell", "polari[sz]", "birefring", "microscop"], "by_stage": "exam", "concept": "The four synovial fluid tests: cell count with differential, Gram stain, culture, crystals"},
+    {"id": "blood-cultures", "description": "Takes blood cultures before antibiotics", "category": "workup", "weight": 2, "match": ["blood culture"], "concept": "Blood cultures are positive in 30-50% of non-gonococcal septic arthritis and must be drawn before the first antibiotic dose"},
+    {"id": "crystals-do-not-exclude", "description": "Explicitly states that finding crystals does not exclude infection, or that gout and septic arthritis can coexist", "category": "reasoning", "weight": 3, "match": ["coexist", "co-exist", "concurrent", "concomitant", "superimpos", "both", "same time", "together", "(not|never|doesn.?t|does not|cannot|can.?t|don.?t) (exclude|rule out|r/o)", "not mutually exclusive", "dual", "on top of"], "concept": "Crystals and bacteria coexist in a small but real fraction of hot joints; a positive crystal result never closes the infection question"},
+    {"id": "final-dx", "description": "Final diagnosis is septic arthritis (with or without naming the coexisting gout)", "category": "diagnosis", "weight": 3, "match": ["septic", "infect", "staph", "bacterial", "pyogenic"], "source": "final_diagnosis", "concept": "Septic arthritis diagnosis"},
+    {"id": "iv-antistaph-abx", "description": "Starts intravenous anti-staphylococcal antibiotics (empiric vancomycin pending sensitivities, then flucloxacillin, cefazolin, or nafcillin for MSSA)", "category": "management", "weight": 3, "match": ["vancomycin", "flucloxacillin", "cefazolin", "nafcillin", "oxacillin", "cloxacillin", "antibiotic", "\\babx\\b", "anti.?staph"], "source": "final_management", "concept": "Empiric cover for S. aureus including MRSA until sensitivities return, then narrow; typically 2 weeks IV then oral to complete 4-6 weeks"},
+    {"id": "joint-drainage", "description": "Refers for joint drainage (arthroscopic washout or serial aspiration)", "category": "management", "weight": 2, "match": ["wash.?out", "drain", "ortho", "irrigat", "arthroscop", "lavage", "serial aspirat", "repeat aspirat"], "source": "final_management", "concept": "Source control: a septic joint is a closed-space infection that needs drainage, not just antibiotics"},
+    {"id": "gout-treatment-renal", "description": "Treats the gout component with renally adjusted colchicine or systemic steroid, avoids NSAIDs and intra-articular steroid, and addresses allopurinol", "category": "management", "weight": 2, "match": ["avoid nsaid", "no nsaid", "not? (give|use) (ibuprofen|nsaid)", "nsaid.{0,40}(ckd|kidney|renal|avoid|contraindicated)", "colchicine", "renal(ly)? (dos|adjust)", "reduced.?dose", "low.?dose colchicine", "allopurinol", "urate.?lowering", "\\bult\\b", "intra.?articular steroid"], "source": "final_management", "concept": "Flare treatment in CKD: low-dose colchicine or oral prednisolone; never inject steroid into an infected joint; continue or restart allopurinol with flare prophylaxis"}
+  ],
+  "management_summary": "This is Staphylococcus aureus septic arthritis with bacteraemia in a joint that also has acute gout. After blood and synovial cultures are taken, start intravenous vancomycin empirically (MRSA cover in a diabetic with CKD), then switch to flucloxacillin or cefazolin once MSSA is confirmed; plan about two weeks intravenously then oral therapy to complete four to six weeks, guided by response. Orthopaedic referral for arthroscopic washout the same day. S. aureus bacteraemia requires repeat blood cultures to document clearance and an echocardiogram to exclude endocarditis. Do not give NSAIDs (eGFR 43, diabetes) and do not inject steroid into the joint. Treat the gout component with low-dose colchicine (0.5 mg once daily given his CKD) or a short course of oral prednisolone once infection is under control, and restart allopurinol with colchicine prophylaxis before discharge, titrating to a urate below 6 mg/dL. Review the thiazide.",
+  "teaching_points": [
+    "Every acute hot monoarthritis is septic until the synovial fluid says otherwise. A history of gout raises the probability of gout; it does nothing to lower the probability of infection, and a gouty joint is a damaged joint that is easier to infect.",
+    "Tap before you treat. Antibiotics given before aspiration can sterilise the fluid; steroids given into an infected joint are a disaster. The only reasons not to tap are overlying cellulitis or a prosthetic joint, and both mean orthopaedics tap it instead.",
+    "Interpret the fluid probabilistically. A synovial WBC above 50,000 raises the likelihood of infection but overlaps with crystal arthritis; the Gram stain is only 50-60% sensitive and culture 80-90%, so a negative Gram stain with a convincing clinical picture still gets treated as septic. Crystals and bacteria can occupy the same joint.",
+    "Fever and rigors with a hot joint earn blood cultures, and a positive S. aureus blood culture earns an echocardiogram, repeat cultures, and a longer antibiotic course. Treat the gout with agents that respect the kidneys, and do not stop urate-lowering therapy during a flare."
+  ],
+  "references": [
+    "Margaretten ME, Kohlwes J, Moore D, Bent S. Does this adult patient have septic arthritis? JAMA 2007;297(13):1478-1488",
+    "FitzGerald JD et al. 2020 American College of Rheumatology Guideline for the Management of Gout. Arthritis Care Res 2020;72(6):744-760",
+    "Harrison's Principles of Internal Medicine, 21e, Infectious Arthritis"
+  ]
+}

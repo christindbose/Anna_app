@@ -1,0 +1,14 @@
+[Unit]
+Description=Anna's Attending - Next.js frontend
+After=anna-api.service
+
+[Service]
+Type=simple
+User=chris241
+WorkingDirectory=/home/tgrogers-raid/a/chris241/Anna_app/frontend
+ExecStart=/bin/bash -lc 'export NVM_DIR=$HOME/.nvm; source $NVM_DIR/nvm.sh; npm run start -- -p 3000'
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

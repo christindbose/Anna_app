@@ -1,0 +1,88 @@
+{
+  "id": "gca-jaw-claudication-01",
+  "title": "New headache, sore jaw, and ten minutes of darkness",
+  "track": "rheum",
+  "difficulty": 2,
+  "tags": ["vasculitis", "giant cell arteritis", "headache", "ophthalmic emergency"],
+  "reviewed": false,
+  "presentation": "A 72-year-old woman presents to the emergency department with three weeks of a new, constant bitemporal headache and pain in her jaw that comes on after a minute of chewing and settles when she stops. This morning the vision in her right eye went dark 'like a curtain coming down' for about ten minutes and then fully recovered. Triage: T 37.6 C, BP 152/84, HR 78, SpO2 97% on air.",
+  "stages": [
+    {
+      "id": "history",
+      "label": "History",
+      "text": "She has never had migraines or significant headaches before. Her scalp has been tender when she brushes her hair for two weeks. For about two months she has had stiffness and aching across both shoulders and hips, worst in the morning and lasting more than an hour, and she has needed help getting out of bed. She feels tired, has had low-grade fevers in the evenings, and has lost about 3 kg. Past history: hypertension, osteoarthritis of the knees. Medications: amlodipine, paracetamol. No anticoagulants. Never smoked. No history of atrial fibrillation, stroke, or TIA.",
+      "prompt": "What is your differential for this headache, and which symptom changes the urgency? What do you want to know next?",
+      "learner_goal": "Name giant cell arteritis early, recognise the transient monocular visual loss as a sight-threatening emergency, and link the girdle stiffness to polymyalgia rheumatica."
+    },
+    {
+      "id": "exam",
+      "label": "Exam",
+      "text": "She is alert and in no distress. The right superficial temporal artery is thickened, nodular, and tender, with a reduced pulse; the left is tender but pulsatile. Visual acuity 6/6 in both eyes today. Pupils equal and reactive with no relative afferent pupillary defect; fundoscopy shows normal discs with no pallor, swelling, or haemorrhage. Visual fields full to confrontation. No carotid bruits. Neurological examination is otherwise normal. Shoulder abduction is limited by stiffness but there is no synovitis and power is normal. No rash, no lymphadenopathy. Temporomandibular joints are non-tender with normal opening.",
+      "prompt": "What do you do right now, before a single result is back? Then tell me what you are sending and what you expect it to show.",
+      "learner_goal": "Start high-dose glucocorticoids immediately on clinical suspicion, before biopsy or imaging, and order inflammatory markers and a confirmatory test.",
+      "available_tests": {
+        "esr": "ESR 88 mm/h",
+        "crp": "CRP 92 mg/L",
+        "cbc": "Hb 10.4 g/dL (normocytic), WBC 9.8, platelets 510",
+        "liver function": "ALP 168 U/L (mildly raised), ALT 24, albumin 32 g/L",
+        "creatinine": "Creatinine 0.8 mg/dL",
+        "glucose": "Glucose 6.1 mmol/L, HbA1c 5.8%",
+        "ck": "CK 60 U/L",
+        "temporal artery ultrasound": "Bilateral non-compressible hypoechoic wall thickening ('halo sign') of the superficial temporal arteries, more marked on the right; axillary arteries normal",
+        "ct head": "CT head: no acute intracranial abnormality",
+        "carotid duplex": "Carotid duplex: no haemodynamically significant stenosis, no plaque ulceration",
+        "ecg": "ECG: sinus rhythm, no atrial fibrillation",
+        "protein electrophoresis": "Serum protein electrophoresis: polyclonal increase in gammaglobulins, no paraprotein"
+      }
+    },
+    {
+      "id": "labs",
+      "label": "Results",
+      "text": "ESR 88 mm/h, CRP 92 mg/L. Hb 10.4 g/dL normocytic, platelets 510. ALP 168 U/L. CK normal. CT head unremarkable. Carotid duplex shows no significant stenosis. ECG sinus rhythm. Temporal artery ultrasound: bilateral non-compressible halo sign, more marked on the right. Ophthalmology has reviewed her and found no evidence of established ischaemic optic neuropathy today.",
+      "prompt": "Put it together. What is your diagnosis, what dose and route of steroid does she need, and when and how do you confirm the diagnosis? What do you tell her about the biopsy if she has already had three days of steroids?",
+      "learner_goal": "Commit to giant cell arteritis with visual involvement, choose pulsed intravenous methylprednisolone followed by high-dose prednisolone, arrange temporal artery biopsy within days without delaying treatment, and plan steroid-sparing therapy and bone protection."
+    }
+  ],
+  "diagnosis": "Giant cell arteritis with transient monocular visual loss",
+  "diagnosis_aliases": ["giant cell", "gca", "temporal arteritis", "cranial arteritis"],
+  "key_clues": [
+    "New headache after age 50 with scalp tenderness",
+    "Jaw claudication, the single most specific symptom",
+    "Transient monocular visual loss (amaurosis fugax) signalling impending arteritic ischaemic optic neuropathy",
+    "Two months of shoulder and hip girdle stiffness consistent with polymyalgia rheumatica",
+    "Thickened, tender, pulseless temporal artery on exam",
+    "ESR 88 and CRP 92 with normocytic anaemia and thrombocytosis",
+    "Bilateral halo sign on temporal artery ultrasound"
+  ],
+  "distractors": [
+    {"name": "Migraine or tension-type headache", "why_not": "New-onset headache at 72 with jaw claudication, scalp tenderness, constitutional symptoms, and an ESR of 88 is not a primary headache disorder."},
+    {"name": "Carotid-territory TIA or embolic amaurosis", "why_not": "Carotid duplex shows no significant stenosis and the ECG is sinus rhythm; the systemic symptoms, tender temporal artery, and inflammatory markers point to arteritis."},
+    {"name": "Non-arteritic anterior ischaemic optic neuropathy", "why_not": "Vision recovered fully and the discs are normal; the preceding headache, jaw claudication, and ESR of 88 make this arteritic until proven otherwise."},
+    {"name": "Polymyalgia rheumatica alone", "why_not": "PMR explains the girdle stiffness but does not cause jaw claudication, scalp tenderness, or visual loss; this is PMR as part of GCA."},
+    {"name": "Temporomandibular joint dysfunction or dental pain", "why_not": "The jaw pain is exertional and relieved by rest (claudication), the TMJs are normal, and it comes with systemic inflammation."},
+    {"name": "Multiple myeloma", "why_not": "Raised ESR and anaemia prompt the thought, but protein electrophoresis shows a polyclonal rise with no paraprotein."}
+  ],
+  "rubric": [
+    {"id": "names-gca-early", "description": "Names giant cell arteritis in the differential at the history stage", "category": "diagnosis", "weight": 3, "match": ["giant cell", "gca", "temporal arteritis", "cranial arteritis"], "by_stage": "history", "concept": "New headache after 50 with jaw claudication or visual symptoms is GCA until proven otherwise"},
+    {"id": "visual-emergency", "description": "Identifies the transient visual loss as a sight-threatening emergency", "category": "reasoning", "weight": 2, "match": ["amaurosis", "emergen", "sight.?threat", "vision.?threat", "visual loss", "permanent (visual|vision|blind)", "blind", "ischa?emic optic", "aion"], "by_stage": "exam", "concept": "Transient monocular visual loss in GCA precedes permanent arteritic ischaemic optic neuropathy, which is irreversible"},
+    {"id": "pmr-link", "description": "Links the shoulder and hip girdle stiffness to polymyalgia rheumatica", "category": "reasoning", "weight": 1, "match": ["polymyalgia", "pmr", "girdle"], "concept": "Polymyalgia rheumatica accompanies 40-50% of GCA and GCA complicates 10-20% of PMR"},
+    {"id": "inflammatory-markers", "description": "Orders ESR and/or CRP", "category": "workup", "weight": 2, "match": ["esr", "crp", "sed rate", "c.?reactive", "inflammatory markers"], "by_stage": "exam", "concept": "ESR and CRP are raised in over 95% of GCA; a normal CRP makes GCA unlikely but does not exclude it"},
+    {"id": "steroids-before-biopsy", "description": "Starts glucocorticoids on clinical suspicion at the exam stage, before biopsy or imaging results", "category": "management", "weight": 3, "match": ["prednis", "methylpred", "steroid", "glucocorticoid", "corticosteroid", "dexameth", "hydrocortisone"], "by_stage": "exam", "concept": "In suspected GCA, treatment starts immediately; biopsy histology remains interpretable for at least two weeks after starting steroids"},
+    {"id": "confirm-biopsy-or-ultrasound", "description": "Plans a temporal artery biopsy (or temporal artery ultrasound in an experienced centre) to confirm the diagnosis", "category": "workup", "weight": 3, "match": ["biops", "\\btab\\b", "ultrasound", "halo", "doppler", "duplex"], "concept": "Temporal artery biopsy is the reference standard; ultrasound halo sign is an accepted alternative in high-probability patients"},
+    {"id": "final-dx", "description": "Final diagnosis is giant cell arteritis", "category": "diagnosis", "weight": 3, "match": ["giant cell", "gca", "temporal arteritis", "cranial arteritis"], "source": "final_diagnosis", "concept": "GCA diagnosis"},
+    {"id": "high-dose-route", "description": "Chooses pulsed intravenous methylprednisolone for visual symptoms (or at least 1 mg/kg / 40-60 mg prednisolone if no visual symptoms)", "category": "management", "weight": 2, "match": ["methylpred", "pulse", "intravenous", "\\biv\\b", "1 ?g\\b", "500 ?mg", "1000 ?mg", "1 ?mg/kg", "40.?60 ?mg", "60 ?mg", "high.?dose"], "source": "final_management", "concept": "Visual involvement: 500-1000 mg IV methylprednisolone daily for 3 days, then prednisolone 1 mg/kg (max 60 mg) with a slow taper"},
+    {"id": "steroid-sparing-and-protection", "description": "Mentions tocilizumab (or methotrexate) as steroid-sparing therapy, or bone and gastric protection for prolonged steroids", "category": "management", "weight": 1, "match": ["tocilizumab", "actemra", "il.?6", "steroid.?sparing", "methotrexate", "bone protect", "bisphosphonate", "alendron", "vitamin d", "calcium", "ppi", "proton pump"], "source": "final_management", "concept": "Tocilizumab reduces relapse and cumulative steroid exposure (GiACTA); plan bone protection from day one"}
+  ],
+  "management_summary": "She has GCA with transient visual loss, so she gets intravenous methylprednisolone 500-1000 mg daily for three days immediately, before any confirmatory test, followed by prednisolone 1 mg/kg (maximum 60 mg) daily with a slow taper over 12-18 months. Arrange temporal artery biopsy within the first one to two weeks; starting steroids does not meaningfully reduce the yield in that window, and the ultrasound halo sign already supports the diagnosis. Same-day ophthalmology review. Start bone protection (calcium, vitamin D, bisphosphonate) and gastric protection, screen glucose. Discuss tocilizumab as a steroid-sparing agent, especially given her age and glucose of 6.1. Routine aspirin is not recommended. Warn her to return immediately for any new visual symptom.",
+  "teaching_points": [
+    "A new headache in anyone over 50 needs the four GCA questions: jaw claudication, scalp tenderness, visual symptoms, and girdle stiffness. Jaw claudication is the most specific symptom and roughly quadruples the likelihood of a positive biopsy.",
+    "Transient visual loss is the warning shot. Permanent arteritic ischaemic optic neuropathy follows in days in untreated patients, and once established it almost never recovers. Treat on suspicion; never make the eyes wait for a biopsy.",
+    "Biopsy after steroids is still worthwhile. Histology stays interpretable for at least two weeks, so there is no reason to delay treatment, and a biopsy within one to two weeks of starting remains the standard approach. Ultrasound halo sign can confirm the diagnosis without biopsy in experienced centres.",
+    "Dose follows the eyes: visual symptoms get pulsed IV methylprednisolone, uncomplicated cranial GCA gets 1 mg/kg prednisolone. Expect 12-18 months of steroids, so plan bone protection and consider tocilizumab from the start."
+  ],
+  "references": [
+    "Maz M et al. 2021 American College of Rheumatology/Vasculitis Foundation Guideline for the Management of Giant Cell Arteritis and Takayasu Arteritis. Arthritis Rheumatol 2021;73(8):1349-1365",
+    "Stone JH et al. Trial of Tocilizumab in Giant-Cell Arteritis (GiACTA). N Engl J Med 2017;377:317-328",
+    "Harrison's Principles of Internal Medicine, 21e, The Vasculitis Syndromes"
+  ]
+}
