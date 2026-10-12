@@ -143,7 +143,10 @@ export default function HomePage() {
                             <span className="truncate text-[15px] font-semibold">{a.name}</span>
                             <DifficultyDots level={a.difficulty} />
                           </span>
-                          <span className="block text-xs font-medium text-accent">{a.title}</span>
+                          <span className="flex items-center gap-1.5 text-xs font-medium text-accent">
+                            {a.title}
+                            {a.harsh && <span className="rounded-full bg-danger/10 px-1.5 py-px text-[10px] font-semibold text-danger">thick skin</span>}
+                          </span>
                           <span className="block text-xs text-muted">{a.tagline}</span>
                         </span>
                       </span>

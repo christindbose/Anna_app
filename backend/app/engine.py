@@ -61,26 +61,37 @@ _SENTENCE_END = re.compile(r'[.!?]["\u201d\u2019)]?(?=\s|$)')
 _FREE_WORDS = 120  # stream token-by-token up to here; after that only release whole sentences
 
 
-async def _sentence_safe(stream: AsyncIterator[str]) -> AsyncIterator[str]:
+async def _sentence_safe(stream: AsyncIterator[str], *, forbid=None) -> AsyncIterator[str]:
     """Pass the reply through, but if the model runs into its token cap, drop the cut-off
-    trailing fragment so the learner never sees a reply that ends mid-sentence."""
+    trailing fragment so the learner never sees a reply that ends mid-sentence.
+
+    With ``forbid`` (a predicate on a sentence), every sentence is held back until complete and
+    dropped if the predicate matches: the backstop that keeps the secret diagnosis secret even
+    when the model caves. Streaming is then sentence-by-sentence instead of token-by-token."""
     emitted_words = 0
     pending = ""
     async for chunk in stream:
-        if emitted_words < _FREE_WORDS:
+        if forbid is None and emitted_words < _FREE_WORDS:
             emitted_words += len(chunk.split())
             yield chunk
             continue
         pending += chunk
-        last = None
+        last = 0
         for m in _SENTENCE_END.finditer(pending):
+            sentence = pending[last:m.end()]
             last = m.end()
-        if last:
-            yield pending[:last]
-            pending = pending[last:]
+            if forbid is not None and forbid(sentence):
+                log.warning("dropped sentence naming the diagnosis: %r", sentence.strip()[:80])
+                continue
+            emitted_words += len(sentence.split())
+            yield sentence
+        pending = pending[last:]
     tail = pending.strip()
     if tail:
-        log.info("dropped truncated reply tail: %r", tail[:80])
+        if forbid is None or emitted_words >= _FREE_WORDS or forbid(tail):
+            log.info("dropped reply tail: %r", tail[:80])
+        else:
+            yield pending  # short reply with no terminal punctuation; keep it
 
 
 async def respond(db: Session, llm: LLM, sess: CaseSession, learner_text: str) -> AsyncIterator[str]:
@@ -96,14 +107,18 @@ async def respond(db: Session, llm: LLM, sess: CaseSession, learner_text: str) -
     # Gemma-family models weight the last instruction most; restate the length rule there.
     messages[-1] = {**messages[-1], "content": messages[-1]["content"] + prompts.LENGTH_NUDGE}
 
+    # Until the learner has named the diagnosis themselves, no sentence that names it gets through.
+    learner_said_it = any(named_diagnosis(case, t.content) for t in turns(db, sess.id) if t.role == "learner")
+    forbid = None if learner_said_it else (lambda sentence: named_diagnosis(case, sentence))
+
     buf: list[str] = []
-    async for chunk in _sentence_safe(llm.stream(messages, max_tokens=settings.attending_max_tokens)):
+    async for chunk in _sentence_safe(llm.stream(messages, max_tokens=settings.attending_max_tokens), forbid=forbid):
         buf.append(chunk)
         yield chunk
     reply = "".join(buf).strip()
-    learner_said_it = any(named_diagnosis(case, t.content) for t in turns(db, sess.id) if t.role == "learner")
-    if named_diagnosis(case, reply) and not learner_said_it:
-        log.warning("attending reply named the diagnosis (session %s, stage %s)", sess.id, sess.stage_index)
+    if not reply:  # everything was dropped; stay in character rather than go silent
+        reply = get_attending(sess.attending_id).signature
+        yield reply
     db.add(Turn(session_id=sess.id, stage_index=sess.stage_index, role="attending", content=reply))
     db.commit()
 

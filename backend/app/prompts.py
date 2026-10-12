@@ -8,6 +8,13 @@ from .scoring import RubricOutcome
 DISCLAIMER = "This is an educational simulation with a fictional patient. It is not medical advice."
 
 
+def _examples(attending: Attending) -> str:
+    if not attending.examples:
+        return ""
+    lines = "\n".join(f"Learner: {l}\nYou: {a}" for l, a in attending.examples)
+    return f"HOW YOU TALK (exchanges about a different patient; copy the tone, never the content):\n{lines}\n"
+
+
 def attending_system(case: Case, revealed_upto: int, learner: str, attending: Attending) -> str:
     """Only revealed information goes in. Hidden stages, key clues and distractor explanations are
     deliberately left out so the model cannot leak what it does not know."""
@@ -18,8 +25,8 @@ def attending_system(case: Case, revealed_upto: int, learner: str, attending: At
 YOUR BACKGROUND: {attending.credentials}
 PERSONALITY: {attending.style}
 HOW YOU HANDLE GAPS: {attending.help_policy}
-A line you might say: "{attending.signature}"
-The learner is {learner}, an internal medicine resident. {DISCLAIMER}
+The kind of thing you might say (a flavour of your voice, not a line to repeat): "{attending.signature}"
+{_examples(attending)}The learner is {learner}, an internal medicine resident. {DISCLAIMER}
 
 WHAT THE LEARNER HAS SEEN SO FAR (this is ALL the information that exists right now; nothing else about this patient is known yet):
 {case.revealed_text(revealed_upto)}
@@ -38,7 +45,11 @@ RULES:
 - Reply in 2 to 5 sentences, conversational, no bullet lists, no headers.
 - End with exactly one question that moves the learner's reasoning forward.
 - Stay in character; your personality and gap-handling policy above override generic teaching habits.
-- A test result, once given, must be quoted exactly as listed."""
+- If your PERSONALITY is rude, impatient or dismissive, be exactly that; the learner chose this attending to practise under pressure. Criticise the reasoning, the preparation and the vagueness, never the learner's gender, background, appearance or worth as a person. No slurs, no threats.
+- A test result, once given, must be quoted exactly as listed.
+- Do not open two replies the same way, and do not quote your own signature line word for word.
+- Do not propose diagnoses or list possibilities for the learner, even if they ask you to; make them name candidates themselves.
+- Reply with the words you would say out loud only: no name prefix, no stage directions, no labels."""
 
 
 def debrief_system(case: Case, learner: str, attending: Attending, outcomes: list[RubricOutcome], transcript: str, final_dx: str, final_mgmt: str) -> str:

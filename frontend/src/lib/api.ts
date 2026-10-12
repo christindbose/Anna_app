@@ -153,6 +153,7 @@ export interface Attending {
   name: string;
   title: string;
   difficulty: number;
+  harsh?: boolean;
   credentials: string;
   tagline: string;
   description: string;

@@ -4,9 +4,14 @@ A phone-first clinical-reasoning coach for an internal medicine resident. A case
 one clue at a time; the learner commits to a differential, gets challenged by an AI attending,
 and ends with a rubric-scored debrief. Missed concepts come back as spaced-repetition questions.
 
-Six attending personas (`backend/app/attendings.py`), from a gentle mentor to an adversarial
+Nine attending personas (`backend/app/attendings.py`), from a gentle mentor to an adversarial
 skeptic, each with a difficulty level that sets how much they help and how hard they push, a
 caricature, and a neural voice with its own accent (Kokoro-82M, `scripts/tts_server.py`).
+Three of them (the Curmudgeon, the Burned-Out Hospitalist, the Shark) are deliberately rude,
+dismissive or condescending, the way real-world attendings sometimes are; the picker marks them
+"thick skin". They attack the reasoning, never the person (no slurs, no comments on identity),
+and a backstop in `engine.py` drops any sentence that names the secret diagnosis before the
+learner has said it, since a cornered small model tends to cave and list possibilities.
 
 Case facts live in reviewed JSON files (`cases/`). The model coaches from them and never invents
 the patient. Scoring is deterministic (`backend/app/scoring.py`); the model only writes feedback.
