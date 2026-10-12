@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="58" fill="#e8e2d4"/>
+  <!-- rumpled white coat -->
+  <path d="M16 120 C16 92 40 84 60 84 C80 84 104 92 104 120 Z" fill="#f4f1ea"/>
+  <path d="M46 86 L60 104 L74 86 L70 84 L60 94 L50 84 Z" fill="#6b7280"/>
+  <path d="M57 92 L63 92 L64 106 L60 110 L56 106 Z" fill="#7c2d12"/>
+  <!-- neck -->
+  <rect x="51" y="72" width="18" height="16" rx="6" fill="#dcae84"/>
+  <!-- face, jowly -->
+  <path d="M36 50 C36 32 46 24 60 24 C74 24 84 32 84 50 C86 68 76 82 60 82 C44 82 34 68 36 50 Z" fill="#e9bf9c"/>
+  <!-- bald top with grey side tufts -->
+  <path d="M34 46 C30 38 32 30 38 30 C40 36 40 42 40 48 Z" fill="#b8b8b8"/>
+  <path d="M86 46 C90 38 88 30 82 30 C80 36 80 42 80 48 Z" fill="#b8b8b8"/>
+  <!-- bushy grey brows, knotted -->
+  <path d="M42 44 Q50 38 57 46" stroke="#9a9a9a" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M78 44 Q70 38 63 46" stroke="#9a9a9a" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- glasses on the nose -->
+  <circle cx="50" cy="55" r="7" fill="none" stroke="#333" stroke-width="2"/>
+  <circle cx="70" cy="55" r="7" fill="none" stroke="#333" stroke-width="2"/>
+  <path d="M57 55 L63 55" stroke="#333" stroke-width="2"/>
+  <!-- narrowed eyes -->
+  <path d="M46 55 L54 55" stroke="#222" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M66 55 L74 55" stroke="#222" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- deep frown lines and downturned mouth -->
+  <path d="M44 66 Q48 70 52 70" stroke="#b48668" stroke-width="1.5" fill="none"/>
+  <path d="M76 66 Q72 70 68 70" stroke="#b48668" stroke-width="1.5" fill="none"/>
+  <path d="M50 72 Q60 66 70 72" stroke="#7a3b1e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="58" fill="#dde8f5"/>
+  <!-- lab coat -->
+  <path d="M16 120 C16 92 40 84 60 84 C80 84 104 92 104 120 Z" fill="#f7f7f7"/>
+  <path d="M60 84 L50 120 L70 120 Z" fill="#9fb6d4"/>
+  <!-- pen in pocket -->
+  <rect x="80" y="98" width="3" height="14" rx="1" fill="#2b6cb0"/>
+  <!-- neck -->
+  <rect x="51" y="72" width="18" height="16" rx="6" fill="#e2b48f"/>
+  <!-- face -->
+  <path d="M35 50 C35 30 45 22 60 22 C75 22 85 30 85 50 C85 68 74 80 60 80 C46 80 35 68 35 50 Z" fill="#f1c9a5"/>
+  <!-- swept blond hair -->
+  <path d="M33 44 C33 24 46 16 62 18 C76 19 88 26 86 42 C80 32 70 30 62 32 C56 33 50 30 46 36 C42 40 38 40 33 44 Z" fill="#d9b25c"/>
+  <!-- rectangular glasses -->
+  <rect x="40" y="46" width="16" height="11" rx="2" fill="none" stroke="#2d3748" stroke-width="2.5"/>
+  <rect x="64" y="46" width="16" height="11" rx="2" fill="none" stroke="#2d3748" stroke-width="2.5"/>
+  <path d="M56 51 L64 51" stroke="#2d3748" stroke-width="2.5"/>
+  <!-- eyes -->
+  <circle cx="48" cy="52" r="2" fill="#2d3748"/><circle cx="72" cy="52" r="2" fill="#2d3748"/>
+  <!-- flat brows -->
+  <path d="M41 42 L55 42" stroke="#b08d3a" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M65 42 L79 42" stroke="#b08d3a" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- thin neutral mouth -->
+  <path d="M52 68 L68 68" stroke="#8b5a3c" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

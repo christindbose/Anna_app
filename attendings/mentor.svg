@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="58" fill="#d8efe6"/>
+  <!-- shoulders / cardigan -->
+  <path d="M18 120 C18 92 40 84 60 84 C80 84 102 92 102 120 Z" fill="#2f8f6f"/>
+  <path d="M46 86 L60 104 L74 86 L68 84 L60 92 L52 84 Z" fill="#f4ede4"/>
+  <!-- neck -->
+  <rect x="51" y="72" width="18" height="16" rx="6" fill="#b5753f"/>
+  <!-- hair back + bun -->
+  <circle cx="60" cy="24" r="12" fill="#2b1b12"/>
+  <ellipse cx="60" cy="48" rx="30" ry="30" fill="#2b1b12"/>
+  <!-- face -->
+  <ellipse cx="60" cy="52" rx="25" ry="28" fill="#c98a52"/>
+  <!-- hair front -->
+  <path d="M35 46 C36 28 48 20 60 20 C72 20 84 28 85 46 C78 36 70 34 60 34 C50 34 42 36 35 46 Z" fill="#2b1b12"/>
+  <!-- earrings -->
+  <circle cx="36" cy="60" r="2.5" fill="#e3b341"/><circle cx="84" cy="60" r="2.5" fill="#e3b341"/>
+  <!-- brows -->
+  <path d="M46 44 Q52 40 58 44" stroke="#2b1b12" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M62 44 Q68 40 74 44" stroke="#2b1b12" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- happy closed eyes -->
+  <path d="M46 52 Q52 47 58 52" stroke="#2b1b12" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M62 52 Q68 47 74 52" stroke="#2b1b12" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- blush -->
+  <circle cx="44" cy="60" r="4" fill="#e39a7a" opacity=".6"/><circle cx="76" cy="60" r="4" fill="#e39a7a" opacity=".6"/>
+  <!-- warm smile -->
+  <path d="M50 66 Q60 76 70 66" stroke="#5a2a1a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="58" fill="#dbe4ee"/>
+  <!-- scrubs -->
+  <path d="M16 120 C16 92 40 84 60 84 C80 84 104 92 104 120 Z" fill="#2f6f8f"/>
+  <path d="M48 84 L60 96 L72 84 L60 90 Z" fill="#24596f"/>
+  <!-- pager on chest -->
+  <rect x="78" y="96" width="14" height="9" rx="2" fill="#111"/>
+  <rect x="80" y="98" width="8" height="3" fill="#7ee787"/>
+  <!-- coffee cup in hand -->
+  <rect x="22" y="94" width="14" height="18" rx="3" fill="#f7f7f7" stroke="#999" stroke-width="1"/>
+  <path d="M36 98 C42 98 42 108 36 108" fill="none" stroke="#999" stroke-width="2"/>
+  <path d="M26 92 Q29 86 27 82 M31 92 Q34 86 32 82" stroke="#aaa" stroke-width="1.2" fill="none"/>
+  <!-- neck -->
+  <rect x="51" y="72" width="18" height="16" rx="6" fill="#b98a63"/>
+  <!-- face -->
+  <path d="M36 50 C36 32 46 24 60 24 C74 24 84 32 84 50 C84 68 74 80 60 80 C46 80 36 68 36 50 Z" fill="#c99a72"/>
+  <!-- messy dark hair -->
+  <path d="M34 46 C34 28 44 20 60 20 C76 20 86 28 86 46 C80 36 74 32 66 34 C62 30 56 30 52 34 C46 32 40 38 34 46 Z" fill="#1c1c1c"/>
+  <path d="M44 26 L40 18 M58 22 L60 12 M74 26 L80 18" stroke="#1c1c1c" stroke-width="3" stroke-linecap="round"/>
+  <!-- stubble -->
+  <path d="M44 66 C50 76 70 76 76 66 C72 72 48 72 44 66 Z" fill="#8a6a50" opacity="0.5"/>
+  <!-- flat brows -->
+  <path d="M43 44 L56 45" stroke="#1c1c1c" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M64 45 L77 44" stroke="#1c1c1c" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- half-lidded eyes with dark circles -->
+  <path d="M44 54 Q50 50 56 54" stroke="#1c1c1c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M64 54 Q70 50 76 54" stroke="#1c1c1c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M45 58 Q50 61 55 58" stroke="#8a5a7a" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path d="M65 58 Q70 61 75 58" stroke="#8a5a7a" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <!-- flat, unimpressed mouth -->
+  <path d="M51 69 L69 68" stroke="#6b3b22" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
